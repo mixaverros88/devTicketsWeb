@@ -32,7 +32,6 @@ import com.devticket.service.impl.CustomUserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  
   @Value("${jwt.cookie}")
-  
   private String TOKEN_COOKIE;
 
   @Bean
