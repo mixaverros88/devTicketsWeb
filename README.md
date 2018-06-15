@@ -10,7 +10,7 @@
                                                                                                             
 
 ## WebApplication with Ticket Reservation System for Developer Events
-A Web Application using RestFul API , Spring Back End and Angular 5 Front end.
+A Web Application using RestFul API , Spring Back End and Angular 5 Front end
 
 
 ## Additional Information
