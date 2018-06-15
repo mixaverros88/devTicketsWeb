@@ -19,9 +19,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Created by fan.jin on 2016-10-15.
+ * Created by CodingFive Team  2018
+ * (Dimou John - Mike Verros (Back-End))
  */
-
 @Entity
 @Table(name = "USER")
 public class User implements UserDetails, Serializable {

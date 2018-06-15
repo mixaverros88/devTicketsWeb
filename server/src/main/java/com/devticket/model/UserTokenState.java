@@ -1,7 +1,7 @@
 package com.devticket.model;
-
 /**
- * Created by fan.jin on 2016-10-17.
+ * Created by CodingFive Team  2018
+ * (Dimou John - Mike Verros (Back-End))
  */
 public class UserTokenState {
     private String access_token;

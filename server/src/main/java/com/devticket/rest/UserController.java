@@ -33,7 +33,6 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-
   @RequestMapping(method = GET, value = "/user/{userId}")
   public User loadById(@PathVariable Long userId) {
     return this.userService.findById(userId);
