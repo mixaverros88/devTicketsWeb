@@ -16,12 +16,9 @@
     margin-left: auto;
     float: right;
   }
-  
 }
 
-.mat-toolbar{
-    background-color: #333333;
-  }
+
 
 .app-angular-logo {
   margin: 0 4px 3px 0;
@@ -32,7 +29,8 @@
   display: none;
 }
 
-/deep/ {
+
+ /deep/ {
   .app-header-accountMenu.mat-menu-panel {
     border-radius: 3px;
     max-width: initial;
