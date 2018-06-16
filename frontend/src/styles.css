@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import url('https://fonts.googleapis.com/css?family=Tinos:400,400i,700,700i&amp;subset=greek');
 
 body {
   margin: 0;
+  background-color: #F6F6F6;
+  font-family: 'Tinos', serif;
 }
