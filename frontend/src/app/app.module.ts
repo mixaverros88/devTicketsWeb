@@ -4,6 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b4df22264c119930a3c9233aa78895067fa922f
 // material
 import {
   MatButtonModule,

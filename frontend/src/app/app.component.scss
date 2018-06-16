@@ -1,11 +1,11 @@
 :host {
   display: block;
-  color: rgba(0,0,0,.54);
-  font-family: Roboto,"Helvetica Neue";
+  color: rgb(0, 0, 0);
+  font-family: 'Tinos', serif;
 }
 
 .content {
-  margin: 50px 70px;
+  padding:13% 5%;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1279px) {
