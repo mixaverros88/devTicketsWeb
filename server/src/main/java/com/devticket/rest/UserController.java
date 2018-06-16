@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import com.devticket.exception.ResourceConflictException;
-import com.devticket.model.User;
-import com.devticket.model.UserRequest;
+import com.devticket.model.user.User;
+import com.devticket.model.user.UserRequest;
 import com.devticket.service.UserService;
 /**
  * Created by CodingFive Team  2018

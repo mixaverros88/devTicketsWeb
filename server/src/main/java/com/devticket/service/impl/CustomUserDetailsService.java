@@ -1,6 +1,6 @@
 package com.devticket.service.impl;
 
-import com.devticket.model.User;
+import com.devticket.model.user.User;
 import com.devticket.repository.UserRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
