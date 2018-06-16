@@ -1,4 +1,4 @@
-package com.devticket.model;
+package com.devticket.model.user;
 
 import java.io.Serializable;
 import java.util.Collection;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.devticket.model.Authority;
+import com.devticket.model.user.Authority;
 import com.devticket.repository.AuthorityRepository;
 import com.devticket.service.AuthorityService;
 

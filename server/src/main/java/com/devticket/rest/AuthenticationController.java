@@ -1,6 +1,6 @@
 package com.devticket.rest;
 
-import com.devticket.model.UserTokenState;
+import com.devticket.model.user.UserTokenState;
 import com.devticket.security.TokenHelper;
 import com.devticket.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;

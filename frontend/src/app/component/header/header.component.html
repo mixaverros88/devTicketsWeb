@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="app-navbar">
   <button mat-button mat-ripple routerLink="/">
     <img alt="DevTicketPlace" class="app-angular-logo" src="assets/image/dev-logo.svg">
-    <span>DevTicketPlace</span>
+    <span>TicketCodingHive</span>
   </button>
   
 
@@ -14,6 +14,7 @@
       <button *ngIf="!hasSignedIn()" routerLink="/login" mat-button mat-ripple>
         <span>Login</span>
       </button>
+      <button class="btn btn-primary">Tickets</button>
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"
