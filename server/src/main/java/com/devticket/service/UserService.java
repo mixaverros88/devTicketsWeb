@@ -1,8 +1,8 @@
 package com.devticket.service;
 
 import java.util.List;
-import com.devticket.model.User;
-import com.devticket.model.UserRequest;
+import com.devticket.model.user.User;
+import com.devticket.model.user.UserRequest;
 
 /**
  * Created by CodingFive Team  2018

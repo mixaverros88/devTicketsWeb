@@ -1,4 +1,4 @@
-package com.devticket.model;
+package com.devticket.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;

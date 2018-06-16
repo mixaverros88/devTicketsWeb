@@ -5,8 +5,8 @@ package com.devticket.security.auth;
  * (Dimou John - Mike Verros (Back-End))
  */
 
-import com.devticket.model.User;
-import com.devticket.model.UserTokenState;
+import com.devticket.model.user.User;
+import com.devticket.model.user.UserTokenState;
 import com.devticket.security.TokenHelper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

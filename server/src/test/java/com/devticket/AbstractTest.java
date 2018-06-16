@@ -1,8 +1,8 @@
 package com.devticket;
 
-import com.devticket.model.Authority;
-import com.devticket.model.User;
-import com.devticket.model.UserRoleName;
+import com.devticket.model.user.Authority;
+import com.devticket.model.user.User;
+import com.devticket.model.user.UserRoleName;
 import com.devticket.repository.UserRepository;
 import com.devticket.security.auth.AnonAuthentication;
 import com.devticket.security.auth.TokenBasedAuthentication;
