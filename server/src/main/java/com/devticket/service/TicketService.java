@@ -15,7 +15,6 @@ public interface TicketService {
 
     Ticket findById(Long id);
 
-
     List<Ticket> findAll();
 
     Ticket save(Ticketrequest ticket);
