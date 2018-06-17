@@ -1,29 +1,14 @@
 package com.devticket.rest;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import com.devticket.model.ticket.Ticket;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
-import com.devticket.exception.ResourceConflictException;
-import com.devticket.model.user.User;
-import com.devticket.model.user.UserRequest;
-
 /**
  * Created by CodingFive Team  2018
  * (Dimou John - Mike Verros (Back-End))
