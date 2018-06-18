@@ -1,10 +1,6 @@
 app:
   name: anuglar2-spring-jwt
 
-
-
-
-
 jwt:
   header: Authorization
   expires_in: 600 # 10 minutes

@@ -37,9 +37,9 @@ public class Ticket {
     private float price;
 
 
-
     @Column(name = "image")
     private byte[] image;
+
 
     @Column(name = "date")
     private Calendar date;

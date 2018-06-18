@@ -19,6 +19,7 @@ public interface TicketService {
 
     Ticket save(Ticketrequest ticket);
 
+    void delete(Long id);
 
-
+    List<Ticket> Search(String example);
 }
