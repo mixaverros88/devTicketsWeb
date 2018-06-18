@@ -10,11 +10,17 @@ import { NotFoundComponent } from './not-found';
 import { ChangePasswordComponent } from './change-password';
 import { ForbiddenComponent } from './forbidden';
 import { SignupComponent } from './signup';
+import { TicketsCrudComponent } from  './tickets-crud';
  
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'ticketscrud',
+    component: TicketsCrudComponent,
     pathMatch: 'full'
   },
   {
