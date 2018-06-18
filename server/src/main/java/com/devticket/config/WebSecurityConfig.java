@@ -28,7 +28,7 @@ import com.devticket.service.impl.CustomUserDetailsService;
  */
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = false)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Value("${jwt.cookie}")
