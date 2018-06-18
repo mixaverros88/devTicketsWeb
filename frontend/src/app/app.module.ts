@@ -43,6 +43,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
+import { TicketsCrudComponent } from './tickets-crud/tickets-crud.component';
+
 
 export function initUserFactory(userService: UserService) {
     return () => userService.initUser();
@@ -62,7 +64,8 @@ export function initUserFactory(userService: UserService) {
     ChangePasswordComponent,
     ForbiddenComponent,
     AdminComponent,
-    SignupComponent
+    SignupComponent,
+    TicketsCrudComponent,
   ],
   imports: [
     BrowserAnimationsModule,
