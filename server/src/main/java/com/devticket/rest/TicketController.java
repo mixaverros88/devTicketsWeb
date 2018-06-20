@@ -41,11 +41,13 @@ public class TicketController {
         return this.ticketService.findAll();
     }
 
+    @RequestMapping (method = GET , value = "/ticket/delete/{ticketId}")
+    public void  delete(@PathVariable Long ticketId) {
+
+        this.ticketService.delete(ticketId);
 
 
-
-
-
+    }
 //    @RequestMapping(method = POST, value = "/signup")
 //    public ResponseEntity<?> addUser(@RequestBody UserRequest userRequest,
 //                                     UriComponentsBuilder ucBuilder) {

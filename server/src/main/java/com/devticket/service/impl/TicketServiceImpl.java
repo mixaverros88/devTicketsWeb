@@ -58,4 +58,12 @@ public class TicketServiceImpl implements TicketService {
         return ticket;
     }
 
+    @PreAuthorize("hasRole('USER')")
+    public void delete(Long id) throws AccessDeniedException{
+        this.ticketRepository.delete(ticketRepository.findByid(id));
+
+
+    }
+
+
 }

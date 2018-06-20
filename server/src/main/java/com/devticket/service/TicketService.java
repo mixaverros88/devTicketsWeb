@@ -19,6 +19,6 @@ public interface TicketService {
 
     Ticket save(Ticketrequest ticket);
 
-
+    void delete(Long id);
 
 }
