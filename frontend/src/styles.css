@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+ @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
  @import '~bootstrap/dist/css/bootstrap.min.css'; 
 
 body {
@@ -7,6 +7,7 @@ body {
   padding: 0;
 }
 
+/* Parallax Effect*/
 .imageParallax{
   background-attachment: fixed;
     background-position: center;
@@ -25,3 +26,16 @@ body {
   font-weight: bold;
   color: #fff;
 }
+
+
+/* Footer*/
+.footerb {
+  background-color: #3F51B5;
+  color: white;
+}
+
+.footerb a {
+  color: white;
+  text-decoration: none;
+}
+
