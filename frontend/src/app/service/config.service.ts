@@ -18,6 +18,10 @@ export class ConfigService {
 
   private _user_url = this._api_url + '/user';
 
+  private _ticket_url = this._api_url + '/ticket';
+
+  private _alltickets_url = this._ticket_url  + '/all';
+
   private _users_url = this._user_url + '/all';
 
   private _reset_credentials_url = this._user_url + '/reset-credentials';
@@ -32,6 +36,12 @@ export class ConfigService {
 
   get refresh_token_url(): string {
       return this._refresh_token_url;
+  }
+
+  get allticket_url(): string {
+
+    return this._alltickets_url;
+
   }
 
   get whoami_url(): string {

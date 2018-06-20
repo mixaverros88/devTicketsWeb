@@ -1,6 +1,11 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Tickets } from './tickets';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {
+  ConfigService,
+  UserService,
+  TicketService
+} from '../service';
 
 
 
@@ -31,8 +36,10 @@ export class TicketsCrudComponent implements OnInit {
   message: string;
   ticket: Tickets;
 
-  constructor(private httpClient: HttpClient) { 
-    
+  constructor(private httpClient: HttpClient,
+    // tslint:disable-next-line:no-shadowed-variable
+    private TicketService: TicketService) { 
+
   }
 
   ngOnInit() {
@@ -55,7 +62,7 @@ export class TicketsCrudComponent implements OnInit {
 
    
 
-    this.httpClient.get(`http://localhost:8080/api/ticket/all`)
+    this.TicketService.getAll()
     .subscribe(
       (data: any []) => {
        if( data.length ) {

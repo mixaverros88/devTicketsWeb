@@ -45,6 +45,7 @@ import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { TicketsCrudComponent } from './tickets-crud/tickets-crud.component';
 import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
+import { TicketService } from './service/ticket.service';
 
 
 export function initUserFactory(userService: UserService) {
@@ -89,6 +90,7 @@ export function initUserFactory(userService: UserService) {
     NgbModule.forRoot()
   ],
   providers: [
+    TicketService,
     LoginGuard,
     GuestGuard,
     AdminGuard,
