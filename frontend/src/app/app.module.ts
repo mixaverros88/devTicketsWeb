@@ -44,6 +44,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { TicketsCrudComponent } from './tickets-crud/tickets-crud.component';
+import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -66,6 +67,7 @@ export function initUserFactory(userService: UserService) {
     AdminComponent,
     SignupComponent,
     TicketsCrudComponent,
+    CarouselBasicComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,8 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
-/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+ @import '~bootstrap/dist/css/bootstrap.min.css'; 
 
 body {
   margin: 0;
+  padding: 0;
 }
 
+.imageParallax{
+  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 400px;
+  background-image:url('/assets/image/card1.jpg');
+  background-position:50% 50%;
+}
+
+.parallax-text{
+  margin: auto;
+  width:100%;
+  text-align:center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+}

@@ -1,11 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Tickets } from './tickets';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {
-  FooService,
-  ConfigService,
-  UserService
-} from '../service';
+
 
 
 
@@ -35,9 +31,7 @@ export class TicketsCrudComponent implements OnInit {
   message: string;
   ticket: Tickets;
 
-  constructor(private httpClient: HttpClient,private config: ConfigService,
-    private fooService: FooService,
-    private userService: UserService) { 
+  constructor(private httpClient: HttpClient) { 
     
   }
 
@@ -46,7 +40,7 @@ export class TicketsCrudComponent implements OnInit {
       this.getProducts();
     }
 
-    console.log(this.userService.getAll);
+  
   }
   onNameKeyUp(event: any) {
     console.log("-->" + event.target.value);
@@ -59,9 +53,7 @@ export class TicketsCrudComponent implements OnInit {
 
   getProducts() {
 
-    this.userService.getMyInfo().subscribe(
-      
-    )
+   
 
     this.httpClient.get(`http://localhost:8080/api/ticket/all`)
     .subscribe(
