@@ -49,14 +49,6 @@ export class TicketsCrudComponent implements OnInit {
 
   
   }
-  onNameKeyUp(event: any) {
-    console.log("-->" + event.target.value);
-    this.name = event.target.value;
-    this.found = false;
-    if(this.name.length >= 3) {
-      this.getProduct(event);
-    }
-  }
 
   getProducts() {
 
