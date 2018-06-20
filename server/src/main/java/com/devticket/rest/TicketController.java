@@ -6,15 +6,21 @@ import com.devticket.model.ticket.Ticket;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.management.relation.Role;
+
 /**
  * Created by CodingFive Team  2018
  * (Dimou John - Mike Verros (Back-End))
  */
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TicketController {
 
@@ -22,10 +28,13 @@ public class TicketController {
 
     private TicketService ticketService;
 
+
     @RequestMapping(method = GET, value = "/ticket/{ticketId}")
     public Ticket loadById(@PathVariable Long ticketId) {
         return this.ticketService.findById(ticketId);
     }
+
+
 
     @RequestMapping(method = GET, value = "/ticket/all")
     public List<Ticket> loadAll() {
