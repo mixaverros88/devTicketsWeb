@@ -32,6 +32,10 @@ export class TicketService {
     return this.apiService.get(this.config.whoami_url).map(user => this.currentUser = user);
   }
 
+  // deleteticket(id: number){
+  //   return this.apiService.get(this.config.deletetricket_url).map(() => null);
+  // }
+
   getAll() {
     return this.apiService.get(this.config.allticket_url);
   }

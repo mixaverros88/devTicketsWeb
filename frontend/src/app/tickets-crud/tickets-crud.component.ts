@@ -29,8 +29,10 @@ export class TicketsCrudComponent implements OnInit {
   
   id: number;
   name:string ='';
-  color:string;
+  language:string;
+  available: number;
   price: number;
+  location: string;
   found: boolean;
   data:any [];
   message: string;
@@ -43,9 +45,9 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.color !=''){
+    
       this.getProducts();
-    }
+    
 
   
   }
@@ -89,12 +91,14 @@ export class TicketsCrudComponent implements OnInit {
     );
   }
 
-  postProduct(name: string, color: string, price: number): void {
+  postProduct(name: string, language: string, price: number, available: number, location: string): void {
     this.httpClient.post(`http://localhost:555/products/`,
     {
       name: name,
-      color: color,
-      price: price
+      language: language,
+      price: price,
+      available: available,
+      location: location
     })
     .subscribe(
       (data: any) => {
@@ -120,7 +124,7 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   deleteProduct(id: number ) {
-    this.httpClient.delete(`http://localhost:8080/api/ticket/${id}`)
+    this.TicketService.deleteProduct
     .subscribe(
       (data: any) => {
         this.message = 'To προϊόν διεγάφει επιτυχώς';
