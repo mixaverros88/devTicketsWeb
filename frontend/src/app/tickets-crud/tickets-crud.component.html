@@ -5,15 +5,23 @@
       <input #nameInput placeholder="Name">
     </div>
     <div class="form-group">
-      <label for="pwd">Color:</label>
-      <input #colorInput placeholder="Color">
+      <label for="pwd">Language:</label>
+      <input #languageInput placeholder="Language">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Available:</label>
+        <input #availableInput placeholder="Available">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Location:</label>
+        <input #locationInput placeholder="Location">
     </div>
     <div class="form-group">
         <label for="pwd">Price:</label>
         <input #priceInput placeholder="Price">
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-primary" (click)="postProduct(nameInput.value, colorInput.value, priceInput.value);  nameInput.value=''; colorInput.value=''; priceInput.value=''; ">Add Product</button>
+      <button type="button" class="btn btn-primary" (click)="postProduct(nameInput.value, languageInput.value, availableInput.value);  nameInput.value=''; languageInput.value=''; availableInput.value=''; locationInput.value=''; priceInput.value='';">Add Product</button>
     </div>
     </form>
 </div>

@@ -22,6 +22,8 @@ export class ConfigService {
 
   private _alltickets_url = this._ticket_url  + '/all';
 
+  private _deleteticket_url = this._ticket_url + '/delete';
+
   private _users_url = this._user_url + '/all';
 
   private _reset_credentials_url = this._user_url + '/reset-credentials';
@@ -41,6 +43,12 @@ export class ConfigService {
   get allticket_url(): string {
 
     return this._alltickets_url;
+
+  }
+
+  get deletetricket_url(): string {
+
+    return this._deleteticket_url;
 
   }
 
