@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 // material
 import {
   MatButtonModule,
@@ -86,7 +87,8 @@ export function initUserFactory(userService: UserService) {
     MatCardModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [
     LoginGuard,
