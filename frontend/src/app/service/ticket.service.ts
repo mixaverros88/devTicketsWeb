@@ -13,31 +13,21 @@ export class TicketService {
     private config: ConfigService
   ) { }
 
-  initUser() {
-    const promise = this.apiService.get(this.config.refresh_token_url).toPromise()
-    .then(res => {
-      if (res.access_token !== null) {
-        return this.getMyInfo().toPromise()
-        .then(user => {
-          this.currentUser = user;
-        });
-      }
-    })
-    .catch(() => null);
-    return promise;
+  getAll() {
+    return this.apiService.get(this.config.allticket_url);
   }
 
+  getbyId(id: any) {
+    const a = this.apiService.delete(this.config.ticket_url);
+    return a + '/' + id.toString();
+}
 
   getMyInfo() {
     return this.apiService.get(this.config.whoami_url).map(user => this.currentUser = user);
   }
-
-  // deleteticket(id: number){
-  //   return this.apiService.get(this.config.deletetricket_url).map(() => null);
-  // }
-
-  getAll() {
-    return this.apiService.get(this.config.allticket_url);
+  deleteTicket(id: number ) {
+const a = this.apiService.delete(this.config.getdeleteticket_url());
+    return a + '/' + id.toString();
   }
 
 }

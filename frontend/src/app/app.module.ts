@@ -30,7 +30,7 @@ import {
   HeaderComponent,
   ApiCardComponent,
   FooterComponent,
-  GithubComponent
+
 } from './component';
 
 import {
@@ -60,7 +60,6 @@ export function initUserFactory(userService: UserService) {
     FooterComponent,
     ApiCardComponent,
     HomeComponent,
-    GithubComponent,
     LoginComponent,
     NotFoundComponent,
     AccountMenuComponent,

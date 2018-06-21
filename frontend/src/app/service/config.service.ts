@@ -29,7 +29,7 @@ export class ConfigService {
   private _reset_credentials_url = this._user_url + '/reset-credentials';
 
   private _foo_url = this._api_url + '/foo';
-  
+
   private _signup_url = this._api_url + '/signup';
 
   get reset_credentials_url(): string {
@@ -46,7 +46,12 @@ export class ConfigService {
 
   }
 
-  get deletetricket_url(): string {
+  get ticket_url(): string
+  {
+      return this._ticket_url;
+  }
+
+  getdeleteticket_url(): string {
 
     return this._deleteticket_url;
 

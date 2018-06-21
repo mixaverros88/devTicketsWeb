@@ -18,6 +18,8 @@ body {
   background-position:50% 50%;
 }
 
+
+
 .parallax-text{
   margin: auto;
   width:100%;
@@ -27,10 +29,14 @@ body {
   color: #fff;
 }
 
+.bg-primary{
+
+ background-color:#424954!important;
+}
 
 /* Footer*/
 .footerb {
-  background-color: #3F51B5;
+  background-color:#424954!important;
   color: white;
 }
 
