@@ -1,47 +1,60 @@
-<div class="container-fluid mt-4">
+<div class="container">
+  <h1 class="text-center">Edit Ticket</h1>
+</div>
+<div class="container">
     <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Full Name" formControlName="name" required>
-          <input matInput placeholder="Full Name" formControlName="price" required>
-          <input matInput placeholder="Full Name" formControlName="available" required>
-          <input matInput placeholder="Full Name" formControlName="location" required>
-          <input matInput placeholder="Full Name" formControlName="language" required>
-        </mat-form-field>
-      <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
-    </form>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-globe"></span></span>
+    <table>
+      <tr>
+        <td>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
+            </div>
+            <input #nameInput matInput placeholder="Name" formControlName="name" required>
           </div>
-      <input #nameInput placeholder="Name">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+        </td>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                  </div>
+              <input #languageInput matInput placeholder="Language"  formControlName="language" required>
+            </div>
+        </td>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
+                  </div>
+                <input #availableInput matInput placeholder="Available"  formControlName="available" required>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                  </div>
+                <input #locationInput matInput placeholder="Location"  formControlName="location" required>
+            </div>
+        </td>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
+                  </div>
+                <input #priceInput matInput placeholder="Price"  formControlName="price" required>
+            </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
           </div>
-      <input #languageInput placeholder="Language">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
-          </div>
-        <input #availableInput placeholder="Available">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-          </div>
-        <input #locationInput placeholder="Location">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
-          </div>
-        <input #priceInput placeholder="Price">
-    </div>
-    <div class="form-group">
-      <button type="button" class="btn btn-primary" (click)="postProduct(nameInput.value, languageInput.value, availableInput.value);  nameInput.value=''; languageInput.value=''; availableInput.value=''; locationInput.value=''; priceInput.value='';">Add Product</button>
-    </div>
+        </td>
+      </tr>
+    </table>      
+  </form>
 </div>
 
 <div class="container">
@@ -57,6 +70,16 @@
       <th>Available</th>
       <th>Location</th>
       <th>Price</th>
+      <th>Λειτουργίες</th>
+      <th>
+          <select (change)="onChange($event.target.value)">
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+          </select>  
+      </th>
     </tr>
     <tr *ngFor="let pr of data">
       <td>{{ pr.name }}</td>
@@ -98,61 +121,54 @@
 
 <div *ngIf="selectedProduct" class="container">
     <form class="form-inline">
+        <table>
+          <tr>
+            <td>
+                <div class="form-group">
+                    <label for="usr">ID:</label>
+                    <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
+                  </div>
+            </td>
+            <td>
+      
         <div class="form-group">
-            <label for="usr">ID:</label>
-            <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
+            <label for="usr">Name:</label>
+            <input #nameEditInput placeholder="" value="{{selectedProduct.name}}">
           </div>
-      <div class="form-group">
-        <label for="usr">Name:</label>
-        <input #nameEditInput placeholder="" value="{{selectedProduct.name}}">
-      </div>
-      <div class="form-group">
-          <label for="pwd">Language:</label>
-          <input #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
-      </div>
-      <div class="form-group">
-          <label for="pwd">Available:</label>
-          <input #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
-      </div>
-      <div class="form-group">
-          <label for="pwd">Location:</label>
-          <input #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
-      </div>
-      <div class="form-group">
-          <label for="pwd">Price:</label>
-          <input #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
-      </div>
-      <div class="form-group">
-        <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
-      </div>
+            </td>
+            <div class="form-group">
+                <label for="pwd">Language:</label>
+                <input #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
+            </div>
+
+          </tr>
+
+          <tr>
+              <td>
+                  <div class="form-group">
+                      <label for="pwd">Location:</label>
+                      <input #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
+                  </div>
+              </td>
+              <td>
+                  <div class="form-group">
+                      <label for="pwd">Price:</label>
+                      <input #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
+                  </div>
+              </td>
+              <td>
+                  <div class="form-group">
+                      <label for="pwd">Available:</label>
+                      <input #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
+                  </div>
+              </td>
+              <td>
+    
+                  <div class="form-group">
+                      <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
+                    </div>
+              </td>
+            </tr>
+        </table>
       </form>
   </div>
-
-
-<div class="container">
-    <div class="row">
-        <div *ngFor="let pr of data" class="col-6 card ">
-            
-            <div class="card">
-                <img class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text={{ pr.language }}" alt="Card image cap">
-                <div class="card-body">
-                  <h2 class="card-title">{{ pr.name }}</h2>
-                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
-                  <div class="row">
-                    <div class="col-md-4">
-                     <span class="fa fa-money"></span> {{ pr.price | currency }}
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa fa-map-marker"></span> {{ pr.location }}
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa fa-ticket pull-left"></span> {{ pr.available }} : Tickets left!
-                    </div>
-                  </div>
-                  <a href="#" class="btn btn-success pull-right">Add to Cart</a>
-                </div>
-              </div>
-        </div>
-    </div>
-
-</div>

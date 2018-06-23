@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  roleAccess = {'ROLE_ADMIN' : false , 'ROLE_USER' : false}
+
   logout() {
     this.authService.logout().subscribe(res => {
       this.router.navigate(['/login']);

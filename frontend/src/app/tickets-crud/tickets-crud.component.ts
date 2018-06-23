@@ -47,6 +47,15 @@ export class TicketsCrudComponent implements OnInit {
   ticket: Ticket;
   selectedProduct: Ticket;
 
+    // PAGINATION VALUES
+    howManyRows = 2;
+    totalProducts: number;
+    curentPage = 1;
+    paginationLength = 0;
+    orderByColumn = 'id';
+    orderBy = 'desc';
+    // PAGINATION VALUES
+
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService) {
@@ -77,6 +86,7 @@ export class TicketsCrudComponent implements OnInit {
     ticket.price = price;
     console.log(name);
     this.TicketService.editTicket(ticket);
+    this.ngOnInit();
   }
 
   getProducts() {
@@ -105,6 +115,18 @@ this.userDetailsForm.controls['location'].value.toString());
 
 onSelectedProduct(pr) {
   this.selectedProduct = pr;
+}
+
+onChange(deviceValue) {
+  this.howManyRows = deviceValue;
+  this.getPagination(this.totalProducts, this.howManyRows);
+  this.getProducts();
+}
+
+getPagination(totalProducts, howManyRows) {
+  this.paginationLength = Math.ceil(totalProducts / howManyRows);
+  console.log(totalProducts + ' / ' + howManyRows );
+  console.log(this.paginationLength);
 }
 
 onDelete(id: number) {
