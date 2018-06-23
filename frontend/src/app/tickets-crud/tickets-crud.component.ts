@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {
   ConfigService,
   UserService,
-  TicketService,
+
   ApiService
 } from '../service';
 import { identifierName } from '@angular/compiler';

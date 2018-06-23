@@ -54,13 +54,23 @@ public class TicketController {
     }
 
     @RequestMapping(method = POST, value = "/ticket/add")
-    public ResponseEntity<?> addUser(@RequestBody Ticketrequest ticketrequest) {
+    public ResponseEntity<?> addUser(@RequestBody Ticketrequest ticketrequest ) {
         //Ticket ticket = this.ticketService.addnew(ticketrequest);
         this.ticketService.addnew(ticketrequest);
         Map<String, String> result = new HashMap<>();
         result.put( "result", "success" );
         return ResponseEntity.accepted().body(result);
     }
+
+    @RequestMapping(method = PUT , value = "/ticket/edit/{ticketid}")
+    public ResponseEntity<?> edit(@RequestBody Ticketrequest ticketrequest, @PathVariable Long ticketid){
+this.ticketService.edit(ticketrequest,ticketid);
+        Map<String, String> result = new HashMap<>();
+        result.put( "result", "success" );
+        return ResponseEntity.accepted().body(result);
+    }
+
+
     }
 
     /*

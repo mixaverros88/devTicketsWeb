@@ -58,12 +58,31 @@ public class TicketServiceImpl implements TicketService {
         return ticket;
     }
 
+    public void edit(Ticketrequest ticketrequest,Long id){
+           Ticket ticket =this.ticketRepository.findByid(id);
+           ticket.setPrice(ticketrequest.getPrice());
+           ticket.setLanguage(ticketrequest.getLanguage());
+           ticket.setAvailable(ticketrequest.getAvailable());
+           ticket.setName(ticketrequest.getName());
+           ticket.setDate(ticketrequest.getDate());
+           ticket.setLocation(ticketrequest.getLocation());
+           ticket.setImage(ticketrequest.getImage());
+
+        this.ticketRepository.save(ticket);
+
+
+    }
+
+
+
+
     @PreAuthorize("hasRole('USER')")
     public void delete(Long id) throws AccessDeniedException{
         this.ticketRepository.delete(ticketRepository.findByid(id));
 
 
     }
+
 
 
 }
