@@ -6,6 +6,7 @@ import { ConfigService } from './config.service';
 @Injectable()
 export class TicketService {
 
+  [x: string]: any;
   currentUser;
 
   constructor(
@@ -16,18 +17,10 @@ export class TicketService {
   getAll() {
     return this.apiService.get(this.config.allticket_url);
   }
-
-  getbyId(id: any) {
-    const a = this.apiService.delete(this.config.ticket_url);
-    return a + '/' + id.toString();
-}
-
-  getMyInfo() {
-    return this.apiService.get(this.config.whoami_url).map(user => this.currentUser = user);
+  deleteEmployee(id: number) {
+    return this.apiService.delete(this.config.deleteticket_url(id)).map(res => res.json());
   }
-  deleteTicket(id: number ) {
-const a = this.apiService.delete(this.config.getdeleteticket_url());
-    return a + '/' + id.toString();
+  getbyId(id: number) {
+    return this.apiService.get(this.config.ticket_urll(id)).map(res => res.json());
   }
-
 }

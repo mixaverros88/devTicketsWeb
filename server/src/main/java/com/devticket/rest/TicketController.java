@@ -1,11 +1,17 @@
 package com.devticket.rest;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.devticket.model.ticket.Ticket;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,12 +47,13 @@ public class TicketController {
         return this.ticketService.findAll();
     }
 
-    @RequestMapping (method = GET , value = "/ticket/delete/{ticketId}")
-    public void  delete(@PathVariable Long ticketId) {
+    @RequestMapping (method = DELETE , value = "/ticket/delete/{ticketId}")
+    public ResponseEntity<?> delete(@PathVariable Long ticketId) {
 
         this.ticketService.delete(ticketId);
-
-
+        Map<String, String> result = new HashMap<>();
+        result.put( "result", "success" );
+        return ResponseEntity.accepted().body(result);
     }
 //    @RequestMapping(method = POST, value = "/signup")
 //    public ResponseEntity<?> addUser(@RequestBody UserRequest userRequest,

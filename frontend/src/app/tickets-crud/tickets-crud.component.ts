@@ -4,8 +4,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {
   ConfigService,
   UserService,
-  TicketService
+  TicketService,
+  ApiService
 } from '../service';
+import { identifierName } from '@angular/compiler';
+import { tick } from '@angular/core/testing';
 
 
 
@@ -21,6 +24,13 @@ import {
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
 
+  checkinTemp: any;
+  notification: any;
+  submitted: boolean;
+  authService: any;
+  form: any;
+  router: any;
+  http: any;
   id: number;
   name: string ;
   language: string;
@@ -57,4 +67,37 @@ export class TicketsCrudComponent implements OnInit {
     );
   }
 // tslint:disable-next-line:eofline
+
+
+
+
+onDelete(id: number) {
+  /**
+   * Innocent until proven guilty
+   */
+  this.notification = undefined;
+  this.submitted = true;
+
+  this.TicketService.deleteEmployee(id)
+  // show me the animation
+  .subscribe(() => {
+   this.data.splice(id);
+
+  }, error => {
+    console.log('mpike');
+   let index = 0;
+    for ( let i = 0; i < this.data.length; i++) {
+
+if (this.data[i].id === id) {
+
+  index = i;
+}
+
+    }
+    console.log("to index einai "+ index);
+    this.data.splice(index, 1);
+  });
+
+}
+
 }

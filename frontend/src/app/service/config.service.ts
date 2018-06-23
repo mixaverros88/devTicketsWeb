@@ -20,9 +20,11 @@ export class ConfigService {
 
   private _ticket_url = this._api_url + '/ticket';
 
+  private _ticket_urll = this._api_url + 'ticket/';
+
   private _alltickets_url = this._ticket_url  + '/all';
 
-  private _deleteticket_url = this._ticket_url + '/delete';
+  private _deleteticket_url = this._ticket_url + '/delete/';
 
   private _users_url = this._user_url + '/all';
 
@@ -51,9 +53,14 @@ export class ConfigService {
       return this._ticket_url;
   }
 
-  getdeleteticket_url(): string {
+  ticket_urll(id: number): string {
 
-    return this._deleteticket_url;
+    return this.ticket_urll + id.toString();
+  }
+
+  deleteticket_url(id: number): string {
+
+    return this._deleteticket_url + id.toString();
 
   }
 
