@@ -14,8 +14,8 @@
       <button *ngIf="!hasSignedIn()" routerLink="/login" class="btn btn-primary">
         <span>Login</span>
       </button>
-      <button class="btn btn-primary" routerLink="/ticketscrud">Tickets</button>
-      <button class="btn btn-primary" routerLink="/ticketsuser">Buy Tickets</button>
+      <button *ngIf="hasSignedIn()" class="btn btn-primary" routerLink="/ticketscrud">Admin Page</button>
+      <button  class="btn btn-primary" routerLink="/ticketsuser">Buy Tickets</button>
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"
