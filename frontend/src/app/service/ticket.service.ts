@@ -26,15 +26,10 @@ export class TicketService {
   }
   addTicket(name: number , available: number, language: number , price: number, location: number) {
     // tslint:disable-next-line:member-ordering
-    const signupHeaders = new HttpHeaders({
+    const addProductHeaders = new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     });
-    console.log(name, available, language, location, price);
-
-
-
-   // const Indata =new Tickets {'name': name, 'available': available ,'language' :language, 'price': price, 'location' : location };
 const ticket = new Ticket();
 ticket.name = name.toString();
 ticket.available = available;
@@ -43,7 +38,7 @@ ticket.price = language;
 ticket.location = location.toString();
     console.log(ticket.name + 'eftase edo');
     console.log(ticket);
-    return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), signupHeaders ).subscribe(
+    return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), addProductHeaders ).subscribe(
       response => console.log(response),
       err => console.log(err)
     )

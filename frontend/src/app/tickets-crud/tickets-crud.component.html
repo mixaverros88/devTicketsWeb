@@ -9,41 +9,7 @@
         </mat-form-field>
       <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
     </form>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-globe"></span></span>
-          </div>
-      <input #nameInput placeholder="Name">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-          </div>
-      <input #languageInput placeholder="Language">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
-          </div>
-        <input #availableInput placeholder="Available">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-          </div>
-        <input #locationInput placeholder="Location">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
-          </div>
-        <input #priceInput placeholder="Price">
-    </div>
-    <div class="form-group">
-      <button type="button" class="btn btn-primary" (click)="postProduct(nameInput.value, languageInput.value, availableInput.value);  nameInput.value=''; languageInput.value=''; availableInput.value=''; locationInput.value=''; priceInput.value='';">Add Product</button>
-    </div>
-</div>
-
+    
 <div class="container">
 
   <div *ngIf="message" class="alert alert-success">
