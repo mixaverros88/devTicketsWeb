@@ -2,21 +2,20 @@ package com.devticket.rest;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.devticket.model.ticket.Ticket;
+import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.management.relation.Role;
 
@@ -55,18 +54,16 @@ public class TicketController {
         result.put( "result", "success" );
         return ResponseEntity.accepted().body(result);
     }
-//    @RequestMapping(method = POST, value = "/signup")
-//    public ResponseEntity<?> addUser(@RequestBody UserRequest userRequest,
-//                                     UriComponentsBuilder ucBuilder) {
-//        User existUser = this.userService.findByUsername(userRequest.getUsername());
-//        if (existUser != null) {
-//            throw new ResourceConflictException(userRequest.getId(), "Username already exists");
-//        }
-//        User user = this.userService.save(userRequest);
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setLocation(ucBuilder.path("/api/user/{userId}").buildAndExpand(user.getId()).toUri());
-//        return new ResponseEntity<User>(user, HttpStatus.CREATED);
-//    }
+
+    @RequestMapping(method = PUT, value = "/ticket/add")
+    public ResponseEntity<?> addUser(@RequestBody Ticketrequest ticketrequest) {
+        Ticket ticket = this.ticketService.addnew(ticketrequest);
+        this.ticketService.addnew(ticketrequest);
+        Map<String, String> result = new HashMap<>();
+        result.put( "result", "success" );
+        return ResponseEntity.accepted().body(result);
+    }
+    }
 
     /*
      * We are not using userService.findByUsername here(we could), so it is good that we are making
@@ -74,4 +71,3 @@ public class TicketController {
      */
 
 
-}

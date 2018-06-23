@@ -48,7 +48,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Ticket save(Ticketrequest ticketrequest) {
+    public Ticket addnew(Ticketrequest ticketrequest) {
         Ticket ticket = new Ticket();
         ticket.setName(ticketrequest.getName());
        ticket.setAvailable(ticketrequest.getAvailable());
