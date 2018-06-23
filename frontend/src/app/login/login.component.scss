@@ -1,5 +1,6 @@
 .content {
   width: 100%;
+  background-color:#424242!important;
 }
 
 mat-card {
@@ -11,6 +12,8 @@ mat-card {
   -webkit-animation: fadein 1s; /* Safari and Chrome */
 
 }
+
+
 
 mat-input-container {
   display: block;
@@ -56,3 +59,4 @@ a {
   cursor: auto;
   color: #FFFFFF;
 }
+

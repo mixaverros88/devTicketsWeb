@@ -10,7 +10,9 @@ import { NotFoundComponent } from './not-found';
 import { ChangePasswordComponent } from './change-password';
 import { ForbiddenComponent } from './forbidden';
 import { SignupComponent } from './signup';
- 
+import { TicketsCrudComponent } from './tickets-crud';
+import { TicketsuserComponent } from './ticketsuser/ticketsuser.component'
+
 export const routes: Routes = [
   {
     path: '',
@@ -18,10 +20,20 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'signup',
+    path: 'ticketscrud',
+    component: TicketsCrudComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'ticketsuser',
+    component: TicketsuserComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'signup',
     component: SignupComponent,
     canActivate: [GuestGuard],
-    pathMatch:'full'
+    pathMatch: 'full'
   },
   {
     path: 'login',

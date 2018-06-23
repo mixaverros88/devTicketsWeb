@@ -1,38 +1,46 @@
-<div class="content" fxLayout="row" fxLayoutAlign="center none">
-  <app-api-card
-    fxFlex
-    title='"ANOIXTO SERVICE"'
-    subTitle="Public"
-  
-    content='PARADEIGMA ANOIXTOU SERVICE , DEN THELEI AUTHENTICATION EINAI PUBLIC '
-    apiText="/api/foo"
-    [responseObj]="fooResponse"
-    (apiClick)="makeRequest($event)"
-  >
-  </app-api-card>
-
-  <app-api-card
-     fxFlex
-     title='"POIOS EIMAI"'
-     subTitle="MONO OI XRHSTES ME ROLO: USER"
-     content='PARADEIGMA endpoint POU THELEI AUTHENTICATION ME ROLO USER ALLIOS GURNAEI DENY'
-     apiText="/api/whoami"
-     [responseObj]="whoamIResponse"
-     (apiClick)="makeRequest($event)"
-  >
-  </app-api-card>
-
-  <app-api-card
-     class="last"
-     fxFlex
-     title='"FERE OLOUS TOUS XRHSTES APO THN VASH"'
-     subTitle="MONO XRHSTES ME ROLO: ADMIN"
-
-     content='AUTO TO endpoint MPOROUNE NA TO DOUNE MONO OI ADMIN'
-     apiText="/api/user/all"
-     [responseObj]="allUserResponse"
-     (apiClick)="makeRequest($event)"
-  >
-  </app-api-card>
+<div class="container-fluid" style="padding:0;">
+<div class="row">
+  <div class="col">
+<ngbd-carousel-basic></ngbd-carousel-basic>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12 mb-5 mt-4" style="text-align:center">
+<h1>devTicket Platform Features</h1>
+  </div>
+</div>
+<div class="row mb-5">
+  <div class="col-md-4" style="padding-left: 3%;">
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="assets/image/1.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Notifications for Developer Meetups</h5>
+            <p class="card-text">Get Notifications for Dev Meetups real time</p>
+            
+          </div>
+        </div>
+  </div>
+  <div class="col-md-4" style="padding-left: 3%;">
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="assets/image/2.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Live Developer Event Streaming</h5>
+            <p class="card-text">Watch Online Dev Event through live Streaming</p>
+            
+          </div>
+        </div>
+  </div>
+  <div class="col-md-4" style="padding-left: 3%;">
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="assets/image/3.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Developer Tickets Discounts</h5>
+            <p class="card-text">Sign up Today and get 30% discount for Development Seminar tickets</p>
+           
+          </div>
+        </div>
+  </div>
 </div>
 
+
+</div>

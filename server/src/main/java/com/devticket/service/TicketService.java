@@ -17,8 +17,9 @@ public interface TicketService {
 
     List<Ticket> findAll();
 
-    Ticket save(Ticketrequest ticket);
+    Ticket addnew(Ticketrequest ticket);
 
+    void delete(Long id);
 
-
+    void edit (Ticketrequest ticket,Long id);
 }

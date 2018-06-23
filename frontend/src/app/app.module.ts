@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 // material
 import {
   MatButtonModule,
@@ -29,7 +30,7 @@ import {
   HeaderComponent,
   ApiCardComponent,
   FooterComponent,
-  GithubComponent
+
 } from './component';
 
 import {
@@ -43,6 +44,11 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
+import { TicketsCrudComponent } from './tickets-crud/tickets-crud.component';
+import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
+import { TicketService } from './service/ticket.service';
+import { TicketsuserComponent } from './ticketsuser/ticketsuser.component';
+
 
 export function initUserFactory(userService: UserService) {
     return () => userService.initUser();
@@ -55,14 +61,16 @@ export function initUserFactory(userService: UserService) {
     FooterComponent,
     ApiCardComponent,
     HomeComponent,
-    GithubComponent,
     LoginComponent,
     NotFoundComponent,
     AccountMenuComponent,
     ChangePasswordComponent,
     ForbiddenComponent,
     AdminComponent,
-    SignupComponent
+    SignupComponent,
+    TicketsCrudComponent,
+    CarouselBasicComponent,
+    TicketsuserComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -81,9 +89,11 @@ export function initUserFactory(userService: UserService) {
     MatCardModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [
+    TicketService,
     LoginGuard,
     GuestGuard,
     AdminGuard,

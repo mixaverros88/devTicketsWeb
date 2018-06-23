@@ -18,12 +18,24 @@ export class ConfigService {
 
   private _user_url = this._api_url + '/user';
 
+  private _ticket_url = this._api_url + '/ticket';
+
+  private _ticket_urll = this._api_url + 'ticket/';
+
+ private _addticket_url = this._api_url + '/ticket/add';
+
+  private _alltickets_url = this._ticket_url  + '/all';
+
+  private _edittickets_url = this._ticket_url  + '/edit/';
+
+  private _deleteticket_url = this._ticket_url + '/delete/';
+
   private _users_url = this._user_url + '/all';
 
   private _reset_credentials_url = this._user_url + '/reset-credentials';
 
   private _foo_url = this._api_url + '/foo';
-  
+
   private _signup_url = this._api_url + '/signup';
 
   get reset_credentials_url(): string {
@@ -32,6 +44,39 @@ export class ConfigService {
 
   get refresh_token_url(): string {
       return this._refresh_token_url;
+  }
+
+  get addticket_url(): string {
+
+return this._addticket_url ;
+  }
+
+  get allticket_url(): string {
+
+    return this._alltickets_url;
+
+  }
+
+  get ticket_url(): string
+  {
+      return this._ticket_url;
+  }
+
+  ticket_urll(id: number): string {
+
+    return this.ticket_urll + id.toString();
+  }
+
+  editteticket_url(id: number): string {
+
+    return this._edittickets_url + id.toString();
+
+  }
+
+  deleteticket_url(id: number): string {
+
+    return this._deleteticket_url + id.toString();
+
   }
 
   get whoami_url(): string {
