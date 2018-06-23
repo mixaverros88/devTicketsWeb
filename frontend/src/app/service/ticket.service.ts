@@ -44,6 +44,19 @@ ticket.location = location.toString();
     )
   };
 
+  editTicket(ticket: Ticket) {
+    const addProductHeaders = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    });
+
+    return this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket) ).subscribe(
+      response => console.log(response),
+      err => console.log(err)
+    )
+
+  }
+
   getbyId(id: number) {
     return this.apiService.get(this.config.ticket_urll(id)).map(res => res.json());
   }

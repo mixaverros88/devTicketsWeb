@@ -1,3 +1,4 @@
+import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -44,6 +45,7 @@ export class TicketsCrudComponent implements OnInit {
   data: any [];
   message: string;
   ticket: Ticket;
+  selectedProduct: Ticket;
 
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
@@ -63,6 +65,18 @@ export class TicketsCrudComponent implements OnInit {
       });
 
 
+  }
+
+  editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
+    const ticket = new Ticket();
+    ticket.id = id;
+    ticket.name = name;
+    ticket.language = language;
+    ticket.available = available;
+    ticket.location = location;
+    ticket.price = price;
+    console.log(name);
+    this.TicketService.editTicket(ticket);
   }
 
   getProducts() {
@@ -87,6 +101,10 @@ this.userDetailsForm.controls['price'].value,
 this.userDetailsForm.controls['language'].value.toString(),
 this.userDetailsForm.controls['location'].value.toString());
 
+}
+
+onSelectedProduct(pr) {
+  this.selectedProduct = pr;
 }
 
 onDelete(id: number) {
