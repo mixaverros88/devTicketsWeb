@@ -77,6 +77,7 @@ export class TicketsCrudComponent implements OnInit {
     ticket.price = price;
     console.log(name);
     this.TicketService.editTicket(ticket);
+    this.ngOnInit();
   }
 
   getProducts() {
