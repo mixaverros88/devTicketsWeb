@@ -12,16 +12,11 @@ import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 
-
-
-
-
 @Component({
   selector: 'app-tickets-crud',
   templateUrl: './tickets-crud.component.html',
   styleUrls: ['./tickets-crud.component.css']
 })
-
 
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
@@ -63,7 +58,6 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   ngOnInit() {
-
       this.getProducts();
       this.userDetailsForm = new FormGroup({
         name: new FormControl(''),
@@ -72,8 +66,6 @@ export class TicketsCrudComponent implements OnInit {
         location: new FormControl(''),
         language: new FormControl('')
       });
-
-
   }
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
@@ -90,7 +82,6 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   getProducts() {
-
     this.TicketService.getAll()
     .subscribe(
       (data: any []) => {
@@ -101,38 +92,32 @@ export class TicketsCrudComponent implements OnInit {
       }
     );
   }
-// tslint:disable-next-line:eofline
 
-onSubmitUserDetails() {
+  onSubmitUserDetails() {
+    this.TicketService.addTicket(this.userDetailsForm.controls['name'].value.toString(),
+    this.userDetailsForm.controls['available'].value,
+    this.userDetailsForm.controls['price'].value,
+    this.userDetailsForm.controls['language'].value.toString(),
+    this.userDetailsForm.controls['location'].value.toString());
+  }
 
-this.TicketService.addTicket(this.userDetailsForm.controls['name'].value.toString(),
-this.userDetailsForm.controls['available'].value,
-this.userDetailsForm.controls['price'].value,
-this.userDetailsForm.controls['language'].value.toString(),
-this.userDetailsForm.controls['location'].value.toString());
+  onSelectedProduct(pr) {
+    this.selectedProduct = pr;
+  }
 
-}
+  onChange(deviceValue) {
+    this.howManyRows = deviceValue;
+    this.getPagination(this.totalProducts, this.howManyRows);
+    this.getProducts();
+  }
 
-onSelectedProduct(pr) {
-  this.selectedProduct = pr;
-}
-
-onChange(deviceValue) {
-  this.howManyRows = deviceValue;
-  this.getPagination(this.totalProducts, this.howManyRows);
-  this.getProducts();
-}
-
-getPagination(totalProducts, howManyRows) {
-  this.paginationLength = Math.ceil(totalProducts / howManyRows);
-  console.log(totalProducts + ' / ' + howManyRows );
-  console.log(this.paginationLength);
-}
+  getPagination(totalProducts, howManyRows) {
+    this.paginationLength = Math.ceil(totalProducts / howManyRows);
+    console.log(totalProducts + ' / ' + howManyRows );
+    console.log(this.paginationLength);
+  }
 
 onDelete(id: number) {
-  /**
-   * Innocent until proven guilty
-   */
   this.notification = undefined;
   this.submitted = true;
 
@@ -146,16 +131,15 @@ onDelete(id: number) {
    let index = 0;
     for ( let i = 0; i < this.data.length; i++) {
 
-if (this.data[i].id === id) {
+  if (this.data[i].id === id) {
+    index = i;
+  }
 
-  index = i;
-}
+      }
+      console.log("to index einai "+ index);
+      this.data.splice(index, 1);
+    });
 
-    }
-    console.log("to index einai "+ index);
-    this.data.splice(index, 1);
-  });
-
-}
+  }
 
 }
