@@ -11,6 +11,7 @@ import { ChangePasswordComponent } from './change-password';
 import { ForbiddenComponent } from './forbidden';
 import { SignupComponent } from './signup';
 import { TicketsCrudComponent } from './tickets-crud';
+import { TicketsuserComponent } from './ticketsuser/ticketsuser.component'
 
 export const routes: Routes = [
   {
@@ -21,6 +22,11 @@ export const routes: Routes = [
   {
     path: 'ticketscrud',
     component: TicketsCrudComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'ticketsuser',
+    component: TicketsuserComponent,
     pathMatch: 'full'
   },
   {

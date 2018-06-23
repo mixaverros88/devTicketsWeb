@@ -47,6 +47,7 @@ import { SignupComponent } from './signup/signup.component';
 import { TicketsCrudComponent } from './tickets-crud/tickets-crud.component';
 import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
 import { TicketService } from './service/ticket.service';
+import { TicketsuserComponent } from './ticketsuser/ticketsuser.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -69,6 +70,7 @@ export function initUserFactory(userService: UserService) {
     SignupComponent,
     TicketsCrudComponent,
     CarouselBasicComponent,
+    TicketsuserComponent,
   ],
   imports: [
     BrowserAnimationsModule,

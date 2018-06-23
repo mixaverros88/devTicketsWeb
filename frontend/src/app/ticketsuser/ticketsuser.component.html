@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mt-4 mb-4">Choose your favorite DevEvent!</h1>
+      </div>
+      </div>
+  <div class="row">
+    <div *ngFor="let pr of data" class="col-4 card ">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text={{ pr.language }}" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">{{ pr.name }}</h2>
+              <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
+              <div class="row">
+                <div class="col-md-4">
+                 <span class="fa fa-money"></span> {{ pr.price | currency }}
+                </div>
+                <div class="col-md-4">
+                    <span class="fa fa-map-marker"></span> {{ pr.location }}
+                </div>
+                <div class="col-md-4">
+                    <span class="fa fa-ticket pull-left"></span> {{ pr.available }} : Tickets left!
+                </div>
+              </div>
+              <a href="#" class="btn btn-success pull-right">Add to Cart</a>
+            </div>
+          </div>
+    </div>
+</div>
+</div>
