@@ -1,47 +1,59 @@
-<div class="container-fluid mt-4">
+<div class="container">
+  <h1 class="text-center">Edit Ticket</h1>
+</div>
+<div class="container">
     <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Full Name" formControlName="name" required>
-          <input matInput placeholder="Full Name" formControlName="price" required>
-          <input matInput placeholder="Full Name" formControlName="available" required>
-          <input matInput placeholder="Full Name" formControlName="location" required>
-          <input matInput placeholder="Full Name" formControlName="language" required>
-        </mat-form-field>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-globe"></span></span>
+    <table>
+      <tr>
+        <td>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
+            </div>
+            <input #nameInput matInput placeholder="Name" formControlName="name" required>
           </div>
-      <input #nameInput placeholder="Name">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+        </td>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                  </div>
+              <input #languageInput matInput placeholder="Language"  formControlName="language" required>
+            </div>
+        </td>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
+                  </div>
+                <input #availableInput matInput placeholder="Available"  formControlName="available" required>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                  </div>
+                <input #locationInput matInput placeholder="Location"  formControlName="location" required>
+            </div>
+        </td>
+        <td>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
+                  </div>
+                <input #priceInput matInput placeholder="Price"  formControlName="price" required>
+            </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
           </div>
-      <input #languageInput placeholder="Language">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
-          </div>
-        <input #availableInput placeholder="Available">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-          </div>
-        <input #locationInput placeholder="Location">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
-          </div>
-        <input #priceInput placeholder="Price">
-    </div>
-    <div class="form-group">
-        <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
-    </div>
-    
+        </td>
+      </tr>
+    </table>      
   </form>
 </div>
 
@@ -59,6 +71,15 @@
       <th>Location</th>
       <th>Price</th>
       <th>Λειτουργίες</th>
+      <th>
+          <select (change)="onChange($event.target.value)">
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+          </select>  
+      </th>
     </tr>
     <tr *ngFor="let pr of data">
       <td>{{ pr.name }}</td>
