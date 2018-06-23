@@ -22,6 +22,8 @@ export class ConfigService {
 
   private _ticket_urll = this._api_url + 'ticket/';
 
+ private _addticket_url = this._api_url + '/ticket/add';
+ 
   private _alltickets_url = this._ticket_url  + '/all';
 
   private _deleteticket_url = this._ticket_url + '/delete/';
@@ -40,6 +42,11 @@ export class ConfigService {
 
   get refresh_token_url(): string {
       return this._refresh_token_url;
+  }
+
+  get addticket_url(): string {
+
+return this._addticket_url;
   }
 
   get allticket_url(): string {

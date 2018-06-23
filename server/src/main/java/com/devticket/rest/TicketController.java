@@ -1,9 +1,5 @@
 package com.devticket.rest;
 
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,13 +15,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.management.relation.Role;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
 /**
  * Created by CodingFive Team  2018
  * (Dimou John - Mike Verros (Back-End))
  */
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200" , allowedHeaders ="*")
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TicketController {
 
@@ -55,7 +53,7 @@ public class TicketController {
         return ResponseEntity.accepted().body(result);
     }
 
-    @RequestMapping(method = PUT, value = "/ticket/add")
+    @RequestMapping(method = POST, value = "/ticket/add")
     public ResponseEntity<?> addUser(@RequestBody Ticketrequest ticketrequest) {
         Ticket ticket = this.ticketService.addnew(ticketrequest);
         this.ticketService.addnew(ticketrequest);
