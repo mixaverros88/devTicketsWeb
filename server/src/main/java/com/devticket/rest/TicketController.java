@@ -55,7 +55,7 @@ public class TicketController {
 
     @RequestMapping(method = POST, value = "/ticket/add")
     public ResponseEntity<?> addUser(@RequestBody Ticketrequest ticketrequest) {
-        Ticket ticket = this.ticketService.addnew(ticketrequest);
+        //Ticket ticket = this.ticketService.addnew(ticketrequest);
         this.ticketService.addnew(ticketrequest);
         Map<String, String> result = new HashMap<>();
         result.put( "result", "success" );

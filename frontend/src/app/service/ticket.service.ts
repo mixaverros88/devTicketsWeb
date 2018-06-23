@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-
 import { ApiService } from './api.service';
 import { ConfigService } from './config.service';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { HttpParamsOptions } from '@angular/common/http/src/params';
+import { Ticket } from 'app/tickets-crud/ticket';
 
 @Injectable()
 export class TicketService {
@@ -14,7 +12,9 @@ export class TicketService {
 
   constructor(
     private apiService: ApiService,
-    private config: ConfigService
+    private config: ConfigService,
+    private httpClient: HttpClient
+
   ) { }
 
   getAll() {
@@ -26,11 +26,28 @@ export class TicketService {
   }
   addTicket(name: number , available: number, language: number , price: number, location: number) {
     // tslint:disable-next-line:member-ordering
-    const myObject: any = {'name': name , 'available': available , 'language': language , 'price': price ,
-    'location' : location };
-    const httpParams: HttpParamsOptions = { fromObject: myObject } as HttpParamsOptions;
-    const options = { params: new HttpParams(httpParams), headers: Headers };
-return this.apiService.post(this.config.addticket_url, options)};
+    const signupHeaders = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    });
+    console.log(name, available, language, location, price);
+
+
+
+   // const Indata =new Tickets {'name': name, 'available': available ,'language' :language, 'price': price, 'location' : location };
+const ticket = new Ticket();
+ticket.name = name.toString();
+ticket.available = available;
+ticket.language = language.toString();
+ticket.price = language;
+ticket.location = location.toString();
+    console.log(ticket.name + 'eftase edo');
+    console.log(ticket);
+    return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), signupHeaders ).subscribe(
+      response => console.log(response),
+      err => console.log(err)
+    )
+  };
 
   getbyId(id: number) {
     return this.apiService.get(this.config.ticket_urll(id)).map(res => res.json());

@@ -1,4 +1,14 @@
 <div class="container-fluid mt-4">
+    <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Full Name" formControlName="name" required>
+          <input matInput placeholder="Full Name" formControlName="price" required>
+          <input matInput placeholder="Full Name" formControlName="available" required>
+          <input matInput placeholder="Full Name" formControlName="location" required>
+          <input matInput placeholder="Full Name" formControlName="language" required>
+        </mat-form-field>
+      <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
+    </form>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><span class="fa fa-globe"></span></span>

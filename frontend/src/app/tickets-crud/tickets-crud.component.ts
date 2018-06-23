@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { Tickets } from './tickets';
+import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {
   ConfigService,
@@ -9,6 +9,7 @@ import {
 } from '../service';
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 
@@ -24,6 +25,8 @@ import { tick } from '@angular/core/testing';
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
 
+  userDetailsForm: FormGroup;
+  user_data: FormGroup;
   checkinTemp: any;
   notification: any;
   submitted: boolean;
@@ -40,7 +43,7 @@ export class TicketsCrudComponent implements OnInit {
   found: boolean;
   data: any [];
   message: string;
-  ticket: Tickets;
+  ticket: Ticket;
 
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
@@ -51,6 +54,14 @@ export class TicketsCrudComponent implements OnInit {
   ngOnInit() {
 
       this.getProducts();
+      this.userDetailsForm = new FormGroup({
+        name: new FormControl(''),
+        price: new FormControl(''),
+        available: new FormControl(''),
+        location: new FormControl(''),
+        language: new FormControl('')
+      });
+
 
   }
 
@@ -68,8 +79,15 @@ export class TicketsCrudComponent implements OnInit {
   }
 // tslint:disable-next-line:eofline
 
+onSubmitUserDetails() {
 
+this.TicketService.addTicket(this.userDetailsForm.controls['name'].value.toString(),
+this.userDetailsForm.controls['available'].value,
+this.userDetailsForm.controls['price'].value,
+this.userDetailsForm.controls['language'].value.toString(),
+this.userDetailsForm.controls['location'].value.toString());
 
+}
 
 onDelete(id: number) {
   /**
