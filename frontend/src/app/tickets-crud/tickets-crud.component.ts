@@ -1,3 +1,4 @@
+import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -67,27 +68,15 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
-
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-
-    let params = new HttpParams();
-    params = params.append('name', name);
-
-
-    this.httpClient.put(`http://localhost:555/products/${id}`,
-    {
-      name: name,
-
-      price: price
-    })
-    .subscribe(
-      (data: any) => {
-       console.log(data);
-       this.message = 'Επιτυχής Επεξεργασία Προϊόντος';
-       this.ngOnInit();
-      }
-    );
+    const ticket = new Ticket();
+    ticket.id = id;
+    ticket.name = name;
+    ticket.language = language;
+    ticket.available = available;
+    ticket.location = location;
+    ticket.price = price;
+    console.log(name);
+    this.TicketService.editTicket(ticket);
   }
 
   getProducts() {
