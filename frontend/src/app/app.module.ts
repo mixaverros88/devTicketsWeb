@@ -49,15 +49,9 @@ import { CarouselBasicComponent } from './carousel-basic/carousel-basic.componen
 import { TicketService } from './service/ticket.service';
 import { TicketsuserComponent } from './ticketsuser/ticketsuser.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {CartService} from './service/cart.service';
-=======
-=======
->>>>>>> 686852a174eeb9f666c245483ece30d6367bebce
 import { DatePicketPopupComponent } from './date-picket-popup/date-picket-popup.component';
 
->>>>>>> 686852a174eeb9f666c245483ece30d6367bebce
 
 export function initUserFactory(userService: UserService) {
     return () => userService.initUser();
