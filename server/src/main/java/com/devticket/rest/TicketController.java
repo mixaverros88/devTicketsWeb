@@ -73,26 +73,24 @@ public class TicketController {
     }
 
 
-    @Scope("session")
-    @RequestMapping(value = "/addcart/{id}", method = RequestMethod.GET)
-    public Object addtoCart(@PathVariable("id") Long id, HttpServletRequest request, HttpSession session) {
 
-        if (session.getAttribute("cart") == null) {
-            Cart cart = new Cart();
+    @RequestMapping(value = "/addcart/{id}", method = RequestMethod.POST)
+    public Object addtoCart(@PathVariable("id") Long id,@RequestBody Cart cart ){
+
+        if (cart.getTotalPrice() == 0) {
+            cart = new Cart();
             CartItem item = new CartItem();
             item.setProduct(ticketService.findById(id));
             item.setItemQuantity(1);
             cart.getCart().add(item);
             System.out.println("added one");
             cart.setTotalPrice((float) (cart.getTotalPrice() + item.getTicket().getPrice()));
-            session.setAttribute("cart", cart);
 
+            return cart;
 
-            return session.getAttribute("cart");
-
-        } else {
+        }
+        else {
             boolean found = false;
-            Cart cart = (Cart) session.getAttribute("cart");
             CartItem item = new CartItem();
             item.setProduct(ticketService.findById(id));
             int cartSize = cart.getCart().size();
@@ -106,8 +104,6 @@ public class TicketController {
                     item.setItemQuantity(newQuan);
                     cart.getCart().set(i, item);
                     cart.setTotalPrice((float) (cart.getTotalPrice() + item.getTicket().getPrice()));
-
-                    session.setAttribute("cart", cart);
                     found = true;
 
 
@@ -120,7 +116,7 @@ public class TicketController {
                 item.setItemQuantity(1);
                 cart.getCart().add(item);
                 cart.setTotalPrice((float) (cart.getTotalPrice() + item.getTicket().getPrice()));
-                session.setAttribute("cart", cart);
+
 
             }
 
@@ -130,7 +126,7 @@ public class TicketController {
 
     }
 
-    @Scope("session")
+
     @RequestMapping(value="/deletecartitem/{id}" , method = RequestMethod.GET)
     public Cart deleteCartItem(@PathVariable("id") Long id, HttpServletRequest request, HttpSession session) {
 

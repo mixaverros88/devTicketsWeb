@@ -11,8 +11,11 @@ import java.util.List;
 public class Cart {
 
 
+    private Long id;
+
     private List<CartItem> cart = new ArrayList<>();
-    private float totalPrice;
+
+    private float totalPrice=0;
 
     public List<CartItem> getCart() {
         return cart;
