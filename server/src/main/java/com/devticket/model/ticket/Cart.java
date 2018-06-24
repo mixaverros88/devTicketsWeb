@@ -25,7 +25,6 @@ public class Cart {
         this.cart = cart;
     }
 
-
     public float getTotalPrice() {
         return totalPrice;
     }

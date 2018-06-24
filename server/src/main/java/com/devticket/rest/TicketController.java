@@ -9,8 +9,10 @@ import com.devticket.model.ticket.CartItem;
 import com.devticket.model.ticket.Ticket;
 import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.service.TicketService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +28,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  */
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200" , allowedHeaders ="*")
+@CrossOrigin
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TicketController {
 
@@ -75,9 +77,11 @@ public class TicketController {
 
 
     @RequestMapping(value = "/addcart/{id}", method = RequestMethod.POST)
-    public Object addtoCart(@PathVariable("id") Long id,@RequestBody Cart cart ){
+    public ResponseEntity<Cart> addtoCart(@PathVariable("id") Long id,@RequestBody Cart cart ){
 
+       // Read more: http://www.java67.com/2016/10/3-ways-to-convert-string-to-json-object-in-java.html#ixzz5JMN1wfKQ
         if (cart.getTotalPrice() == 0) {
+            System.out.println("einai miden");
             cart = new Cart();
             CartItem item = new CartItem();
             item.setProduct(ticketService.findById(id));
@@ -86,7 +90,8 @@ public class TicketController {
             System.out.println("added one");
             cart.setTotalPrice((float) (cart.getTotalPrice() + item.getTicket().getPrice()));
 
-            return cart;
+            return new ResponseEntity<Cart>(cart, HttpStatus.OK);
+
 
         }
         else {
@@ -121,7 +126,8 @@ public class TicketController {
             }
 
 
-            return cart;
+            return new ResponseEntity<Cart>(cart, HttpStatus.OK);
+
         }
 
     }

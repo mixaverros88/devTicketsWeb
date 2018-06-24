@@ -1,174 +1,143 @@
 <div class="container">
   <h1 class="text-center">Edit Ticket</h1>
 </div>
-<div class="container">
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="container-fluid pt10">
+        <h3 class="text-center">Insert a Ticket</h3>
+        <hr>
     <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
-    <table>
-      <tr>
-        <td>
-          <div class="input-group mb-3">
+
+    <app-date-picket-popup></app-date-picket-popup>
+
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
+                <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
             </div>
-            <input #nameInput matInput placeholder="Name" formControlName="name" required>
-          </div>
-        </td>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-                  </div>
-              <input #languageInput matInput placeholder="Language"  formControlName="language" required>
+            <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text" formControlName="name" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
             </div>
-        </td>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
-                  </div>
-                <input #availableInput matInput placeholder="Available"  formControlName="available" required>
+            <input class="width90percent height40px" #languageInput matInput placeholder="Language"  type="text"  formControlName="language" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
             </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-                  </div>
-                <input #locationInput matInput placeholder="Location"  formControlName="location" required>
+            <input class="width90percent height40px" #availableInput matInput placeholder="Available"  type="number"  formControlName="available" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
             </div>
-        </td>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
-                  </div>
-                <input #priceInput matInput placeholder="Price"  formControlName="price" required>
+            <input  class="width90percent height40px" #locationInput matInput placeholder="Location"  type="text" formControlName="location" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
             </div>
-        </td>
-        <td>
-          <div class="form-group">
+            <input class="width90percent height40px" #priceInput matInput placeholder="Price"  type="number" formControlName="price" required>
+        </div>
+
+        <div class="form-group">
             <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
-          </div>
-        </td>
-      </tr>
-    </table>      
-  </form>
+        </div>
+    
+        </form>
+    </div>
+</ng-template>
+
+<div class="container">      
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Insert Ticket</button>
 </div>
 
 <div class="container">
-
-  <div *ngIf="message" class="alert alert-success">
-    <strong>Success!</strong>{{message}}
-  </div>
-
-  <table class="table">
-    <tr>
-      <th>Name</th>
-      <th>Language</th>
-      <th>Available</th>
-      <th>Location</th>
-      <th>Price</th>
-      <th>Λειτουργίες</th>
-      <th>
-          <select (change)="onChange($event.target.value)">
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-          </select>  
-      </th>
-    </tr>
-    <tr *ngFor="let pr of data">
-      <td>{{ pr.name }}</td>
-      <td>{{ pr.language }}</td>
-      <td>{{ pr.available }}</td>
-      <td>{{ pr.location }}</td>
-      <td>{{ pr.price | currency }}</td>
-      <td>
-        <button type="button" class="btn btn-primary" (click)=onSelectedProduct(pr)>Επεξεργασία</button>
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="senfValuesToModalProduct(pr)">Επεξεργασία</button> -->
-        <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">Delete</button>
-      </td>
-    </tr>
-</table>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
-          </div>
-          <div class="modal-body">
-            <p>Some text in the modal.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-        
-      </div>
+    <div *ngIf="message" class="alert alert-success">
+      <strong>Success!</strong>{{message}}
     </div>
 
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Language</th>
+        <th>Available</th>
+        <th>Location</th>
+        <th>Price</th>
+        <th>Λειτουργίες</th>
+        <th>
+            <select (change)="onChange($event.target.value)">
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>  
+        </th>
+      </tr>
+      <tr *ngFor="let pr of data">
+        <td>{{ pr.name }}</td>
+        <td>{{ pr.language }}</td>
+        <td>{{ pr.available }}</td>
+        <td>{{ pr.location }}</td>
+        <td>{{ pr.price | currency }}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">Modify</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">Delete</button>
+        </td>
+      </tr>
+  </table>
 </div>
 
-
-<div *ngIf="selectedProduct" class="container">
-    <form class="form-inline">
-        <table>
-          <tr>
-            <td>
-                <div class="form-group">
-                    <label for="usr">ID:</label>
-                    <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
-                  </div>
-            </td>
-            <td>
-      
-        <div class="form-group">
-            <label for="usr">Name:</label>
-            <input #nameEditInput placeholder="" value="{{selectedProduct.name}}">
-          </div>
-            </td>
-            <div class="form-group">
-                <label for="pwd">Language:</label>
-                <input #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
+<ng-template #modify let-c="close" let-d="dismiss">
+<div class="container-fluid pt10">
+    <h3 class="text-center">Modify a Ticket</h3>
+    <hr>
+    <div *ngIf="selectedProduct" class="container">
+        <form class="form-inline">
+            <div class="form-group" style="display: none">
+                <label for="usr">ID:</label>
+                <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
             </div>
-
-          </tr>
-
-          <tr>
-              <td>
-                  <div class="form-group">
-                      <label for="pwd">Location:</label>
-                      <input #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
-                  </div>
-              </td>
-              <td>
-                  <div class="form-group">
-                      <label for="pwd">Price:</label>
-                      <input #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
-                  </div>
-              </td>
-              <td>
-                  <div class="form-group">
-                      <label for="pwd">Available:</label>
-                      <input #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
-                  </div>
-              </td>
-              <td>
-    
-                  <div class="form-group">
-                      <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
+            <div class="input-group mb-3 width90percent">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
                     </div>
-              </td>
-            </tr>
-        </table>
-      </form>
-  </div>
+                <input  class="width90percent height40px" #nameEditInput value="{{selectedProduct.name}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                </div>
+                <input class="width90percent height40px" #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                </div>
+                <input class="width90percent height40px" #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
+                </div>
+                <input class="width90percent height40px" #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
+                </div>
+                <input class="width90percent height40px" #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
+            </div>
+        </form>
+    </div>
+</div>
+</ng-template>

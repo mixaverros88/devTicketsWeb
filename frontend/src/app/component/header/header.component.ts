@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  roleAccess = {'ROLE_ADMIN' : false , 'ROLE_USER' : false}
+  roleAccess = { 'ROLE_ADMIN': true, 'ROLE_USER': true }
 
   logout() {
     this.authService.logout().subscribe(res => {
@@ -33,9 +33,19 @@ export class HeaderComponent implements OnInit {
     return !!this.userService.currentUser;
   }
 
+  userRole() {
+    const user = this.userService.currentUser;
+    if (user.authorities[1]) {
+      return user.authorities[1].authority;
+    } else {
+      return user.authorities[0].authority;
+    }
+  }
+
   userName() {
     const user = this.userService.currentUser;
-    return user.firstname + ' ' + user.lastname;
+    return user.firstname + ' ' + user.lastname; 
+    
   }
 
 }
