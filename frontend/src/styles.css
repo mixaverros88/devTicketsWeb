@@ -8,12 +8,29 @@ body {
 }
 
 
+
+.mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+  background-color: #007bff;
+}
+
+input.mat-input-element {
+  margin-top: 0px;
+}
+
 .pt10{
   padding-top: 10px;
 }
 
-.width50percent{
-  width: 50%;
+span#basic-addon1 {
+  width: 40px;
+}
+
+.height40px{
+  height: 40px;
+}
+
+.width90percent{
+  width: 90%;
 }
 
 /* Parallax Effect*/
