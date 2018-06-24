@@ -2,7 +2,7 @@ import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   ConfigService,
@@ -22,6 +22,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
+
+  modalRef: any;
 
   userDetailsForm: FormGroup;
   user_data: FormGroup;
@@ -100,9 +102,10 @@ export class TicketsCrudComponent implements OnInit {
     ticket.available = available;
     ticket.location = location;
     ticket.price = price;
-    console.log(name);
     this.TicketService.editTicket(ticket);
-    this.ngOnInit();
+    this.modalRef.close(); // close modal
+    this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
+    this.ngOnInit(); // refresh the tickets
   }
 
   getProducts() {
@@ -123,6 +126,16 @@ export class TicketsCrudComponent implements OnInit {
     this.userDetailsForm.controls['price'].value,
     this.userDetailsForm.controls['language'].value.toString(),
     this.userDetailsForm.controls['location'].value.toString());
+  }
+
+
+  open2(content2) {
+    this.modalRef = this.modalService.open(content2);
+    this.modalRef.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   onSelectedProduct(pr) {
@@ -163,6 +176,7 @@ onDelete(id: number) {
       console.log("to index einai "+ index);
       this.data.splice(index, 1);
     });
+    this.message = 'Ticket Deleted';
 
   }
 

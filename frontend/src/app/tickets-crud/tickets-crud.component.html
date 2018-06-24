@@ -2,7 +2,6 @@
   <h1 class="text-center">Edit Ticket</h1>
 </div>
 
-
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="container-fluid pt10">
         <h3 class="text-center">Insert a Ticket</h3>
@@ -88,64 +87,57 @@
         <td>{{ pr.location }}</td>
         <td>{{ pr.price | currency }}</td>
         <td>
-          <button type="button" class="btn btn-primary" (click)=onSelectedProduct(pr)>Modify</button>
+          <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">Modify</button>
           <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">Delete</button>
         </td>
       </tr>
   </table>
 </div>
 
-
-<div *ngIf="selectedProduct" class="container">
-    <form class="form-inline">
-        <table>
-          <tr>
-            <td>
-                <div class="form-group">
-                    <label for="usr">ID:</label>
-                    <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
-                  </div>
-            </td>
-            <td>
-      
-        <div class="form-group">
-            <label for="usr">Name:</label>
-            <input #nameEditInput placeholder="" value="{{selectedProduct.name}}">
-          </div>
-            </td>
-            <div class="form-group">
-                <label for="pwd">Language:</label>
-                <input #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
+<ng-template #modify let-c="close" let-d="dismiss">
+<div class="container-fluid pt10">
+    <h3 class="text-center">Modify a Ticket</h3>
+    <hr>
+    <div *ngIf="selectedProduct" class="container">
+        <form class="form-inline">
+            <div class="form-group" style="display: none">
+                <label for="usr">ID:</label>
+                <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
             </div>
-
-          </tr>
-
-          <tr>
-              <td>
-                  <div class="form-group">
-                      <label for="pwd">Location:</label>
-                      <input #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
-                  </div>
-              </td>
-              <td>
-                  <div class="form-group">
-                      <label for="pwd">Price:</label>
-                      <input #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
-                  </div>
-              </td>
-              <td>
-                  <div class="form-group">
-                      <label for="pwd">Available:</label>
-                      <input #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
-                  </div>
-              </td>
-              <td>
-    
-                  <div class="form-group">
-                      <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
+            <div class="input-group mb-3 width90percent">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
                     </div>
-              </td>
-            </tr>
-        </table>
-      </form>
-  </div>
+                <input  class="width90percent height40px" #nameEditInput value="{{selectedProduct.name}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                </div>
+                <input class="width90percent height40px" #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
+                </div>
+                <input class="width90percent height40px" #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
+                </div>
+                <input class="width90percent height40px" #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
+            </div>
+            <div class="input-group mb-3 width90percent">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
+                </div>
+                <input class="width90percent height40px" #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
+            </div>
+        </form>
+    </div>
+</div>
+</ng-template>

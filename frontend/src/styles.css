@@ -30,7 +30,7 @@ span#basic-addon1 {
 }
 
 .width90percent{
-  width: 90%;
+  width: 90% !important;
 }
 
 /* Parallax Effect*/
