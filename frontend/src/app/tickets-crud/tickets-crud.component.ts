@@ -2,6 +2,8 @@ import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 import {
   ConfigService,
   UserService,
@@ -51,10 +53,32 @@ export class TicketsCrudComponent implements OnInit {
     orderBy = 'desc';
     // PAGINATION VALUES
 
+    closeResult: string;
+
+
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
-    private TicketService: TicketService) {
+    private TicketService: TicketService,
+    private modalService: NgbModal) {
 
+  }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
   ngOnInit() {

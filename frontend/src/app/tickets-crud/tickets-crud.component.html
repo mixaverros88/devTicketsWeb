@@ -3,63 +3,59 @@
 </div>
 
 
-<div class="container">
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="container-fluid pt10">
+        <h3 class="text-center">Insert a Ticket</h3>
+        <hr>
     <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
-    <table>
-      <tr>
-        <td>
-            <app-date-picket-popup></app-date-picket-popup>
-        </td>
-        <td>
-          <div class="input-group mb-3">
+
+    <app-date-picket-popup></app-date-picket-popup>
+
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
+                <span class="input-group-text" id="basic-addon1" ><span class="fa fa-globe"></span></span>
             </div>
-            <input #nameInput matInput placeholder="Name" type="text" formControlName="name" required>
-          </div>
-        </td>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-                  </div>
-              <input #languageInput matInput placeholder="Language"  type="text"  formControlName="language" required>
+            <input class="width50percent" #nameInput matInput placeholder="Name" type="text" formControlName="name" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
             </div>
-        </td>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
-                  </div>
-                <input #availableInput matInput placeholder="Available"  type="number"  formControlName="available" required>
+            <input #languageInput matInput placeholder="Language"  type="text"  formControlName="language" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-ticket"></span></span>
             </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
-                  </div>
-                <input #locationInput matInput placeholder="Location"  type="text" formControlName="location" required>
+            <input #availableInput matInput placeholder="Available"  type="number"  formControlName="available" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-map-marker"></span></span>
             </div>
-        </td>
-        <td>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
-                  </div>
-                <input #priceInput matInput placeholder="Price"  type="number" formControlName="price" required>
+            <input #locationInput matInput placeholder="Location"  type="text" formControlName="location" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><span class="fa fa-money"></span></span>
             </div>
-        </td>
-        <td>
-          <div class="form-group">
+            <input #priceInput matInput placeholder="Price"  type="number" formControlName="price" required>
+        </div>
+
+        <div class="form-group">
             <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
-          </div>
-        </td>
-      </tr>
-    </table>      
-  </form>
+        </div>
+    
+        </form>
+    </div>
+</ng-template>
+
+<div class="container">      
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Insert Ticket</button>
 </div>
 
 <div class="container">

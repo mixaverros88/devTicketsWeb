@@ -7,6 +7,15 @@ body {
   padding: 0;
 }
 
+
+.pt10{
+  padding-top: 10px;
+}
+
+.width50percent{
+  width: 50%;
+}
+
 /* Parallax Effect*/
 .imageParallax{
   background-attachment: fixsed;
