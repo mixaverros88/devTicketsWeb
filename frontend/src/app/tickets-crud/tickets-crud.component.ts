@@ -62,6 +62,7 @@ export class TicketsCrudComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
 <<<<<<< HEAD
+<<<<<<< HEAD
   // tslint:disable-next-line:no-shadowed-variable
   private CartService: CartService) {
 
@@ -72,6 +73,12 @@ export class TicketsCrudComponent implements OnInit {
 
   }
 
+=======
+    private modalService: NgbModal) {
+
+  }
+
+>>>>>>> 686852a174eeb9f666c245483ece30d6367bebce
   open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -79,6 +86,20 @@ export class TicketsCrudComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+<<<<<<< HEAD
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+>>>>>>> 686852a174eeb9f666c245483ece30d6367bebce
+=======
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
