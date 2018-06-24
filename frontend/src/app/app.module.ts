@@ -48,6 +48,8 @@ import { TicketsCrudComponent } from './tickets-crud/tickets-crud.component';
 import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
 import { TicketService } from './service/ticket.service';
 import { TicketsuserComponent } from './ticketsuser/ticketsuser.component';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import { DatePicketPopupComponent } from './date-picket-popup/date-picket-popup.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -71,6 +73,8 @@ export function initUserFactory(userService: UserService) {
     TicketsCrudComponent,
     CarouselBasicComponent,
     TicketsuserComponent,
+    ShoppingcartComponent,
+    DatePicketPopupComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,10 +1,15 @@
 <div class="container">
   <h1 class="text-center">Edit Ticket</h1>
 </div>
+
+
 <div class="container">
     <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
     <table>
       <tr>
+        <td>
+            <app-date-picket-popup></app-date-picket-popup>
+        </td>
         <td>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
