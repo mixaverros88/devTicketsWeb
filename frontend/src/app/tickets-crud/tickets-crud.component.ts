@@ -177,7 +177,6 @@ onDelete(id: number) {
   }
 
       }
-      console.log("to index einai "+ index);
       this.data.splice(index, 1);
     });
     this.message = 'Ticket Deleted';
