@@ -1,20 +1,18 @@
 import { TicketService } from './../service/ticket.service';
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ElementRef, ViewChild } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 import {
   ConfigService,
   UserService,
-
+  CartService,
   ApiService
 } from '../service';
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
-import { FormControl, FormGroup } from '@angular/forms';
-
-
-
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -22,9 +20,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./tickets-crud.component.css']
 })
 
-
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
+
+  @ViewChild('fileInput') fileInput: ElementRef;
+
+  modalRef: any;
 
   userDetailsForm: FormGroup;
   user_data: FormGroup;
@@ -47,14 +48,48 @@ export class TicketsCrudComponent implements OnInit {
   ticket: Ticket;
   selectedProduct: Ticket;
 
+    // PAGINATION VALUES
+    howManyRows = 2;
+    totalProducts: number;
+    curentPage = 1;
+    paginationLength = 0;
+    orderByColumn = 'id';
+    orderBy = 'desc';
+    // PAGINATION VALUES
+
+    closeResult: string;
+
+
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
-    private TicketService: TicketService) {
+    private TicketService: TicketService,
+  // tslint:disable-next-line:no-shadowed-variable
+  private CartService: CartService,
+  private modalService: NgbModal) {
 
   }
 
-  ngOnInit() {
 
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  ngOnInit() {
       this.getProducts();
       this.userDetailsForm = new FormGroup({
         name: new FormControl(''),
@@ -63,8 +98,6 @@ export class TicketsCrudComponent implements OnInit {
         location: new FormControl(''),
         language: new FormControl('')
       });
-
-
   }
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
@@ -75,12 +108,13 @@ export class TicketsCrudComponent implements OnInit {
     ticket.available = available;
     ticket.location = location;
     ticket.price = price;
-    console.log(name);
     this.TicketService.editTicket(ticket);
+    this.modalRef.close(); // close modal
+    this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
+    this.ngOnInit(); // refresh the tickets
   }
 
   getProducts() {
-
     this.TicketService.getAll()
     .subscribe(
       (data: any []) => {
@@ -91,26 +125,42 @@ export class TicketsCrudComponent implements OnInit {
       }
     );
   }
-// tslint:disable-next-line:eofline
 
-onSubmitUserDetails() {
+  onSubmitUserDetails() {
+    this.TicketService.addTicket(this.userDetailsForm.controls['name'].value.toString(),
+    this.userDetailsForm.controls['available'].value,
+    this.userDetailsForm.controls['price'].value,
+    this.userDetailsForm.controls['language'].value.toString(),
+    this.userDetailsForm.controls['location'].value.toString());
+  }
 
-this.TicketService.addTicket(this.userDetailsForm.controls['name'].value.toString(),
-this.userDetailsForm.controls['available'].value,
-this.userDetailsForm.controls['price'].value,
-this.userDetailsForm.controls['language'].value.toString(),
-this.userDetailsForm.controls['location'].value.toString());
 
-}
+  open2(content2) {
+    this.modalRef = this.modalService.open(content2);
+    this.modalRef.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
-onSelectedProduct(pr) {
-  this.selectedProduct = pr;
-}
+  onSelectedProduct(pr) {
+    this.selectedProduct = pr;
+  }
+
+  onChange(deviceValue) {
+    this.howManyRows = deviceValue;
+    this.getPagination(this.totalProducts, this.howManyRows);
+    this.getProducts();
+  }
+
+  getPagination(totalProducts, howManyRows) {
+    this.paginationLength = Math.ceil(totalProducts / howManyRows);
+    console.log(totalProducts + ' / ' + howManyRows );
+    console.log(this.paginationLength);
+  }
 
 onDelete(id: number) {
-  /**
-   * Innocent until proven guilty
-   */
   this.notification = undefined;
   this.submitted = true;
 
@@ -124,16 +174,15 @@ onDelete(id: number) {
    let index = 0;
     for ( let i = 0; i < this.data.length; i++) {
 
-if (this.data[i].id === id) {
+  if (this.data[i].id === id) {
+    index = i;
+  }
 
-  index = i;
-}
+      }
+      this.data.splice(index, 1);
+    });
+    this.message = 'Ticket Deleted';
 
-    }
-    console.log("to index einai "+ index);
-    this.data.splice(index, 1);
-  });
-
-}
+  }
 
 }

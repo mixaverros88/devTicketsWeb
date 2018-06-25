@@ -38,8 +38,16 @@ export class ConfigService {
 
   private _signup_url = this._api_url + '/signup';
 
+  private _addtocart_url = this._api_url + '/addcart/';
+
   get reset_credentials_url(): string {
       return this._reset_credentials_url;
+  }
+
+  addtocart_url(id: number): string {
+    const line = this.addtocart_url + '1';
+    return line;
+
   }
 
   get refresh_token_url(): string {
@@ -72,6 +80,12 @@ return this._addticket_url ;
     return this._edittickets_url + id.toString();
 
   }
+  editteticket1_url(id: number): string {
+
+    return this._addtocart_url + id.toString();
+
+  }
+
 
   deleteticket_url(id: number): string {
 
@@ -103,7 +117,7 @@ return this._addticket_url ;
       return this._foo_url;
   }
 
-  get signup_url():string {
+  get signup_url(): string {
       return this._signup_url;
   }
 

@@ -67,7 +67,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .passwordEncoder(passwordEncoder());
 
   }
-
   @Autowired
   private AuthenticationSuccessHandler authenticationSuccessHandler;
 

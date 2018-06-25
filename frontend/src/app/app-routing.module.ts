@@ -12,11 +12,17 @@ import { ForbiddenComponent } from './forbidden';
 import { SignupComponent } from './signup';
 import { TicketsCrudComponent } from './tickets-crud';
 import { TicketsuserComponent } from './ticketsuser/ticketsuser.component'
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'ticketcard',
+    component: ShoppingcartComponent,
     pathMatch: 'full'
   },
   {

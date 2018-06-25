@@ -2,9 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 // material
 import {
   MatButtonModule,
@@ -48,6 +55,10 @@ import { TicketsCrudComponent } from './tickets-crud/tickets-crud.component';
 import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
 import { TicketService } from './service/ticket.service';
 import { TicketsuserComponent } from './ticketsuser/ticketsuser.component';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import {CartService} from './service/cart.service';
+import { DatePicketPopupComponent } from './date-picket-popup/date-picket-popup.component';
+import { CustomCounterComponent } from './custom-counter/custom-counter.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -71,6 +82,9 @@ export function initUserFactory(userService: UserService) {
     TicketsCrudComponent,
     CarouselBasicComponent,
     TicketsuserComponent,
+    ShoppingcartComponent,
+    DatePicketPopupComponent,
+    CustomCounterComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -90,7 +104,15 @@ export function initUserFactory(userService: UserService) {
     MatProgressSpinnerModule,
     FlexLayoutModule,
     NgbModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
   ],
   providers: [
     TicketService,
@@ -103,6 +125,7 @@ export function initUserFactory(userService: UserService) {
     UserService,
     ConfigService,
     MatIconRegistry,
+    CartService,
     {
       'provide': APP_INITIALIZER,
       'useFactory': initUserFactory,

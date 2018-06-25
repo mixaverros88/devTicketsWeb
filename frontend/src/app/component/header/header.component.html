@@ -7,21 +7,22 @@
 
 
   <div class="float-right">
-   
+      
       <button *ngIf="!hasSignedIn()" routerLink="/signup" class="btn btn-primary">
-        <span>Sign up</span>
+        <span>{{ 'SIGNUP' | translate }}</span>
       </button>
       <button *ngIf="!hasSignedIn()" routerLink="/login" class="btn btn-primary">
-        <span>Login</span>
+        <span>{{ 'LOGIN' | translate }}</span>
       </button>
-      <button class="btn btn-primary" routerLink="/ticketscrud">Tickets</button>
-      <button class="btn btn-primary" routerLink="/ticketsuser">Buy Tickets</button>
+      <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn btn-primary" routerLink="/ticketscrud">{{ 'ADMINPAGE' | translate }}</button>
+      <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn btn-primary" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
+      <button class="btn btn-primary"><span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light">{{cartValue()}}$</span></span></button>
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"
         mat-button mat-ripple
         [matMenuTriggerFor]="accountMenu">
-        <span>Welcome, {{userName()}}</span>
+        <span>{{'WELCOME' | translate}}, {{userName()}}</span>  
       </button>
       <button
         class="greeting-hamburger"
@@ -36,7 +37,12 @@
         [overlapTrigger]="false">
         <app-account-menu ></app-account-menu>
       </mat-menu>
+      <label>
+          {{ 'SELECT' | translate }}
+          <select #langSelect (change)="translate.use(langSelect.value)">
+            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+          </select>
+        </label>
     </div>
-  
 </nav>
 

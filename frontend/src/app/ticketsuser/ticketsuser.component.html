@@ -18,11 +18,12 @@
                 <div class="col-md-4">
                     <span class="fa fa-map-marker"></span> {{ pr.location }}
                 </div>
+                <custom-counter [(counter)]="counterValue"></custom-counter>
                 <div class="col-md-4">
                     <span class="fa fa-ticket pull-left"></span> {{ pr.available }} : Tickets left!
                 </div>
               </div>
-              <a href="#" class="btn btn-success pull-right">Add to Cart</a>
+              <a href="#" class="btn btn-success pull-right">Add to Cart <span class="fa fa-shopping-cart"></span></a>
             </div>
           </div>
     </div>
