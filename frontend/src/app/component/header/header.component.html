@@ -14,15 +14,9 @@
       <button *ngIf="!hasSignedIn()" routerLink="/login" class="btn btn-primary">
         <span>{{ 'LOGIN' | translate }}</span>
       </button>
-<<<<<<< HEAD
-      <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn btn-primary" routerLink="/ticketscrud">Admin Page</button>
-      <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn btn-primary" routerLink="/ticketsuser">Buy Tickets</button>
-      <button class="btn btn-primary"><span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light"></span> {{cartValue()}}$</span></button>
-=======
       <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn btn-primary" routerLink="/ticketscrud">{{ 'ADMINPAGE' | translate }}</button>
       <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn btn-primary" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
-      <button class="btn btn-primary"><span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light">4</span></span></button>
->>>>>>> f51dc7d3d826754b3203df5721ed5b5f6a6920f1
+      <button class="btn btn-primary"><span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light">{{cartValue()}}</span></span></button>
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"

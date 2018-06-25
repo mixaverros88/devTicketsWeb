@@ -6,12 +6,9 @@ import {
   CartService
 } from '../../service';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
 import { Cart } from '../../shoppingcart/Cart';
 import { CartItem } from '../../shoppingcart/CartItem'
-=======
 import {TranslateService} from '@ngx-translate/core';
->>>>>>> f51dc7d3d826754b3203df5721ed5b5f6a6920f1
 
 @Component({
   selector: 'app-header',
@@ -24,25 +21,17 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     private authService: AuthService,
     private router: Router,
-<<<<<<< HEAD
-    private cartService: CartService
-  ) { }
-=======
+    private cartService: CartService,
     public translate: TranslateService
-  ) { 
-    
-  }
->>>>>>> f51dc7d3d826754b3203df5721ed5b5f6a6920f1
+  ) { }
+
 
   ngOnInit() {
   }
 
-<<<<<<< HEAD
   // tslint:disable-next-line:member-ordering
   roleAccess = { 'ROLE_ADMIN': true, 'ROLE_USER': true }
-=======
- 
->>>>>>> f51dc7d3d826754b3203df5721ed5b5f6a6920f1
+
 
   logout() {
     this.authService.logout().subscribe(res => {
@@ -54,7 +43,7 @@ export class HeaderComponent implements OnInit {
     return !!this.userService.currentUser;
   }
 
-  
+
   userRole() {
     const user = this.userService.currentUser;
     if (user.authorities[1]) {
