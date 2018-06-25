@@ -51,6 +51,7 @@ import { TicketsuserComponent } from './ticketsuser/ticketsuser.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import {CartService} from './service/cart.service';
 import { DatePicketPopupComponent } from './date-picket-popup/date-picket-popup.component';
+import { CustomCounterComponent } from './custom-counter/custom-counter.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -76,6 +77,7 @@ export function initUserFactory(userService: UserService) {
     TicketsuserComponent,
     ShoppingcartComponent,
     DatePicketPopupComponent,
+    CustomCounterComponent,
   ],
   imports: [
     BrowserAnimationsModule,
