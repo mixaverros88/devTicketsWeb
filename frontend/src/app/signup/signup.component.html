@@ -2,10 +2,6 @@
 
   <mat-card elevation="5" fxFlex>
 
-    <mat-card-subtitle>
-      
-    </mat-card-subtitle>
-
     <mat-card-title>
       <h2>{{ title }}</h2>
     </mat-card-title>
@@ -33,16 +29,7 @@
         </mat-input-container>
         <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Sign up</button>
       </form>
-      <br>
-
       <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
-      <br>
-      <hr>
-
-      
-
     </mat-card-content>
-
   </mat-card>
-
 </div>
