@@ -1,7 +1,7 @@
 import { CartItem } from '../shoppingcart/CartItem';
 
-export class Cart {
+export interface Cart {
     id: number ;
     cart: CartItem[];
-  totalprice: number;
+  totalPrice: number;
 }

@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { ConfigService } from './config.service';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ticket } from 'app/tickets-crud/ticket';
+import { Cart } from '../shoppingcart';
 
 @Injectable()
 export class TicketService {

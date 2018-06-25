@@ -16,7 +16,7 @@
       </button>
       <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn btn-primary" routerLink="/ticketscrud">Admin Page</button>
       <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn btn-primary" routerLink="/ticketsuser">Buy Tickets</button>
-      <button class="btn btn-primary"><span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light">4</span></span></button>
+      <button class="btn btn-primary"><span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light"></span> {{cartValue()}}$</span></button>
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"
