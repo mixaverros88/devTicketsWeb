@@ -4,6 +4,7 @@ import {
   AuthService
 } from '../../service';
 import { Router } from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -15,13 +16,16 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    public translate: TranslateService
+  ) { 
+    
+  }
 
   ngOnInit() {
   }
 
-  roleAccess = { 'ROLE_ADMIN': true, 'ROLE_USER': true }
+ 
 
   logout() {
     this.authService.logout().subscribe(res => {
@@ -33,6 +37,7 @@ export class HeaderComponent implements OnInit {
     return !!this.userService.currentUser;
   }
 
+  
   userRole() {
     const user = this.userService.currentUser;
     if (user.authorities[1]) {
