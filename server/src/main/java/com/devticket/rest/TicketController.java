@@ -9,7 +9,7 @@ import com.devticket.model.ticket.CartItem;
 import com.devticket.model.ticket.Ticket;
 import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.service.TicketService;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;

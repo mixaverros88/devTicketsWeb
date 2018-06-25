@@ -1,5 +1,5 @@
 import { TicketService } from './../service/ticket.service';
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ElementRef, ViewChild } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +12,7 @@ import {
 } from '../service';
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -22,6 +22,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
+
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   modalRef: any;
 

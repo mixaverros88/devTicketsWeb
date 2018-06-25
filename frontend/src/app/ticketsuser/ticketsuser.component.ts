@@ -1,5 +1,7 @@
+import { CustomCounterComponent } from './../custom-counter/custom-counter.component';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 import {
   ConfigService,
   UserService,
@@ -16,6 +18,7 @@ import {
 @Injectable()
 export class TicketsuserComponent implements OnInit {
 
+  counterValue = 0;
   data: any [];
 
   constructor(private httpClient: HttpClient,
