@@ -4,7 +4,7 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="container-fluid pt10">
-        <h3 class="text-center">Insert a Ticket</h3>
+        <h3 class="text-center">{{'INSERTTICKET' |translate}}</h3>
         <hr>
     <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
 
@@ -54,7 +54,7 @@
 </ng-template>
 
 <div class="container">      
-    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Insert Ticket</button>
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">{{'INSERTTICKET'| translate}}</button>
 </div>
 
 <div class="container">
@@ -64,12 +64,12 @@
 
     <table class="table">
       <tr>
-        <th>Name</th>
-        <th>Language</th>
-        <th>Available</th>
-        <th>Location</th>
-        <th>Price</th>
-        <th>Λειτουργίες</th>
+        <th>{{'ΝΑΜΕ'| translate}}</th>
+        <th>{{'LANGUAGE' | translate}}</th>
+        <th>{{'AVAILABE' | translate}}</th>
+        <th>{{'LOCATION' | translate}}</th>
+        <th>{{'PRICE' | translate}}</th>
+        <th>{{'SETTINGS' | translate}}</th>
         <th>
             <select (change)="onChange($event.target.value)">
                 <option>2</option>
@@ -87,8 +87,8 @@
         <td>{{ pr.location }}</td>
         <td>{{ pr.price | currency }}</td>
         <td>
-          <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">Modify</button>
-          <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">Delete</button>
+          <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">{{ 'MODIFY' | translate }}</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">{{ 'DELETE' | translate }}</button>
         </td>
       </tr>
   </table>
