@@ -1,42 +1,31 @@
-<nav  class="navbar navbar-dark bg-primary">
-  <button style="background-color:#424954;"class="btn " routerLink="/">
-    <img alt="DevTicketPlace" class="app-angular-logo" style="height: 70px;" src="assets/image/dev-logo.png">
-    
-  </button>
-  
-
+<nav class="navbar navbar-dark bg-primary">
+  <a class="btn " routerLink="/">
+    <img alt="DevTicketPlace" class="app-angular-logo"  src="assets/image/dev-logo.png">
+  </a>
 
   <div class="float-right">
-      
-      <button *ngIf="!hasSignedIn()" routerLink="/signup" class="btn btn-primary">
-        <span>Sign up</span>
-      </button>
-      <button *ngIf="!hasSignedIn()" routerLink="/login" class="btn btn-primary">
-        <span>Login</span>
-      </button>
-      <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn btn-primary" routerLink="/ticketscrud">Admin Page</button>
-      <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn btn-primary" routerLink="/ticketsuser">Buy Tickets</button>
-      <button class="btn btn-primary"><span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light">4</span></span></button>
-      <button
-        class="greeting-button"
-        *ngIf="hasSignedIn()"
-        mat-button mat-ripple
-        [matMenuTriggerFor]="accountMenu">
-        <span>Welcome, {{userName()}}</span>  
-      </button>
-      <button
-        class="greeting-hamburger"
-        *ngIf="hasSignedIn()"
-        mat-icon-button mat-ripple
-        [matMenuTriggerFor]="accountMenu">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <mat-menu #accountMenu
-        class="app-header-accountMenu"
-        yposition="below"
-        [overlapTrigger]="false">
-        <app-account-menu ></app-account-menu>
-      </mat-menu>
-    </div>
-</nav>
 
+    <a *ngIf="!hasSignedIn()" routerLinkActive="active" routerLink="/signup" class="btn my-button">
+      <span>Sign up</span>
+    </a>
+    <a *ngIf="!hasSignedIn()" routerLinkActive="active" routerLink="/login" class="btn my-button">
+      <span>Login</span>
+    </a>
+    <a *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn my-button" routerLinkActive="active" routerLink="/ticketscrud">Admin Page</a>
+    <a *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn my-button" routerLinkActive="active" routerLink="/ticketsuser">Buy Tickets</a>
+    <a class="btn my-button"  routerLink="/ticketcard">
+      <span class="fa fa-shopping-cart fa-fw">
+        <span class="badge badge-light">4</span>
+      </span>
+    </a>
+    <a class="greeting-button" *ngIf="hasSignedIn()" [matMenuTriggerFor]="accountMenu">
+      <span>Welcome, {{userName()}}</span>
+    </a>
+    <a class="greeting-hamburger" *ngIf="hasSignedIn()" mat-icon-button mat-ripple [matMenuTriggerFor]="accountMenu">
+      <mat-icon>menu</mat-icon>
+    </a>
+    <mat-menu #accountMenu class="app-header-accountMenu" yposition="below" [overlapTrigger]="false">
+      <app-account-menu></app-account-menu>
+    </mat-menu>
+  </div>
+</nav>

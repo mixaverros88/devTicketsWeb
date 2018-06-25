@@ -1,9 +1,6 @@
 .content {
   width: 100%;
-  background-color:#424242!important;
-  
-  
-
+  background: linear-gradient(to right, rgb(44, 62, 80), rgb(76, 161, 175));
 }
   mat-card {
     max-width: 350px;
@@ -12,7 +9,11 @@
     -o-animation: fadein 1s; /* Opera */
     -moz-animation: fadein 1s; /* Firefox */
     -webkit-animation: fadein 1s; /* Safari and Chrome */
-  
+    background: #ffffff3b;
+    margin: 5% 0;
+    -webkit-box-shadow: 0px 0px 52px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 52px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.75);
   }
   
   mat-input-container {
@@ -28,6 +29,7 @@
   button {
     display: block;
     width: 100%;
+    font-size: 18px;
   }
   
   .error {
