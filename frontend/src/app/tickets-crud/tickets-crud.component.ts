@@ -12,7 +12,7 @@ import {
 } from '../service';
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -65,7 +65,17 @@ export class TicketsCrudComponent implements OnInit {
     private TicketService: TicketService,
   // tslint:disable-next-line:no-shadowed-variable
   private CartService: CartService,
-  private modalService: NgbModal) {
+  private modalService: NgbModal,
+  private fb: FormBuilder) {
+
+    this.userDetailsForm = fb.group({
+      'name': ['dsa', Validators.required] ,
+      'language': [null, Validators.required] ,
+      'available': [null, Validators.required] ,
+      'location': [null, Validators.required] ,
+      'price': [null, Validators.required] ,
+
+    })
 
   }
 
@@ -98,6 +108,8 @@ export class TicketsCrudComponent implements OnInit {
         location: new FormControl(''),
         language: new FormControl('')
       });
+
+
   }
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
