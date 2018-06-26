@@ -11,6 +11,14 @@ body {
   background-color: #007bff;
 }
 
+form .ng-invalid {
+  border-bottom: 3px solid red;
+}
+
+form .ng-valid {
+  border-bottom: 3px solid green;
+}
+
 .mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
   background-color: #007bff;
 }
