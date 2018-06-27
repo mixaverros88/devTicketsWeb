@@ -23,7 +23,8 @@
                     <span class="fa fa-ticket pull-left"></span> {{ pr.available }} : Tickets left!
                 </div>
               </div>
-              <a href="#" class="btn btn-success pull-right">Add to Cart <span class="fa fa-shopping-cart"></span></a>
+              <button type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              
             </div>
           </div>
     </div>

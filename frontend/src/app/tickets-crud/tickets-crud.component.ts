@@ -8,7 +8,7 @@ import {
   ConfigService,
   UserService,
   CartService,
-  ApiService
+  ApiService,
 } from '../service';
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
@@ -101,7 +101,7 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
-    const ticket = new Ticket();
+    const ticket = {} as Ticket;
     ticket.id = id;
     ticket.name = name;
     ticket.language = language;

@@ -1,3 +1,61 @@
-<p>
-  shoppingcart works!
-</p>
+<header id="site-header">
+  <div class="container">
+    <h1>Shopping cart </h1>
+  </div>
+</header>
+
+<div class="container">
+
+  <section id="cart"> 
+    <article class="product">
+      <header>
+        <a class="remove">
+          <img src="./../../assets/image/ticket(2).png" alt="">
+
+         
+        </a>
+      </header>
+
+      <div class="content">
+
+        <h1>Lorem ipsum</h1>
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
+
+       
+      </div>
+
+      <footer class="content">
+      
+        <span class="qt">Quantity:2</span>
+        
+        <h2 class="full-price">
+          29.98€
+        </h2>
+
+        <h2 class="price">
+          14.99€
+        </h2>
+      </footer>
+    </article>
+
+   </section>
+
+</div>
+
+<footer id="site-footer">
+  <div class="container clearfix">
+
+    <div class="left">
+      <h2 class="subtotal">Subtotal: <span>{{getRawValue()}}</span>€</h2>
+      <h3 class="tax">Taxes (5%): <span>{{getTax()}}</span>€</h3>
+      <h3 class="shipping">Shipping: <span>5.00</span>€</h3>
+    </div>
+
+    <div class="right">
+      <h1 class="total">Total: <span>{{getCartValue()}}</span>€</h1>
+      <a class="btn" style="color: white;">Checkout</a>
+    </div>
+
+  </div>
+</footer>

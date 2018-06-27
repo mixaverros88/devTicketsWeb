@@ -21,13 +21,11 @@ export class CartService {
     // tslint:disable-next-line:member-ordering
 
     addtoCart(id: number) {
-        // tslint:disable-next-line:member-ordering
-        let cart: Cart;
-
+        let cart = {} as Cart;
 
         if (this.getCart() != null) {
             console.log('den einai adeio');
-            cart = this.getCart();
+            cart = this.getCart(); 
         }
 
         const addProductHeaders = new HttpHeaders({
@@ -39,37 +37,35 @@ export class CartService {
         this.apiService.post(this.config.editteticket1_url(id), cart, addProductHeaders)
             .subscribe(
                 res => this.makeCart(res));
-
     }
 
     makeCart(x: any): Cart {
-
         let carter: Cart;
         carter = x;
         console.log(carter);
         localStorage.setItem('cart', JSON.stringify(carter));
         return carter;
-
-
     }
 
     getCart(): Cart {
-        if(localStorage.getItem('cart')!=null){
+        if (localStorage.getItem('cart') != null) {
         return JSON.parse(localStorage.getItem('cart'));
         }
+        // tslint:disable-next-line:one-line
         else {return null; }
     }
     getCartinString() {
 
-        if(localStorage.getItem('cart')!=null){
+        if (localStorage.getItem('cart') != null) {
         return (localStorage.getItem('cart'));
         }
+        // tslint:disable-next-line:one-line
         else {return null; }
     }
 
     cartValue() {
         const f: Cart = JSON.parse(this.getCartinString());
-        if (this.getCartinString() != null){
+        if (this.getCartinString() != null) {
         return f.totalPrice;
         }
         // tslint:disable-next-line:one-line
@@ -84,10 +80,13 @@ export class CartService {
         return f.cart;
     }
     clearCart() {
-    // tslint:disable-next-line:prefer-const
     localStorage.removeItem('cart');
-   // return localStorage.setItem('cart', JSON.stringify(emptyCart));
-
-    }
+      }
+     getCartProducts(){
+        let g =JSON.stringify(this.getCart().cart);
+        let carter: CartItem[];
+         carter  = JSON.parse(g);
+         return carter;
+     }
 
 };
