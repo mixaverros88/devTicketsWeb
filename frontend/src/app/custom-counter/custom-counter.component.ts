@@ -14,24 +14,25 @@ export class CustomCounterComponent {
 
   counterValue = 0;
   @Output() counterChange = new EventEmitter();
-  
+
   @Input()
   get counter() {
     return this.counterValue;
   }
-  
+
   set counter(val) {
     this.counterValue = val;
     this.counterChange.emit(this.counterValue);
   }
-  
-  decrement() {
+
+  decrement(event) {
+    console.log(event);
     if ( this.counter > 0) {
       this.counter--;
     }
 
   }
-  
+
   increment() {
     this.counter++;
   }

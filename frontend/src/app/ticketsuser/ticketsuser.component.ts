@@ -26,9 +26,9 @@ export class TicketsuserComponent implements OnInit {
     private TicketService: TicketService) { }
 
   ngOnInit() {
-    
+
     this.getProducts();
-      
+
   }
 
 
@@ -44,6 +44,6 @@ export class TicketsuserComponent implements OnInit {
       }
     );
   }
-  
+
 
 }

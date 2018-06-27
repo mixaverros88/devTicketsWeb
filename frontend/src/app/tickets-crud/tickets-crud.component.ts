@@ -13,6 +13,7 @@ import {
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -65,9 +66,25 @@ export class TicketsCrudComponent implements OnInit {
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
+<<<<<<< HEAD
     // tslint:disable-next-line:no-shadowed-variable
     private CartService: CartService,
     private modalService: NgbModal) {
+=======
+  // tslint:disable-next-line:no-shadowed-variable
+  private CartService: CartService,
+  private modalService: NgbModal,
+  private fb: FormBuilder) {
+
+    this.userDetailsForm = fb.group({
+      'name': ['dsa', Validators.required] ,
+      'language': [null, Validators.required] ,
+      'available': [null, Validators.required] ,
+      'location': [null, Validators.required] ,
+      'price': [null, Validators.required] ,
+
+    })
+>>>>>>> 2d355a50ea74a4d631af2b9b21474c221272ea9f
 
   }
 
@@ -92,6 +109,7 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
     this.getProducts();
     this.userDetailsForm = new FormGroup({
       date: new FormControl(''),
@@ -101,6 +119,18 @@ export class TicketsCrudComponent implements OnInit {
       location: new FormControl(''),
       language: new FormControl('')
     });
+=======
+      this.getProducts();
+      this.userDetailsForm = new FormGroup({
+        name: new FormControl(''),
+        price: new FormControl(''),
+        available: new FormControl(''),
+        location: new FormControl(''),
+        language: new FormControl('')
+      });
+
+
+>>>>>>> 2d355a50ea74a4d631af2b9b21474c221272ea9f
   }
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
