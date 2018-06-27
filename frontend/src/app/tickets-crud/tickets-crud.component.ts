@@ -26,6 +26,7 @@ export class TicketsCrudComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
 
   modalRef: any;
+  modalRefInsert: any;
 
   userDetailsForm: FormGroup;
   user_data: FormGroup;
@@ -82,22 +83,14 @@ export class TicketsCrudComponent implements OnInit {
 
 
   open(content) {
-    this.modalService.open(content).result.then((result) => {
+    this.modalRefInsert = this.modalService.open(content);
+    this.modalRefInsert.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
 
   ngOnInit() {
       this.getProducts();
@@ -144,6 +137,9 @@ export class TicketsCrudComponent implements OnInit {
     this.userDetailsForm.controls['price'].value,
     this.userDetailsForm.controls['language'].value.toString(),
     this.userDetailsForm.controls['location'].value.toString());
+    this.modalRefInsert.close(); // close modal
+    this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
+    this.ngOnInit();
   }
 
 
