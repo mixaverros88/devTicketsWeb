@@ -35,7 +35,13 @@ export class ShoppingcartComponent implements OnInit {
 
 
   ngOnInit() {
+ this.data= this.CartService.getCartProducts();
   }
+
+
+
+
+
 
 
 
@@ -44,12 +50,12 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   getTax(){
-    const final =(((this.CartService.cartValue()) *5)/ 100) ;
+    const final =(((this.CartService.cartValue()) *5) / 100) ;
 return final;
   }
 
   getCartValue(){
-  let final =this.CartService.cartValue();
+  let final = this.CartService.cartValue();
   final = final + this.getTax();
   final = final + 5;
     return final;
