@@ -8,5 +8,21 @@
     "SIGNUP": "Sign Up",
     "LOGIN": "Log In",
     "ADMINPAGE": "Admin Page",
-    "BUYTICKETS": "Buy Tickets"
+    "BUYTICKETS": "Buy Tickets",
+    "NOTIFORDEVMEET": "Notifications for Developer Meetups",
+    "GETNOTIFORDENMET": "Get Notifications for Dev Meetups real time",
+    "LIVEDEV": "Live Developer Event Streaming",
+    "WATCHONLINE": "Watch Online Dev Event through live Streaming",
+    "DEVTICKETS": "Developer Tickets Discounts",
+    "SIGNUPTODAYDISCOUNT": "Sign up Today and get 30% discount for Development Seminar tickets",
+    "MODIFY": "Modify",
+    "DELETE": "Delete",
+    "INSERTTICKET": "Insert Ticket",
+    "ΝΑΜΕ": "Name",
+    "LANGUAGE": "Language",
+    "AVAILABE": "Available",
+    "LOCATION": "Location",
+    "PRICE": "Price",
+    "SETTINGS": "Settings"
+
 }

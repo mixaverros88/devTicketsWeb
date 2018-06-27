@@ -8,7 +8,7 @@ import { Cart } from '../shoppingcart';
 @Injectable()
 export class TicketService {
 
-   addProductHeaders = new HttpHeaders({
+  addProductHeaders = new HttpHeaders({
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   });
@@ -28,10 +28,15 @@ export class TicketService {
     return this.apiService.delete(this.config.deleteticket_url(id)).map(res => res.json());
   }
 
-  addTicket(name: number , available: number, language: number , price: number, location: number) {
+  addTicket(date: {year: number, month: number}, name: number, available: number, language: number, price: number, location: number) {
 
+<<<<<<< HEAD
     //const ticket = new Ticket();
    const  ticket = {} as Ticket;
+=======
+    const ticket = new Ticket();
+    ticket.date = date;
+>>>>>>> 3a4873e1631794b80b8c185df9fdcf05a568cb2e
     ticket.name = name.toString();
     ticket.available = available;
     ticket.language = language.toString();
@@ -39,14 +44,14 @@ export class TicketService {
     ticket.location = location.toString();
     console.log(ticket.name + 'eftase edo');
     console.log(ticket);
-    return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), this.addProductHeaders ).subscribe(
+    return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), this.addProductHeaders).subscribe(
       response => console.log(response),
       err => console.log(err)
     )
   };
 
   editTicket(ticket: Ticket) {
-    return this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket) ).subscribe(
+    return this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).subscribe(
       response => console.log(response),
       err => console.log(err)
     )
