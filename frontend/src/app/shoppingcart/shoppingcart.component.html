@@ -1,57 +1,33 @@
-<header id="site-header">
+
   <div class="container">
     <h1>Shopping cart </h1>
+
+
+
+<div class="row">
+  <div *ngFor="let pr of data" class="col-4 card ">
+      <div class="card">
+          <img class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text={{ pr.ticket.language }}" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">{{ pr.ticket.name }}</h2>
+            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
+            <div class="row">
+              <div class="col-md-8">
+               <span class="fa fa-ticket fa-fw"></span>Quantity: {{ pr.itemQuantity }}
+              </div>
+              <div class="col-md-4">
+                <span class="fa fa-ticket fa-fw"></span>Price: {{pr.ticket.price * pr.itemQuantity }}
+               </div>
+            </div>
+            <button type="button" class="btn btn-danger pull-right" (click)="vale_Methodo()">Remove </button>
+            
+          </div>
+        </div>
   </div>
-</header>
-
-<div class="container">
-
-  <section id="cart"> 
-    <article class="product">
-      <header>
-        <a class="remove">
-          <img src="./../../assets/image/ticket(2).png" alt="">
-
-         
-        </a>
-      </header>
-
-      <div class="content">
-
-        <h1>Lorem ipsum</h1>
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
-
-       
-      </div>
-
-      <footer class="content">
-      
-        <span class="qt">Quantity:2</span>
-        
-        <h2 class="full-price">
-          29.98€
-        </h2>
-
-        <h2 class="price">
-          14.99€
-        </h2>
-      </footer>
-    </article>
-
-   </section>
-
 </div>
-
 <footer id="site-footer">
   <div class="container clearfix">
-    <div>
-     
-        <div *ngFor="let pr of data ">{{pr}}
-         <h2> {{pr.ticket.name}}</h2>
-         </div>
-      
-        </div>
+    
     <div class="left">
       <h2 class="subtotal">Subtotal: <span>{{getRawValue()}}</span>€</h2>
       <h3 class="tax">Taxes (5%): <span>{{getTax()}}</span>€</h3>
@@ -65,3 +41,4 @@
 
   </div>
 </footer>
+</div>
