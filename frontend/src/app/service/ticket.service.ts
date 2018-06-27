@@ -30,14 +30,10 @@ export class TicketService {
 
   addTicket(date: {year: number, month: number}, name: number, available: number, language: number, price: number, location: number) {
 
-<<<<<<< HEAD
-    //const ticket = new Ticket();
+
    const  ticket = {} as Ticket;
-=======
-    const ticket = new Ticket();
-    ticket.date = date;
->>>>>>> 3a4873e1631794b80b8c185df9fdcf05a568cb2e
-    ticket.name = name.toString();
+ticket.date = date;
+ticket.name = name.toString();
     ticket.available = available;
     ticket.language = language.toString();
     ticket.price = language;

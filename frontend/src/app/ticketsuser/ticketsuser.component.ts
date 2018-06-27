@@ -29,13 +29,9 @@ export class TicketsuserComponent implements OnInit {
   private CartService: CartService) { }
 
   ngOnInit() {
-<<<<<<< HEAD
-    this.getProducts();
-=======
 
     this.getProducts();
 
->>>>>>> 3a4873e1631794b80b8c185df9fdcf05a568cb2e
   }
 
 

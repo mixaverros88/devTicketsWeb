@@ -12,7 +12,6 @@ import {
 } from '../service';
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -67,14 +66,9 @@ export class TicketsCrudComponent implements OnInit {
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
-<<<<<<< HEAD
     // tslint:disable-next-line:no-shadowed-variable
     private CartService: CartService,
-    private modalService: NgbModal) {
-=======
-  // tslint:disable-next-line:no-shadowed-variable
-  private CartService: CartService,
-  private modalService: NgbModal,
+    private modalService: NgbModal,
   private fb: FormBuilder) {
 
     this.userDetailsForm = fb.group({
@@ -85,7 +79,6 @@ export class TicketsCrudComponent implements OnInit {
       'price': [null, Validators.required] ,
 
     })
->>>>>>> 2d355a50ea74a4d631af2b9b21474c221272ea9f
 
   }
 
@@ -100,8 +93,6 @@ export class TicketsCrudComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
-=======
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -111,10 +102,9 @@ export class TicketsCrudComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
->>>>>>> d20ec454c48fb8f0ed1b991b8c8675ef42f1b845
 
   ngOnInit() {
-<<<<<<< HEAD
+
     this.getProducts();
     this.userDetailsForm = new FormGroup({
       date: new FormControl(''),
@@ -124,18 +114,7 @@ export class TicketsCrudComponent implements OnInit {
       location: new FormControl(''),
       language: new FormControl('')
     });
-=======
-      this.getProducts();
-      this.userDetailsForm = new FormGroup({
-        name: new FormControl(''),
-        price: new FormControl(''),
-        available: new FormControl(''),
-        location: new FormControl(''),
-        language: new FormControl('')
-      });
 
-
->>>>>>> 2d355a50ea74a4d631af2b9b21474c221272ea9f
   }
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
@@ -165,25 +144,17 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   onSubmitUserDetails() {
-<<<<<<< HEAD
-    this.TicketService.addTicket(this.userDetailsForm.controls['name'].value.toString(),
-    this.userDetailsForm.controls['available'].value,
-    this.userDetailsForm.controls['price'].value,
-    this.userDetailsForm.controls['language'].value.toString(),
-    this.userDetailsForm.controls['location'].value.toString());
-    this.modalRefInsert.close(); // close modal
-    this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
-    this.ngOnInit();
-=======
     this.TicketService.addTicket(
       this.userDetailsForm.controls['date'].value,
       this.userDetailsForm.controls['name'].value.toString(),
       this.userDetailsForm.controls['available'].value,
       this.userDetailsForm.controls['price'].value,
       this.userDetailsForm.controls['language'].value.toString(),
-      this.userDetailsForm.controls['location'].value.toString()
-    );
->>>>>>> d20ec454c48fb8f0ed1b991b8c8675ef42f1b845
+      this.userDetailsForm.controls['location'].value.toString());
+       this.modalRefInsert.close(); // close modal
+    this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
+    this.ngOnInit();
+    ;
   }
 
 
