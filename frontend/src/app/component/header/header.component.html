@@ -38,7 +38,6 @@
         <app-account-menu ></app-account-menu>
       </mat-menu>
       <label>
-          {{ 'SELECT' | translate }}
           <select #langSelect (change)="translate.use(langSelect.value)">
             <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
           </select>
