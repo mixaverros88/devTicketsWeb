@@ -6,5 +6,5 @@ export interface Ticket {
     location: string;
     price: number;
     image: any;
-    date: any;
+    date: string;
 }

@@ -28,12 +28,12 @@ export class TicketService {
     return this.apiService.delete(this.config.deleteticket_url(id)).map(res => res.json());
   }
 
-  addTicket(date: {year: number, month: number}, name: number, available: number, language: number, price: number, location: number) {
+  addTicket(date: {year: string, month: string}, name: number, available: number, language: number, price: number, location: number) {
 
 
    const  ticket = {} as Ticket;
-ticket.date = date;
-ticket.name = name.toString();
+    ticket.date = date.month + date.month;
+    ticket.name = name.toString();
     ticket.available = available;
     ticket.language = language.toString();
     ticket.price = language;
