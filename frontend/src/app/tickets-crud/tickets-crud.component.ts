@@ -2,7 +2,7 @@ import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable, ElementRef, ViewChild } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { NgbModal, ModalDismissReasons,NgbDateStruct,NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   ConfigService,
@@ -30,6 +30,7 @@ export class TicketsCrudComponent implements OnInit {
   modalRef: any;
   modalRefInsert: any;
 
+  base64textString = '';
   userDetailsForm: FormGroup;
   user_data: FormGroup;
   checkinTemp: any;
@@ -112,6 +113,7 @@ export class TicketsCrudComponent implements OnInit {
       price: new FormControl(''),
       available: new FormControl(''),
       location: new FormControl(''),
+      image: new FormControl(''),
       language: new FormControl('')
     });
 
@@ -144,13 +146,15 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   onSubmitUserDetails() {
+
     this.TicketService.addTicket(
       this.userDetailsForm.controls['date'].value,
       this.userDetailsForm.controls['name'].value.toString(),
       this.userDetailsForm.controls['available'].value,
       this.userDetailsForm.controls['price'].value,
       this.userDetailsForm.controls['language'].value.toString(),
-      this.userDetailsForm.controls['location'].value.toString());
+      this.base64textString ,
+      this.userDetailsForm.controls['location'].value);
        this.modalRefInsert.close(); // close modal
     this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
     this.ngOnInit();
@@ -182,6 +186,28 @@ export class TicketsCrudComponent implements OnInit {
     console.log(totalProducts + ' / ' + howManyRows);
     console.log(this.paginationLength);
   }
+
+
+
+    onFileSelected(evt) {
+      // console.log(event.target.files[0].name);
+      const files = evt.target.files;
+      const file = files[0];
+
+    if (files && file) {
+        const reader = new FileReader();
+
+        reader.onload = this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+    }
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    const binaryString = readerEvt.target.result;
+           this.base64textString = btoa(binaryString);
+           console.log(btoa(binaryString));
+   }
 
   onDelete(id: number) {
     this.notification = undefined;

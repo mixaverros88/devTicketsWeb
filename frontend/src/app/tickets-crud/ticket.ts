@@ -5,6 +5,6 @@ export interface Ticket {
     available: number;
     location: string;
     price: number;
-    image: any;
+    image: string;
     date: string;
 }

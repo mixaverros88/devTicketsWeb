@@ -52,6 +52,16 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">
+                        <span class="fa fa-image"></span>
+                    </span>
+                </div>
+                <input type="file"  #imageInput (change) = "onFileSelected($event)">
+            </div>
+
+            {{ base64textString}}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
                         <span class="fa fa-map-marker"></span>
                     </span>
                 </div>
