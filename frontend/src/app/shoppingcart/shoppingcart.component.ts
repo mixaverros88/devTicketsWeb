@@ -66,4 +66,9 @@ this.ngOnInit();
 console.log('Cart Cleared Succesfully');
   }
 
+  checkout(id: number){
+
+    this.CartService.checkout(id);
+  }
+
 }
