@@ -77,7 +77,7 @@ section {
 section .section-title {
   text-align: center;
   color: #fff;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 #team .card {
@@ -346,3 +346,19 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
+
+.line-separator{
+  height:2px;
+  background:#EF233C;
+  border-bottom:1px solid #EF233C;
+  width: 100px;
+  margin:auto;
+  }
+  .line-separator-white{
+    height:2px;
+    background:#fff;
+    border-bottom:1px solid #fff;
+    width: 100px;
+    margin:auto;
+    margin-bottom: 10px;
+    }

@@ -13,6 +13,7 @@ import { SignupComponent } from './signup';
 import { TicketsCrudComponent } from './tickets-crud';
 import { TicketsuserComponent } from './ticketsuser/ticketsuser.component'
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,11 @@ export const routes: Routes = [
   {
     path: 'ticketcard',
     component: ShoppingcartComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
     pathMatch: 'full'
   },
   {
