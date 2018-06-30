@@ -98,11 +98,13 @@
 
     <table class="table">
         <tr>
+            <th></th>
             <th>{{'ΝΑΜΕ'| translate}}</th>
             <th>{{'LANGUAGE' | translate}}</th>
             <th>{{'AVAILABE' | translate}}</th>
             <th>{{'LOCATION' | translate}}</th>
             <th>{{'PRICE' | translate}}</th>
+            <th>Date</th>
             <th>{{'SETTINGS' | translate}}</th>
             <th>
                 <select (change)="onChange($event.target.value)">
@@ -121,6 +123,7 @@
             <td>{{ pr.available }}</td>
             <td>{{ pr.location }}</td>
             <td>{{ pr.price | currency }}</td>
+            <td>{{ pr.date | date }}</td>
             <td>
                 <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">{{ 'MODIFY' | translate }}</button>
                 <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">{{ 'DELETE' | translate }}</button>
