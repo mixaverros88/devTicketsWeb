@@ -30,7 +30,7 @@ export class TicketsCrudComponent implements OnInit {
   modalRef: any;
   modalRefInsert: any;
 
-  base64textString = '';
+  base64textString;
   userDetailsForm: FormGroup;
   user_data: FormGroup;
   checkinTemp: any;

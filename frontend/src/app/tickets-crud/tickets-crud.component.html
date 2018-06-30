@@ -56,9 +56,12 @@
                     </span>
                 </div>
                 <input type="file"  #imageInput (change) = "onFileSelected($event)">
+                <div *ngIf="base64textString">
+                    <img  style="width: 100%;height: 100%;overflow: hidden;" src='data:image/png;base64,{{ base64textString}}'>
+                </div>    
             </div>
-
-            {{ base64textString}}
+            
+            
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">
