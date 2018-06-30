@@ -63,6 +63,7 @@ import {CartService} from './service/cart.service';
 import { DatePicketPopupComponent } from './date-picket-popup/date-picket-popup.component';
 import { CustomCounterComponent } from './custom-counter/custom-counter.component';
 import { ContactComponent } from './contact/contact.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -90,6 +91,7 @@ export function initUserFactory(userService: UserService) {
     DatePicketPopupComponent,
     CustomCounterComponent,
     ContactComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserAnimationsModule,
