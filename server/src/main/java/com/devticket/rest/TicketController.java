@@ -75,11 +75,10 @@ public class TicketController {
     }
 
 
-
     @RequestMapping(value = "/addcart/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Cart> addtoCart(@PathVariable("id") Long id,@RequestBody Cart cart ){
+    public ResponseEntity<Cart> addtoCart(@PathVariable("id") Long id, @RequestBody Cart cart) {
 
-       // Read more: http://www.java67.com/2016/10/3-ways-to-convert-string-to-json-object-in-java.html#ixzz5JMN1wfKQ
+        // Read more: http://www.java67.com/2016/10/3-ways-to-convert-string-to-json-object-in-java.html#ixzz5JMN1wfKQ
         if (cart.getTotalPrice() == 0) {
             System.out.println("einai miden");
             cart = new Cart();
@@ -93,8 +92,7 @@ public class TicketController {
             return new ResponseEntity<Cart>(cart, HttpStatus.OK);
 
 
-        }
-        else {
+        } else {
             boolean found = false;
             CartItem item = new CartItem();
             item.setProduct(ticketService.findById(id));
@@ -133,33 +131,32 @@ public class TicketController {
     }
 
 
-    @RequestMapping(value="/deletecartitem/{id}" , method = RequestMethod.GET)
-    public Cart deleteCartItem(@PathVariable("id") Long id, HttpServletRequest request, HttpSession session) {
+    @RequestMapping(value = "/deletecartitem/{id}", method = RequestMethod.POST)
+    public ResponseEntity<Cart> deleteCartItem(@PathVariable("id") Long id, @RequestBody Cart cart) {
 
-        Cart cart = (Cart) session.getAttribute("cart");
         int cartSize = cart.getCart().size();
         for (int i = 0; i < cartSize; i++) {
+            if (cart.getCart().get(i).getTicket() != null) {
+                if (id.equals(cart.getCart().get(i).getTicket().getId())) {
+                    int Quan = cart.getCart().get(i).getItemQuantity();
+                    if (Quan > 1) {
+                        cart.getCart().get(i).setItemQuantity(Quan - 1);
+                        cart.setTotalPrice((float) (cart.getTotalPrice() - cart.getCart().get(i).getTicket().getPrice()));
+                        return new ResponseEntity<Cart>(cart, HttpStatus.OK);
+                    } else if (Quan == 1) {
+                        cart.setTotalPrice((float) (cart.getTotalPrice() - cart.getCart().get(i).getTicket().getPrice()));
+                        cart.getCart().remove(i);
+                        return new ResponseEntity<Cart>(cart, HttpStatus.OK);
 
-
-            if (id.equals(cart.getCart().get(i).getTicket().getId())) {
-
-                int Quan = cart.getCart().get(i).getItemQuantity();
-
-                if (Quan > 1) {
-
-                    cart.getCart().get(i).setItemQuantity(Quan - 1);
-                    cart.setTotalPrice((float) (cart.getTotalPrice() - cart.getCart().get(i).getTicket().getId()));
-                } else if (Quan == 1) {
-                    cart.setTotalPrice((float) (cart.getTotalPrice() - cart.getCart().get(i).getTicket().getPrice()));
-                    cart.getCart().remove(i);
-
-
+                    }
                 }
             }
         }
-        return cart;
+
+        return new ResponseEntity<Cart>(cart, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
+
 
 
 

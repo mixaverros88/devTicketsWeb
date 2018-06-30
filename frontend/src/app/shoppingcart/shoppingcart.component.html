@@ -1,33 +1,55 @@
-
+<header id="site-header">
   <div class="container">
-    <h1>Shopping cart </h1>
-
-
-
-<div class="row">
-  <div *ngFor="let pr of data" class="col-4 card ">
-      <div class="card">
-          <img class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text={{ pr.ticket.language }}" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">{{ pr.ticket.name }}</h2>
-            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
-            <div class="row">
-              <div class="col-md-8">
-               <span class="fa fa-ticket fa-fw"></span>Quantity: {{ pr.itemQuantity }}
-              </div>
-              <div class="col-md-4">
-                <span class="fa fa-ticket fa-fw"></span>Price: {{pr.ticket.price * pr.itemQuantity }}
-               </div>
-            </div>
-            <button type="button" class="btn btn-danger pull-right" (click)="vale_Methodo()">Remove </button>
-            
-          </div>
-        </div>
+    <h1>Your Shopping cart</h1>
   </div>
+</header>
+
+<div class="container">
+  <button type="button" style="color:red;" class="" (click)="clearCart()" >Clear Cart<span class="fa fa-shopping-cart"></span></button>
+  <section id="cart"> 
+    <div *ngFor="let pr of data" class="">
+    <article class="product">
+      <header>
+        <a class="remove">
+          <img src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="">
+          
+          <h3>View Product</h3>
+        </a>
+      </header>
+
+      <div class="content">
+
+        <h1>{{pr.ticket.name}}</h1>
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
+
+       
+      </div>
+
+      <footer class="content">
+      
+
+        <h2 class="full-price">
+            {{pr.ticket.price * pr.itemQuantity  }} €
+        </h2>
+        <button type="button" class="" (click)="deleteFromCart(pr.ticket.id)" >Remove One From Cart <span class="fa fa-shopping-cart"></span></button>
+        <h2 class="price">
+         <b>Quantity :</b> {{pr.itemQuantity}} x {{pr.ticket.price}}.00 €
+        </h2>
+      </footer>
+    </article>
 </div>
+
+
+    
+
+  </section>
+
+</div>
+
 <footer id="site-footer">
   <div class="container clearfix">
-    
+
     <div class="left">
       <h2 class="subtotal">Subtotal: <span>{{getRawValue()}}</span>€</h2>
       <h3 class="tax">Taxes (5%): <span>{{getTax()}}</span>€</h3>
@@ -36,9 +58,9 @@
 
     <div class="right">
       <h1 class="total">Total: <span>{{getCartValue()}}</span>€</h1>
-      <a class="btn" style="color: white;">Checkout</a>
+      <a style="color:white;" class="btn">Checkout</a>
     </div>
 
   </div>
 </footer>
-</div>
+

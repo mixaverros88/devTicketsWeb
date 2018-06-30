@@ -14,6 +14,7 @@ export class CartService {
         private apiService: ApiService,
         private config: ConfigService,
         private httpClient: HttpClient,
+        
 
     ) { }
     // tslint:disable-next-line:member-ordering
@@ -25,7 +26,7 @@ export class CartService {
 
         if (this.getCart() != null) {
             console.log('den einai adeio');
-            cart = this.getCart(); 
+            cart = this.getCart();
         }
 
         const addProductHeaders = new HttpHeaders({
@@ -37,6 +38,24 @@ export class CartService {
         this.apiService.post(this.config.editteticket1_url(id), cart, addProductHeaders)
             .subscribe(
                 res => this.makeCart(res));
+    }
+
+
+    deletefromCart(id: number) {
+
+        let cart = {} as Cart;
+
+        if (this.getCart() != null) {
+            console.log('den einai adeio');
+            cart = this.getCart();
+        }
+
+        const addProductHeaders = new HttpHeaders({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        });
+    this.apiService.post(this.config.deletefromCart_url(id), cart , addProductHeaders).subscribe(
+        res => this.makeCart(res));
     }
 
     makeCart(x: any): Cart {
@@ -52,7 +71,14 @@ export class CartService {
         return JSON.parse(localStorage.getItem('cart'));
         }
         // tslint:disable-next-line:one-line
-        else {return null; }
+        else {
+
+           const cart = {} as Cart;
+            cart.totalPrice = 0;
+            cart.cart = [];
+            return cart;
+
+        }
     }
     getCartinString() {
 
@@ -60,7 +86,12 @@ export class CartService {
         return (localStorage.getItem('cart'));
         }
         // tslint:disable-next-line:one-line
-        else {return null; }
+        else {
+            const cart = {} as Cart;
+            cart.totalPrice = 0;
+            cart.cart = [];
+            return JSON.stringify(cart);
+        }
     }
 
     cartValue() {

@@ -40,15 +40,12 @@ export class ConfigService {
 
   private _addtocart_url = this._api_url + '/addcart/';
 
+  private _delete_from_cart = this._api_url + '/deletecartitem/';
+
   get reset_credentials_url(): string {
       return this._reset_credentials_url;
   }
 
-  addtocart_url(id: number): string {
-    const line = this.addtocart_url + '1';
-    return line;
-
-  }
 
   get refresh_token_url(): string {
       return this._refresh_token_url;
@@ -58,6 +55,8 @@ export class ConfigService {
 
 return this._addticket_url ;
   }
+
+
 
   get allticket_url(): string {
 
@@ -86,6 +85,11 @@ return this._addticket_url ;
 
   }
 
+ deletefromCart_url(id: number): string {
+
+    return this._delete_from_cart + id.toString();
+
+  }
 
   deleteticket_url(id: number): string {
 

@@ -35,15 +35,14 @@ export class ShoppingcartComponent implements OnInit {
 
 
   ngOnInit() {
- this.data= this.CartService.getCartProducts();
+ this.data = this.CartService.getCartProducts();
   }
 
-
-
-
-
-
-
+  deleteFromCart(id: number ){
+this.CartService.deletefromCart(id);
+console.log(this.CartService.getCart());
+this.ngOnInit();
+  }
 
   getRawValue(){
     return this.CartService.cartValue();
@@ -59,6 +58,12 @@ return final;
   final = final + this.getTax();
   final = final + 5;
     return final;
+  }
+
+  clearCart() {
+this.CartService.clearCart();
+this.ngOnInit();
+console.log('Cart Cleared Succesfully');
   }
 
 }

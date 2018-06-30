@@ -25,7 +25,7 @@ export class AuthService {
     const body = `username=${user.username}&password=${user.password}`;
     return this.apiService.post(this.config.login_url, body, loginHeaders).map(() => {
       this.userService.getMyInfo().subscribe();
-      this.cartService.clearCart();
+
     });
   }
 
@@ -35,16 +35,15 @@ export class AuthService {
       'Content-Type': 'application/json'
     });
     return this.apiService.post(this.config.signup_url, JSON.stringify(user), signupHeaders).map(() =>{
-      console.log("Sign up success");
+
     });
   }
-  
+
   logout() {
     return this.apiService.post(this.config.logout_url, {})
       .map(() => {
         this.userService.currentUser = null;
-        this.cartService.clearCart();
-        
+
       });
   }
 
