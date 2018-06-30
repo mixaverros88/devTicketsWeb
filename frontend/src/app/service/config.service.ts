@@ -42,6 +42,8 @@ export class ConfigService {
 
   private _delete_from_cart = this._api_url + '/deletecartitem/';
 
+  private _checkout_url = this._api_url + '/checkout/';
+
   get reset_credentials_url(): string {
       return this._reset_credentials_url;
   }
@@ -72,6 +74,11 @@ return this._addticket_url ;
   ticket_urll(id: number): string {
 
     return this.ticket_urll + id.toString();
+  }
+
+ checkout_url(id: number): string {
+
+    return this._checkout_url + id.toString();
   }
 
   editteticket_url(id: number): string {

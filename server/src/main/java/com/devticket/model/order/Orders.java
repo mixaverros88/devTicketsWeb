@@ -18,8 +18,21 @@ public class Orders {
     @Column(name = "userid")
     private Long userId;
 
+    public String getCart() {
+        return cart;
+    }
+
+    public void setCart(String cart) {
+        this.cart = cart;
+    }
+
     @Column(name = "totalprice")
     private float totalPrice;
+
+    @Column(name="cart")
+    private String cart;
+
+
 
     public Long getId() {
         return id;

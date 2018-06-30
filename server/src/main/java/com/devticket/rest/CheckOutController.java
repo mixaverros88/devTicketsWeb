@@ -5,6 +5,7 @@ import com.devticket.model.cart.CartItem;
 import com.devticket.model.order.Orders;
 import com.devticket.service.CheckOutService;
 import com.devticket.service.TicketService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,15 +27,18 @@ public class CheckOutController {
 
 
     @RequestMapping(value = "/checkout/{id}", method = RequestMethod.POST)
-    public void addtoCart(@PathVariable("id") Long id, @RequestBody Cart cart) {
-        //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    public  ResponseEntity<Orders> addtoCart(@PathVariable("id") Long id, @RequestBody Cart cart) {
+        
         Calendar cal = Calendar.getInstance();
         Orders order = new Orders();
         order.setDate(cal);
         order.setTotalPrice(cart.getTotalPrice());
         order.setUserId(id);
+        Gson gson = new Gson();
+        String json = gson.toJson(cart);
+        order.setCart(json);
         checkOutService.save(order);
-
+        return new ResponseEntity<Orders>(order, HttpStatus.OK);
 
     }
 }
