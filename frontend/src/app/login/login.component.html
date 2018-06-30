@@ -1,4 +1,4 @@
-<div class="content" fxLayout="row" fxLayoutAlign="center">
+<!-- <div class="content" fxLayout="row" fxLayoutAlign="center">
 
   <mat-card elevation="5" fxFlex>
     <mat-card-title>
@@ -19,4 +19,20 @@
       <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
     </mat-card-content>
   </mat-card>
-</div>
+</div> -->
+<body class="text-center">
+    <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
+
+    <form class="form-signin" *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" style="padding-top:100px;">
+      <img class="mb-4" src="assets/image/dev-logo.png" alt="" width="272" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input formControlName="username"  required placeholder="username" class="mb-4"><br />
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input matInput formControlName="password" required type="password" placeholder="password" class="mb-4"> <br />
+      <button class="btn btn-lg btn-primary" type="submit" [disabled]="!loginForm.form.valid">Sign in</button>
+      <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
+    </form>
+  
+
+</body>
