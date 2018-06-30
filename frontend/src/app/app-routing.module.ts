@@ -15,6 +15,7 @@ import { TicketsuserComponent } from './ticketsuser/ticketsuser.component'
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,11 @@ export const routes: Routes = [
   {
     path: 'ticketcard',
     component: ShoppingcartComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'userpage',
+    component: UserPageComponent,
     pathMatch: 'full'
   },
   {

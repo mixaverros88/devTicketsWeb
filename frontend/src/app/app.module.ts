@@ -64,6 +64,7 @@ import { DatePicketPopupComponent } from './date-picket-popup/date-picket-popup.
 import { CustomCounterComponent } from './custom-counter/custom-counter.component';
 import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -92,6 +93,7 @@ export function initUserFactory(userService: UserService) {
     CustomCounterComponent,
     ContactComponent,
     CheckoutComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

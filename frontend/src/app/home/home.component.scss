@@ -49,7 +49,7 @@ app-github {
 }
 
 #team {
-  background: #EF233C;
+  background: #2098FF;
   padding-top:100px;
   padding-bottom:150px;
 //   -webkit-clip-path: polygon(0 0, 100% 19%, 100% 100%, 0 86%);
@@ -182,8 +182,8 @@ $color-white: #fff;
 $color-antiwhite: #EDF2F4;
 $color-coolgray: #8D99AE;
 $color-gunmetal: #2B2D42;
-$color-imperialred: #EF233C;
-$color-candyred: #D90429;
+$color-imperialred: #2098FF;
+$color-candyred: #2098FF;
 @mixin bp-sm {
   @media only screen and (max-width: 768px) {
     @content;
@@ -207,10 +207,7 @@ html {
   background-color: $color-imperialred;
 }
 
-.btn.btn-primary {
-  border-color: $color-gunmetal;
-  background-color: $color-gunmetal;
-}
+
 
 .btn.btn-default:hover {
   background-color: #fafafa;
