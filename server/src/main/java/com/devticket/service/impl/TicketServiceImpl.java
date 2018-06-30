@@ -54,7 +54,11 @@ public class TicketServiceImpl implements TicketService {
        ticket.setAvailable(ticketrequest.getAvailable());
        ticket.setLanguage(ticketrequest.getLocation());
        ticket.setPrice(ticketrequest.getPrice());
-        this.ticketRepository.save(ticket);
+       ticket.setImage(ticketrequest.getImage());
+       ticket.setDate(ticketrequest.getDate());
+       ticket.setLocation(ticketrequest.getLocation());
+
+       this.ticketRepository.save(ticket);
         return ticket;
     }
 
