@@ -14,6 +14,7 @@ export class CartService {
         private apiService: ApiService,
         private config: ConfigService,
         private httpClient: HttpClient,
+        
 
     ) { }
     // tslint:disable-next-line:member-ordering
@@ -21,9 +22,7 @@ export class CartService {
     // tslint:disable-next-line:member-ordering
 
     addtoCart(id: number) {
-        // tslint:disable-next-line:member-ordering
-        let cart: Cart;
-
+        let cart = {} as Cart;
 
         if (this.getCart() != null) {
             console.log('den einai adeio');
@@ -39,37 +38,65 @@ export class CartService {
         this.apiService.post(this.config.editteticket1_url(id), cart, addProductHeaders)
             .subscribe(
                 res => this.makeCart(res));
+    }
 
+
+    deletefromCart(id: number) {
+
+        let cart = {} as Cart;
+
+        if (this.getCart() != null) {
+            console.log('den einai adeio');
+            cart = this.getCart();
+        }
+
+        const addProductHeaders = new HttpHeaders({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        });
+    this.apiService.post(this.config.deletefromCart_url(id), cart , addProductHeaders).subscribe(
+        res => this.makeCart(res));
     }
 
     makeCart(x: any): Cart {
-
         let carter: Cart;
         carter = x;
         console.log(carter);
         localStorage.setItem('cart', JSON.stringify(carter));
         return carter;
-
-
     }
 
     getCart(): Cart {
-        if(localStorage.getItem('cart')!=null){
+        if (localStorage.getItem('cart') != null) {
         return JSON.parse(localStorage.getItem('cart'));
         }
-        else {return null; }
+        // tslint:disable-next-line:one-line
+        else {
+
+           const cart = {} as Cart;
+            cart.totalPrice = 0;
+            cart.cart = [];
+            return cart;
+
+        }
     }
     getCartinString() {
 
-        if(localStorage.getItem('cart')!=null){
+        if (localStorage.getItem('cart') != null) {
         return (localStorage.getItem('cart'));
         }
-        else {return null; }
+        // tslint:disable-next-line:one-line
+        else {
+            const cart = {} as Cart;
+            cart.totalPrice = 0;
+            cart.cart = [];
+            return JSON.stringify(cart);
+        }
     }
 
     cartValue() {
         const f: Cart = JSON.parse(this.getCartinString());
-        if (this.getCartinString() != null){
+        if (this.getCartinString() != null) {
         return f.totalPrice;
         }
         // tslint:disable-next-line:one-line
@@ -84,10 +111,27 @@ export class CartService {
         return f.cart;
     }
     clearCart() {
-    // tslint:disable-next-line:prefer-const
     localStorage.removeItem('cart');
-   // return localStorage.setItem('cart', JSON.stringify(emptyCart));
+      }
+     getCartProducts(){
+        let g =JSON.stringify(this.getCart().cart);
+        let carter: CartItem[];
+         carter  = JSON.parse(g);
+         return carter;
+     }
+    checkout(id: number) {
 
+        const cart = this.getCart();
+        const addProductHeaders = new HttpHeaders({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        });
+
+        this.apiService.post(this.config.checkout_url(id), cart, addProductHeaders)
+            .subscribe(
+              );
     }
+
+
 
 };

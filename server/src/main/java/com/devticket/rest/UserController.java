@@ -65,10 +65,7 @@ public class UserController {
     return new ResponseEntity<User>(user, HttpStatus.CREATED);
   }
 
-  /*
-   * We are not using userService.findByUsername here(we could), so it is good that we are making
-   * sure that the user has role "ROLE_USER" to access this endpoint.
-   */
+
   @RequestMapping("/whoami")
   @PreAuthorize("hasRole('USER')")
   public User user() {

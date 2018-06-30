@@ -7,6 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -59,6 +62,9 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import {CartService} from './service/cart.service';
 import { DatePicketPopupComponent } from './date-picket-popup/date-picket-popup.component';
 import { CustomCounterComponent } from './custom-counter/custom-counter.component';
+import { ContactComponent } from './contact/contact.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -85,6 +91,9 @@ export function initUserFactory(userService: UserService) {
     ShoppingcartComponent,
     DatePicketPopupComponent,
     CustomCounterComponent,
+    ContactComponent,
+    CheckoutComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -106,6 +115,9 @@ export function initUserFactory(userService: UserService) {
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAdhieodd82faXY6cWOfet7YeS7ZLVXhjc'
+    }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

@@ -2,7 +2,7 @@
 import { Ticket } from '../tickets-crud/ticket';
 
 export interface CartItem {
-    Ticket: Ticket;
-    quantity: number;
+    ticket: Ticket;
+    itemquantity: number;
 
 }

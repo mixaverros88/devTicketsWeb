@@ -6,8 +6,8 @@
       </div>
   <div class="row">
     <div *ngFor="let pr of data" class="col-4 card ">
-        <div class="card">
-            <img class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text={{ pr.language }}" alt="Card image cap">
+        <div class="card border-0">
+            <img class="card-img-top img-fluid" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:150px!important">
             <div class="card-body">
               <h2 class="card-title">{{ pr.name }}</h2>
               <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
@@ -23,7 +23,8 @@
                     <span class="fa fa-ticket pull-left"></span> {{ pr.available }} : Tickets left!
                 </div>
               </div>
-              <a href="#" class="btn btn-success pull-right">Add to Cart <span class="fa fa-shopping-cart"></span></a>
+              <button type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              
             </div>
           </div>
     </div>

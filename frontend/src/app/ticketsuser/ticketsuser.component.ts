@@ -6,7 +6,8 @@ import {
   ConfigService,
   UserService,
   TicketService,
-  ApiService
+  ApiService,
+  CartService
 } from '../service';
 
 @Component({
@@ -23,14 +24,20 @@ export class TicketsuserComponent implements OnInit {
 
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
-    private TicketService: TicketService) { }
+    private TicketService: TicketService,
+  // tslint:disable-next-line:no-shadowed-variable
+  private CartService: CartService) { }
 
   ngOnInit() {
-    
+
     this.getProducts();
-      
+
   }
 
+
+  addtoCart(id: number) {
+    return this.CartService.addtoCart(id);
+          }
 
   getProducts() {
 
@@ -44,6 +51,6 @@ export class TicketsuserComponent implements OnInit {
       }
     );
   }
-  
+
 
 }

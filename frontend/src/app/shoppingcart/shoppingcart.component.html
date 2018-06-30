@@ -1,3 +1,68 @@
-<p>
-  shoppingcart works!
-</p>
+<header id="site-header">
+  <div class="container">
+    <h1>{{'YOURSHOPPINGCART' | translate}}</h1>
+  </div>
+</header>
+
+<div class="container">
+  <div class="btn btn-danger" (click)="clearCart()" >{{'CLEARCART' | translate}}<span class="fa fa-trash fa-fw"></span></div>
+  <section id="cart"> 
+    <div *ngFor="let pr of data" class="">
+    <article class="product">
+      <header>
+        <a class="remove">
+          <img src='data:image/png;base64,{{pr.ticket.image}}' alt="">
+          
+          <h3>{{pr.ticket.name}}</h3>
+        </a>
+      </header>
+
+      <div class="content">
+
+        <div class="btn btn-danger btn-xs btn-remove pull-right" (click)="deleteFromCart(pr.ticket.id)"><span class="fa fa-times"></span></div> 
+
+        <h1>{{pr.ticket.name}}</h1>
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
+
+       
+      </div>
+
+      <footer class="content">
+      
+
+        <h2 class="full-price">
+            {{pr.ticket.price * pr.itemQuantity  }} €
+        </h2>
+        <p class="">
+         <b>{{'QUANTITY' | translate}}:</b> {{pr.itemQuantity}} x {{pr.ticket.price}}.00 €
+        </p>
+      </footer>
+    </article>
+</div>
+
+
+    
+
+  </section>
+
+</div>
+
+<footer id="site-footer">
+  <div class="container clearfix">
+
+    <div class="left">
+      <h2 class="subtotal">{{'SUBTOTAL' | translate}}: <span>{{getRawValue()}}</span>€</h2>
+      <h3 class="tax">{{'TAXES' | translate}} (5%): <span>{{getTax()}}</span>€</h3>
+      <h3 class="shipping">{{'SHIPPING' | translate}}: <span>5.00</span>€</h3>
+    </div>
+
+    <div class="right">
+      <h1 class="total">{{'TOTAL' | translate}}: <span>{{getCartValue()}}</span>€</h1>
+      <a style="color:white;" class="btn">Checkout</a>
+      <button class="btn btn-success" [routerLink]="['/checkout']">PROCCEED TO CHECKOUT</button>
+    </div>
+
+  </div>
+</footer>
+

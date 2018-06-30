@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
 
   userName() {
     const user = this.userService.currentUser;
-    return user.firstname + ' ' + user.lastname;
+    return user.firstname ;
   }
 
   cartValue() {
