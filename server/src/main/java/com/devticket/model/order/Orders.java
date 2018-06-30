@@ -1,4 +1,4 @@
-package com.devticket.model.ticket;
+package com.devticket.model.order;
 
 import javax.persistence.*;
 import java.util.Calendar;

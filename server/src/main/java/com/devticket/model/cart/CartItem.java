@@ -1,5 +1,6 @@
-package com.devticket.model.ticket;
+package com.devticket.model.cart;
 
+import com.devticket.model.ticket.Ticket;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

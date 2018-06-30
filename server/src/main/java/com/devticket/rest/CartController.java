@@ -1,7 +1,7 @@
 package com.devticket.rest;
 
-import com.devticket.model.ticket.Cart;
-import com.devticket.model.ticket.CartItem;
+import com.devticket.model.cart.Cart;
+import com.devticket.model.cart.CartItem;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
