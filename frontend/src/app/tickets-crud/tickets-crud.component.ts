@@ -198,8 +198,7 @@ export class TicketsCrudComponent implements OnInit {
         const reader = new FileReader();
 
         reader.onload = this._handleReaderLoaded.bind(this);
-
-        reader.readAsBinaryString(file);
+       reader.readAsBinaryString(file);
     }
   }
 
