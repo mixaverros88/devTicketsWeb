@@ -2,7 +2,6 @@ package com.devticket.model.order;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +18,6 @@ public class OrderLines{
     @JoinColumn(name = "order_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Orders orderid;
-
 
 
     @Column(name = "TICKETID")
