@@ -5,9 +5,13 @@
   </button>
   
 
-
   <div class="float-right">
       
+  <label>
+      <select style="" #langSelect (change)="translate.use(langSelect.value)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+      </select>
+    </label>
       <button *ngIf="!hasSignedIn()" routerLink="/signup" class="btn btn-primary">
         <span>{{ 'SIGNUP' | translate }}</span>
       </button>
@@ -17,12 +21,14 @@
       <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn btn-primary" routerLink="/ticketscrud">{{ 'ADMINPAGE' | translate }}</button>
       <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn btn-primary" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
       <button class="btn btn-primary">Cart <span class="fa fa-shopping-cart fa-fw" routerLink="/ticketcard"><span class="badge badge-light">{{cartValue()}} €</span></span></button>
+    
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"
         mat-button mat-ripple
         [matMenuTriggerFor]="accountMenu">
-        <span>{{'WELCOME' | translate}}, {{userName()}}</span>  
+        <span>{{'WELCOME' | translate}}, {{userName()}}  <img alt="DevTicketPlace" class="" style="height: 70px;" src="assets/image/user.png">
+        </span>  
       </button>
       <button
         class="greeting-hamburger"
@@ -37,11 +43,7 @@
         [overlapTrigger]="false">
         <app-account-menu ></app-account-menu>
       </mat-menu>
-      <label>
-          <select #langSelect (change)="translate.use(langSelect.value)">
-            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-          </select>
-        </label>
+    
     </div>
 </nav>
 
