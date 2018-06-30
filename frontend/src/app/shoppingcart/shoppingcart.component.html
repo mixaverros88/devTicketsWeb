@@ -1,11 +1,11 @@
 <header id="site-header">
   <div class="container">
-    <h1>Your Shopping cart</h1>
+    <h1>{{'YOURSHOPPINGCART' | translate}}</h1>
   </div>
 </header>
 
 <div class="container">
-  <button type="button" style="color:red;" class="" (click)="clearCart()" >Clear Cart<span class="fa fa-shopping-cart"></span></button>
+  <div class="btn btn-danger" (click)="clearCart()" >{{'CLEARCART' | translate}}<span class="fa fa-trash fa-fw"></span></div>
   <section id="cart"> 
     <div *ngFor="let pr of data" class="">
     <article class="product">
@@ -13,11 +13,13 @@
         <a class="remove">
           <img src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="">
           
-          <h3>View Product</h3>
+          <h3>{{pr.ticket.name}}</h3>
         </a>
       </header>
 
       <div class="content">
+
+        <div class="btn btn-danger btn-xs btn-remove pull-right" (click)="deleteFromCart(pr.ticket.id)"><span class="fa fa-times"></span></div> 
 
         <h1>{{pr.ticket.name}}</h1>
 
@@ -32,10 +34,9 @@
         <h2 class="full-price">
             {{pr.ticket.price * pr.itemQuantity  }} €
         </h2>
-        <button type="button" class="" (click)="deleteFromCart(pr.ticket.id)" >Remove One From Cart <span class="fa fa-shopping-cart"></span></button>
-        <h2 class="price">
-         <b>Quantity :</b> {{pr.itemQuantity}} x {{pr.ticket.price}}.00 €
-        </h2>
+        <p class="">
+         <b>{{'QUANTITY' | translate}}:</b> {{pr.itemQuantity}} x {{pr.ticket.price}}.00 €
+        </p>
       </footer>
     </article>
 </div>
@@ -51,13 +52,13 @@
   <div class="container clearfix">
 
     <div class="left">
-      <h2 class="subtotal">Subtotal: <span>{{getRawValue()}}</span>€</h2>
-      <h3 class="tax">Taxes (5%): <span>{{getTax()}}</span>€</h3>
-      <h3 class="shipping">Shipping: <span>5.00</span>€</h3>
+      <h2 class="subtotal">{{'SUBTOTAL' | translate}}: <span>{{getRawValue()}}</span>€</h2>
+      <h3 class="tax">{{'TAXES' | translate}} (5%): <span>{{getTax()}}</span>€</h3>
+      <h3 class="shipping">{{'SHIPPING' | translate}}: <span>5.00</span>€</h3>
     </div>
 
     <div class="right">
-      <h1 class="total">Total: <span>{{getCartValue()}}</span>€</h1>
+      <h1 class="total">{{'TOTAL' | translate}}: <span>{{getCartValue()}}</span>€</h1>
       <a style="color:white;" class="btn">Checkout</a>
     </div>
 

@@ -24,5 +24,12 @@
     "LOCATION": "Τοποθεσία",
     "PRICE": "Τιμή",
     "SETTINGS": "Ρυθμίσεις",
-    "OURTEAM": "Η Ομάδα μας"
+    "OURTEAM": "Η Ομάδα μας",
+    "CLEARCART": "Άδειασε το καλάθι",
+    "QUANTITY": "Ποσότητα",
+    "SHIPPING": "Μεταφορικά",
+    "TAXES": "Φόρος",
+    "TOTAL": "Τελικό",
+    "SUBTOTAL": "Μερικό Υπόλοιπο",
+    "YOURSHOPPINGCART": "Το καλάθι σας"
 }

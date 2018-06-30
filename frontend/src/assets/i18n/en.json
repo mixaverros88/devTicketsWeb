@@ -24,6 +24,13 @@
     "LOCATION": "Location",
     "PRICE": "Price",
     "SETTINGS": "Settings",
-    "OURTEAM": "Our Team"
+    "OURTEAM": "Our Team",
+    "CLEARCART": "Clear Cart",
+    "QUANTITY": "Quantity",
+    "SHIPPING": "Shipping",
+    "TAXES": "Taxes",
+    "TOTAL": "Total",
+    "SUBTOTAL": "Subtotal",
+    "YOURSHOPPINGCART": "Your Shopping Cart"
 
 }
