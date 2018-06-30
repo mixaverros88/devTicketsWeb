@@ -1,38 +1,36 @@
-<!-- <div class="content" fxLayout="row" fxLayoutAlign="center">
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<br>
+<div style="padding-top: 30px;" class="login">
+  <h2 style="color:whitesmoke;" class="active">devTickets Login</h2>
 
-  <mat-card elevation="5" fxFlex>
-    <mat-card-title>
-      <h2>{{title}}</h2>
-    </mat-card-title>
-    <mat-card-content>
-      <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
+  <body style="background-color:#505050;" class="text-center">
+    <p [class]="notification.msgType" style="color:red;" *ngIf="notification">{{notification.msgBody}}</p>
 
-      <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
-        <mat-input-container>
-          <input matInput formControlName="username" required placeholder="username">
-        </mat-input-container>
-        <mat-input-container>
-          <input matInput formControlName="password" required type="password" placeholder="password">
-        </mat-input-container>
-        <button type="submit" [disabled]="!loginForm.form.valid" mat-raised-button color="primary">Login</button>
-      </form>
-      <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
-    </mat-card-content>
-  </mat-card>
-</div> -->
-<body class="text-center">
-    <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
+    <form class="form-signin" *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" style="padding-top:30px;">
 
-    <form class="form-signin" *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" style="padding-top:100px;">
-      <img class="mb-4" src="assets/image/dev-logo.png" alt="" width="272" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input formControlName="username"  required placeholder="username" class="mb-4"><br />
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input matInput formControlName="password" required type="password" placeholder="password" class="mb-4"> <br />
-      <button class="btn btn-lg btn-primary" type="submit" [disabled]="!loginForm.form.valid">Sign in</button>
-      <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
+      <label style="color:whitesmoke;" for="inputEmail" class="">USERNAME</label>
+      <input style="color:whitesmoke;" formControlName="username" required placeholder="username" class="text">
+      <br />
+
+
+
+      <label style="color:whitesmoke;" for="inputEmail" class="">PASSWORD</label>
+      <input matInput formControlName="password" required type="password" placeholder="password" class="text">
+      <br />
+      <br>
+
+      <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
+      <label style="color:whitesmoke;" for="checkbox-1-1">Keep me Signed in</label>
+
+      <button class="signin" type="submit" [disabled]="!loginForm.form.valid">Sign in</button>
+      <a class="" style="color:whitesmoke;" href="#">Forgot Password?</a>
+      
+
     </form>
-  
+    <hr>
+<br>
 
-</body>
+
+  </body>
+</div>
+<br>

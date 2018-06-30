@@ -1,35 +1,40 @@
-<div class="content" fxLayout="row" fxLayoutAlign="center">
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<br>
+<div style="padding-top: 30px;" class="login">
+  <h2 style="color:whitesmoke;" class="active">devTickets Sign Up</h2>
 
-  <mat-card elevation="5" fxFlex>
+  <body style="background-color:#505050;" class="text-center">
+    <p [class]="notification.msgType" style="color:red;" *ngIf="notification">{{notification.msgBody}}</p>
 
-    <mat-card-title>
-      <h2>{{ title }}</h2>
-    </mat-card-title>
+    <form class="form-signin" *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" style="padding-top:30px;">
 
-    <mat-card-content>
+      <label style="color:whitesmoke;" for="inputEmail" class="">USERNAME</label>
+      <input style="color:whitesmoke;" formControlName="username" required placeholder="username" class="text">
+      <br />
 
-      <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
 
-      <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #signupForm="ngForm">
-        <mat-input-container>
-          <label>Username: </label>
-          <input matInput formControlName="username" required>
-        </mat-input-container>
-        <mat-input-container>
-          <label>Password: </label>
-          <input matInput formControlName="password" required type="password">
-        </mat-input-container>
-        <mat-input-container>
-          <label>First Name: </label>
-          <input matInput formControlName="firstname">
-        </mat-input-container>
-        <mat-input-container>
-          <label>Last Name: </label>
-          <input matInput formControlName="lastname">
-        </mat-input-container>
-        <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Sign up</button>
-      </form>
-      <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
-    </mat-card-content>
-  </mat-card>
-</div>
+
+      <label style="color:whitesmoke;" for="inputEmail" class="">PASSWORD</label>
+      <input matInput formControlName="password" required type="password" placeholder="password" class="text">
+      <br />
+      <br>
+      <label style="color:whitesmoke;" for="firstname" class="">FIRSTNAME</label>
+      <input style="color:whitesmoke;" formControlName="firstname" required placeholder="firstname" class="text">
+      <br />
+
+      <label style="color:whitesmoke;" for="lastname" class="">LASTNAME</label>
+      <input style="color:whitesmoke;" formControlName="lastname" required placeholder="lastname" class="text">
+      <br />
+
+
+      <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
+      <label style="color:whitesmoke; size: 8px;" for="checkbox-1-1">By checking this box, you agree to our Terms.</label>
+
+      <button class="signin" type="submit" [disabled]="!loginForm.form.valid">Sign in</button>
+      <a class="" style="color:whitesmoke;" href="#">Forgot Password?</a>
+      
+
+    </form>
+    <hr>
+<br>
+
