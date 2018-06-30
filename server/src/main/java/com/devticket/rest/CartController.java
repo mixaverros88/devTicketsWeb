@@ -90,12 +90,10 @@ public class CartController {
                         cart.setTotalPrice((float) (cart.getTotalPrice() - cart.getCart().get(i).getTicket().getPrice()));
                         cart.getCart().remove(i);
                         return new ResponseEntity<Cart>(cart, HttpStatus.OK);
-
                     }
                 }
             }
         }
-
         return new ResponseEntity<Cart>(cart, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
