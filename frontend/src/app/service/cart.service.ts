@@ -122,12 +122,10 @@ export class CartService {
     checkout(id: number) {
 
         const cart = this.getCart();
-        id = 1;
         const addProductHeaders = new HttpHeaders({
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         });
-
 
         this.apiService.post(this.config.checkout_url(id), cart, addProductHeaders)
             .subscribe(

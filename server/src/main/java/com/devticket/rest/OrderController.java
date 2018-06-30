@@ -19,7 +19,7 @@ import java.util.Calendar;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
-public class CheckOutController {
+public class OrderController {
 
     @Autowired
 
@@ -28,7 +28,7 @@ public class CheckOutController {
 
     @RequestMapping(value = "/checkout/{id}", method = RequestMethod.POST)
     public  ResponseEntity<Orders> addtoCart(@PathVariable("id") Long id, @RequestBody Cart cart) {
-        
+
         Calendar cal = Calendar.getInstance();
         Orders order = new Orders();
         order.setDate(cal);
@@ -41,4 +41,6 @@ public class CheckOutController {
         return new ResponseEntity<Orders>(order, HttpStatus.OK);
 
     }
+
+    
 }
