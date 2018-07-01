@@ -32,7 +32,8 @@ export const routes: Routes = [
   {
     path: 'userpage',
     component: UserPageComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
   {
     path: 'checkout',

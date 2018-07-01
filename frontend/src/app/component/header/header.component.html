@@ -26,7 +26,7 @@
         *ngIf="hasSignedIn()"
         mat-button mat-ripple
         [matMenuTriggerFor]="accountMenu">
-        <span>{{'WELCOME' | translate}}, {{userName()}}  <img alt="DevTicketPlace" class="" style="height: 70px;" src="assets/image/user.png">
+        <span><span class="fa fa-user fa-fw"></span>{{'WELCOME' | translate}}, {{userName()}} 
         </span>  
       </button>
       <button

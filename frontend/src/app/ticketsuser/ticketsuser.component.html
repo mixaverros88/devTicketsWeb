@@ -5,7 +5,7 @@
       </div>
       </div>
   <div class="row">
-    <div *ngFor="let pr of data" class="col-4 card ">
+    <div *ngFor="let pr of data" class="col-md-4 card mb-3">
         <div class="card border-0">
             <img class="card-img-top img-fluid" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:150px!important">
             <div class="card-body">
@@ -13,18 +13,19 @@
               <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
               <div class="row">
                 <div class="col-md-4">
-                 <span class="fa fa-money"></span> {{ pr.price | currency }}
+                 <span class="fa fa-money fa-color"></span> {{ pr.price | currency }}
                 </div>
                 <div class="col-md-4">
-                    <span class="fa fa-map-marker"></span> {{ pr.location }}
+                    <span class="fa fa-map-marker fa-color"></span> {{ pr.location }}
                 </div>
-                <custom-counter [(counter)]="counterValue"></custom-counter>
                 <div class="col-md-4">
-                    <span class="fa fa-ticket pull-left"></span> {{ pr.available }} : Tickets left!
+                    <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{ pr.available }} !
                 </div>
               </div>
-              <button type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
-              
+              <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter>
+              <button *ngIf="pr.available > 0" type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              <button *ngIf="pr.available == 0" disabled type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              <p *ngIf="pr.available == 0" style="color:red;">Not available tickets for this event</p>
             </div>
           </div>
     </div>
