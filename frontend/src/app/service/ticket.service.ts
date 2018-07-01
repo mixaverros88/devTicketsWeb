@@ -28,12 +28,13 @@ export class TicketService {
     return this.apiService.delete(this.config.deleteticket_url(id)).map(res => res.json());
   }
 
-  addTicket(date: {year: string, month: string},
+  addTicket(date: {year: number, month: number, date: number},
     name: number, available: number, language: number, price: number, image: string, location: number) {
 
-
+    const dateToInsert = new Date(date.year, date.year, date.month);
    const  ticket = {} as Ticket;
-    ticket.date = date.year + date.year;
+   console.log(dateToInsert);
+    ticket.date = dateToInsert;
     ticket.name = name.toString();
     ticket.available = available;
     ticket.language = language.toString();
@@ -50,10 +51,11 @@ export class TicketService {
   };
 
   editTicket(ticket: Ticket) {
-    return this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).subscribe(
-      response => console.log(response),
+    return new Promise(resolve => {
+              this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).subscribe(
+      response => 'response',
       err => console.log(err)
-    )
+      )}
   }
 
   getbyId(id: number) {

@@ -37,7 +37,7 @@
                                                         <span class="fa fa-pencil"></span>
                                                     </span>
                                                 </div>
-                                            <textarea class="width90percent height40px" #descreptionInput matInput placeholder="Description" type="text" formControlName="description"></textarea>
+                                            <textarea class="width90percent height40px" #descriptionInput matInput placeholder="Description" type="text" formControlName="description" required></textarea>
                                         </div>
 
                                         <div class="input-group mb-3">
@@ -66,7 +66,7 @@
                                                     <span class="fa fa-image"></span>
                                                 </span>
                                             </div>
-                                            <input type="file"  #imageInput (change) = "onFileSelected($event)">
+                                            <input type="file"  #imageInput (change) = "onFileSelected($event)" required>
           
                                         </div>
                                         
