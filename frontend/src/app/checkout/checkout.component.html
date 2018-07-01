@@ -170,8 +170,26 @@
                         </div>
                       </div>
                       <hr class="mb-4">
-                      <button class="btn btn-primary btn-lg btn-block"  (click)="checkout()" type="submit">SUBMIT ORDER</button>
+                      <button class="btn btn-primary btn-lg btn-block"  (click)="checkout(content)" type="submit">SUBMIT ORDER</button>
                     </form>
+                    <ng-template #content let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                                <img alt="success" class="app-angular-logo" src="assets/image/success.png" style="height:100px;width:100px;">
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="modal-title">DevTickets</h4>
+                          <h3>The tickets are yours!!!</h3>
+                          <p>You can find your tickets on your profile page, print them and enjoy your favorite Dev Event</p>
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" (click)="c('Close click')" [routerLink]="['/userpage']">Profile</button>
+                          <button type="button" class="btn btn-primary" (click)="c('Close click')" [routerLink]="['']">Home</button>
+                        </div>
+                      </ng-template>
                   </div>
                 </div>
               </div>

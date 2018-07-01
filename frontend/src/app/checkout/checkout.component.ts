@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { CartService, ConfigService, UserService } from '../service';
 import { USE_DEFAULT_LANG } from '@ngx-translate/core';
 import { User } from '../login/user';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-checkout',
@@ -18,7 +19,8 @@ export class CheckoutComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private ConfigService: ConfigService,
     // tslint:disable-next-line:no-shadowed-variable
-    private UserService: UserService) {
+    private UserService: UserService,
+    private modalService: NgbModal) {
   }
   ngOnInit() {
     this.data = this.CartService.getCartProducts();
@@ -57,10 +59,12 @@ export class CheckoutComponent implements OnInit {
 
 
 
-  checkout() {
+  checkout(content) {
     this.UserService.getMyInfo().subscribe(response => this.makeUser(JSON.stringify(response)));
     console.log(this.CurrentUserId);
     this.CartService.checkout(this.CurrentUserId);
+
+    this.modalService.open(content, { size: 'lg' });
   }
 
 
