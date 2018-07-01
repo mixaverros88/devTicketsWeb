@@ -1,91 +1,130 @@
+
 <ngb-tabset class="nav-fill">
         <ngb-tab title="Edit Ticket">
           <ng-template ngbTabContent>
                 <ng-template #content let-c="close" let-d="dismiss">
-                        <div class="container pt10 mt-4">
-                            <h3 class="text-center">{{'INSERTTICKET' |translate}}</h3>
-                            <hr>
-                            <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
-                    
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                                                    <span class="fa fa-calendar"></span>
-                                                </button>
+                        <h3 class="text-center">{{'INSERTTICKET' |translate}}</h3>
+                        <hr>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 p10">
+                                    <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)" (input)= "onChangeForm(userDetailsForm.value)">
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                                                            <span class="fa fa-calendar"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <input class="form-control" placeholder="yyyy-mm-dd" name="date" formControlName="date" ngbDatepicker #d="ngbDatepicker">
                                             </div>
                                         </div>
-                                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="date" ngbDatepicker #d="ngbDatepicker">
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <span class="fa fa-pencil"></span>
+                                                </span>
+                                            </div>
+                                            <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text" formControlName="name" required>
+                                        </div>
+                            
+                                        <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1">
+                                                        <span class="fa fa-pencil"></span>
+                                                    </span>
+                                                </div>
+                                            <textarea class="width90percent height40px" #descreptionInput matInput placeholder="Description" type="text" formControlName="description"></textarea>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <span class="fa fa-code"></span>
+                                                </span>
+                                            </div>
+                                            <input class="width90percent height40px" #languageInput matInput placeholder="Language" type="text" formControlName="language"
+                                                required>
+                                        </div>
+                            
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <span class="fa fa-ticket"></span>
+                                                </span>
+                                            </div>
+                                            <input class="width90percent height40px" #availableInput matInput placeholder="Available" type="number" formControlName="available"
+                                                required>
+                                        </div>
+                            
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <span class="fa fa-image"></span>
+                                                </span>
+                                            </div>
+                                            <input type="file"  #imageInput (change) = "onFileSelected($event)">
+          
+                                        </div>
+                                        
+                                        
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <span class="fa fa-map-marker"></span>
+                                                </span>
+                                            </div>
+                                            <input class="width90percent height40px" #locationInput matInput placeholder="Location" type="text" formControlName="location"
+                                                required>
+                                        </div>
+                            
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <span class="fa fa-money"></span>
+                                                </span>
+                                            </div>
+                                            <input class="width90percent height40px" #priceInput matInput placeholder="Price" type="number" formControlName="price" required>
+                                        </div>
+                            
+                                        <div class="form-group">
+                                            <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!userDetailsForm.valid">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+    
+                                <div class="col-6 card">
+                                    <div class="card border-0">
+                                        <div style="min-height: 150px;">
+                                            <img *ngIf="base64textString;else show_image" class="card-img-top img-fluid" src='data:image/png;base64,{{base64textString}}' alt="Card image cap" style="min-height: 150px;"></div>
+                                            <ng-template #show_image>
+                                                    <img class="card-img-top img-fluid" src='assets/image/customImage.jpg' alt="Card image cap" style="min-height: 150px;">
+                                            </ng-template>
+                                            <div class="card-body">{{ date }}
+                                                <h2 class="card-title">{{ name }}</h2>
+                                                <p class="card-text">{{ description }}</p>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <span class="fa fa-money"></span> {{ price }}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                            <span class="fa fa-money"></span> {{ language }}
+                                                        </div>
+                                                    <div class="col-md-3">
+                                                        <span class="fa fa-map-marker"></span> {{ location }}
+                                                    </div> 
+                                                    <div class="col-md-3">
+                                                        <span class="fa fa-ticket pull-left"></span> {{ available }} : Tickets left!
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
+                                            </div>
                                     </div>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-pencil"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text" formControlName="name" required>
-                                </div>
-                    
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-code"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #languageInput matInput placeholder="Language" type="text" formControlName="language"
-                                        required>
-                                </div>
-                    
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-ticket"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #availableInput matInput placeholder="Available" type="number" formControlName="available"
-                                        required>
-                                </div>
-                    
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-image"></span>
-                                        </span>
-                                    </div>
-                                    <input type="file"  #imageInput (change) = "onFileSelected($event)">
-                                    <div *ngIf="base64textString">
-                                        <img  style="width: 100%;height: 100%;overflow: hidden;" src='data:image/png;base64,{{ base64textString}}'>
-                                    </div>    
-                                </div>
-                                
-                                
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-map-marker"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #locationInput matInput placeholder="Location" type="text" formControlName="location"
-                                        required>
-                                </div>
-                    
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-money"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #priceInput matInput placeholder="Price" type="number" formControlName="price" required>
-                                </div>
-                    
-                    
-                            <div class="form-group">
-                                <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!userDetailsForm.valid">Submit</button>
                             </div>
-                        
-                            </form>
                         </div>
                     </ng-template>
                     

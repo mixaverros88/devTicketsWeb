@@ -1,9 +1,10 @@
+import { DatePicketPopupComponent } from './../date-picket-popup/date-picket-popup.component';
 import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable, ElementRef, ViewChild } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { DatePicker } from './datePicker';
 import {
   ConfigService,
   UserService,
@@ -42,6 +43,7 @@ export class TicketsCrudComponent implements OnInit {
   http: any;
   id: number;
   name: string;
+  description: string;
   language: string;
   available: number;
   price: number;
@@ -51,7 +53,7 @@ export class TicketsCrudComponent implements OnInit {
   message: string;
   ticket: Ticket;
   selectedProduct: Ticket;
-
+  date: DatePicker;
   // PAGINATION VALUES
   howManyRows = 2;
   totalProducts: number;
@@ -73,8 +75,10 @@ export class TicketsCrudComponent implements OnInit {
   private fb: FormBuilder) {
 
     this.userDetailsForm = fb.group({
-      'name': ['dsa', Validators.required] ,
+      'name': [null, Validators.required] ,
+      'description': [null, Validators.required] ,
       'language': [null, Validators.required] ,
+      'image': [null, Validators.required] ,
       'available': [null, Validators.required] ,
       'location': [null, Validators.required] ,
       'price': [null, Validators.required] ,
@@ -110,6 +114,7 @@ export class TicketsCrudComponent implements OnInit {
     this.userDetailsForm = new FormGroup({
       date: new FormControl(''),
       name: new FormControl(''),
+      description: new FormControl(''),
       price: new FormControl(''),
       available: new FormControl(''),
       location: new FormControl(''),
@@ -145,20 +150,32 @@ export class TicketsCrudComponent implements OnInit {
       );
   }
 
-  onSubmitUserDetails() {
+  onChangeForm() {
+    console.log(this.userDetailsForm.controls['date'].value);
+    this.date = this.userDetailsForm.controls['date'].value;
+    console.log('-->' + this.date.month);
+    console.log('-->' + this.date['day']);
+    this.name = this.userDetailsForm.controls['name'].value.toString();
+    this.description = this.userDetailsForm.controls['description'].value.toString();
+    this.available = this.userDetailsForm.controls['available'].value;
+    this.price = this.userDetailsForm.controls['price'].value;
+    this.language = this.userDetailsForm.controls['language'].value.toString();
+    this.location = this.userDetailsForm.controls['location'].value;
+  }
 
+
+  onSubmitUserDetails() {
     this.TicketService.addTicket(
-      this.userDetailsForm.controls['date'].value,
-      this.userDetailsForm.controls['name'].value.toString(),
-      this.userDetailsForm.controls['available'].value,
-      this.userDetailsForm.controls['price'].value,
-      this.userDetailsForm.controls['language'].value.toString(),
-      this.base64textString ,
-      this.userDetailsForm.controls['location'].value);
-       this.modalRefInsert.close(); // close modal
+    this.userDetailsForm.controls['date'].value,
+    this.userDetailsForm.controls['name'].value.toString(),
+    this.userDetailsForm.controls['available'].value,
+    this.userDetailsForm.controls['price'].value,
+    this.userDetailsForm.controls['language'].value.toString(),
+    this.base64textString,
+    this.userDetailsForm.controls['location'].value);
+    this.modalRefInsert.close(); // close modal
     this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
     this.ngOnInit();
-    ;
   }
 
 
@@ -187,18 +204,15 @@ export class TicketsCrudComponent implements OnInit {
     console.log(this.paginationLength);
   }
 
-
-
-    onFileSelected(evt) {
-      // console.log(event.target.files[0].name);
+  onFileSelected(evt) {
       const files = evt.target.files;
       const file = files[0];
 
     if (files && file) {
-        const reader = new FileReader();
+      const reader = new FileReader();
 
-        reader.onload = this._handleReaderLoaded.bind(this);
-       reader.readAsBinaryString(file);
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
     }
   }
 
