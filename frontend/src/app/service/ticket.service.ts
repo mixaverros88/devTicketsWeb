@@ -56,7 +56,7 @@ export class TicketService {
       response => 'response',
       err => console.log(err))
         }
-  };
+    )};
 
   getbyId(id: number) {
     return this.apiService.get(this.config.ticket_urll(id)).map(res => res.json());

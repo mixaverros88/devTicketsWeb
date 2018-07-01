@@ -12,7 +12,7 @@ import {Cart} from '../shoppingcart'
 export class UserPageComponent implements OnInit {
   data: any[];
   CurrentUserId: number;
-  cart : Cart;
+  cart: Cart;
 
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
@@ -63,9 +63,8 @@ getOrder(id: number) {
   }
 
   myOrders() {
-    this.makeUser(JSON.stringify(this.UserService.currentUser));
-    console.log(this.CurrentUserId);
-    return this.OrdersService.getOrders(this.CurrentUserId);
+    const user = this.UserService.currentUser;
+    return this.OrdersService.getOrders(user.id);
   }
 
   userName() {

@@ -15,6 +15,7 @@ import {
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -140,9 +141,8 @@ export class TicketsCrudComponent implements OnInit {
       .then(
         this.modalRef.close());
         this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-        this.ngOnInit();
-
-
+       delay(3300);
+        this.getProducts();
   }
 
   getProducts() {
