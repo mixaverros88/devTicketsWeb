@@ -1,3 +1,29 @@
-<p>
-  user-page works!
-</p>
+<div class="user-page">
+  <div class="container">
+    <div class="row center-align user-data">
+      <div class="col-md-3">
+        <img alt="DevTicketPlace" class="profile-img" src="assets/image/user.png">
+      </div>
+      <div class="col-md-9">
+        <p class="username">{{userName()}}</p>
+      </div>
+    </div>
+    <div class="row user-tickets">
+      <div class="col-md-12">
+        <ul *ngFor="let pr of data" class="ticket-list">
+          <li class="">
+            <div class="row center-align">
+              <div class="col-md-8">
+                <p class="ticket-name">{{pr.ticket.name}}</p>
+                <p class="ticket-qty">Quantity: {{pr.itemQuantity}}</p>
+              </div>
+              <div class="col-md-4">
+                <p class="ticket-price"> Price: {{pr.ticket.price * pr.itemQuantity }} €</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
