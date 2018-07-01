@@ -123,6 +123,7 @@ export class TicketsCrudComponent implements OnInit {
     });
 
   }
+  
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
     const ticket = {} as Ticket;
@@ -132,10 +133,23 @@ export class TicketsCrudComponent implements OnInit {
     ticket.available = available;
     ticket.location = location;
     ticket.price = price;
-    this.TicketService.editTicket(ticket);
-    this.modalRef.close(); // close modal
-    this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-    this.ngOnInit(); // refresh the tickets
+    // this.TicketService.editTicket(ticket);
+    this.TicketService.editTicket(ticket)
+      .then(
+        this.modalRef.close(); // close modal
+        this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
+        this.ngOnInit(); // refresh the tickets
+      );
+    // .then();
+    // console.log(typeof aa.response);
+    // console.log('rrr->>' + aa);
+    // if (aa['result'] === 'OK' ) {
+    //   console.log('dsad');
+    //   this.modalRef.close(); // close modal
+    //   this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
+    //   this.ngOnInit(); // refresh the tickets
+    // }
+
   }
 
   getProducts() {

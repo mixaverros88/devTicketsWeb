@@ -50,11 +50,12 @@ export class TicketService {
   };
 
   editTicket(ticket: Ticket) {
-    return this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).subscribe(
-      response => console.log(response),
+    return new Promise(resolve => {
+              this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).subscribe(
+      response => 'response',
       err => console.log(err)
-    )
-  }
+      })
+    }
 
   getbyId(id: number) {
     return this.apiService.get(this.config.ticket_urll(id)).map(res => res.json());
