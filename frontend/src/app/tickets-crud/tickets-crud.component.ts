@@ -123,7 +123,7 @@ export class TicketsCrudComponent implements OnInit {
     });
 
   }
-  
+
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
     const ticket = {} as Ticket;
