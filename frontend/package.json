@@ -30,6 +30,7 @@
     "@ngx-translate/core": "9.1.1",
     "@ngx-translate/http-loader": "2.0.1",
     "angular-font-awesome": "^3.1.2",
+    "angular2-lightbox": "^1.4.0",
     "bootstrap": "4.1.1",
     "core-js": "2.5.1",
     "font-awesome": "^4.7.0",

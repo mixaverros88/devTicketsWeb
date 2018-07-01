@@ -5,6 +5,7 @@ import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DatePicker } from './datePicker';
+
 import {
   ConfigService,
   UserService,
@@ -53,7 +54,7 @@ export class TicketsCrudComponent implements OnInit {
   message: string;
   ticket: Ticket;
   selectedProduct: Ticket;
-  date: DatePicker;
+  date: string;
   // PAGINATION VALUES
   howManyRows = 2;
   totalProducts: number;
@@ -75,7 +76,9 @@ export class TicketsCrudComponent implements OnInit {
   private fb: FormBuilder) {
 
     this.userDetailsForm = fb.group({
-      'name': [null, Validators.required] ,
+      'name': [null, Validators.compose(
+                                        [Validators.minLength(3), Validators.required]
+              )],
       'description': [null, Validators.required] ,
       'language': [null, Validators.required] ,
       'image': [null, Validators.required] ,
@@ -165,10 +168,11 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   onChangeForm() {
-    console.log(this.userDetailsForm.controls['date'].value);
-    this.date = this.userDetailsForm.controls['date'].value;
-    console.log('-->' + this.date.month);
-    console.log('-->' + this.date['day']);
+    // console.log(this.userDetailsForm.controls['date'].value);
+    const date = this.userDetailsForm.controls['date'].value;
+    this.date = date['year'] + '-' + date['month'] + '-' + date['day'];
+    // console.log('-->' + this.date.month);
+    // console.log('-->' + this.date['day']);
     this.name = this.userDetailsForm.controls['name'].value.toString();
     this.description = this.userDetailsForm.controls['description'].value.toString();
     this.available = this.userDetailsForm.controls['available'].value;
