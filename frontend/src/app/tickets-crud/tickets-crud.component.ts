@@ -136,22 +136,12 @@ export class TicketsCrudComponent implements OnInit {
     ticket.available = available;
     ticket.location = location;
     ticket.price = price;
-    // this.TicketService.editTicket(ticket);
     this.TicketService.editTicket(ticket)
       .then(
-        this.modalRef.close(); // close modal
+        this.modalRef.close());
         this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-        this.ngOnInit(); // refresh the tickets
-      );
-    // .then();
-    // console.log(typeof aa.response);
-    // console.log('rrr->>' + aa);
-    // if (aa['result'] === 'OK' ) {
-    //   console.log('dsad');
-    //   this.modalRef.close(); // close modal
-    //   this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-    //   this.ngOnInit(); // refresh the tickets
-    // }
+        this.ngOnInit();
+
 
   }
 

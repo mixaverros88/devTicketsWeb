@@ -54,9 +54,9 @@ export class TicketService {
     return new Promise(resolve => {
               this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).subscribe(
       response => 'response',
-      err => console.log(err)
-      )}
-  }
+      err => console.log(err))
+        }
+  };
 
   getbyId(id: number) {
     return this.apiService.get(this.config.ticket_urll(id)).map(res => res.json());
