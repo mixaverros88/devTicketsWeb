@@ -32,20 +32,26 @@ import com.devticket.service.UserService;
 public class CheckOutServiceImpl implements CheckOutService {
 
 
-
-    @Autowired CheckOutService checkOutService;
+    @Autowired
+    CheckOutService checkOutService;
 
     @Autowired
     private OrdersRepository ordersRepository;
 
     @Override
     public Orders findById(Long id) {
-       Orders order  =  this.ordersRepository.findByid(id);
+        Orders order = this.ordersRepository.findByid(id);
         return order;
     }
 
     @Override
     public void save(Orders order) {
-       this.ordersRepository.save(order);
+        this.ordersRepository.save(order);
+    }
+
+    @Override
+    public List<Orders> findByUserId(Long id) {
+        List<Orders> order= this.ordersRepository.findByUserId(id);
+        return order;
     }
 }

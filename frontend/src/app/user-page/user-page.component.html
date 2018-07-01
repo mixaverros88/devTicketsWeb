@@ -7,23 +7,25 @@
       <div class="col-md-9">
         <p class="username">{{userName()}}</p>
       </div>
-    </div>
-    <div class="row user-tickets">
-      <div class="col-md-12">
-        <ul *ngFor="let pr of data" class="ticket-list">
-          <li class="">
-            <div class="row center-align">
-              <div class="col-md-8">
-                <p class="ticket-name">{{pr.ticket.name}}</p>
-                <p class="ticket-qty">Quantity: {{pr.itemQuantity}}</p>
-              </div>
-              <div class="col-md-4">
-                <p class="ticket-price"> Price: {{pr.ticket.price * pr.itemQuantity }} €</p>
-              </div>
-            </div>
-          </li>
-        </ul>
+
+      <div *ngFor="let pr of data" class="col-md-12">
+<HR>
+<h3>Order ID: {{pr.id}}</h3>
+<br>
+<h3>Order Total Price:{{pr.totalPrice}}</h3>
+<BR>
+<h3>Order Date: {{pr.date}}</h3>
+<button (click)="getOrder(pr.id)" class="">VIEW ORDER DETAILS</button>
+
+
+
+
+
+  <HR>
+
+        
       </div>
-    </div>
   </div>
-</div>
+  
+
+  

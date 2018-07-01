@@ -44,6 +44,10 @@ export class ConfigService {
 
   private _checkout_url = this._api_url + '/checkout/';
 
+  private _my_orders_ = this._api_url + '/myorders/';
+
+  private _view_order_ = this._my_orders_ + 'getorder/';
+
   get reset_credentials_url(): string {
       return this._reset_credentials_url;
   }
@@ -97,6 +101,21 @@ return this._addticket_url ;
     return this._delete_from_cart + id.toString();
 
   }
+
+
+ myOrders_url(id: number): string {
+
+    return this._my_orders_ + id.toString();
+
+  }
+
+
+  getOrder(id: number): string {
+
+    return this._view_order_ + id.toString();
+
+  }
+  
 
   deleteticket_url(id: number): string {
 

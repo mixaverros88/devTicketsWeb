@@ -65,6 +65,7 @@ import { CustomCounterComponent } from './custom-counter/custom-counter.componen
 import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { OrdersService } from './service/orders.service';
 
 
 export function initUserFactory(userService: UserService) {
@@ -138,7 +139,7 @@ export function initUserFactory(userService: UserService) {
     ConfigService,
     MatIconRegistry,
     CartService,
-    {
+    OrdersService,    {
       'provide': APP_INITIALIZER,
       'useFactory': initUserFactory,
       'deps': [UserService],

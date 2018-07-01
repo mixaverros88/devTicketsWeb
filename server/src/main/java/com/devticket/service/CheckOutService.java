@@ -17,4 +17,6 @@ public interface CheckOutService {
 
     void save(Orders order);
 
+    List<Orders> findByUserId(Long id);
+
 }

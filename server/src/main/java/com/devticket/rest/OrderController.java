@@ -3,6 +3,7 @@ package com.devticket.rest;
 import com.devticket.model.cart.Cart;
 import com.devticket.model.cart.CartItem;
 import com.devticket.model.order.Orders;
+import com.devticket.model.ticket.Ticket;
 import com.devticket.service.CheckOutService;
 import com.devticket.service.TicketService;
 import com.google.gson.Gson;
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @CrossOrigin
@@ -40,6 +45,36 @@ public class OrderController {
         checkOutService.save(order);
         return new ResponseEntity<Orders>(order, HttpStatus.OK);
 
+    }
+//    @RequestMapping(method = GET, value = "/myorders/{id}")
+//    public List<Cart> loadAll(@PathVariable("id") Long id) {
+//        List<Orders> orders= checkOutService.findByUserId(id);
+//        int i=0;
+//        List<Cart> orderCarts = new ArrayList<Cart>();
+//        for (Orders obj: orders){
+//
+//            Gson gson = new Gson();
+//            Cart cart = gson.fromJson(orders.get(i).getCart(), Cart.class);
+//            orderCarts.add(cart);
+//            i= i +1;
+//        }
+//
+//        return orderCarts;
+//
+//    }
+    @RequestMapping(method = GET, value = "/myorders/{id}")
+    public List<Orders> loadAll(@PathVariable("id") Long id) {
+        return this.checkOutService.findByUserId(id);
+
+    }
+
+
+    @RequestMapping(method = GET, value = "/myorders/getorder/{id}")
+    public ResponseEntity<Cart> findById(@PathVariable("id") Long id) {
+       Orders order = this.checkOutService.findById(id);
+       Gson gson = new Gson();
+       Cart cart = gson.fromJson(order.getCart(), Cart.class);
+        return new ResponseEntity<Cart>(cart, HttpStatus.OK);
     }
 
 
