@@ -67,6 +67,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { OrdersService } from './service/orders.service';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -96,6 +97,7 @@ export function initUserFactory(userService: UserService) {
     ContactComponent,
     CheckoutComponent,
     UserPageComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,

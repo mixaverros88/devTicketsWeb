@@ -38,6 +38,8 @@ export class ConfigService {
 
   private _signup_url = this._api_url + '/signup';
 
+  private _resset_password_url = this._api_url + '/resetpassword';
+
   private _addtocart_url = this._api_url + '/addcart/';
 
   private _delete_from_cart = this._api_url + '/deletecartitem/';
@@ -115,7 +117,7 @@ return this._addticket_url ;
     return this._view_order_ + id.toString();
 
   }
-  
+
 
   deleteticket_url(id: number): string {
 
@@ -150,5 +152,9 @@ return this._addticket_url ;
   get signup_url(): string {
       return this._signup_url;
   }
+
+  get reset_password(): string {
+    return this._resset_password_url;
+}
 
 }

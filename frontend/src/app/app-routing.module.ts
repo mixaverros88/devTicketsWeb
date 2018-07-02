@@ -16,7 +16,7 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -53,6 +53,11 @@ export const routes: Routes = [
   {
     path: 'ticketsuser',
     component: TicketsuserComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'resetpassword',
+    component: ResetPasswordComponent,
     pathMatch: 'full'
   },
   {
