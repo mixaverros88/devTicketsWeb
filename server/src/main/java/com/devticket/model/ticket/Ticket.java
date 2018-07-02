@@ -1,11 +1,7 @@
 package com.devticket.model.ticket;
+
+import javax.persistence.*;
 import java.util.Calendar;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * Created by CodingFive Team  2018
@@ -35,7 +31,6 @@ public class Ticket {
 
     @Column(name = "price")
     private float price;
-
 
 
     @Column(name = "image")
@@ -104,8 +99,6 @@ public class Ticket {
     public void setDate(Calendar date) {
         this.date = date;
     }
-
-
 
 
 }

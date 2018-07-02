@@ -15,7 +15,7 @@ public class Cart {
 
     private List<CartItem> cart = new ArrayList<>();
 
-    private float totalPrice=0;
+    private float totalPrice = 0;
 
     public List<CartItem> getCart() {
         return cart;

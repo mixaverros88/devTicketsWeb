@@ -21,20 +21,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
  * Created by CodingFive Team  2018
  * (Dimou John - Mike Verros (Back-End))
  */
 
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
-
-    private final Log logger = LogFactory.getLog(this.getClass());
-
-    @Autowired
-    TokenHelper tokenHelper;
-
-    @Autowired
-    UserDetailsService userDetailsService;
 
     /*
      * The below paths will get ignored by the filter
@@ -47,7 +40,11 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     public static final String IMG_MATCHER = "/images/*";
     public static final String LOGIN_MATCHER = "/auth/login";
     public static final String LOGOUT_MATCHER = "/auth/logout";
-
+    private final Log logger = LogFactory.getLog(this.getClass());
+    @Autowired
+    TokenHelper tokenHelper;
+    @Autowired
+    UserDetailsService userDetailsService;
     private List<String> pathsToSkip = Arrays.asList(
             ROOT_MATCHER,
             HTML_MATCHER,
@@ -84,7 +81,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         chain.doFilter(request, response);
     }
 
-    private boolean skipPathRequest(HttpServletRequest request, List<String> pathsToSkip ) {
+    private boolean skipPathRequest(HttpServletRequest request, List<String> pathsToSkip) {
         Assert.notNull(pathsToSkip, "path cannot be null.");
         List<RequestMatcher> m = pathsToSkip.stream().map(path -> new AntPathRequestMatcher(path)).collect(Collectors.toList());
         OrRequestMatcher matchers = new OrRequestMatcher(m);

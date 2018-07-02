@@ -1,9 +1,9 @@
 package com.devticket.service;
 
-import java.util.List;
-
 import com.devticket.model.ticket.Ticket;
 import com.devticket.model.ticket.Ticketrequest;
+
+import java.util.List;
 
 
 /**
@@ -21,5 +21,5 @@ public interface TicketService {
 
     void delete(Long id);
 
-    void edit (Ticketrequest ticket,Long id);
+    void edit(Ticketrequest ticket, Long id);
 }

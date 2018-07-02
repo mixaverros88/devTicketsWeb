@@ -3,6 +3,7 @@ package com.devticket;
 /**
  * Created by fan.jin on 2017-01-14.
  */
+
 import com.devticket.security.auth.TokenAuthenticationFilter;
 import io.restassured.RestAssured;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;

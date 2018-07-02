@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * Created by CodingFive Team  2018
  * (Dimou John - Mike Verros (Back-End))
@@ -27,9 +28,9 @@ public class LogoutSuccess implements LogoutSuccessHandler {
     public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
         Map<String, String> result = new HashMap<>();
-        result.put( "result", "success" );
-		response.setContentType("application/json");
-		response.getWriter().write( objectMapper.writeValueAsString( result ) );
+        result.put("result", "success");
+        response.setContentType("application/json");
+        response.getWriter().write(objectMapper.writeValueAsString(result));
         response.setStatus(HttpServletResponse.SC_OK);
 
     }

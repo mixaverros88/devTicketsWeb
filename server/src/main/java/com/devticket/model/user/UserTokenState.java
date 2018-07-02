@@ -1,4 +1,5 @@
 package com.devticket.model.user;
+
 /**
  * Created by CodingFive Team  2018
  * (Dimou John - Mike Verros (Back-End))

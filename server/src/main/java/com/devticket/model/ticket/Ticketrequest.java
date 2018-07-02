@@ -4,21 +4,14 @@ import java.util.Calendar;
 
 public class Ticketrequest {
 
-    private  Long id;
-
-    private String name;
-
-    private String language;
-
-    private int available;
-
-    private String location;
-
     public float price;
-
     public byte[] image;
-
     public Calendar date;
+    private Long id;
+    private String name;
+    private String language;
+    private int available;
+    private String location;
 
     public Long getId() {
         return id;

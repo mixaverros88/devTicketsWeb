@@ -1,7 +1,5 @@
 package com.devticket.service.impl;
 
-import java.util.List;
-
 import com.devticket.model.ticket.Ticket;
 import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.repository.TicketRepository;
@@ -9,15 +7,9 @@ import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.devticket.model.user.Authority;
-import com.devticket.model.user.User;
-import com.devticket.model.user.UserRequest;
-import com.devticket.repository.UserRepository;
-import com.devticket.service.AuthorityService;
-import com.devticket.service.UserService;
+
+import java.util.List;
 
 /**
  * Created by CodingFive Team  2018
@@ -28,7 +20,8 @@ import com.devticket.service.UserService;
 @Service
 public class TicketServiceImpl implements TicketService {
 
-    @Autowired TicketService ticketService;
+    @Autowired
+    TicketService ticketService;
 
 
     @Autowired
@@ -51,26 +44,26 @@ public class TicketServiceImpl implements TicketService {
     public Ticket addnew(Ticketrequest ticketrequest) {
         Ticket ticket = new Ticket();
         ticket.setName(ticketrequest.getName());
-       ticket.setAvailable(ticketrequest.getAvailable());
-       ticket.setLanguage(ticketrequest.getLocation());
-       ticket.setPrice(ticketrequest.getPrice());
-       ticket.setImage(ticketrequest.getImage());
-       ticket.setDate(ticketrequest.getDate());
-       ticket.setLocation(ticketrequest.getLocation());
+        ticket.setAvailable(ticketrequest.getAvailable());
+        ticket.setLanguage(ticketrequest.getLocation());
+        ticket.setPrice(ticketrequest.getPrice());
+        ticket.setImage(ticketrequest.getImage());
+        ticket.setDate(ticketrequest.getDate());
+        ticket.setLocation(ticketrequest.getLocation());
 
-       this.ticketRepository.save(ticket);
+        this.ticketRepository.save(ticket);
         return ticket;
     }
 
-    public void edit(Ticketrequest ticketrequest,Long id){
-           Ticket ticket =this.ticketRepository.findByid(id);
-           ticket.setPrice(ticketrequest.getPrice());
-           ticket.setLanguage(ticketrequest.getLanguage());
-           ticket.setAvailable(ticketrequest.getAvailable());
-           ticket.setName(ticketrequest.getName());
-           ticket.setDate(ticketrequest.getDate());
-           ticket.setLocation(ticketrequest.getLocation());
-           ticket.setImage(ticketrequest.getImage());
+    public void edit(Ticketrequest ticketrequest, Long id) {
+        Ticket ticket = this.ticketRepository.findByid(id);
+        ticket.setPrice(ticketrequest.getPrice());
+        ticket.setLanguage(ticketrequest.getLanguage());
+        ticket.setAvailable(ticketrequest.getAvailable());
+        ticket.setName(ticketrequest.getName());
+        ticket.setDate(ticketrequest.getDate());
+        ticket.setLocation(ticketrequest.getLocation());
+        ticket.setImage(ticketrequest.getImage());
 
         this.ticketRepository.save(ticket);
 
@@ -78,15 +71,12 @@ public class TicketServiceImpl implements TicketService {
     }
 
 
-
-
     @PreAuthorize("hasRole('USER')")
-    public void delete(Long id) throws AccessDeniedException{
+    public void delete(Long id) throws AccessDeniedException {
         this.ticketRepository.delete(ticketRepository.findByid(id));
 
 
     }
-
 
 
 }
