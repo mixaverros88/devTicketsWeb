@@ -63,7 +63,7 @@ public class TicketServiceImpl implements TicketService {
         ticket.setName(ticketrequest.getName());
         ticket.setDate(ticketrequest.getDate());
         ticket.setLocation(ticketrequest.getLocation());
-        ticket.setImage(ticketrequest.getImage());
+        ticket.setImage(ticketService.findById(id).getImage());
 
         this.ticketRepository.save(ticket);
 
