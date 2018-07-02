@@ -1,3 +1,77 @@
-<p>
-  user-page works!
-</p>
+<div class="user-page">
+  <div class="container">
+    <div class="row center-align user-data">
+      <div class="col-md-3">
+        <img alt="DevTicketPlace" class="profile-img" src="assets/image/user.png">
+      </div>
+      <div class="col-md-9">
+        <p class="username">{{userName()}}</p>
+      </div>
+
+      <div *ngFor="let pr of data" class="col-md-12">
+<HR>
+<h3>Order ID: {{pr.id}}</h3>
+<br>
+<h3>Order Total Price:{{pr.totalPrice}}</h3>
+<BR>
+<h3>Order Date: {{pr.date | date}}</h3>
+<button (click)="getOrder(pr.id, content)" class="">VIEW ORDER DETAILS</button>
+  <HR>
+
+        
+      </div>
+  </div>
+  <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Your Tickets</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mb-0">
+    <div *ngFor="let data of cart.cart" class="col-md-12">
+        <div class="ticket">
+            <div class="stub">
+              <div class="top">
+                <span class="admit">DEVTicket</span>
+                <span class="line"></span>
+                <span class="num">
+                  UID
+                  <span>{{data.ticket.id}}</span>
+                </span>
+              </div>
+              <div class="icon"><span class="fas fa-ticket-alt"></span></div>
+              <div class="name">
+                  {{userName()}}
+              </div>
+            </div>
+            <div class="check">
+              <div class="big">
+                  {{data.ticket.name}} <br> Ticket
+              </div> 
+              <div class="info">
+                <section>
+                  <div class="title">Date</div>
+                  <div> {{data.ticket.date |  date}}</div>
+                </section>
+                <section>
+                  <div class="title">Price</div>
+                  <div>{{data.ticket.price}}</div>
+                </section>
+                <section>
+                  <div class="title">Location</div>
+                  <div>{{data.ticket.location}}</div>
+                </section>
+              </div>
+            </div>
+          </div>
+        
+                
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+      </div>
+    </div>
+    </ng-template>
+
+  

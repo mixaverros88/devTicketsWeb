@@ -1,10 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-   @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
- @import '~bootstrap/dist/css/bootstrap.min.css'; 
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~bootstrap/dist/css/bootstrap.min.css'; 
 
 body {
   margin: 0;
   padding: 0;
+  background-color:
+#dae2ef
+
+  ;
 }
 
 .mat-fab.mat-accent[disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled] {
@@ -12,11 +16,11 @@ body {
 }
 
 form .ng-invalid {
-  border-bottom: 3px solid red;
+  border-bottom: 2px solid red;
 }
 
 form .ng-valid {
-  border-bottom: 3px solid green;
+  border-bottom: 2px solid green;
 }
 
 .mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
@@ -81,5 +85,15 @@ span#basic-addon1 {
   text-decoration: none;
 }
 
+.modal-dialog{
+  max-width: 1000px;
+}
+
+.floatLeft{ float: left; }
+
+.p10{ padding: 10px; }
 
 
+.input-group-prepend {
+  background-color: #e9ecef;
+}

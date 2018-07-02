@@ -10,6 +10,7 @@ describe('CheckoutComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CheckoutComponent ]
     })
+
     .compileComponents();
   }));
 

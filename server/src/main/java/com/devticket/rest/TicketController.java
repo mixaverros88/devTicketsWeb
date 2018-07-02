@@ -1,20 +1,21 @@
 package com.devticket.rest;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.devticket.model.ticket.Ticket;
 import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.service.TicketService;
-//import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+//import com.google.gson.Gson;
 
 /**
  * Created by CodingFive Team  2018
@@ -71,8 +72,6 @@ public class TicketController {
         result.put("result", "success");
         return ResponseEntity.accepted().body(result);
     }
-
-
 
 
 }

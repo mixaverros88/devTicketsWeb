@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 /**
  * Created by CodingFive Team  2018
  * (Dimou John - Mike Verros (Back-End))
@@ -49,7 +50,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         String username = currentUser.getName();
 
         if (authenticationManager != null) {
-            LOGGER.debug("Re-authenticating user '"+ username + "' for password change request.");
+            LOGGER.debug("Re-authenticating user '" + username + "' for password change request.");
 
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, oldPassword));
         } else {
@@ -58,7 +59,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             return;
         }
 
-        LOGGER.debug("Changing password for user '"+ username + "'");
+        LOGGER.debug("Changing password for user '" + username + "'");
 
         User user = (User) loadUserByUsername(username);
 

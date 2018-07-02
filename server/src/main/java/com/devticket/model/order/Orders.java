@@ -17,6 +17,10 @@ public class Orders {
 
     @Column(name = "userid")
     private Long userId;
+    @Column(name = "totalprice")
+    private float totalPrice;
+    @Column(name = "cart")
+    private String cart;
 
     public String getCart() {
         return cart;
@@ -25,14 +29,6 @@ public class Orders {
     public void setCart(String cart) {
         this.cart = cart;
     }
-
-    @Column(name = "totalprice")
-    private float totalPrice;
-
-    @Column(name="cart")
-    private String cart;
-
-
 
     public Long getId() {
         return id;
@@ -45,6 +41,7 @@ public class Orders {
     public Calendar getDate() {
         return date;
     }
+
 
     public void setDate(Calendar date) {
         this.date = date;
