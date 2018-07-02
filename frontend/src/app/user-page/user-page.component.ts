@@ -46,7 +46,7 @@ export class UserPageComponent implements OnInit {
 
 
 getOrder(id: number, content) {
-
+  this.cart = {} as Cart;
   this.OrdersService.viewOrder(id)
   .subscribe(
     (data: Cart) => {
