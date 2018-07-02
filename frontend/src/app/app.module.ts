@@ -9,6 +9,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 // AoT requires an exported function for factories
@@ -114,6 +115,7 @@ export function initUserFactory(userService: UserService) {
     MatProgressSpinnerModule,
     FlexLayoutModule,
     NgbModule.forRoot(),
+    QRCodeModule,
     AngularFontAwesomeModule,
     HttpClientModule,
     AgmCoreModule.forRoot({

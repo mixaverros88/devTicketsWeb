@@ -4,6 +4,8 @@ import { User } from 'app/login/user';
 import { OrdersService } from '../service/orders.service';
 import {Cart} from '../shoppingcart';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 
 @Component({
@@ -15,6 +17,7 @@ export class UserPageComponent implements OnInit {
   data: any[];
   CurrentUserId: number;
   cart: Cart;
+  public myAngularxQrCode: any;
 
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
@@ -24,7 +27,9 @@ export class UserPageComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private OrdersService: OrdersService,
     private modalService: NgbModal
-  ) {}
+  ) {
+    this.myAngularxQrCode = this.userid();
+  }
 
   ngOnInit() {
     this.getMyOrders();
@@ -75,4 +80,22 @@ getOrder(id: number, content) {
     const user = this.UserService.currentUser;
     return user.firstname;
   }
+
+  userid() {
+    const user = this.UserService.currentUser;
+    return user.id;
+  }
+
+  download(){
+    html2canvas(document.getElementById('export')).then(function(canvas) {
+      var img = canvas.toDataURL("assets/image/dev-logo.png");
+      var doc = new jsPDF('l', 'in', 'a4');
+      doc.addImage(img,'JPEG',0,0);
+      doc.save('ticket.pdf');
+      });
+  }
+
+ 
+   
+
 }
