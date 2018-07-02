@@ -36,3 +36,145 @@
   color: blueviolet;
   font-weight: bold;
 }
+
+.ticket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  margin: 20px auto;
+}
+.ticket .stub, .ticket .check {
+  box-sizing: border-box;
+}
+
+.stub {
+  background: #5477af;
+  height: 250px;
+  width: 250px;
+  color: white;
+  padding: 20px;
+  position: relative;
+  border-top-left-radius: 50px 50px;
+  border-bottom-left-radius: 50px 50px;
+}
+.stub:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 20px solid #fff;
+  border-left: 20px solid #fff;
+  width: 0;
+}
+.stub:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom: 20px solid #fff;
+  border-left: 20px solid #fff;
+  width: 0;
+}
+.stub .top {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  text-transform: uppercase;
+}
+.stub .top .line {
+  display: block;
+  background: #fff;
+  height: 40px;
+  width: 3px;
+  margin: 0 20px;
+}
+.stub .top .num {
+  font-size: 10px;
+}
+.stub .top .num span {
+  color: #fff;
+}
+.stub .icon {
+  position: absolute;
+  left: 40px;
+  top: 100px;
+  font-size: 80px;
+}
+.stub .name {
+  position: absolute;
+  left: 150px;
+  bottom: 65px;
+  color: #000;
+  width: 20%;
+  font-weight: bold;
+}
+.stub .name:before {
+  content: '';
+  background: #fff;
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin-bottom: 5px;
+}
+
+.check {
+  background: #ccc;
+  height: 250px;
+  width: 450px;
+  padding: 40px;
+  position: relative;
+  border-top-right-radius: 50px 50px;
+  border-bottom-right-radius: 50px 50px;
+}
+.check:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 20px solid #fff;
+  border-right: 20px solid #fff;
+  width: 0;
+}
+.check:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom: 20px solid #fff;
+  border-right: 20px solid #fff;
+  width: 0;
+}
+.check .big {
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1em;
+}
+.check .info {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 12px;
+  margin-top: 20px;
+  width: 100%;
+}
+.check .info section {
+  margin-right: 40px;
+  width: 100px;
+}
+.check .info section:before {
+  content: '';
+  background: #5477af;
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin-bottom: 5px;
+}
+.check .info section .title {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.dark-modal .modal-content {
+  background-color: #ccc;
+  color: white;
+}

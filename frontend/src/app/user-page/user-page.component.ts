@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService, ConfigService, UserService } from '../service';
 import { User } from 'app/login/user';
 import { OrdersService } from '../service/orders.service';
-import {Cart} from '../shoppingcart'
+import {Cart} from '../shoppingcart';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-user-page',
@@ -21,6 +23,7 @@ export class UserPageComponent implements OnInit {
     private CartService: CartService,
     // tslint:disable-next-line:no-shadowed-variable
     private OrdersService: OrdersService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -42,7 +45,7 @@ export class UserPageComponent implements OnInit {
 
 
 
-getOrder(id: number) {
+getOrder(id: number, content) {
 
   this.OrdersService.viewOrder(id)
   .subscribe(
@@ -51,6 +54,7 @@ getOrder(id: number) {
        console.log(data);
     }
   );
+  this.modalService.open(content, {  windowClass: 'dark-modal' });
 }
 
   makeUser(res: any) {

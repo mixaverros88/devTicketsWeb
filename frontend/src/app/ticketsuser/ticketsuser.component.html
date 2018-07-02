@@ -25,7 +25,7 @@
               <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter>
               <button *ngIf="pr.available > 0" type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
               <button *ngIf="pr.available == 0" disabled type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
-              <p *ngIf="pr.available == 0" style="color:red;">Not available tickets for this event</p>
+              <p *ngIf="pr.available == 0" style="color:red;">Not available tickets</p>
             </div>
           </div>
     </div>
