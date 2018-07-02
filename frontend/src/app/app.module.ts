@@ -9,6 +9,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 // AoT requires an exported function for factories
@@ -66,6 +67,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { OrdersService } from './service/orders.service';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 export function initUserFactory(userService: UserService) {
@@ -95,6 +97,7 @@ export function initUserFactory(userService: UserService) {
     ContactComponent,
     CheckoutComponent,
     UserPageComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -114,6 +117,7 @@ export function initUserFactory(userService: UserService) {
     MatProgressSpinnerModule,
     FlexLayoutModule,
     NgbModule.forRoot(),
+    QRCodeModule,
     AngularFontAwesomeModule,
     HttpClientModule,
     AgmCoreModule.forRoot({

@@ -29,14 +29,24 @@ export class AuthService {
     });
   }
 
-  signup(user){
+  signup(user) {
     const signupHeaders = new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     });
-    return this.apiService.post(this.config.signup_url, JSON.stringify(user), signupHeaders).map(() =>{
+    return this.apiService.post(this.config.signup_url, JSON.stringify(user), signupHeaders).map(() => {
 
     });
+  }
+
+  resetPassword(email) {
+    const signupHeaders = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    });
+    console.log('hello');
+    return this.apiService.post(this.config.reset_password, JSON.stringify(email), signupHeaders)
+    .subscribe()
   }
 
   logout() {

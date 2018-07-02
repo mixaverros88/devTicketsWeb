@@ -76,6 +76,11 @@
   border-left: 20px solid #fff;
   width: 0;
 }
+.qr{
+  position: absolute;
+  top: 80px;
+  right: 50px;
+}
 .stub .top {
   display: flex;
   align-items: center;
@@ -98,7 +103,7 @@
 .stub .icon {
   position: absolute;
   left: 40px;
-  top: 100px;
+  top: 80px;
   font-size: 80px;
 }
 .stub .name {
