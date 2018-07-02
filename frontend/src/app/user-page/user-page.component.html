@@ -37,11 +37,11 @@
                 <span class="admit">DEVTicket</span>
                 <span class="line"></span>
                 <span class="num">
-                    Username
-                    <span>31415926</span>
+                   Code ALL Day
+                    
                 </span>
               </div>
-              <div class="icon"><span class="fa fa-ticket"></span></div>
+              <div class="icon"><span><img height="120" width="150" src='data:image/png;base64,{{data.ticket.image}}'> </span></div>
               <div class="name">
                   {{userName()}}
               </div>
@@ -74,7 +74,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
-        <button type="button" class="btn btn-danger" (click)="download()">Download</button>
+        <button type="button" class="btn btn-danger" (click)="download()">Download <span class="fa fa-file-pdf-o fa-fw"></span> </button>
       </div>
    
     </ng-template>

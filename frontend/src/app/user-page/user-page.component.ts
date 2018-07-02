@@ -78,7 +78,7 @@ getOrder(id: number, content) {
 
   userName() {
     const user = this.UserService.currentUser;
-    return user.firstname;
+    return user.firstname + ' ' + user.lastname;
   }
 
   userid() {

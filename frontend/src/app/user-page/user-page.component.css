@@ -102,9 +102,8 @@
 }
 .stub .icon {
   position: absolute;
-  left: 40px;
+  left: 20px;
   top: 80px;
-  font-size: 80px;
 }
 .stub .name {
   position: absolute;
