@@ -7,6 +7,8 @@ import com.devticket.repository.UserRepository;
 import com.devticket.service.AuthorityService;
 import com.devticket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by CodingFive Team  2018
@@ -35,12 +38,27 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private AuthorityService authService;
 
+    @Autowired MailSender mailSender;
+
     public void resetCredentials(String email) {
         User user = userRepository.findByLastname(email);
-//            byte[] array = new byte[7];
-//            new Random().nextBytes(array);
-//            String generatedString = new String(array, Charset.forName("UTF-8"));
-            user.setPassword(passwordEncoder.encode("123"));
+        UUID uuid = UUID.randomUUID();
+        String randomUUIDString = uuid.toString();
+        String generatedString= randomUUIDString.substring(0,5);
+        user.setPassword(passwordEncoder.encode(generatedString));
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setSubject("devTickets Reset Password");
+        message.setText("Hello from DevTickets .com  You Requested a Password Reset ----- YOUR NEW PASSWORD IS :" + generatedString );
+        message.setTo("dimoujohnprivate@gmail.com");
+        message.setFrom("mixalisgiorgosverros@gmail.com");
+        try {
+            mailSender.send(message);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+
+        }
             userRepository.save(user);
 
     }

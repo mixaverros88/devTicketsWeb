@@ -45,7 +45,7 @@ export class AuthService {
       'Content-Type': 'application/json'
     });
     console.log('hello');
-    return this.apiService.post(this.config.reset_password, JSON.stringify(email), signupHeaders)
+    return this.apiService.post(this.config.resetPassword(), email, signupHeaders)
     .subscribe()
   }
 

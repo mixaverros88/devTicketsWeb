@@ -32,16 +32,13 @@ export class ConfigService {
 
   private _users_url = this._user_url + '/all';
 
-  private _reset_credentials_url = this._user_url + '/reset-credentials';
+  private _reset_credentials_url = this._api_url +  '/resetpassword';
 
   private _foo_url = this._api_url + '/foo';
 
   private _signup_url = this._api_url + '/signup';
 
-  private _resset_password_url = this._api_url + '/resetpassword';
-
   private _addtocart_url = this._api_url + '/addcart/';
-
   private _delete_from_cart = this._api_url + '/deletecartitem/';
 
   private _checkout_url = this._api_url + '/checkout/';
@@ -50,9 +47,6 @@ export class ConfigService {
 
   private _view_order_ = this._my_orders_ + 'getorder/';
 
-  get reset_credentials_url(): string {
-      return this._reset_credentials_url;
-  }
 
 
   get refresh_token_url(): string {
@@ -115,6 +109,11 @@ return this._addticket_url ;
   getOrder(id: number): string {
 
     return this._view_order_ + id.toString();
+  }
+
+  resetPassword(): string {
+
+    return this._reset_credentials_url;
 
   }
 
@@ -152,9 +151,5 @@ return this._addticket_url ;
   get signup_url(): string {
       return this._signup_url;
   }
-
-  get reset_password(): string {
-    return this._resset_password_url;
-}
 
 }

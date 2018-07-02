@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,6 +22,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.Properties;
 
 /**
  * Created by CodingFive Team  2018
@@ -57,20 +60,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public MailSender mailSender() {
-        return new MailSender() {
-            @Override
-            public void send(SimpleMailMessage simpleMailMessage) throws MailException {
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
 
-            }
+        mailSender.setUsername("mixalisgiorgosverros@gmail.com");
+        mailSender.setPassword("mixalis1029");
 
-            @Override
-            public void send(SimpleMailMessage[] simpleMailMessages) throws MailException {
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
 
-            }
-
-        };
+        return mailSender;
     }
+
 
             @Bean
             public PasswordEncoder passwordEncoder() {

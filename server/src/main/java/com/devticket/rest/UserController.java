@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -56,20 +57,6 @@ public class UserController {
         this.userService.resetCredentials(email);
         Map<String, String> result = new HashMap<>();
         result.put("result", "success");
-
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setText("Hello from Spring Boot Application");
-            message.setTo("dimoujohnprivate@gmail.com");
-            message.setFrom("mixalisgiorgosverros@gmail.com");
-            try {
-                mailSender.send(message);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            }
-
-
         return ResponseEntity.accepted().body(result);
 
     }

@@ -27,10 +27,6 @@ export class UserService {
     return promise;
   }
 
-  resetCredentials() {
-    return this.apiService.get(this.config.reset_credentials_url);
-  }
-
   getMyInfo() {
 
     return this.apiService.get(this.config.whoami_url).map(user => this.currentUser = user);
