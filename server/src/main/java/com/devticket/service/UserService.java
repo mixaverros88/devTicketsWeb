@@ -11,13 +11,15 @@ import java.util.List;
  */
 
 public interface UserService {
-    void resetCredentials();
+    void resetCredentials(String lastname);
 
     User findById(Long id);
 
     User findByUsername(String username);
 
     List<User> findAll();
+
+    User findByLastname(String lastname);
 
     User save(UserRequest user);
 }

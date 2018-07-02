@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.MailException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -53,30 +57,47 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public MailSender mailSender() {
+        return new MailSender() {
+            @Override
+            public void send(SimpleMailMessage simpleMailMessage) throws MailException {
+
+            }
+
+            @Override
+            public void send(SimpleMailMessage[] simpleMailMessages) throws MailException {
+
+            }
+
+        };
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder)
-            throws Exception {
-        authenticationManagerBuilder.userDetailsService(jwtUserDetailsService)
-                .passwordEncoder(passwordEncoder());
+            @Bean
+            public PasswordEncoder passwordEncoder() {
+                return new BCryptPasswordEncoder();
+            }
 
-    }
+            @Autowired
+            public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder)
+                    throws Exception {
+                authenticationManagerBuilder.userDetailsService(jwtUserDetailsService)
+                        .passwordEncoder(passwordEncoder());
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/api/login", "/api/signup")
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
-                .addFilterBefore(jwtAuthenticationTokenFilter(), BasicAuthenticationFilter.class)
-                .authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/api/login")
-                .successHandler(authenticationSuccessHandler).failureHandler(authenticationFailureHandler)
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/api/logout"))
-                .logoutSuccessHandler(logoutSuccess).deleteCookies(TOKEN_COOKIE);
+            }
 
-    }
+            @Override
+            protected void configure(HttpSecurity http) throws Exception {
+                http.csrf().ignoringAntMatchers("/api/login", "/api/signup")
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+                        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                        .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+                        .addFilterBefore(jwtAuthenticationTokenFilter(), BasicAuthenticationFilter.class)
+                        .authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/api/login")
+                        .successHandler(authenticationSuccessHandler).failureHandler(authenticationFailureHandler)
+                        .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/api/logout"))
+                        .logoutSuccessHandler(logoutSuccess).deleteCookies(TOKEN_COOKIE);
 
-}
+            }
+
+        }
+

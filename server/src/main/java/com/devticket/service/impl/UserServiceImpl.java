@@ -13,7 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by CodingFive Team  2018
@@ -33,12 +35,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private AuthorityService authService;
 
-    public void resetCredentials() {
-        List<User> users = userRepository.findAll();
-        for (User user : users) {
+    public void resetCredentials(String email) {
+        User user = userRepository.findByLastname(email);
+//            byte[] array = new byte[7];
+//            new Random().nextBytes(array);
+//            String generatedString = new String(array, Charset.forName("UTF-8"));
             user.setPassword(passwordEncoder.encode("123"));
             userRepository.save(user);
-        }
+
     }
 
     @Override
@@ -72,6 +76,11 @@ public class UserServiceImpl implements UserService {
         user.setAuthorities(auth);
         this.userRepository.save(user);
         return user;
+    }
+
+    @Override
+    public User findByLastname(String lastname){
+    return this.userRepository.findByLastname(lastname);
     }
 
 }

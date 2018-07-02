@@ -9,6 +9,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +38,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MailSender mailSender;
+
     @RequestMapping(method = GET, value = "/user/{userId}")
     public User loadById(@PathVariable Long userId) {
         return this.userService.findById(userId);
@@ -46,12 +51,27 @@ public class UserController {
         return this.userService.findAll();
     }
 
-    @RequestMapping(method = GET, value = "/user/reset-credentials")
-    public ResponseEntity<Map> resetCredentials() {
-        this.userService.resetCredentials();
+    @RequestMapping(method = POST, value = "/resetpassword")
+    public ResponseEntity<Map> resetCredentials(@RequestBody String email) {
+        this.userService.resetCredentials(email);
         Map<String, String> result = new HashMap<>();
         result.put("result", "success");
+
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setText("Hello from Spring Boot Application");
+            message.setTo("dimoujohnprivate@gmail.com");
+            message.setFrom("mixalisgiorgosverros@gmail.com");
+            try {
+                mailSender.send(message);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+
         return ResponseEntity.accepted().body(result);
+
     }
 
 
