@@ -62,14 +62,6 @@ getOrder(id: number, content) {
   this.modalService.open(content, {  windowClass: 'dark-modal' });
 }
 
-  makeUser(res: any) {
-    let user = {} as User;
-    console.log(res);
-    user = JSON.parse(res);
-    console.log(user.id);
-    this.CurrentUserId = user.id;
-
-  }
 
   myOrders() {
     const user = this.UserService.currentUser;
