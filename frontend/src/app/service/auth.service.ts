@@ -54,9 +54,8 @@ export class AuthService {
     return this.apiService.post(this.config.logout_url, {})
       .map(() => {
         this.userService.currentUser = null;
-
+        this.cartService.clearCart();
       });
-      this.cartService.clearCart();
   }
 
   changePassowrd(passwordChanger) {
