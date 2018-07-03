@@ -3,6 +3,7 @@ package com.devticket.service;
 import com.devticket.model.user.User;
 import com.devticket.model.user.UserRequest;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 
 public interface UserService {
-    void resetCredentials(String lastname);
+    void resetCredentials(String lastname) throws MessagingException;
 
     User findById(Long id);
 

@@ -146,7 +146,7 @@ export class TicketsCrudComponent implements OnInit {
         this.modalRef.close());
         this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
        delay(3300);
-        this.getProducts();
+       ;
   }
 
   getProducts() {
