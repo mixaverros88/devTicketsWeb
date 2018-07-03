@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.mail.MessagingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,7 @@ public class UserController {
     }
 
     @RequestMapping(method = POST, value = "/resetpassword")
-    public ResponseEntity<Map> resetCredentials(@RequestBody String email) {
+    public ResponseEntity<Map> resetCredentials(@RequestBody String email) throws MessagingException {
         this.userService.resetCredentials(email);
         Map<String, String> result = new HashMap<>();
         result.put("result", "success");
