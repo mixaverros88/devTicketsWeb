@@ -37,10 +37,10 @@ export class TicketsuserComponent implements OnInit {
 
   addtoCart(id: number) {
     return this.CartService.addtoCart(id);
+
           }
 
   getProducts() {
-
     this.TicketService.getAll()
     .subscribe(
       (data: any []) => {

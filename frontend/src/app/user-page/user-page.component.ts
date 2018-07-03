@@ -78,7 +78,7 @@ getOrder(id: number, content) {
 
   userName() {
     const user = this.UserService.currentUser;
-    return user.firstname + ' ' + user.lastname;
+    return user.firstname ;
   }
 
   userid() {
@@ -86,16 +86,16 @@ getOrder(id: number, content) {
     return user.id;
   }
 
-  download(){
+  download() {
     html2canvas(document.getElementById('export')).then(function(canvas) {
-      var img = canvas.toDataURL("assets/image/dev-logo.png");
-      var doc = new jsPDF('l', 'in', 'a4');
-      doc.addImage(img,'JPEG',0,0);
+      const img = canvas.toDataURL('assets/image/dev-logo.png');
+      const doc = new jsPDF('l', 'in', 'a4');
+      doc.addImage(img, 'JPEG', 0, 0);
       doc.save('ticket.pdf');
       });
   }
 
- 
-   
+
+
 
 }

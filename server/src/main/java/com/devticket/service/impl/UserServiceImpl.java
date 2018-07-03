@@ -92,6 +92,7 @@ public class UserServiceImpl implements UserService {
         //List<Authority> auth = authService.findByname("ROLE_USER");
         List<Authority> auth = authService.findById(1l);
         user.setAuthorities(auth);
+
         this.userRepository.save(user);
         return user;
     }
