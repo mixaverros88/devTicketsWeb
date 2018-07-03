@@ -25,6 +25,7 @@ export class AuthService {
     const body = `username=${user.username}&password=${user.password}`;
     return this.apiService.post(this.config.login_url, body, loginHeaders).map(() => {
       this.userService.getMyInfo().subscribe();
+      this.cartService.clearCart();
 
     });
   }
@@ -55,6 +56,7 @@ export class AuthService {
         this.userService.currentUser = null;
 
       });
+      this.cartService.clearCart();
   }
 
   changePassowrd(passwordChanger) {
