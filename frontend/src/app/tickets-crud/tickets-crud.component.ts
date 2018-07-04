@@ -5,8 +5,12 @@ import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DatePicker } from './datePicker';
+import { ChartsModule } from 'ng2-charts';
+
+// In your App's module:
 
 import {
+
   ConfigService,
   UserService,
   CartService,
