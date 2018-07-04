@@ -10,6 +10,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { QRCodeModule } from 'angularx-qrcode';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
 
 
 
@@ -122,6 +124,7 @@ export function initUserFactory(userService: UserService) {
     MatProgressSpinnerModule,
     FlexLayoutModule,
     NgbModule.forRoot(),
+    Ng4LoadingSpinnerModule.forRoot(),
     QRCodeModule,
     AngularFontAwesomeModule,
     HttpClientModule,

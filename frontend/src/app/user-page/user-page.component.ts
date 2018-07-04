@@ -6,12 +6,14 @@ import {Cart} from '../shoppingcart';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+
 
 
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
-  styleUrls: ['./user-page.component.css']
+  styleUrls: ['./user-page.component.css'],
 })
 export class UserPageComponent implements OnInit {
   data: any[];
@@ -26,7 +28,8 @@ export class UserPageComponent implements OnInit {
     private CartService: CartService,
     // tslint:disable-next-line:no-shadowed-variable
     private OrdersService: OrdersService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private spinnerService: Ng4LoadingSpinnerService
   ) {
     this.myAngularxQrCode = this.userid();
   }
@@ -36,13 +39,14 @@ export class UserPageComponent implements OnInit {
   }
 
   getMyOrders() {
-
+    this.spinnerService.show();
     this.myOrders()
     .subscribe(
       (data: any []) => {
        if ( data.length ) {
           this.data = data;
          console.log(data);
+         this.spinnerService.hide();
        }
       }
     );
