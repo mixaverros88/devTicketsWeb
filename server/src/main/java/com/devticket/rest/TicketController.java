@@ -45,7 +45,7 @@ public class TicketController {
     }
 
     @RequestMapping(
-            value = "/student/get",
+            value = "/tickets/get",
             params = { "page", "size" },
             method = RequestMethod.GET
     )
