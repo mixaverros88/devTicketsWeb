@@ -5,6 +5,8 @@ import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.repository.TicketRepository;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,12 @@ public class TicketServiceImpl implements TicketService {
     public Ticket findById(Long id) throws AccessDeniedException {
         Ticket ticket = ticketRepository.findByid(id);
         return ticket;
+    }
+
+    @Override
+    public Page<Ticket> findPaginated(int page, int size) {
+       Page<Ticket>  tee = ticketRepository.findAll(new PageRequest(page, size));
+       return  tee;
     }
 
 

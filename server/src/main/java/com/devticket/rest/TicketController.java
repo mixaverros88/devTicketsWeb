@@ -4,6 +4,7 @@ import com.devticket.model.ticket.Ticket;
 import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +42,22 @@ public class TicketController {
     @RequestMapping(method = GET, value = "/ticket/all")
     public List<Ticket> loadAll() {
         return this.ticketService.findAll();
+    }
+
+    @RequestMapping(
+            value = "/student/get",
+            params = { "page", "size" },
+            method = RequestMethod.GET
+    )
+    public Page<Ticket> findPaginated(
+            @RequestParam("page") int page, @RequestParam("size") int size) {
+
+        Page<Ticket> resultPage = ticketService.findPaginated(page, size);
+        if (page > resultPage.getTotalPages()) {
+            //throw new MyResourceNotFoundException();
+        }
+
+        return resultPage;
     }
 
     @RequestMapping(method = DELETE, value = "/ticket/delete/{ticketId}")
