@@ -1,48 +1,39 @@
-<nav  class="navbar navbar-dark bg-primary">
-  <button style="background-color:#424954;"class="btn " routerLink="/">
-    <img alt="DevTicketPlace" class="app-angular-logo" style="height: 70px;" src="assets/image/dev-logo.png">
-    
+<nav class="navbar navbar-dark bg-primary">
+  <button style="background-color:#424954;" class="btn " routerLink="/">
+    <img alt="DevTicketPlace" class="app-angular-logo" src="assets/image/dev-logo.png">
   </button>
-  
+
 
   <div class="float-right">
-      
-  <label>
-      <select class="selectLang" #langSelect (change)="translate.use(langSelect.value)">
+
+    <label>
+      <select class="lan-sel" #langSelect (change)="translate.use(langSelect.value)">
         <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
       </select>
     </label>
-      <button *ngIf="!hasSignedIn()" routerLink="/signup" class="btn btn-primary">
-        <span>{{ 'SIGNUP' | translate }}</span>
-      </button>
-      <button *ngIf="!hasSignedIn()" routerLink="/login" class="btn btn-primary">
-        <span>{{ 'LOGIN' | translate }}</span>
-      </button>
-      <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="btn btn-primary" routerLink="/ticketscrud">{{ 'ADMINPAGE' | translate }}</button>
-      <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="btn btn-primary" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
-      <button  *ngIf="hasSignedIn() && userRole()==='ROLE_USER'"class="btn btn-primary" routerLink="/ticketcard">Cart <span class="fa fa-shopping-cart fa-fw"><span class="badge badge-light">{{cartValue()}} €</span></span></button>
-      <button
-        class="greeting-button"
-        *ngIf="hasSignedIn()"
-        mat-button mat-ripple
-        [matMenuTriggerFor]="accountMenu">
-        <span><span class="fa fa-user fa-fw"></span>{{'WELCOME' | translate}}, {{userName()}} 
-        </span>  
-      </button>
-      <button
-        class="greeting-hamburger"
-        *ngIf="hasSignedIn()"
-        mat-icon-button mat-ripple
-        [matMenuTriggerFor]="accountMenu">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <mat-menu #accountMenu
-        class="app-header-accountMenu"
-        yposition="below"
-        [overlapTrigger]="false">
-        <app-account-menu ></app-account-menu>
-      </mat-menu>
-    
-    </div>
-</nav>
+    <button *ngIf="!hasSignedIn()" routerLink="/signup" class="my-button">
+      <span>{{ 'SIGNUP' | translate }}</span>
+    </button>
+    <button *ngIf="!hasSignedIn()" routerLink="/login" class="my-button">
+      <span>{{ 'LOGIN' | translate }}</span>
+    </button>
+    <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="my-button" routerLink="/ticketscrud">{{ 'ADMINPAGE' | translate }}</button>
+    <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
+    <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketcard">Cart
+      <span class="fa fa-shopping-cart fa-fw"></span>
+      <span class="badge badge-light">{{cartValue()}} €</span>
+    </button>
+    <button class="greeting-button" *ngIf="hasSignedIn()" mat-button mat-ripple [matMenuTriggerFor]="accountMenu">
+      <span>
+        <span class="fa fa-user fa-fw"></span>{{'WELCOME' | translate}}, {{userName()}}
+      </span>
+    </button>
+    <button class="greeting-hamburger" *ngIf="hasSignedIn()" mat-icon-button mat-ripple [matMenuTriggerFor]="accountMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #accountMenu class="app-header-accountMenu" yposition="below" [overlapTrigger]="false">
+      <app-account-menu></app-account-menu>
+    </mat-menu>
 
+  </div>
+</nav>
