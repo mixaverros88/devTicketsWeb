@@ -213,14 +213,26 @@ html {
   background-color: #fafafa;
 }
 
+.programmingLang{
+  font-size: 100px;
+}
+
+.programmingLang:hover{
+  font-size: 105px;
+  transition: 0.5s;
+}
+.minHeight{
+  min-height: 106px;
+}
+
 .top-hero {
   background-color: #fafafa;
-  background-image: linear-gradient(rgba($color-gunmetal, .75), rgba($color-gunmetal, .75)), url("https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=&bg=");
+  background-image: linear-gradient(rgba($color-gunmetal, .75), rgba($color-gunmetal, .75)), url("https://cdn-images-1.medium.com/max/1600/1*-hsULYUNVpmqEwWPdEvOZA.gif");
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed;
   // min-height: 800px;
-  height: 100vh;
+  height: 80vh;
   padding-top: 125px;
   
   
