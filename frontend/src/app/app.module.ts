@@ -74,6 +74,7 @@ import { OrdersService } from './service/orders.service';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChartsModule } from 'ng2-charts';
 import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
+import { ProductpageComponent } from './productpage/productpage.component';
 
 export function initUserFactory(userService: UserService) {
     return () => userService.initUser();
@@ -103,7 +104,8 @@ export function initUserFactory(userService: UserService) {
     CheckoutComponent,
     UserPageComponent,
     ResetPasswordComponent,
-    AdminPanelComponentComponent
+    AdminPanelComponentComponent,
+    ProductpageComponent
   ],
   imports: [
     ChartsModule,
