@@ -8,7 +8,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { QRCodeModule } from 'angularx-qrcode';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
@@ -131,7 +131,8 @@ export function initUserFactory(userService: UserService) {
     AngularFontAwesomeModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAdhieodd82faXY6cWOfet7YeS7ZLVXhjc'
+      apiKey: 'AIzaSyAdhieodd82faXY6cWOfet7YeS7ZLVXhjc',
+      libraries: ['places']
     }),
         TranslateModule.forRoot({
             loader: {
@@ -158,7 +159,8 @@ export function initUserFactory(userService: UserService) {
       'useFactory': initUserFactory,
       'deps': [UserService],
       'multi': true
-    }
+    },
+    GoogleMapsAPIWrapper
   ],
   bootstrap: [AppComponent]
 })

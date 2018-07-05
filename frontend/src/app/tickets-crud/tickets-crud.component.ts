@@ -1,11 +1,12 @@
 import { DatePicketPopupComponent } from './../date-picket-popup/date-picket-popup.component';
 import { TicketService } from './../service/ticket.service';
-import { Component, OnInit, Injectable, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Injectable, ElementRef, ViewChild, Input, NgZone } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DatePicker } from './datePicker';
 import { ChartsModule } from 'ng2-charts';
+import { } from 'googlemaps';
 
 // In your App's module:
 
@@ -20,6 +21,7 @@ import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { delay } from 'q';
+import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -71,6 +73,23 @@ export class TicketsCrudComponent implements OnInit {
 
   closeResult: string;
 
+  // fields used for google maps and geolocation
+  @Input() usePanning = false;
+  private obj: { 'latitude': number, 'longitude': number} [] = [];
+  public latitude: number;
+  public longitude: number;
+  public userLatitude: number;
+  public userLongitude: number;
+  public userIcon: string;
+  private searchControl: FormControl;
+  private zoom: number;
+  private mapType: string;
+  private index: number;
+  private tracked = false;
+
+  @ViewChild('locationInput')
+  public searchElementRef: ElementRef;
+
 
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
@@ -78,7 +97,12 @@ export class TicketsCrudComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private CartService: CartService,
     private modalService: NgbModal,
-  private fb: FormBuilder) {
+    private fb: FormBuilder,
+    // google maps
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private _mapsWrapper: GoogleMapsAPIWrapper
+  ) {
 
     this.userDetailsForm = fb.group({
       'name': [null, Validators.compose(
@@ -95,7 +119,108 @@ export class TicketsCrudComponent implements OnInit {
 
   }
 
+  ngOnInit() {
 
+    this.getProducts();
+    this.customOnInit();
+
+    this.userDetailsForm = new FormGroup({
+      date: new FormControl(''),
+      name: new FormControl(''),
+      description: new FormControl(''),
+      price: new FormControl(''),
+      available: new FormControl(''),
+      location: new FormControl(''),
+      image: new FormControl(''),
+      language: new FormControl('')
+    });
+  }
+
+  customOnInit() {
+    // set google maps defaults
+    // this.myLocation();
+    this.index = 0;
+    this.zoom = 14;
+    this.latitude = 37.97565120000001;
+    this.longitude = 23.73400079999999;
+    this.mapType = 'roadmap';
+    this.userIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+
+    // create search FormControl
+    this.searchControl = new FormControl();
+
+    // set current position
+    this.setCurrentPosition();
+
+    // load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: [], // change: from ['address'] to [], in order to include all options (address, establishments & geocodes)
+      });
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          // get the place result
+          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          // verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          // set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.zoom = 14;
+          this.index++;
+          console.log(place.formatted_address);
+          this.location = place.formatted_address;
+          const helper = {
+            'latitude': this.latitude,
+            'longitude': this.longitude
+          };
+          this.obj.push(helper);
+          console.log(this.obj);
+        });
+      });
+    });
+  }
+
+  private setCurrentPosition() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.userLatitude = position.coords.latitude;
+        this.userLongitude = position.coords.longitude;
+        this.zoom = 14;
+        console.log(this.userLatitude);
+        console.log(this.userLongitude);
+      });
+    }
+  }
+
+  setMapType(mapTypeId: string) {
+    this.mapType = mapTypeId;
+  }
+
+  myLocation() {
+    this.setCurrentPosition();
+    this.latitude = this.userLatitude;
+    this.longitude = this.userLongitude;
+    this._setCenter();
+    this.tracked = true;
+  }
+
+  private _setCenter() {
+    console.log('ok');
+    const newCenter = {
+      lat: this.latitude,
+      lng: this.longitude,
+    };
+    if (this.usePanning) {
+      this._mapsWrapper.panTo(newCenter);
+    } else {
+      this._mapsWrapper.setCenter(newCenter);
+    }
+  }
 
   open(content) {
     this.modalRefInsert = this.modalService.open(content);
@@ -115,23 +240,6 @@ export class TicketsCrudComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
-  ngOnInit() {
-
-    this.getProducts();
-    this.userDetailsForm = new FormGroup({
-      date: new FormControl(''),
-      name: new FormControl(''),
-      description: new FormControl(''),
-      price: new FormControl(''),
-      available: new FormControl(''),
-      location: new FormControl(''),
-      image: new FormControl(''),
-      language: new FormControl('')
-    });
-
-  }
-
 
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
     const ticket = {} as Ticket;
@@ -163,11 +271,11 @@ export class TicketsCrudComponent implements OnInit {
 
   currentDate() {
     const currentDate = new Date();
-    
+
     return currentDate;
   }
 
-  setDate(month: any,day:any,year:any) {
+  setDate(month: any, day: any, year: any) {
     const currentDate = new Date();
     currentDate.setDate(day);
     currentDate.setMonth(month);
@@ -178,10 +286,10 @@ export class TicketsCrudComponent implements OnInit {
 
   onChangeForm() {
     // console.log(this.userDetailsForm.controls['date'].value);
-   
+
   const date = this.userDetailsForm.controls['date'].value;
   let newDate = new Date();
-  newDate = this.setDate(date.month,date.day,date.year);
+  newDate = this.setDate(date.month, date.day, date.year);
    console.log(newDate);
    this.date = newDate;
     // console.log('-->' + this.date.month);
