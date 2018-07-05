@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -8,13 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  title: string = 'My first AGM project';
-  lat: number = 38.049506;
-  lng: number = 23.788381;
+  title = 'My first AGM project';
+  lat = 38.049506;
+  lng = 23.788381;
+
+  @ViewChild('email')
+  email: ElementRef;
+
+  emailTypes = [
+    '@gmail',
+    '@yahoo',
+    '@hotmail',
+    '@outlook',
+    '@protonmail',
+    '@zoho'
+  ];
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmitContact() {
+
+    // console.log(this.email.nativeElement.value);
+    if ( !this.email.nativeElement.value ) {
+      alert('Please type your email');
+      return;
+    }
+    const splitter = this.email.nativeElement.value.split('@');
+    // console.log(splitter);
+    const emailProvider = splitter[1].split('.');
+    if ( !this.emailTypes.includes('@' + emailProvider[0]) ) {
+      alert('Please provide a valid email!');
+    }
+  }
 }

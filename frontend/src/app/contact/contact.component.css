@@ -2,16 +2,27 @@ agm-map {
     height: 300px;
   }
 
-.line-separator{
+.line-separator {
     height:2px;
     background:#EF233C;
     border-bottom:1px solid #EF233C;
     width: 100px;
     margin:auto;
-    }
-.form-width{
+}
+
+.form-width {
   width: 80%;
 }
-.card-height{
+
+.card-height {
   height: 200px;
+}
+
+.centralizeFavicon {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.centralizeForm {
+  padding-left: 14%;
 }

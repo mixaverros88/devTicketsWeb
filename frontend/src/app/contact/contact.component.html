@@ -1,76 +1,104 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 mt-4">
-        <div class="card text-center card-height">
-            <div class="card-block">
-                <h2><i class="fa fa-map-marker fa-2x"></i></h2>
-            </div>
-            <div class="row px-2 no-gutters">
-                    <h3 class="card card-block text-center border-0">Pelika ke Spartis, Μαρούσι 151 22</h3>
-            </div>
+      <div class="card text-center card-height">
+        <div class="card-block">
+          <h2>
+            <i class="fa fa-map-marker fa-2x centralizeFavicon"></i>
+          </h2>
         </div>
+        <div class="row px-2 no-gutters">
+          <h3 class="card card-block text-center border-0">Pelika ke Spartis, Μαρούσι 151 22</h3>
+        </div>
+      </div>
     </div>
     <div class="col-md-4 mt-4">
-        <div class="card text-center card-height">
-            <div class="card-block">
-                <h2><i class="fa fa-envelope fa-2x"></i></h2>
-            </div>
-            <div class="row px-2 no-gutters">
-                    <h3 class="card card-block text-center border-0" style="margin:auto;">info@devtickets.com</h3>
-            </div>
+      <div class="card text-center card-height">
+        <div class="card-block">
+          <h2>
+            <i class="fa fa-envelope fa-2x centralizeFavicon"></i>
+          </h2>
         </div>
+        <div class="row px-2 no-gutters">
+          <h3 class="card card-block text-center border-0" style="margin:auto; padding-left: 10%">info@devtickets.com</h3>
+        </div>
+      </div>
     </div>
     <div class="col-md-4 mt-4">
-        <div class="card text-center card-height">
-            <div class="card-block">
-                <h2><i class="fa fa-phone fa-2x"></i></h2>
-            </div>
-            <div class="row px-2 no-gutters">
-                    <h3 class="card card-block text-center border-0" style="margin:auto;">210 1111 222</h3>
-            </div>
+      <div class="card text-center card-height">
+        <div class="card-block">
+          <h2>
+            <i class="fa fa-phone fa-2x centralizeFavicon"></i>
+          </h2>
         </div>
+        <div class="row px-2 no-gutters">
+          <h3 class="card card-block text-center border-0" style="margin:auto; padding-left: 10%">(0030) 210 1111 222</h3>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="row">
-      <div class="col-md-12">
-        <h3 class="text-center mt-3">Contact Us</h3>
-        <div class="line-separator mb-3"></div>
-      </div>
+    <div class="col-md-12">
+      <h3 class="text-center mt-3">Contact Us</h3>
+      <div class="line-separator mb-3"></div>
     </div>
+  </div>
+
+
+</div>
+
+<div class="container-fluid">
   <div class="row">
-      <div class="col-md-12 align-items-center">
-          <form class="">
-              <!-- name -->
-              <div class="input-group mb-3 form-width">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1"><span class="fa fa-user"></span></span>
-                </div>
-                <input type="text" class="form-control" placeholder="name" aria-label="Name" aria-describedby="basic-addon1">
-              </div>
-          
-              <!-- Email -->
-              <div class="input-group mb-3 form-width">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">@</span>
-                </div>
-                <input type="text" class="form-control" placeholder="email" aria-label="Email" aria-describedby="basic-addon1">
-              </div>
-          
-              <!-- Text Area -->
-              <div class="input-group form-width">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><span class="fa fa-envelope"></span></span>
-                </div>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-              </div> 
-            </form>
-      </div>
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8 align-items-center">
+      <form class="centralizeForm">
+        <!-- name -->
+        <div class="input-group mb-3 form-width">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <span class="fa fa-user"></span>
+            </span>
+          </div>
+          <input type="text" class="form-control" placeholder="name" aria-label="Name" aria-describedby="basic-addon1">
+        </div>
+
+        <!-- Email -->
+        <div class="input-group mb-3 form-width">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input type="text" class="form-control" placeholder="email" #email aria-label="Email" aria-describedby="basic-addon1">
+        </div>
+
+        <!-- Text Area -->
+        <div class="input-group form-width">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-envelope"></span>
+            </span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea" placeholder="Type your message here."></textarea>
+        </div>
+        <div class="row" style="height: 5px;"></div>
+        <div class="btn btn-primary" (click)="onSubmitContact()">Contact</div>
+      </form>
+    </div>
+    <div class="col-md-2">
+
+    </div>
   </div>
 </div>
 
+
+<div class="row" style="height: 10px;"></div>
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
 <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng">
   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
+
+<div class="row" style="height: 7px;"></div>
