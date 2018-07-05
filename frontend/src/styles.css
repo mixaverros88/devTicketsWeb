@@ -10,6 +10,21 @@ body {
   ;
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: "Trebuchet MS";
+}
+
+p {
+  font-family: sans-serif;
+}
+
+.col-md-4 {
+  -ms-flex: 0 0 33.333333%;
+  -webkit-box-flex: 0;
+  flex: 0 0 33.333333%;
+  max-width: 31.333333%;
+}
+
 .selectLang {
   background-color: #007bff;
   border: 1px solid #007bff;
