@@ -39,14 +39,12 @@ export class UserPageComponent implements OnInit {
   }
 
   getMyOrders() {
-    this.spinnerService.show();
     this.myOrders()
     .subscribe(
       (data: any []) => {
        if ( data.length ) {
           this.data = data;
-         console.log(data);
-         this.spinnerService.hide();
+         console.log(data);  
        }
       }
     );
