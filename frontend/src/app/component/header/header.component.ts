@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { Cart } from '../../shoppingcart/Cart';
 import { CartItem } from '../../shoppingcart/CartItem'
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   roleAccess = { 'ROLE_ADMIN': true, 'ROLE_USER': true }
 
-
   logout() {
     this.authService.logout().subscribe(res => {
       this.router.navigate(['/login']);
@@ -42,7 +41,6 @@ export class HeaderComponent implements OnInit {
   hasSignedIn() {
     return !!this.userService.currentUser;
   }
-
 
   userRole() {
     const user = this.userService.currentUser;
@@ -55,17 +53,15 @@ export class HeaderComponent implements OnInit {
 
   userName() {
     const user = this.userService.currentUser;
-    return user.firstname ;
+    return user.firstname;
   }
 
   cartValue() {
-return this.cartService.cartValue() ;
-     }
-cartUniqueItems() {
-return this.cartService.cartUniqueItems() ;
-}
+    return this.cartService.cartValue();
+  }
 
-
-
+  cartUniqueItems() {
+    return this.cartService.cartUniqueItems();
+  }
 
 }
