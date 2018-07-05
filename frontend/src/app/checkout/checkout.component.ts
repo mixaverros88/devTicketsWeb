@@ -24,7 +24,6 @@ export class CheckoutComponent implements OnInit {
     private modalService: NgbModal) {
   }
   ngOnInit() {
-    
     this.data = this.CartService.getCartProducts();
   }
 
@@ -64,6 +63,7 @@ export class CheckoutComponent implements OnInit {
     console.log(this.CurrentUserId);
     delay(3000);
     this.CartService.checkout(this.CurrentUserId);
+    this.CartService.clearCart();
     this.modalService.open(content, { size: 'lg' });
   }
 

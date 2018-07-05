@@ -14,12 +14,8 @@ export class CartService {
         private apiService: ApiService,
         private config: ConfigService,
         private httpClient: HttpClient,
-        
 
     ) { }
-    // tslint:disable-next-line:member-ordering
-
-    // tslint:disable-next-line:member-ordering
 
     addtoCart(id: number) {
         let cart = {} as Cart;
@@ -113,8 +109,8 @@ export class CartService {
     clearCart() {
     localStorage.removeItem('cart');
       }
-     getCartProducts(){
-        let g =JSON.stringify(this.getCart().cart);
+     getCartProducts() {
+        const g = JSON.stringify(this.getCart().cart);
         let carter: CartItem[];
          carter  = JSON.parse(g);
          return carter;

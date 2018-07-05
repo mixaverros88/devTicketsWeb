@@ -38,22 +38,22 @@ export class ShoppingcartComponent implements OnInit {
  this.data = this.CartService.getCartProducts();
   }
 
-  deleteFromCart(id: number ){
+  deleteFromCart(id: number ) {
 this.CartService.deletefromCart(id);
 console.log(this.CartService.getCart());
 this.ngOnInit();
   }
 
-  getRawValue(){
+  getRawValue() {
     return this.CartService.cartValue();
   }
 
-  getTax(){
-    const final =(((this.CartService.cartValue()) *5) / 100) ;
+  getTax() {
+    const final = (((this.CartService.cartValue()) * 5) / 100) ;
 return final;
   }
 
-  getCartValue(){
+  getCartValue() {
   let final = this.CartService.cartValue();
   final = final + this.getTax();
   final = final + 5;
@@ -66,7 +66,7 @@ this.ngOnInit();
 console.log('Cart Cleared Succesfully');
   }
 
-  checkout(id: number){
+  checkout(id: number) {
 
     this.CartService.checkout(id);
   }

@@ -5,10 +5,14 @@ import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.repository.TicketRepository;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,6 +37,12 @@ public class TicketServiceImpl implements TicketService {
         return ticket;
     }
 
+    @Override
+    public Page<Ticket> findPaginated(int page, int size) {
+       Page<Ticket>  tee = ticketRepository.findAll(new PageRequest(page, size));
+       return  tee;
+    }
+
 
     @PreAuthorize("hasRole('USER')")
     public List<Ticket> findAll() throws AccessDeniedException {
@@ -48,6 +58,8 @@ public class TicketServiceImpl implements TicketService {
         ticket.setLanguage(ticketrequest.getLocation());
         ticket.setPrice(ticketrequest.getPrice());
         ticket.setImage(ticketrequest.getImage());
+        Date date = new Date();
+        
         ticket.setDate(ticketrequest.getDate());
         ticket.setLocation(ticketrequest.getLocation());
 

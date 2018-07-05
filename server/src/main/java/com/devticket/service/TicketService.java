@@ -2,6 +2,7 @@ package com.devticket.service;
 
 import com.devticket.model.ticket.Ticket;
 import com.devticket.model.ticket.Ticketrequest;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface TicketService {
     Ticket findById(Long id);
 
     List<Ticket> findAll();
+
+    Page<Ticket> findPaginated(int page, int size);
 
     Ticket addnew(Ticketrequest ticket);
 

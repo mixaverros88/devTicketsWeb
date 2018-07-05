@@ -9,6 +9,11 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { QRCodeModule } from 'angularx-qrcode';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
+
+
 
 
 // AoT requires an exported function for factories
@@ -66,7 +71,10 @@ import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { OrdersService } from './service/orders.service';
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ChartsModule } from 'ng2-charts';
+import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
+import { ProductpageComponent } from './productpage/productpage.component';
 
 export function initUserFactory(userService: UserService) {
     return () => userService.initUser();
@@ -95,8 +103,12 @@ export function initUserFactory(userService: UserService) {
     ContactComponent,
     CheckoutComponent,
     UserPageComponent,
+    ResetPasswordComponent,
+    AdminPanelComponentComponent,
+    ProductpageComponent
   ],
   imports: [
+    ChartsModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
@@ -114,6 +126,8 @@ export function initUserFactory(userService: UserService) {
     MatProgressSpinnerModule,
     FlexLayoutModule,
     NgbModule.forRoot(),
+    Ng4LoadingSpinnerModule.forRoot(),
+    QRCodeModule,
     AngularFontAwesomeModule,
     HttpClientModule,
     AgmCoreModule.forRoot({

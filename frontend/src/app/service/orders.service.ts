@@ -38,7 +38,7 @@ export class OrdersService {
       return this.apiService.get(this.config.myOrders_url(id));
     }
 
-    viewOrder(id: number){
+    viewOrder(id: number) {
 
         return this.apiService.get(this.config.getOrder(id));
     }

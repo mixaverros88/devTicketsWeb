@@ -7,6 +7,8 @@
       <div class="col-md-9">
         <p class="username">{{userName()}}</p>
       </div>
+      <ng4-loading-spinner> </ng4-loading-spinner>
+
 
       <div *ngFor="let pr of data" class="col-md-12">
 <HR>
@@ -28,6 +30,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+ <div id="export">
       <div class="modal-body mb-0">
     <div *ngFor="let data of cart.cart" class="col-md-12">
         <div class="ticket">
@@ -36,11 +39,11 @@
                 <span class="admit">DEVTicket</span>
                 <span class="line"></span>
                 <span class="num">
-                  UID
-                  <span>{{data.ticket.id}}</span>
+                   Code ALL Day
+                    
                 </span>
               </div>
-              <div class="icon"><span class="fas fa-ticket-alt"></span></div>
+              <div class="icon"><span><img height="120" width="150" src='data:image/png;base64,{{data.ticket.image}}'> </span></div>
               <div class="name">
                   {{userName()}}
               </div>
@@ -49,10 +52,13 @@
               <div class="big">
                   {{data.ticket.name}} <br> Ticket
               </div> 
+              <div class="qr">
+                  <qrcode [qrdata]="myAngularxQrCode" [size]="80" [level]="'M'"></qrcode>
+                  </div>
               <div class="info">
                 <section>
                   <div class="title">Date</div>
-                  <div> {{data.ticket.date |  date}}</div>
+                  <div> {{data.ticket.date | date}}</div>
                 </section>
                 <section>
                   <div class="title">Price</div>
@@ -65,13 +71,14 @@
               </div>
             </div>
           </div>
-        
-                
+        </div>
+      </div>          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        <button type="button" class="btn btn-danger" (click)="download()">Download <span class="fa fa-file-pdf-o fa-fw"></span> </button>
       </div>
-    </div>
+   
     </ng-template>
 
   

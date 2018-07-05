@@ -5,8 +5,12 @@ import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DatePicker } from './datePicker';
+import { ChartsModule } from 'ng2-charts';
+
+// In your App's module:
 
 import {
+
   ConfigService,
   UserService,
   CartService,
@@ -55,7 +59,7 @@ export class TicketsCrudComponent implements OnInit {
   message: string;
   ticket: Ticket;
   selectedProduct: Ticket;
-  date: string;
+  date: Date;
   // PAGINATION VALUES
   howManyRows = 2;
   totalProducts: number;
@@ -142,7 +146,7 @@ export class TicketsCrudComponent implements OnInit {
         this.modalRef.close());
         this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
        delay(3300);
-        this.getProducts();
+       ;
   }
 
   getProducts() {
@@ -157,10 +161,29 @@ export class TicketsCrudComponent implements OnInit {
       );
   }
 
+  currentDate() {
+    const currentDate = new Date();
+    
+    return currentDate;
+  }
+
+  setDate(month: any,day:any,year:any) {
+    const currentDate = new Date();
+    currentDate.setDate(day);
+    currentDate.setMonth(month);
+   currentDate.setFullYear(year)
+    return currentDate;
+  }
+
+
   onChangeForm() {
     // console.log(this.userDetailsForm.controls['date'].value);
-    const date = this.userDetailsForm.controls['date'].value;
-    this.date = date['year'] + '-' + date['month'] + '-' + date['day'];
+   
+  const date = this.userDetailsForm.controls['date'].value;
+  let newDate = new Date();
+  newDate = this.setDate(date.month,date.day,date.year);
+   console.log(newDate);
+   this.date = newDate;
     // console.log('-->' + this.date.month);
     // console.log('-->' + this.date['day']);
     this.name = this.userDetailsForm.controls['name'].value.toString();
@@ -174,7 +197,7 @@ export class TicketsCrudComponent implements OnInit {
 
   onSubmitUserDetails() {
     this.TicketService.addTicket(
-    this.userDetailsForm.controls['date'].value,
+    this.date,
     this.userDetailsForm.controls['name'].value.toString(),
     this.userDetailsForm.controls['available'].value,
     this.userDetailsForm.controls['price'].value,

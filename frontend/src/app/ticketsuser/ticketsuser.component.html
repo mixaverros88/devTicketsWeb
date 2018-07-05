@@ -2,11 +2,12 @@
     <div class="row">
       <div class="col">
         <h1 class="text-center mt-4 mb-4">Choose your favorite DevEvent!</h1>
+
       </div>
       </div>
   <div class="row">
-    <div *ngFor="let pr of data" class="col-md-4 card mb-3">
-        <div class="card border-0">
+    <div *ngFor="let pr of data" class="col-md-4 card mb-5">
+        <div class="card border-0 hvr-float-shadow">
             <img class="card-img-top img-fluid" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:150px!important">
             <div class="card-body">
               <h2 class="card-title">{{ pr.name }}</h2>
@@ -22,9 +23,9 @@
                     <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{ pr.available }} !
                 </div>
               </div>
-              <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter>
-              <button *ngIf="pr.available > 0" type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
-              <button *ngIf="pr.available == 0" disabled type="button" class="btn btn-success pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              <!-- <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter> -->
+              <button *ngIf="pr.available > 0" type="button" class="btn btn-primary hvr-shutter-in-horizontal pull-right" (click)="addtoCart(pr.id)">Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              <button *ngIf="pr.available == 0" disabled type="button" class="btn btn-light pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
               <p *ngIf="pr.available == 0" style="color:red;">Not available tickets</p>
             </div>
           </div>
