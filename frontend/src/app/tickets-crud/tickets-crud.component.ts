@@ -1,12 +1,10 @@
 import { DatePicketPopupComponent } from './../date-picket-popup/date-picket-popup.component';
 import { TicketService } from './../service/ticket.service';
-import { Component, OnInit, Injectable, ElementRef, ViewChild, Input, NgZone } from '@angular/core';
+import { Component, OnInit, Injectable, ElementRef, ViewChild } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DatePicker } from './datePicker';
-import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
-import { } from 'googlemaps';
 
 import {
   ConfigService,
@@ -69,27 +67,6 @@ export class TicketsCrudComponent implements OnInit {
 
   closeResult: string;
 
-  // google maps fields
-  @Input() usePanning = false;
-  private obj: { 'latitude': number, 'longitude': number }[] = [];
-  public latitude: number;
-  public longitude: number;
-  public userLatitude: number;
-  public userLongitude: number;
-  public userIcon: string;
-  private searchControl: FormControl;
-  private zoom: number;
-  private mapType: string;
-  private index: number;
-  private tracked = false;
-
-  private place: google.maps.places.PlaceResult;
-  @ViewChild('locationInput')
-  public searchElementRef: ElementRef;
-
-  // end of google maps fields
-
-
 
   constructor(private httpClient: HttpClient,
     // tslint:disable-next-line:no-shadowed-variable
@@ -97,35 +74,31 @@ export class TicketsCrudComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private CartService: CartService,
     private modalService: NgbModal,
-    private fb: FormBuilder,
-    // needed for google maps
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
-    private _mapsWrapper: GoogleMapsAPIWrapper
-  ) {
+  private fb: FormBuilder) {
 
     this.userDetailsForm = fb.group({
-      'date': ['2018-01-01', Validators.required],
       'name': [null, Validators.compose(
-        [Validators.minLength(3), Validators.required]
-      )],
-      'description': [null, Validators.required],
-      'language': [null, Validators.required],
-      'image': [null, Validators.required],
-      'available': [null, Validators.required],
-      'location': [null, Validators.required],
-      'price': [null, Validators.required],
+                                        [Validators.minLength(3), Validators.required]
+              )],
+      'description': [null, Validators.required] ,
+      'language': [null, Validators.required] ,
+      'image': [null, Validators.required] ,
+      'available': [null, Validators.required] ,
+      'location': [null, Validators.required] ,
+      'price': [null, Validators.required] ,
 
     })
 
   }
+
+
 
   open(content) {
     this.modalRefInsert = this.modalService.open(content);
     this.modalRefInsert.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
@@ -142,9 +115,8 @@ export class TicketsCrudComponent implements OnInit {
   ngOnInit() {
 
     this.getProducts();
-    this.customOnInit();
     this.userDetailsForm = new FormGroup({
-      date: new FormControl('2018-01-01'),
+      date: new FormControl(''),
       name: new FormControl(''),
       description: new FormControl(''),
       price: new FormControl(''),
@@ -168,9 +140,9 @@ export class TicketsCrudComponent implements OnInit {
     this.TicketService.editTicket(ticket)
       .then(
         this.modalRef.close());
-    this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-    delay(3300);
-    this.getProducts();
+        this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
+       delay(3300);
+        this.getProducts();
   }
 
   getProducts() {
@@ -201,20 +173,15 @@ export class TicketsCrudComponent implements OnInit {
 
 
   onSubmitUserDetails() {
-    this.userDetailsForm.setValue({
-      'location': '' + this.longitude + '/' + this.latitude
-      // this.place.formatted_address
-    });
-    console.log(this.userDetailsForm.controls['location'].value);
     this.TicketService.addTicket(
-      this.userDetailsForm.controls['date'].value,
-      this.userDetailsForm.controls['name'].value.toString(),
-      this.userDetailsForm.controls['available'].value,
-      this.userDetailsForm.controls['price'].value,
-      this.userDetailsForm.controls['language'].value.toString(),
-      this.base64textString,
-      this.userDetailsForm.controls['location'].value);
-    // this.modalRefInsert.close(); // close modal
+    this.userDetailsForm.controls['date'].value,
+    this.userDetailsForm.controls['name'].value.toString(),
+    this.userDetailsForm.controls['available'].value,
+    this.userDetailsForm.controls['price'].value,
+    this.userDetailsForm.controls['language'].value.toString(),
+    this.base64textString,
+    this.userDetailsForm.controls['location'].value);
+    this.modalRefInsert.close(); // close modal
     this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
     this.ngOnInit();
   }
@@ -246,8 +213,8 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   onFileSelected(evt) {
-    const files = evt.target.files;
-    const file = files[0];
+      const files = evt.target.files;
+      const file = files[0];
 
     if (files && file) {
       const reader = new FileReader();
@@ -259,9 +226,9 @@ export class TicketsCrudComponent implements OnInit {
 
   _handleReaderLoaded(readerEvt) {
     const binaryString = readerEvt.target.result;
-    this.base64textString = btoa(binaryString);
-    console.log(btoa(binaryString));
-  }
+           this.base64textString = btoa(binaryString);
+           console.log(btoa(binaryString));
+   }
 
   onDelete(id: number) {
     this.notification = undefined;
@@ -287,98 +254,5 @@ export class TicketsCrudComponent implements OnInit {
     this.message = 'Ticket Deleted';
 
   }
-
-  // following auxiliary methods for google maps
-  private setCurrentPosition() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.userLatitude = position.coords.latitude;
-        this.userLongitude = position.coords.longitude;
-        this.zoom = 14;
-        console.log(this.userLatitude);
-        console.log(this.userLongitude);
-      });
-    }
-  }
-
-  setMapType(mapTypeId: string) {
-    this.mapType = mapTypeId;
-  }
-
-  myLocation() {
-    this.setCurrentPosition();
-    this.latitude = this.userLatitude;
-    this.longitude = this.userLongitude;
-    this._setCenter();
-    this.tracked = true;
-  }
-
-  private _setCenter() {
-    console.log('ok');
-    const newCenter = {
-      lat: this.latitude,
-      lng: this.longitude,
-    };
-    if (this.usePanning) {
-      this._mapsWrapper.panTo(newCenter);
-    } else {
-      this._mapsWrapper.setCenter(newCenter);
-    }
-  }
-
-  customOnInit() {
-    this.index = 0;
-    this.zoom = 14;
-    this.latitude = 37.97565120000001;
-    this.longitude = 23.73400079999999;
-    this.mapType = 'roadmap';
-    this.userIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-
-    // create search FormControl
-    this.searchControl = new FormControl();
-
-    // set current position
-    this.setCurrentPosition();
-
-    // load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: [], // change: from ['address'] to [], in order to include all options (address, establishments & geocodes)
-      });
-      autocomplete.addListener('place_changed', () => {
-        this.ngZone.run(() => {
-          // get the place result
-          this.place = autocomplete.getPlace();
-
-          // verify result
-          if (this.place.geometry === undefined || this.place.geometry === null) {
-            return;
-          }
-
-          this.latitude = this.place.geometry.location.lat();
-          this.longitude = this.place.geometry.location.lng();
-          console.log('here');
-          console.log(this.longitude);
-          console.log(this.latitude);
-          this.location = this.place.formatted_address as string;
-          // this.userDetailsForm.controls['language'] = this.location;
-          // set latitude, longitude and zoom
-          /* this.latitude = this.place.geometry.location.lat();
-          this.longitude = this.place.geometry.location.lng();
-          this.zoom = 14;
-          this.index++;
-          const helper = {
-            'latitude': this.latitude,
-            'longitude': this.longitude
-          };
-          this.obj.push(helper);
-          console.log(this.obj);
-          */
-        });
-      });
-    });
-  }
-
-  // locationInput
 
 }

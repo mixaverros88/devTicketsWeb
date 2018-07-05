@@ -8,7 +8,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
-import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 
 
 // AoT requires an exported function for factories
@@ -117,8 +117,7 @@ export function initUserFactory(userService: UserService) {
     AngularFontAwesomeModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAdhieodd82faXY6cWOfet7YeS7ZLVXhjc',
-      libraries: ['places']
+      apiKey: 'AIzaSyAdhieodd82faXY6cWOfet7YeS7ZLVXhjc'
     }),
         TranslateModule.forRoot({
             loader: {
@@ -145,8 +144,7 @@ export function initUserFactory(userService: UserService) {
       'useFactory': initUserFactory,
       'deps': [UserService],
       'multi': true
-    },
-    GoogleMapsAPIWrapper
+    }
   ],
   bootstrap: [AppComponent]
 })

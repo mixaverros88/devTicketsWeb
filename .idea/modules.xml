@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/server/angular-spring-starter.iml" filepath="$PROJECT_DIR$/server/angular-spring-starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/devTicketsWeb.iml" filepath="$PROJECT_DIR$/.idea/devTicketsWeb.iml" />
     </modules>
   </component>
