@@ -2,8 +2,46 @@
   padding: 5% 0;
 }
 .user-data {
+  position: fixed;
+  top: 150px;
+  left: 220px;
+  text-align: center;
+}
+.user-data img {
   padding-bottom: 50px;
-  border-bottom: 1px solid;
+}
+.user-data p {
+  display: block;
+}
+.history-title {
+  text-align: center;
+  padding-bottom: 70px;
+}
+.ticket-area {
+  border-bottom: 1px solid #a6a6a6;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+button.view-details {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  border: none;
+  height: 50px;
+  width: 210px;
+  cursor: pointer;
+  background: #0099cc;
+  color: white;
+  border-radius: 8px;
+  -webkit-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
+}
+button.view-details:hover {
+  background: #006789;
+  cursor: pointer;
+  border-radius: 0px;
+  -webkit-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 .center-align {
   display: -webkit-box;
@@ -44,7 +82,8 @@
   width: 700px;
   margin: 20px auto;
 }
-.ticket .stub, .ticket .check {
+.ticket .stub,
+.ticket .check {
   box-sizing: border-box;
 }
 
@@ -59,7 +98,7 @@
   border-bottom-left-radius: 50px 50px;
 }
 .stub:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -68,7 +107,7 @@
   width: 0;
 }
 .stub:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
@@ -76,7 +115,7 @@
   border-left: 20px solid #fff;
   width: 0;
 }
-.qr{
+.qr {
   position: absolute;
   top: 80px;
   right: 50px;
@@ -114,7 +153,7 @@
   font-weight: bold;
 }
 .stub .name:before {
-  content: '';
+  content: "";
   background: #fff;
   display: block;
   width: 40px;
@@ -132,7 +171,7 @@
   border-bottom-right-radius: 50px 50px;
 }
 .check:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -141,7 +180,7 @@
   width: 0;
 }
 .check:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -166,7 +205,7 @@
   width: 100px;
 }
 .check .info section:before {
-  content: '';
+  content: "";
   background: #5477af;
   display: block;
   width: 40px;
