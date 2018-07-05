@@ -5,10 +5,20 @@
 body {
   margin: 0;
   padding: 0;
-  background-color:
-#dae2ef
+  background-color:#e2e2e2
 
   ;
+}
+
+.selectLang {
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  color: white;
+  height: 38px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .mat-fab.mat-accent[disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled] {
