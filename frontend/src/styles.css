@@ -9,6 +9,14 @@ body {
   background-color: #e2e2e2;
 }
 
+.lan-sel option:first-child {
+  background-image: url(http://localhost:4200/assets/image/usa.jpg);
+}
+
+.lan-sel option:nth-child(2){
+  background-image: url(http://localhost:4200/assets/image/greece.jpg);
+}
+
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-family: 'Tinos', serif;
 }
@@ -43,19 +51,66 @@ button:focus {
 }
 
 form .ng-invalid {
-  border-bottom: 2px solid red;
+  border-right: 2px solid red;
+}
+
+form input {
+  border: 0px;
 }
 
 form .ng-valid {
-  border-bottom: 2px solid green;
+  border-right: 2px solid green;
 }
 
 .mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
   background-color: #007bff;
 }
 
+
+.table tbody tr:nth-child(odd) {
+  background-color: #ffffff3b;
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 90%;
+}
+
+.btnUp {
+  border: 0px solid gray;
+  height: 40px;
+  color: #616161;
+  background-color: white;
+  padding: 0px 3px;
+  font-size: 13px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
 input.mat-input-element {
   margin-top: 0px;
+}
+
+
+input[type=text], select, textarea{
+  padding-left: 5px;
+}
+
+button.btn.btn-outline-secondary {
+  border: 1px solid white;
+  padding-right: 15px;
 }
 
 .pt10{
@@ -64,6 +119,8 @@ input.mat-input-element {
 
 span#basic-addon1 {
   width: 40px;
+  height: 40px;
+  border: 1px solid white !important;
 }
 
 .height40px{

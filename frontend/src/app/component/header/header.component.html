@@ -5,9 +5,9 @@
 
 
   <div class="float-right">
-
+    <img src="assets/image/en.jpg" name="widget" alt="" style="margin-right: -14px;">
     <label>
-      <select class="lan-sel" #langSelect (change)="translate.use(langSelect.value)">
+      <select class="lan-sel" #langSelect (change)="translate.use(langSelect.value)" onchange="if(document.images) document.images['widget'].src='./assets/image/'+this.options[this.selectedIndex].value+'.jpg';">
         <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
       </select>
     </label>

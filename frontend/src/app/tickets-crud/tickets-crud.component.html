@@ -11,12 +11,11 @@
                     <strong>Success!</strong>{{message}}
                 </div>
             </div>
-
-            <h3 class="text-center">{{'INSERTTICKET' |translate}}</h3>
             <hr>
             <div class="container">
                 <div class="row">
                     <div class="col-6 p10">
+                            <h3 class='text-center'>{{'INSERTTICKET' |translate}}</h3>
                         <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)" (input)="onChangeForm(userDetailsForm.value)">
                             <div class="form-group">
                                 <div class="input-group mb-3">
@@ -69,7 +68,10 @@
                                         <span class="fa fa-image"></span>
                                     </span>
                                 </div>
-                                <input type="file" #imageInput (change)="onFileSelected($event)" required>
+                                <div class="upload-btn-wrapper">
+                                    <button class="btnUp">Upload a file</button>
+                                    <input type="file" #imageInput (change)="onFileSelected($event)" required>
+                                </div>
 
                             </div>
 
@@ -213,39 +215,43 @@
                     </div>
     
                     <table class="table">
-                        <tr>
-                            <th></th>
-                            <th>{{'ΝΑΜΕ'| translate}}</th>
-                            <th>{{'LANGUAGE' | translate}}</th>
-                            <th>{{'AVAILABE' | translate}}</th>
-                            <th>{{'LOCATION' | translate}}</th>
-                            <th>{{'PRICE' | translate}}</th>
-                            <th>Date</th>
-                            <th>{{'SETTINGS' | translate}}</th>
-                            <th>
-                                <select (change)="onChange($event.target.value)">
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                </select>
-                            </th>
-                        </tr>
-                        <tr *ngFor="let pr of data">
-                            <td>
-                                <img height="50" width="80" src='data:image/png;base64,{{pr.image}}'> </td>
-                            <td>{{ pr.name }}</td>
-                            <td>{{ pr.language }}</td>
-                            <td>{{ pr.available }}</td>
-                            <td>{{ pr.location }}</td>
-                            <td>{{ pr.price | currency }}</td>
-                            <td>{{ pr.date | date }}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">{{ 'MODIFY' | translate }}</button>
-                                <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">{{ 'DELETE' | translate }}</button>
-                            </td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>{{'ΝΑΜΕ'| translate}}</th>
+                                <th>{{'LANGUAGE' | translate}}</th>
+                                <th>{{'AVAILABE' | translate}}</th>
+                                <th>{{'LOCATION' | translate}}</th>
+                                <th>{{'PRICE' | translate}}</th>
+                                <th>Date</th>
+                                <th>{{'SETTINGS' | translate}}</th>
+                                <th>
+                                    <select (change)="onChange($event.target.value)">
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pr of data">
+                                <td>
+                                    <img height="50" width="80" src='data:image/png;base64,{{pr.image}}'> </td>
+                                <td>{{ pr.name }}</td>
+                                <td>{{ pr.language }}</td>
+                                <td>{{ pr.available }}</td>
+                                <td>{{ pr.location }}</td>
+                                <td>{{ pr.price | currency }}</td>
+                                <td>{{ pr.date | date }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">{{ 'MODIFY' | translate }}</button>
+                                    <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">{{ 'DELETE' | translate }}</button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
     
