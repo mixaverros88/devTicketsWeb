@@ -29,7 +29,7 @@ export class TicketService {
   }
 
   addTicket(date: Date,
-    name: number, available: number, language: string, price: number, image: string, location: string) {
+    name: string, available: number, language: string, price: number, image: string, location: string) {
 
    const  ticket = {} as Ticket;
     ticket.date = date;
@@ -39,7 +39,7 @@ export class TicketService {
     ticket.price = price;
     ticket.image = image;
     ticket.location = location.toString();
- 
+
     return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), this.addProductHeaders).subscribe(
       response => console.log(response),
       err => console.log(err)

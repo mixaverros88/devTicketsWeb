@@ -27,7 +27,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <input class="form-control" placeholder="yyyy-mm-dd" name="date" formControlName="date" ngbDatepicker #d="ngbDatepicker">
+                                    <input class="width90percent height40px" placeholder="yyyy-mm-dd" name="date" formControlName="date" 
+                                    ngbDatepicker #d="ngbDatepicker" matInput> <!-- changed class="form-control"-->
                                 </div>
                             </div>
 
@@ -37,7 +38,8 @@
                                         <span class="fa fa-pencil"></span>
                                     </span>
                                 </div>
-                                <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text" formControlName="name" required>
+                                <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text"
+                                formControlName="name" required>
                             </div>
 
 

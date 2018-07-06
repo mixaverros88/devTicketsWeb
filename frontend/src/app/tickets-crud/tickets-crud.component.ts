@@ -27,7 +27,7 @@ import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
   selector: 'app-tickets-crud',
   templateUrl: './tickets-crud.component.html',
   styleUrls: ['./tickets-crud.component.css'],
-  
+
 })
 
 
@@ -114,7 +114,7 @@ export class TicketsCrudComponent implements OnInit {
       'language': [null, Validators.required] ,
       'image': [null, Validators.required] ,
       'available': [null, Validators.required] ,
-      'location': [null,] ,
+      'location': [null] ,
       'price': [null, Validators.required] ,
 
     })

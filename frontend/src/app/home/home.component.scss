@@ -93,6 +93,7 @@ section .section-title {
   -ms-transform: rotateY(0deg);
   transform: rotateY(0deg);
   border-radius: .25rem;
+/* display: block; */
 }
 
 .image-flip:hover .frontside,
@@ -101,6 +102,7 @@ section .section-title {
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
+/* display: block; */
 }
 
 .mainflip {
@@ -2041,3 +2043,24 @@ footer {
     }
   }
   
+
+  /*.centralizeTeamCardLeft {
+      align-content: center;
+      padding-left: 15%;
+      padding-right: 5%;
+  }
+
+  .centralizeTeamCardRight {
+    align-content: center;
+    padding-left: 5%;
+    padding-right: 15%;
+  }*/
+/*  .wrap{
+    column-count: 2;
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+  }
+  .wrap ol{
+     margin: 0;
+  }
+  */

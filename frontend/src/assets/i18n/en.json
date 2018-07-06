@@ -31,6 +31,35 @@
     "TAXES": "Taxes",
     "TOTAL": "Total",
     "SUBTOTAL": "Subtotal",
-    "YOURSHOPPINGCART": "Your Shopping Cart"
+    "YOURSHOPPINGCART": "Your Shopping Cart",
+    "EVERYTHINGSUBTITILE": "Everything you need to know about Developer Events",
+    "HARRYGIANNAKIDIS": "Harry Giannakidis",
+    "HARRYDESCRIPTION": "Harry helped us in developing DevTickets platform. He was our mentor in this effort and always by our side",
+    "PANAGIOTISLAMPRAKIS": "Panagiotis Lamprakis",
+    "PANAGIOTISDESCRIPTION": "Panagiotis has recently graduated from N.T.U.A E.C.E department. Participated in DevTickets project and eventually managed to git push",
+    "CHRISTOSVANTARAKIS": "Christos Vantarakis",
+    "CHRISTOSDESCRIPTION": "Christos is a php Developer. In DevTickets he worked as a front-end developer using Angular",
+    "MIKEVERROS": "Mike Verros",
+    "MIKEDESCRIPTION": "Mike is a senior php Developer. Currently, he applies his talent on Java Spring applications. Also, he is a Dpg7000 fan",
+    "JOHNDIMOU": "John Dimou",
+    "JOHNDESCRIPTION": "John is a talented Java Spring Developer. In the past, he has worked as a Unity3D Developer. His big love is 'copy-paste'.",
+    "NIKOSTZIMPOULAS": "Nikos Tzimpoulas",
+    "NIKOSDESCRIPTION": "Nikos is a professional front-end developer, participated and completed successfully many big projects",
+
+    "HAPPYCLIENTS": "Happy clients",
+    "AWARDSWON": "Awards won",
+    "CUPSOFCOFFE": "Cups of Coffee",
+    "PROJECTSCOMPLETED": "Projects completed",
+
+    "LEARNCODING": "Learn Coding",
+    "CONTACTUS": "Contact Us",
+    "CREATEANACCOUNT": "Create an Account",
+    "CREATEANACCOUNTDESCRIPTION": "Create now your DevTickets account and never miss again a Developers' Event!",
+    "SEARCHFORADEVTICKET": "Search for a Dev Ticket",
+    "SEARCHFORADEVTICKETDESCRIPTION": "Are you a member of DevTickets family? Then sign in and buy your ticket for the Developers' Event of your favor! Not a member already? What are you waiting for?",
+    "ENJOYYOUREVENT": "Enjoy your Event",
+    "ENJOYYOUREVENTDESCRIPTION": "In DevTickets we are happy as long as you enjoy the Developers' Events!",
+
+    "FOOTERMESSAGE": "Sign Up today and get notifications for upcoming Developer Events & meetups"
 
 }

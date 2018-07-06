@@ -31,5 +31,35 @@
     "TAXES": "Φόρος",
     "TOTAL": "Τελικό",
     "SUBTOTAL": "Μερικό Υπόλοιπο",
-    "YOURSHOPPINGCART": "Το καλάθι σας"
+    "YOURSHOPPINGCART": "Το καλάθι σας",
+    "EVERYTHINGSUBTITILE": "Μάθετε τα πάντα σχετικά με τις εκδηλώσεις των προγραμματιστών",
+    "HARRYGIANNAKIDIS": "Χάρης Γιαννακίδης",
+    "HARRYDESCRIPTION": "Ο Χάρης αποτέλεσε τον μέντορά μας στην προσπάθειά μας για την ανάπτυξη της πλατφόρμας DevTickets. Μας προσέφερε την βοήθειά του όποτε την χρειαστήκαμε και ήταν πάντα στο πλευρό μας",
+    "PANAGIOTISLAMPRAKIS": "Παναγιώτης Λαμπράκης",
+    "PANAGIOTISDESCRIPTION": "Ο Παναγιώτης είναι απόφοιτος του τμήματος Ηλεκτρολόγων Μηχανικών & Μηχανικών Υπολογιστών του Ε.Μ.Π. Συμμετείχε στο προτζεκτ της DevTickets και έκανε κανονικά και με τον νόμο git push",
+    "CHRISTOSVANTARAKIS": "Χρήστος Βανταράκης",
+    "CHRISTOSDESCRIPTION": "Ο Χρήστος είναι php Developer. Για την DevTickets δούλεψε ως front-end developer χρησιμοποιώντας Angular",
+    "MIKEVERROS": "Μιχάλης Βέρρος",
+    "MIKEDESCRIPTION": "Ο Μιχάλης είναι έμπειρος php Developer. Αυτή τη στιγμή, δουλεύει στην DevTickets ως Java Spring Developer. Επίσης, είναι μεγάλος φαν του Δημήτρη Γιαννακόπουλου",
+    "JOHNDIMOU": "Γιάννης Δήμου",
+    "JOHNDESCRIPTION": "Ο Γιάννης είναι ένας ταλαντούχος Java Spring Developer. Στο παρελθόν έχει δουλέψει ως Unity3D Developer. Η μεγάλη του αγάπη είναι το 'copy-paste'",
+    "NIKOSTZIMPOULAS": "Νίκος Τζίμπουλας",
+    "NIKOSDESCRIPTION": "Ο Νίκος είναι επαγγελματίας front-end developer, έχοντας συμμετάσχει και διεκπαιρεώσει επιτυχώς πολλά μεγάλα πρότζεκτ",
+
+    "HAPPYCLIENTS": "Ευχαριστημένοι πελάτες",
+    "AWARDSWON": "Κερδισμένα βραβεία",
+    "CUPSOFCOFFE": "Κούπες καφέ",
+    "PROJECTSCOMPLETED": "Ολοκληρωμένα πρότζεκτ",
+
+    "LEARNCODING": "Μάθετε προγραμματισμό",
+    "CONTACTUS": "Επικοινωνήστε μαζί μας",
+    "CREATEANACCOUNT": "Δημιουργία λογαριασμού",
+    "CREATEANACCOUNTDESCRIPTION": "Δημιούργησε τώρα τον DevTickets λογαρισμό σου και μην ξανα χάσεις ποτέ εκδήλωση προγραμματιστών!",
+    "SEARCHFORADEVTICKET": "Αναζήτηση DevTickets εισιτηρίου",
+    "SEARCHFORADEVTICKETDESCRIPTION": "Είσαι μέλος της DevTickets οικογένειας; Συνδέσου και αγόρασε το εισιτήριο της αρεσκείας σου. Δεν είσαι ακόμα μέλος; Τότε τι περιμένεις; Γίνε τωρα.",
+    "ENJOYYOUREVENT": "Απόλαυσε την εκδήλωση",
+    "ENJOYYOUREVENTDESCRIPTION": "Στην DevTickets είμαστε χαρούμενοι όσο εσύ απολαμβάνεις τις εκδηλώσεις προγραμματιστών!",
+
+    "FOOTERMESSAGE": "Κάνε εγγραφή σήμερα και μείνε ενήμερος για επερχόμενες εκδηλώσεις και συναντήσεις προγραμματιστών."
+
 }
