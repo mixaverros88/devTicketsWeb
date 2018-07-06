@@ -29,21 +29,17 @@ export class TicketService {
   }
 
   addTicket(date: Date,
-    name: number, available: number, language: number, price: number, image: string, location: number) {
+    name: number, available: number, language: string, price: number, image: string, location: string) {
 
-    //const dateToInsert = new Date(date.year, date.year, date.month);
    const  ticket = {} as Ticket;
-   //console.log(dateToInsert);
     ticket.date = date;
     ticket.name = name.toString();
     ticket.available = available;
     ticket.language = language.toString();
-    ticket.price = language;
+    ticket.price = price;
     ticket.image = image;
     ticket.location = location.toString();
-    console.log(ticket.image + ' <-- Image');
-    console.log(ticket.name + 'eftase edo');
-    console.log(ticket);
+ 
     return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), this.addProductHeaders).subscribe(
       response => console.log(response),
       err => console.log(err)

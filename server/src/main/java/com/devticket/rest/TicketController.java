@@ -71,11 +71,7 @@ public class TicketController {
 
     @RequestMapping(method = POST, value = "/ticket/add")
     public ResponseEntity<?> addUser(@RequestBody Ticketrequest ticketrequest) {
-        System.out.printf("EDO EISAI RE MALAKA");
-        System.out.println(ticketrequest.getName());
-        System.out.println(ticketrequest.getPrice());
-        System.out.println(Arrays.toString(ticketrequest.getImage()));
-        System.out.println(ticketrequest.getImage().toString());
+
         this.ticketService.addnew(ticketrequest);
         Map<String, String> result = new HashMap<>();
         result.put("result", "success");

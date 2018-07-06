@@ -55,11 +55,9 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = new Ticket();
         ticket.setName(ticketrequest.getName());
         ticket.setAvailable(ticketrequest.getAvailable());
-        ticket.setLanguage(ticketrequest.getLocation());
+        ticket.setLanguage(ticketrequest.getLanguage());
         ticket.setPrice(ticketrequest.getPrice());
         ticket.setImage(ticketrequest.getImage());
-        Date date = new Date();
-        
         ticket.setDate(ticketrequest.getDate());
         ticket.setLocation(ticketrequest.getLocation());
 
@@ -73,7 +71,7 @@ public class TicketServiceImpl implements TicketService {
         ticket.setLanguage(ticketrequest.getLanguage());
         ticket.setAvailable(ticketrequest.getAvailable());
         ticket.setName(ticketrequest.getName());
-        ticket.setDate(ticketrequest.getDate());
+        ticket.setDate(ticketService.findById(id).getDate());
         ticket.setLocation(ticketrequest.getLocation());
         ticket.setImage(ticketService.findById(id).getImage());
 

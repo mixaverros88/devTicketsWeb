@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DatePicker } from './datePicker';
 import { ChartsModule } from 'ng2-charts';
-import { } from 'googlemaps';
+import { } from '@types/googlemaps';
 
 // In your App's module:
 
@@ -26,8 +26,11 @@ import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 @Component({
   selector: 'app-tickets-crud',
   templateUrl: './tickets-crud.component.html',
-  styleUrls: ['./tickets-crud.component.css']
+  styleUrls: ['./tickets-crud.component.css'],
+  
 })
+
+
 
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
@@ -91,11 +94,10 @@ export class TicketsCrudComponent implements OnInit {
   public searchElementRef: ElementRef;
 
 
-  constructor(private httpClient: HttpClient,
+  constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
     // tslint:disable-next-line:no-shadowed-variable
-    private CartService: CartService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     // google maps
@@ -112,7 +114,7 @@ export class TicketsCrudComponent implements OnInit {
       'language': [null, Validators.required] ,
       'image': [null, Validators.required] ,
       'available': [null, Validators.required] ,
-      'location': [null, Validators.required] ,
+      'location': [null,] ,
       'price': [null, Validators.required] ,
 
     })
@@ -172,14 +174,12 @@ export class TicketsCrudComponent implements OnInit {
           this.longitude = place.geometry.location.lng();
           this.zoom = 14;
           this.index++;
-          console.log(place.formatted_address);
-          this.location = place.formatted_address;
+          this.location = place.formatted_address.toString();
           const helper = {
             'latitude': this.latitude,
             'longitude': this.longitude
           };
           this.obj.push(helper);
-          console.log(this.obj);
         });
       });
     });
@@ -191,8 +191,6 @@ export class TicketsCrudComponent implements OnInit {
         this.userLatitude = position.coords.latitude;
         this.userLongitude = position.coords.longitude;
         this.zoom = 14;
-        console.log(this.userLatitude);
-        console.log(this.userLongitude);
       });
     }
   }
@@ -210,7 +208,6 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   private _setCenter() {
-    console.log('ok');
     const newCenter = {
       lat: this.latitude,
       lng: this.longitude,
@@ -271,7 +268,6 @@ export class TicketsCrudComponent implements OnInit {
 
   currentDate() {
     const currentDate = new Date();
-
     return currentDate;
   }
 
@@ -290,29 +286,28 @@ export class TicketsCrudComponent implements OnInit {
   const date = this.userDetailsForm.controls['date'].value;
   let newDate = new Date();
   newDate = this.setDate(date.month, date.day, date.year);
-   console.log(newDate);
    this.date = newDate;
-    // console.log('-->' + this.date.month);
-    // console.log('-->' + this.date['day']);
+   console.log(this.date);
     this.name = this.userDetailsForm.controls['name'].value.toString();
-    this.description = this.userDetailsForm.controls['description'].value.toString();
     this.available = this.userDetailsForm.controls['available'].value;
     this.price = this.userDetailsForm.controls['price'].value;
+    console.log(this.price);
     this.language = this.userDetailsForm.controls['language'].value.toString();
-    this.location = this.userDetailsForm.controls['location'].value;
+    this.location = this.location;
   }
 
 
   onSubmitUserDetails() {
+    console.log(this.date);
     this.TicketService.addTicket(
     this.date,
     this.userDetailsForm.controls['name'].value.toString(),
     this.userDetailsForm.controls['available'].value,
-    this.userDetailsForm.controls['price'].value,
     this.userDetailsForm.controls['language'].value.toString(),
+    this.price,
     this.base64textString,
-    this.userDetailsForm.controls['location'].value);
-    this.modalRefInsert.close(); // close modal
+    this.location);
+   // this.modalRefInsert.close(); // close modal
     this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
     this.ngOnInit();
   }
