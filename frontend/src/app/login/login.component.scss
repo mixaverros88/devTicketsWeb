@@ -24,6 +24,7 @@ form {
 
 .active {
   border-bottom: 2px solid #1161ed;
+  text-align: center;
 }
 
 .nonactive {
@@ -169,4 +170,9 @@ a {
   position: relative;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.2);
+}
+
+.centralizeInput {
+  padding-left: 5%;
+  width: 100%;
 }

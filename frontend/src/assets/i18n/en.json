@@ -60,6 +60,33 @@
     "ENJOYYOUREVENT": "Enjoy your Event",
     "ENJOYYOUREVENTDESCRIPTION": "In DevTickets we are happy as long as you enjoy the Developers' Events!",
 
-    "FOOTERMESSAGE": "Sign Up today and get notifications for upcoming Developer Events & meetups"
+    "FOOTERMESSAGE": "Sign Up today and get notifications for upcoming Developer Events & meetups",
+
+    "PROFILE": "Profile",
+    "CHANGEPASSWORD": "Change Password",
+    "SIGNOUT": "Sign Out",
+    "CART": "Cart",
+    "TICKETUSERTITLE": "Choose your favorite DevEvent",
+    "OLDPASSWORD": "Old password",
+    "NEWPASSWORD": "New password",
+    
+    "DOWNLOAD": "Download",
+    "CLOSE": "Close",
+    "DATE": "Date",
+    "TICKET": "Ticket",
+    "CODEALLDAY": "Code ALL Day",
+    "YOURTICKETS": "Your Tickets",
+    "TICKETHISTORY": "Ticket History",
+    "ORDERDATE": "Order Date",
+    "ORDERTOTALPRICE": "Order Total Price",
+    "ORDERID": "Order ID",
+    "VIEWORDERDETAILS": "VIEW ORDER DETAILS",
+    "FORGOTPASSWORD": "Forgot Password",
+    "KEEPMESIGNEDIN": "Keep me Signed in",
+    "PASSWORD": "Password",
+    "USERNAME": "Username",
+    "DEVTICKETSLOGIN": "DevTickets Login",
+    "SIGNIN": "Sign in",
+    "": ""
 
 }

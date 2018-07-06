@@ -19,7 +19,7 @@
     </button>
     <button *ngIf="hasSignedIn() && userRole()==='ROLE_ADMIN'" class="my-button" routerLink="/ticketscrud">{{ 'ADMINPAGE' | translate }}</button>
     <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
-    <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketcard">Cart
+    <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketcard">{{ 'CART' | translate }}
       <span class="fa fa-shopping-cart fa-fw"></span>
       <span class="badge badge-light">{{cartValue()}} €</span>
     </button>
