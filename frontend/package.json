@@ -33,6 +33,7 @@
     "@types/html2canvas": "0.0.33",
     "@types/jspdf": "^1.1.31",
     "angular-font-awesome": "^3.1.2",
+    "angular2-counto": "^1.2.5",
     "angular2-lightbox": "^1.4.0",
     "angularx-qrcode": "^1.1.7",
     "bootstrap": "4.1.1",

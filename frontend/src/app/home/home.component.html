@@ -144,8 +144,58 @@
 <!-- Learn Industry -->
 <section id="topics" class="banner learn p-y-3">
   <div class="wrapper">
-    <h2 class="m-b-2 display-5 text-uppercase">Learn More About Us</h2>
-    <a href="#" class="btn btn-danger btn-lg btn-block">Contact Us</a>
+        <div class="container">
+
+                <!-- Row -->
+                <div class="row" style="margin-top:100px;">
+    
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-users"></i>
+                            <h3 class="white-text"><span class="counter">
+                                    <div counto [step]="200" [countTo]="1000" [countFrom]="0" [duration]="5" (countoChange)="counto = $event" (countoEnd)="onCountoEnd()">{{counto}}</div>
+                            </span></h3>
+                            <span class="white-text">Happy clients</span>
+                        </div>
+                    </div>
+                    <!-- /number -->
+    
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-trophy"></i>
+                            <h3 class="white-text"><span class="counter">12</span></h3>
+                            <span class="white-text">Awards won</span>
+                        </div>
+                    </div>
+                    <!-- /number -->
+    
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-coffee"></i>
+                            <h3 class="white-text"><span class="counter">154</span>K</h3>
+                            <span class="white-text">Cups of Coffee</span>
+                        </div>
+                    </div>
+                    <!-- /number -->
+    
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-file"></i>
+                            <h3 class="white-text"><span class="counter">45</span></h3>
+                            <span class="white-text">Projects completed</span>
+                        </div>
+                    </div>
+                    <!-- /number -->
+    
+                </div>
+                <!-- /Row -->
+    
+            </div>
+            <!-- /Container -->
   </div>
 </section>
 
