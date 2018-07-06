@@ -34,7 +34,7 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
-                                        <span class="fa fa-pencil"></span>
+                                        <span class="fa fa-code"></span>
                                     </span>
                                 </div>
                                 <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text"
@@ -45,10 +45,10 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
-                                        <span class="fa fa-code"></span>
+                                        <span class="fa fa-pencil"></span>
                                     </span>
                                 </div>
-                                <input class="width90percent height40px" #languageInput matInput placeholder="Description" type="text" formControlName="language"
+                                <input class="width90percent height40px" #languageInput matInput placeholder="Description" type="textarea" formControlName="language"
                                     required>
                             </div>
 
@@ -114,20 +114,20 @@
                                 </agm-marker>
                             </agm-map>
                             <div class="card-body">{{ date }}
-                                <h2 class="card-title">{{ name }}</h2>
+                                <h2 class="card-title fa fa-code">{{ name }}</h2>
                                 <p class="card-text">{{ description }}</p>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <span class="fa fa-money"></span> {{ price }}
                                     </div>
                                     <div class="col-md-3">
-                                        <span class="fa fa-money"></span> {{ language }}
+                                        <span class="fa fa-code"></span> {{ language }}
                                     </div>
                                     <div class="col-md-3">
                                         <span class="fa fa-map-marker"></span> {{ location }}
                                     </div>
                                     <div class="col-md-3">
-                                        <span class="fa fa-ticket pull-left"></span> {{ available }} : Tickets left!
+                                        <span class="fa fa-ticket"></span> {{ available }}:!
                                     </div>
                                 </div>
                            
