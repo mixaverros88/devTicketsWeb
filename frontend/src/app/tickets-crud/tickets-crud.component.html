@@ -11,12 +11,11 @@
                     <strong>Success!</strong>{{message}}
                 </div>
             </div>
-
-            <h3 class="text-center">{{'INSERTTICKET' |translate}}</h3>
             <hr>
             <div class="container">
                 <div class="row">
                     <div class="col-6 p10">
+                            <h3 class='text-center'>{{'INSERTTICKET' |translate}}</h3>
                         <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)" (input)="onChangeForm(userDetailsForm.value)">
                             <div class="form-group">
                                 <div class="input-group mb-3">

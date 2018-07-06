@@ -51,11 +51,15 @@ button:focus {
 }
 
 form .ng-invalid {
-  border-bottom: 2px solid red;
+  border-right: 2px solid red;
+}
+
+form input {
+  border: 0px;
 }
 
 form .ng-valid {
-  border-bottom: 2px solid green;
+  border-right: 2px solid green;
 }
 
 .mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
@@ -66,12 +70,24 @@ input.mat-input-element {
   margin-top: 0px;
 }
 
+
+input[type=text], select, textarea{
+  padding-left: 5px;
+}
+
+button.btn.btn-outline-secondary {
+  border: 1px solid white;
+  padding-right: 15px;
+}
+
 .pt10{
   padding-top: 10px;
 }
 
 span#basic-addon1 {
   width: 40px;
+  height: 40px;
+  border: 1px solid white !important;
 }
 
 .height40px{
