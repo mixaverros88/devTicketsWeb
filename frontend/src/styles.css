@@ -66,6 +66,39 @@ form .ng-valid {
   background-color: #007bff;
 }
 
+
+.table tbody tr:nth-child(odd) {
+  background-color: #ffffff3b;
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 90%;
+}
+
+.btnUp {
+  border: 0px solid gray;
+  height: 40px;
+  color: #616161;
+  background-color: white;
+  padding: 0px 3px;
+  font-size: 13px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
 input.mat-input-element {
   margin-top: 0px;
 }
