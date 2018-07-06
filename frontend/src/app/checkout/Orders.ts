@@ -1,6 +1,6 @@
 
 export interface Orders {
-    id: number ;
-    cart: String;
+  id: number;
+  cart: String;
   totalPrice: number;
 }

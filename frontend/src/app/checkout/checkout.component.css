@@ -1,3 +1,47 @@
 .bcolor{
     background-color: #d9dbe0;
 }
+
+.active {
+    border-bottom: 2px solid #1161ed;
+    text-align: center;
+    position: static;
+    color:rgba(0, 0, 0, 0.54);
+    font-size: 35px;
+}
+
+.backgroundComponentsColor {
+    background-color: rgba(80, 80, 80); 
+    color: #d9dbe0;
+}
+
+.badge-pill {
+    background-color: rgba(80, 80, 80);
+    color: #d9dbe0;
+}
+
+.text-muted-specified {
+    color: #d9dbe0 !important;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #d9dbe0;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #d9dbe0;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #d9dbe0;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #d9dbe0;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #d9dbe0;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color: #d9dbe0;
+}
