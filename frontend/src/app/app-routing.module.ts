@@ -17,12 +17,18 @@ import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import {AdminPanelComponentComponent} from './admin-panel-component/admin-panel-component.component'
+import {AdminPanelComponentComponent} from './admin-panel-component/admin-panel-component.component';
+import {ProductpageComponent } from './productpage/productpage.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'productpage',
+    component: ProductpageComponent,
     pathMatch: 'full'
   },
   {
