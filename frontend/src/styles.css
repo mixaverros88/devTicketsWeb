@@ -9,6 +9,14 @@ body {
   background-color: #e2e2e2;
 }
 
+.lan-sel option:first-child {
+  background-image: url(http://localhost:4200/assets/image/usa.jpg);
+}
+
+.lan-sel option:nth-child(2){
+  background-image: url(http://localhost:4200/assets/image/greece.jpg);
+}
+
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-family: 'Tinos', serif;
 }
