@@ -1,5 +1,5 @@
 body {
-	background: #eee;
+	background-color: rgb(226,226,226);
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
@@ -11,8 +11,22 @@ body {
   clear: both;	
 }
 
+/**/
 #site-header, #site-footer {
-	background: #fff;
+	background-color: rgb(226,226,226);
+}
+
+.active {
+    border-bottom: 2px solid #1161ed;
+    text-align: center;
+    position: static;
+    color:rgba(0, 0, 0, 0.54);
+    font-size: 35px;
+}
+  
+
+.containerBackground {
+	background-color: rgb(226,226,226);
 }
 
 #site-header {
@@ -75,6 +89,23 @@ a:hover {
 	width: 980px;
 }
 
+.myContainer {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.containerClearCartButton {
+	text-align: right; 
+}
+
+.myBtnDanger {
+	vertical-align: middle;
+}
+
+.checkoutTitle {
+	color: rgba(0, 0, 0, 0.54);
+}
+
 #cart {
 	width: 100%;
 }
@@ -104,7 +135,7 @@ a:hover {
 }
 
 .product {
-	border: 1px solid #eee;
+	border: 1px solid #ccc;
 	margin: 20px 0;
 	width: 100%;
 	height: 195px;
@@ -120,12 +151,12 @@ a:hover {
 .product img {
 	width: 100%;
 	height: 100%;
-	background-color: #fff;
+	background-color: rgb(226,226,226);
 }
 
 .product header, .product .content {
-	background-color: #fff;
-	border: 1px solid #ccc;
+	background-color: rgb(226,226,226);
+	border: 1px solid rgb(226,226,226);
 	border-style: none none solid none;
 	float: left;
 }
@@ -186,12 +217,18 @@ a:hover {
 
 .product footer.content {
 	height: 50px;
-	margin: 6px 0 0 0;
-	padding: 0;
+	margin: 0px 0 0 0;
+	padding: 0 0 0 20px;
+}
+
+.quantityPrice {
+	vertical-align: center;
+	margin: 0;
+	padding-top: 11px;
 }
 
 .product footer .price {
-	background: #fcfcfc;
+	background: rgb(226,226,226);
 	color: #000;
 	float: right;
 	font-size: 15px;
@@ -210,6 +247,7 @@ a:hover {
 	line-height: 49px;
 	margin: 0;
 	padding: 0 30px;
+	border-radius: 4px;
 
 	-webkit-transition: margin .15s linear;
 	-moz-transition: margin .15s linear;
@@ -231,7 +269,7 @@ a:hover {
 }
 
 .qt-plus, .qt-minus {
-	background: #fcfcfc;
+	background: rgb(226,226,226);
 	border: none;
 	font-size: 30px;
 	font-weight: 300;
@@ -267,7 +305,7 @@ a:hover {
 }
 
 #site-footer h1 {
-	background: #fcfcfc;
+	background: rgb(226,226,226);
 	border: 1px solid #ccc;
 	border-style: none none solid none;
 	font-size: 24px;
@@ -298,14 +336,14 @@ a:hover {
 }
 
 .type {
-	background: #fcfcfc;
+	background: rgb(226,226,226);
 	font-size: 13px;
 	padding: 10px 16px;
 	left: 100%;
 }
 
 .type, .color {
-	border: 1px solid #ccc;
+	border: 1px solid rgb(226,226,226);
 	border-style: none none solid none;
 	position: absolute;
 }
