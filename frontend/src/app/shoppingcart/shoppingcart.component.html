@@ -54,9 +54,9 @@
     <div class="left">
       <h2 class="subtotal">{{'SUBTOTAL' | translate}}:
         <span>{{getRawValue()}}</span>€</h2>
-      <h3 *ngIf="getRawValue() > 0" class="tax">{{'TAXES' | translate}} (5%):
+      <h3 *ngIf="getRawValue() >= 0" class="tax">{{'TAXES' | translate}} (5%):
         <span>{{getTax()}}</span>€</h3>
-      <h3 *ngIf="getRawValue() > 0" class="shipping">{{'SHIPPING' | translate}}:
+      <h3 *ngIf="getRawValue() >= 0" class="shipping">{{'SHIPPING' | translate}}:
         <span>5.00</span>€</h3>
     </div>
 
