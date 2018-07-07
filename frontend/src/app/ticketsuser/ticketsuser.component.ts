@@ -1,7 +1,7 @@
 import { CustomCounterComponent } from './../custom-counter/custom-counter.component';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
+import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 import {
   ConfigService,
   UserService,
@@ -9,6 +9,7 @@ import {
   ApiService,
   CartService
 } from '../service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticketsuser',
@@ -26,7 +27,11 @@ export class TicketsuserComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
   // tslint:disable-next-line:no-shadowed-variable
-  private CartService: CartService) { }
+  private CartService: CartService ,
+  private router: Router,
+  config: NgbRatingConfig) {
+    config.max = 5;
+  }
 
   ngOnInit() {
 
@@ -34,6 +39,9 @@ export class TicketsuserComponent implements OnInit {
 
   }
 
+  goToProductDetails(id) {
+    this.router.navigate(['/productpage', id]);
+  }
 
   addtoCart(id: number) {
     return this.CartService.addtoCart(id);
@@ -51,6 +59,7 @@ export class TicketsuserComponent implements OnInit {
       }
     );
   }
+
 
 
 }

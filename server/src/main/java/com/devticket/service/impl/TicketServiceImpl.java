@@ -7,6 +7,7 @@ import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -38,8 +39,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Page<Ticket> findPaginated(int page, int size) {
-       Page<Ticket>  tee = ticketRepository.findAll(new PageRequest(page, size));
+    public Page<Ticket> findPaginated(int page, int size, Sort sortBy) {
+       Page<Ticket>  tee = ticketRepository.findAll(new PageRequest(page, size, sortBy));
        return  tee;
     }
 
@@ -55,11 +56,9 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = new Ticket();
         ticket.setName(ticketrequest.getName());
         ticket.setAvailable(ticketrequest.getAvailable());
-        ticket.setLanguage(ticketrequest.getLocation());
+        ticket.setLanguage(ticketrequest.getLanguage());
         ticket.setPrice(ticketrequest.getPrice());
         ticket.setImage(ticketrequest.getImage());
-        Date date = new Date();
-        
         ticket.setDate(ticketrequest.getDate());
         ticket.setLocation(ticketrequest.getLocation());
 
@@ -73,7 +72,7 @@ public class TicketServiceImpl implements TicketService {
         ticket.setLanguage(ticketrequest.getLanguage());
         ticket.setAvailable(ticketrequest.getAvailable());
         ticket.setName(ticketrequest.getName());
-        ticket.setDate(ticketrequest.getDate());
+        ticket.setDate(ticketService.findById(id).getDate());
         ticket.setLocation(ticketrequest.getLocation());
         ticket.setImage(ticketService.findById(id).getImage());
 

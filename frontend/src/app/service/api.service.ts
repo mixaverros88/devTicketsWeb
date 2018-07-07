@@ -31,6 +31,10 @@ export class ApiService {
       withCredentials: true
     };
 
+    // if ( size > 0) {
+    //   path = 'api/tickets/get?page=' + page + '&size=' + size;
+    // }
+
     if (args) {
       options['params'] = serialize(args);
     }

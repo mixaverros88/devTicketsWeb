@@ -1,11 +1,12 @@
 import { DatePicketPopupComponent } from './../date-picket-popup/date-picket-popup.component';
 import { TicketService } from './../service/ticket.service';
-import { Component, OnInit, Injectable, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Injectable, ElementRef, ViewChild, Input, NgZone } from '@angular/core';
 import { Ticket } from './ticket';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DatePicker } from './datePicker';
 import { ChartsModule } from 'ng2-charts';
+import { } from '@types/googlemaps';
 
 // In your App's module:
 
@@ -20,12 +21,16 @@ import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { delay } from 'q';
+import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 @Component({
   selector: 'app-tickets-crud',
   templateUrl: './tickets-crud.component.html',
-  styleUrls: ['./tickets-crud.component.css']
+  styleUrls: ['./tickets-crud.component.css'],
+
 })
+
+
 
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
@@ -60,25 +65,51 @@ export class TicketsCrudComponent implements OnInit {
   ticket: Ticket;
   selectedProduct: Ticket;
   date: Date;
+
   // PAGINATION VALUES
-  howManyRows = 2;
-  totalProducts: number;
-  curentPage = 1;
-  paginationLength = 0;
-  orderByColumn = 'id';
-  orderBy = 'desc';
+  totalPages;
+  last: boolean;
+  totalElements: number;
+  size = 2;
+  number = 0;
+  sort = 'desc';
+  first: boolean;
+  numberOfElements: number;
+  orderByColumn: String = 'id';
   // PAGINATION VALUES
+
 
   closeResult: string;
 
+  // fields used for google maps and geolocation
+  @Input() usePanning = false;
+  private obj: { 'latitude': number, 'longitude': number} [] = [];
+  public latitude: number;
+  public longitude: number;
+  public userLatitude: number;
+  public userLongitude: number;
+  public userIcon: string;
+  private searchControl: FormControl;
+  private zoom: number;
+  private mapType: string;
+  private index: number;
+  private tracked = false;
 
-  constructor(private httpClient: HttpClient,
+  @ViewChild('locationInput')
+  public searchElementRef: ElementRef;
+
+
+  constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
     // tslint:disable-next-line:no-shadowed-variable
-    private CartService: CartService,
     private modalService: NgbModal,
-  private fb: FormBuilder) {
+    private fb: FormBuilder,
+    // google maps
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private _mapsWrapper: GoogleMapsAPIWrapper
+  ) {
 
     this.userDetailsForm = fb.group({
       'name': [null, Validators.compose(
@@ -88,14 +119,110 @@ export class TicketsCrudComponent implements OnInit {
       'language': [null, Validators.required] ,
       'image': [null, Validators.required] ,
       'available': [null, Validators.required] ,
-      'location': [null, Validators.required] ,
+      'location': [null] ,
       'price': [null, Validators.required] ,
 
     })
 
   }
 
+  ngOnInit() {
 
+    this.getProducts();
+    this.customOnInit();
+    // this.counter(this.totalPages);
+    this.userDetailsForm = new FormGroup({
+      date: new FormControl(''),
+      name: new FormControl(''),
+      description: new FormControl(''),
+      price: new FormControl(''),
+      available: new FormControl(''),
+      location: new FormControl(''),
+      image: new FormControl(''),
+      language: new FormControl('')
+    });
+  }
+
+  customOnInit() {
+    // set google maps defaults
+    // this.myLocation();
+    this.index = 0;
+    this.zoom = 14;
+    this.latitude = 37.97565120000001;
+    this.longitude = 23.73400079999999;
+    this.mapType = 'roadmap';
+    this.userIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+
+    // create search FormControl
+    this.searchControl = new FormControl();
+
+    // set current position
+    this.setCurrentPosition();
+
+    // load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: [], // change: from ['address'] to [], in order to include all options (address, establishments & geocodes)
+      });
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          // get the place result
+          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          // verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          // set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.zoom = 14;
+          this.index++;
+          this.location = place.formatted_address.toString();
+          const helper = {
+            'latitude': this.latitude,
+            'longitude': this.longitude
+          };
+          this.obj.push(helper);
+        });
+      });
+    });
+  }
+
+  private setCurrentPosition() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.userLatitude = position.coords.latitude;
+        this.userLongitude = position.coords.longitude;
+        this.zoom = 14;
+      });
+    }
+  }
+
+  setMapType(mapTypeId: string) {
+    this.mapType = mapTypeId;
+  }
+
+  myLocation() {
+    this.setCurrentPosition();
+    this.latitude = this.userLatitude;
+    this.longitude = this.userLongitude;
+    this._setCenter();
+    this.tracked = true;
+  }
+
+  private _setCenter() {
+    const newCenter = {
+      lat: this.latitude,
+      lng: this.longitude,
+    };
+    if (this.usePanning) {
+      this._mapsWrapper.panTo(newCenter);
+    } else {
+      this._mapsWrapper.setCenter(newCenter);
+    }
+  }
 
   open(content) {
     this.modalRefInsert = this.modalService.open(content);
@@ -116,23 +243,6 @@ export class TicketsCrudComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-
-    this.getProducts();
-    this.userDetailsForm = new FormGroup({
-      date: new FormControl(''),
-      name: new FormControl(''),
-      description: new FormControl(''),
-      price: new FormControl(''),
-      available: new FormControl(''),
-      location: new FormControl(''),
-      image: new FormControl(''),
-      language: new FormControl('')
-    });
-
-  }
-
-
   editProduct(id: number, name: string, language: string, available: number, location: string, price: number): void {
     const ticket = {} as Ticket;
     ticket.id = id;
@@ -149,25 +259,41 @@ export class TicketsCrudComponent implements OnInit {
        ;
   }
 
+  orderByName(column: String) {
+    this.orderByColumn = column;
+    this.getProducts();
+  }
+
   getProducts() {
-    this.TicketService.getAll()
+    this.TicketService.getAlladminPage(this.number, this.size, this.sort, this.orderByColumn)
       .subscribe(
         (data: any[]) => {
-          if (data.length) {
-            this.data = data;
-            console.log(data);
+          // console.log(data['content'][0]);
+          // console.log(data['last']);
+          if (data['content']) {
+            this.data = data['content'];
+            console.log(data['content']);
           }
+
+          this.totalPages = data['totalPages'];
+          this.last = data['last'];
+          this.totalElements = data['totalElements'];
+          this.size = data['size'];
+          this.number = data['number'];
+          // this.sort = data['sort'];
+          this.first = data['first'];
+          this.numberOfElements = data['numberOfElements'];
+
         }
       );
   }
 
   currentDate() {
     const currentDate = new Date();
-    
     return currentDate;
   }
 
-  setDate(month: any,day:any,year:any) {
+  setDate(month: any, day: any, year: any) {
     const currentDate = new Date();
     currentDate.setDate(day);
     currentDate.setMonth(month);
@@ -178,33 +304,32 @@ export class TicketsCrudComponent implements OnInit {
 
   onChangeForm() {
     // console.log(this.userDetailsForm.controls['date'].value);
-   
+
   const date = this.userDetailsForm.controls['date'].value;
   let newDate = new Date();
-  newDate = this.setDate(date.month,date.day,date.year);
-   console.log(newDate);
+  newDate = this.setDate(date.month, date.day, date.year);
    this.date = newDate;
-    // console.log('-->' + this.date.month);
-    // console.log('-->' + this.date['day']);
+   console.log(this.date);
     this.name = this.userDetailsForm.controls['name'].value.toString();
-    this.description = this.userDetailsForm.controls['description'].value.toString();
     this.available = this.userDetailsForm.controls['available'].value;
     this.price = this.userDetailsForm.controls['price'].value;
+    console.log(this.price);
     this.language = this.userDetailsForm.controls['language'].value.toString();
-    this.location = this.userDetailsForm.controls['location'].value;
+    this.location = this.location;
   }
 
 
   onSubmitUserDetails() {
+    console.log(this.date);
     this.TicketService.addTicket(
     this.date,
     this.userDetailsForm.controls['name'].value.toString(),
     this.userDetailsForm.controls['available'].value,
-    this.userDetailsForm.controls['price'].value,
     this.userDetailsForm.controls['language'].value.toString(),
+    this.price,
     this.base64textString,
-    this.userDetailsForm.controls['location'].value);
-    this.modalRefInsert.close(); // close modal
+    this.location);
+   // this.modalRefInsert.close(); // close modal
     this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
     this.ngOnInit();
   }
@@ -223,16 +348,25 @@ export class TicketsCrudComponent implements OnInit {
     this.selectedProduct = pr;
   }
 
-  onChange(deviceValue) {
-    this.howManyRows = deviceValue;
-    this.getPagination(this.totalProducts, this.howManyRows);
+  changePage(page) {
+    this.number = page - 1;
+    this.getProducts();
+  }
+
+  changeShowRows(howManyRows) {
+    this.size = howManyRows;
+    this.getPagination(this.totalElements, howManyRows);
     this.getProducts();
   }
 
   getPagination(totalProducts, howManyRows) {
-    this.paginationLength = Math.ceil(totalProducts / howManyRows);
+    this.totalPages = Math.ceil(totalProducts / howManyRows);
     console.log(totalProducts + ' / ' + howManyRows);
-    console.log(this.paginationLength);
+    console.log(this.totalPages);
+  }
+
+  counter(totalPages: number) {
+    return new Array(totalPages);
   }
 
   onFileSelected(evt) {

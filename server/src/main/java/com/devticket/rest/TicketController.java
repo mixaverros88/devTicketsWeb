@@ -5,6 +5,7 @@ import com.devticket.model.ticket.Ticketrequest;
 import com.devticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,6 @@ public class TicketController {
 
     private TicketService ticketService;
 
-
     @RequestMapping(method = GET, value = "/ticket/{ticketId}")
     public Ticket loadById(@PathVariable Long ticketId) {
         return this.ticketService.findById(ticketId);
@@ -50,14 +50,22 @@ public class TicketController {
             method = RequestMethod.GET
     )
     public Page<Ticket> findPaginated(
-            @RequestParam("page") int page, @RequestParam("size") int size) {
+            @RequestParam("page") int page, @RequestParam("size") int size, @RequestParam("sort") String sort, @RequestParam("column") String column) {
 
-        Page<Ticket> resultPage = ticketService.findPaginated(page, size);
+        Page<Ticket> resultPage = ticketService.findPaginated(page, size, orderBy(sort, column));
         if (page > resultPage.getTotalPages()) {
             //throw new MyResourceNotFoundException();
         }
 
         return resultPage;
+    }
+
+    private Sort orderBy(String sort, String column) {
+        if (sort == "asc"){
+            return new Sort(Sort.Direction.ASC, column);
+        }else {
+            return new Sort(Sort.Direction.DESC, column);
+        }
     }
 
     @RequestMapping(method = DELETE, value = "/ticket/delete/{ticketId}")
@@ -71,11 +79,7 @@ public class TicketController {
 
     @RequestMapping(method = POST, value = "/ticket/add")
     public ResponseEntity<?> addUser(@RequestBody Ticketrequest ticketrequest) {
-        System.out.printf("EDO EISAI RE MALAKA");
-        System.out.println(ticketrequest.getName());
-        System.out.println(ticketrequest.getPrice());
-        System.out.println(Arrays.toString(ticketrequest.getImage()));
-        System.out.println(ticketrequest.getImage().toString());
+
         this.ticketService.addnew(ticketrequest);
         Map<String, String> result = new HashMap<>();
         result.put("result", "success");

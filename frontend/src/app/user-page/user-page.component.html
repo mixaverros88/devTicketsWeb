@@ -1,84 +1,82 @@
 <div class="user-page">
   <div class="container">
-    <div class="row center-align user-data">
+    <div class="row center-align">
       <div class="col-md-3">
+        <div class="user-data">
         <img alt="DevTicketPlace" class="profile-img" src="assets/image/user.png">
+        <p class="username">{{userName()}} {{userLastname()}}</p>
       </div>
-      <div class="col-md-9">
-        <p class="username">{{userName()}}</p>
       </div>
       <ng4-loading-spinner> </ng4-loading-spinner>
-
-
-      <div *ngFor="let pr of data" class="col-md-12">
-<HR>
-<h3>Order ID: {{pr.id}}</h3>
-<br>
-<h3>Order Total Price:{{pr.totalPrice}}</h3>
-<BR>
-<h3>Order Date: {{pr.date | date}}</h3>
-<button (click)="getOrder(pr.id, content)" class="">VIEW ORDER DETAILS</button>
-  <HR>
-
-        
+      <div class="col-md-9">
+        <h2 class="history-title">{{ 'TICKETHISTORY' | translate }}</h2>
+        <div *ngFor="let pr of data" class="col-md-12 ticket-area">
+          <p> {{ 'ORDERID' | translate }} : {{pr.id}}</p>
+          <p> {{ 'ORDERTOTALPRICE' | translate }} :{{pr.totalPrice}}</p>
+          <p> {{ 'ORDERDATE' | translate }} : {{pr.date | date}}</p>
+          <button (click)="getOrder(pr.id, content)" class="view-details">{{ 'VIEWORDERDETAILS' | translate}}</button>
+        </div>
       </div>
-  </div>
-  <ng-template #content let-c="close" let-d="dismiss">
+    </div>
+    <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
-        <h4 class="modal-title">Your Tickets</h4>
+        <h4 class="modal-title">{{ 'YOURTICKETS' | translate }}</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
- <div id="export">
-      <div class="modal-body mb-0">
-    <div *ngFor="let data of cart.cart" class="col-md-12">
-        <div class="ticket">
-            <div class="stub">
-              <div class="top">
-                <span class="admit">DEVTicket</span>
-                <span class="line"></span>
-                <span class="num">
-                   Code ALL Day
-                    
-                </span>
-              </div>
-              <div class="icon"><span><img height="120" width="150" src='data:image/png;base64,{{data.ticket.image}}'> </span></div>
-              <div class="name">
+      <div id="export">
+        <div class="modal-body mb-0">
+          <div *ngFor="let data of cart.cart" class="col-md-12">
+            <div class="ticket">
+              <div class="stub">
+                <div class="top">
+                  <span class="admit">DEVTicket</span>
+                  <span class="line"></span>
+                  <span class="num">
+                    {{ 'CODEALLDAY' | translate }}
+                  </span>
+                </div>
+                <div class="icon">
+                  <span>
+                    <img height="120" width="150" src='data:image/png;base64,{{data.ticket.image}}'> </span>
+                </div>
+                <div class="name">
                   {{userName()}}
+                </div>
               </div>
-            </div>
-            <div class="check">
-              <div class="big">
-                  {{data.ticket.name}} <br> Ticket
-              </div> 
-              <div class="qr">
+              <div class="check">
+                <div class="big">
+                  {{data.ticket.name}}
+                  <br> {{ 'TICKET' | translate }}
+                </div>
+                <div class="qr">
                   <qrcode [qrdata]="myAngularxQrCode" [size]="80" [level]="'M'"></qrcode>
-                  </div>
-              <div class="info">
-                <section>
-                  <div class="title">Date</div>
-                  <div> {{data.ticket.date | date}}</div>
-                </section>
-                <section>
-                  <div class="title">Price</div>
-                  <div>{{data.ticket.price}}</div>
-                </section>
-                <section>
-                  <div class="title">Location</div>
-                  <div>{{data.ticket.location}}</div>
-                </section>
+                </div>
+                <div class="info">
+                  <section>
+                    <div class="title">{{ 'DATE' | translate }}</div>
+                    <div> {{data.ticket.date | date}}</div>
+                  </section>
+                  <section>
+                    <div class="title">{{ 'PRICE' | translate }}</div>
+                    <div>{{data.ticket.price}}</div>
+                  </section>
+                  <section>
+                    <div class="title">{{ 'LOCATION' | translate}}</div>
+                    <div>{{data.ticket.location}}</div>
+                  </section>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>          
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
-        <button type="button" class="btn btn-danger" (click)="download()">Download <span class="fa fa-file-pdf-o fa-fw"></span> </button>
+        <button type="button" class="btn btn-light" (click)="c('Close click')">{{ 'CLOSE' | translate }}</button>
+        <button type="button" class="btn btn-danger" (click)="download()"> {{ 'DOWNLOAD' | translate }}
+          <span class="fa fa-file-pdf-o fa-fw"></span>
+        </button>
       </div>
-   
-    </ng-template>
 
-  
+    </ng-template>

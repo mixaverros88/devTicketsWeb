@@ -2,19 +2,19 @@
 
 
 <div class="container-fluid" style="padding:0;">
-<div class="row">
-  <div class="col">
-    <header id="home" class="top-hero jumbotron-fluid p-b-3 bg-faded">
-      <div class="container animated fadeInUp">
-        <h1 class="display-3">Dev Tickets</h1>
-        <p class="lead m-t-1 m-b-2">Everything you need to know about Developer Events.</p>
-        <button type="button" class="btn btn-lg btn-primary m-t-1" routerLink="/ticketsuser">Buy Tickets</button>
-        <button type="button" class="js-scroll btn btn-lg btn-default m-t-1" routerLink="/contact">Contact Us</button>
-      </div>
-    </header>
-</div>
-</div>
-<div class="section light-bg">
+    <div class="row">
+        <div class="col">
+            <header id="home" class="top-hero jumbotron-fluid p-b-3 bg-faded">
+                <div class="container animated fadeInUp">
+                    <h1 class="display-3">Dev Tickets</h1>
+                    <p class="lead m-t-1 m-b-2">{{ 'EVERYTHINGSUBTITILE' | translate }}.</p>
+                    <button type="button" class="btn btn-lg btn-primary m-t-1" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
+                    <button type="button" class="js-scroll btn btn-lg btn-default m-t-1" routerLink="/contact">{{ 'CONTACTUS' | translate }}</button>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="section light-bg">
 
         <div class="container">
             <div class="row">
@@ -23,22 +23,26 @@
                         <li class="media">
                             <div class="circle-icon mr-4">1</div>
                             <div class="media-body">
-                                <h5>Create an Account</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                <h5>{{ 'CREATEANACCOUNT' | translate }}</h5>
+                                <p>{{ 'CREATEANACCOUNTDESCRIPTION' | translate }}
+                                </p>
                             </div>
                         </li>
                         <li class="media my-4">
                             <div class="circle-icon mr-4">2</div>
                             <div class="media-body">
-                                <h5>Search for a Dev Ticket</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
+                                <h5>{{ 'SEARCHFORADEVTICKET' | translate }}</h5>
+                                <p>{{ 'SEARCHFORADEVTICKETDESCRIPTION' | translate }}
+                                </p>
                             </div>
                         </li>
                         <li class="media">
                             <div class="circle-icon mr-4">3</div>
                             <div class="media-body">
-                                <h5>Enjoy your Event</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                <h5>{{ 'ENJOYYOUREVENT' | translate }}</h5>
+                                <p>{{ 'ENJOYYOUREVENTDESCRIPTION' | translate }}
+                                    
+                                </p>
                             </div>
                         </li>
                     </ul>
@@ -56,392 +60,436 @@
 
     <div class="section light-bg">
 
+        <div class="container">
+
+            <div class="col-md-12 text-center">
+                <h2>{{ 'LEARNCODING' | translate }}</h2>
+                <div class="line-separator-white"></div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-php-plain colored programmingLang"></i>
+                </div>
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-java-plain colored programmingLang"></i>
+                </div>
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-javascript-plain colored programmingLang"></i>
+                </div>
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-angularjs-plain colored programmingLang"></i>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-android-plain colored programmingLang"></i>
+                </div>
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-csharp-plain colored programmingLang"></i>
+                </div>
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-git-plain colored programmingLang"></i>
+                </div>
+                <div class="col-md-3 text-center minHeight">
+                    <i class="devicon-html5-plain colored programmingLang"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Learn Industry -->
+    <section id="topics" class="banner learn p-y-3">
+        <div class="wrapper">
             <div class="container">
 
-                    <div class="col-md-12 text-center">
-                        <h2>Learn Coding</h2>
-                        <div class="line-separator-white"></div>
-                    </div>
-                <div class="row mb-5">
-                    <div class="col-md-3 text-center minHeight">
-                        <i class="devicon-php-plain colored programmingLang"></i>
-                    </div>
-                    <div class="col-md-3 text-center minHeight">
-                        <i class="devicon-java-plain colored programmingLang"></i>
-                    </div>  
-                    <div class="col-md-3 text-center minHeight">
-                        <i class="devicon-javascript-plain colored programmingLang"></i>
-                    </div>  
-                    <div class="col-md-3 text-center minHeight">
-                        <i class="devicon-angularjs-plain colored programmingLang"></i>
-                    </div>   
-                </div>
-                <div class="row mb-5">
-                        <div class="col-md-3 text-center minHeight">
-                            <i class="devicon-android-plain colored programmingLang"></i>
+                <!-- Row -->
+                <div class="row" style="margin-top:100px;">
+
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-users"></i>
+                            <h3 class="white-text">
+                                <span class="counter">
+                             <span class="counter">17000</span>
+                                </span>
+                            </h3>
+                            <span class="white-text">{{ 'HAPPYCLIENTS' | translate }}</span>
                         </div>
-                        <div class="col-md-3 text-center minHeight">
-                            <i class="devicon-csharp-plain colored programmingLang"></i>
-                        </div>  
-                        <div class="col-md-3 text-center minHeight">
-                            <i class="devicon-git-plain colored programmingLang"></i>
-                        </div>  
-                        <div class="col-md-3 text-center minHeight">
-                            <i class="devicon-html5-plain colored programmingLang"></i>
-                        </div>   
                     </div>
-    
+                    <!-- /number -->
+
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-trophy"></i>
+                            <h3 class="white-text">
+                                <span class="counter">154</span>K
+                            </h3>
+                            <span class="white-text">{{ 'AWARDSWON' | translate }}</span>
+                        </div>
+                    </div>
+                    <!-- /number -->
+
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-coffee"></i>
+                            <h3 class="white-text">
+                                <span class="counter">8004</span>K
+                            </h3>
+                            <span class="white-text">{{ 'CUPSOFCOFFE' | translate }}</span>
+                        </div>
+                    </div>
+                    <!-- /number -->
+
+                    <!-- number -->
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="number">
+                            <i class="fa fa-file"></i>
+                            <h3 class="white-text">
+                                <span class="counter">45</span>
+                            </h3>
+                            <span class="white-text">{{ 'PROJECTSCOMPLETED' | translate }}</span>
+                        </div>
+                    </div>
+                    <!-- /number -->
+
+                </div>
+                <!-- /Row -->
+
             </div>
-    
+            <!-- /Container -->
         </div>
-    <!-- // end .section -->
-<!-- <div class="row">
-  <div class="col-md-12 mb-5 mt-4" style="text-align:center">
-<h1>{{ 'TITLE' | translate }}</h1>
-<div class="line-separator"></div>
-  </div>
-</div>
-<div class="row mb-5">
-  <div class="col-md-4" style="padding-left: 3%;">
-      <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="assets/image/1.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{'NOTIFORDEVMEET' | translate}}</h5>
-            <p class="card-text">{{ 'GETNOTIFORDENMET'| translate }}</p>
-            
-          </div>
-        </div>
-  </div>
-  <div class="col-md-4" style="padding-left: 3%;">
-      <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="assets/image/2.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{'LIVEDEV' | translate}}</h5>
-            <p class="card-text">{{'WATCHONLINE' | translate}}</p>
-            
-          </div>
-        </div>
-  </div>
-  <div class="col-md-4" style="padding-left: 3%;">
-      <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="assets/image/3.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{ 'DEVTICKETS' | translate }}</h5>
-            <p class="card-text">{{ 'SIGNUPTODAYDISCOUNT' | translate }}</p>
-           
-          </div>
-        </div>
-  </div>
-</div> -->
-
-<!-- Learn Industry -->
-<section id="topics" class="banner learn p-y-3">
-  <div class="wrapper">
-    <h2 class="m-b-2 display-5 text-uppercase">Learn More About Us</h2>
-    <a href="#" class="btn btn-danger btn-lg btn-block">Contact Us</a>
-  </div>
-</section>
+    </section>
 
 
-<!-- Team -->
-<section id="team" class="pb-5">
-  <div class="container">
-      <h5 class="section-title h1">{{'OURTEAM' | translate}}</h5>
-      <div class="line-separator-white"></div>
-      <div class="row">
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="assets/image/tzimpoulasnikos.jpg" alt="card image"></p>
-                                  <h4 class="card-title">Tzimpoulas Nikos</h4>
-                                  <p class="card-text">Web Developer </p>
-                                  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-ellipsis-h"></i></a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/tzimpoulasnikos">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                        </li>
-                                        <li class="list-inline-item">
+    <!-- Team -->
+    <section id="team" class="pb-5">
+        <div class="container">
+            <h5 class="section-title h1">{{'OURTEAM' | translate}}</h5>
+            <div class="line-separator-white"></div>
+            <div class="row">
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p>
+                                            <img class=" img-fluid" src="assets/image/tzimpoulasnikos.jpg" alt="card image">
+                                        </p>
+                                        <h4 class="card-title">{{ 'NIKOSTZIMPOULAS' | translate }}</h4>
+                                        <p class="card-text">Web Developer </p>
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">DevTickets</h4>
+                                        <p class="card-text">
+                                                {{ 'NIKOSDESCRIPTION' | translate }}.
+                                        </p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/tzimpoulasnikos">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
                                                 <a class="social-icon text-xs-center" target="_blank" href="https://www.linkedin.com/in/tzimpoulasnikolaos/">
                                                     <i class="fa fa-linkedin"></i>
                                                 </a>
                                             </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://github.com/tzimpoulog">
-                                              <i class="fa fa-github"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://plus.google.com/112060231597571127665">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="https://images.pexels.com/photos/415326/pexels-photo-415326.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" alt="card image"></p>
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-ellipsis-h"></i></a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-skype"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="card image"></p>
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-ellipsis-h"></i></a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-skype"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="https://images.pexels.com/photos/789812/pexels-photo-789812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="card image"></p>
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-ellipsis-h"></i></a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-skype"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="https://images.pexels.com/photos/704977/pexels-photo-704977.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="card image"></p>
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-ellipsis-h"></i></a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-skype"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="https://images.pexels.com/photos/704973/pexels-photo-704973.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="card image"></p>
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-ellipsis-h"></i></a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">TziNi Project</h4>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-skype"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://github.com/tzimpoulog">
+                                                    <i class="fa fa-github"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://plus.google.com/112060231597571127665">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p>
+                                            <img class=" img-fluid" src="./../../assets/image/johndimou.jpg" alt="card image">
+                                        </p>
+                                        <h4 class="card-title">{{ 'JOHNDIMOU' | translate }}</h4>
+                                        <p class="card-text">Java Software Developer / Unity3D Developer.</p>
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">DevTickets</h4>
+                                        <p class="card-text">{{ 'JOHNDESCRIPTION' | translate }}.</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.linkedin.com/in/john-dimou-2528b6148/">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p>
+                                            <img class=" img-fluid" src="./../../assets/image/mikeverrosfan.jpg" alt="card image">
+                                        </p>
+                                        <h4 class="card-title">{{ 'MIKEVERROS' | translate }}</h4>
+                                        <p class="card-text">Java and php Developer.</p>
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">DevTickets</h4>
+                                        <p class="card-text">{{ 'MIKEDESCRIPTION' | translate }}.</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="www.VerroEisaiPantouKaiPouthena.org">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="www.EmfanisouSeKapoioSocialMedia.verros">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p>
+                                            <img class=" img-fluid" src="./../../assets/image/christosvantarakis.jpg" alt="card image">
+                                        </p>
+                                        <h4 class="card-title">{{ 'CHRISTOSVANTARAKIS' | translate }}</h4>
+                                        <p class="card-text">Php Developer.</p>
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">DevTickets</h4>
+                                        <p class="card-text">{{ 'CHRISTOSDESCRIPTION' | translate }}.
+                                        </p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.linkedin.com/in/christos-vantarakis/">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p>
+                                            <img class=" img-fluid" src="./../../assets/image/panagiotislamprakis.jpeg" alt="card image">
+                                        </p>
+                                        <h4 class="card-title">{{ 'PANAGIOTISLAMPRAKIS' | translate }}</h4>
+                                        <p class="card-text">N.T.U.A graduate.</p>
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">DevTickets</h4>
+                                        <p class="card-text">{{ 'PANAGIOTISDESCRIPTION' | translate }}!</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/panos.lamprakis.5">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.linkedin.com/in/panagiotis-a-lamprakis-9a8143144/">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://github.com/Panos-Lamprakis">
+                                                    <i class="fa fa-github"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://plus.google.com/u/0/114363114087600712073">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p>
+                                            <img class=" img-fluid" src="./../../assets/image/harrygiannakidis.jpg" alt="card image">
+                                        </p>
+                                        <h4 class="card-title">{{ 'HARRYGIANNAKIDIS' | translate }}</h4>
+                                        <p class="card-text">Mentor.</p>
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">DevTickets</h4>
+                                        <p class="card-text">{{ 'HARRYDESCRIPTION' | translate }}.</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      </div>
-  </div>
-</section>
-<!-- Team -->
+        </div>
+    </section>
+    <!-- Team -->
 
 
 </div>

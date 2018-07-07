@@ -32,4 +32,16 @@ export class AccountMenuComponent implements OnInit {
       this.router.navigate(['/login']);
     });
   }
+  hasSignedIn() {
+    return !!this.userService.currentUser;
+  }
+
+  userRole() {
+    const user = this.userService.currentUser;
+    if (user.authorities[1]) {
+      return user.authorities[1].authority;
+    } else {
+      return user.authorities[0].authority;
+    }
+  }
 }

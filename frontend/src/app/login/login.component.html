@@ -1,35 +1,31 @@
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <br>
 <div style="padding-top: 30px;" class="login">
-  <h2 style="color:whitesmoke;" class="active">devTickets Login</h2>
+  <h3 style="color:whitesmoke;" class="active">{{ 'DEVTICKETSLOGIN' | translate }}</h3>
 
   <body style="background-color:#505050;" class="text-center">
     <p [class]="notification.msgType" style="color:red;" *ngIf="notification">{{notification.msgBody}}</p>
 
     <form class="form-signin" *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" style="padding-top:30px;">
 
-      <label style="color:whitesmoke;" for="inputEmail" class="">USERNAME</label>
-      <input style="color:whitesmoke;" formControlName="username" required placeholder="username" class="text">
+      <label style="color:whitesmoke;" for="inputEmail" class="active">{{ 'USERNAME' | translate }}</label>
+      <input style="color:whitesmoke;" formControlName="username" required placeholder="username" class="text centralizeInput">
       <br />
 
-
-
-      <label style="color:whitesmoke;" for="inputEmail" class="">PASSWORD</label>
-      <input matInput formControlName="password" required type="password" placeholder="password" class="text">
+      <label style="color:whitesmoke;" for="inputEmail" class="active">{{ 'PASSWORD' | translate }}</label>
+      <input matInput formControlName="password" required type="password" placeholder="password" class="text centralizeInput">
       <br />
       <br>
 
       <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
-      <label style="color:whitesmoke;" for="checkbox-1-1">Keep me Signed in</label>
-
-      <button class="signin" type="submit" [disabled]="!loginForm.form.valid">Sign in</button>
-      <a style="color:whitesmoke;" routerLink="/resetpassword">Forgot Password?</a>
+      <label style="color:whitesmoke; padding-bottom: 0%; margin-bottom: 0%;" for="checkbox-1-1">{{ 'KEEPMESIGNEDIN' | translate }}</label>
+      <hr>
+      <button class="signin" type="submit" [disabled]="!loginForm.form.valid">{{ 'SIGNIN' | translate }}</button>
       
+      <a style="color:whitesmoke; margin-top: 8px;" routerLink="/resetpassword">{{ 'FORGOTPASSWORD' | translate }}</a>
 
     </form>
-    <hr>
-<br>
-
+    <br>
 
   </body>
 </div>

@@ -1,17 +1,67 @@
-agm-map {
-    height: 300px;
-  }
-
-.line-separator{
-    height:2px;
-    background:#EF233C;
-    border-bottom:1px solid #EF233C;
-    width: 100px;
-    margin:auto;
-    }
-.form-width{
-  width: 80%;
+.contact-page {
+  padding: 7% 0 10px 0;
 }
-.card-height{
+.contact-title {
+  text-align: center;
+  font-size: 42px;
+  border-bottom: 1px solid;
+  padding-bottom: 25px;
+  margin-bottom: 100px;
+}
+.contact-form {
+  padding-bottom: 90px;
+}
+.contact-form p {
+  font-size: 18px;
+  padding-bottom: 13px;
+}
+i.fa {
+  padding-right: 10px;
+}
+.submit-area {
+  text-align: right;
+  padding-top: 30px;
+}
+.submit {
+  background: #0099cc;
+  border: none;
+  color: white;
+  width: 130px;
+  height: 50px;
+  font-size: 21px;
+  border-radius: 8px;
+  transition: all 0.75s ease-in-out;
+}
+.submit:hover {
+  cursor: pointer;
+  background: #2098ff;
+  border-radius: 0px;
+  transition: all 0.75s ease-in-out;
+}
+agm-map {
+  height: 300px;
+}
+
+.line-separator {
+  height: 2px;
+  background: #ef233c;
+  border-bottom: 1px solid #ef233c;
+  width: 100px;
+  margin: auto;
+}
+
+.form-width {
+}
+
+.card-height {
   height: 200px;
+}
+
+.centralizeFavicon {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.centralizeForm {
+  padding-left: 14%;
 }

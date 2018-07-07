@@ -7,10 +7,30 @@
 .my-button {
   background: none;
   color: white;
+  border: none;
   border-bottom: 1px solid;
   border-radius: 0;
   padding-bottom: 15px;
   margin-right: 20px;
+  transition: all 0.75s ease-in-out;
+  cursor: pointer;
+}
+.my-button:hover {
+  color: #2098ff;
+  border-bottom: 3px solid;
+  transition: all 0.75s ease-in-out;
+  cursor: pointer;
+}
+.lan-sel {
+  background: none;
+  border: none;
+  color: white;
+  margin: 0 10px;
+  font-size: 19px;
+}
+.lan-sel option {
+  background: #424954;
+  color: white;
 }
 .greeting-button {
   cursor: pointer;
@@ -19,35 +39,33 @@
 .greeting-button:hover span {
   color: #2098ff;
 }
-.my-button:hover{
-  color:  #2098ff;
+.my-button.active {
+  color: #84c6ff;
 }
-.my-button.active{
-  color:  #84c6ff;
-}
-.app-angular-logo{
+.app-angular-logo {
   height: 45px;
 }
 .badge-light {
-  background: #ff2020;
+  background: #0099cc;
   color: white;
   border-radius: 25px;
-  top: -10px;
+  position: absolute;
+  top: 14px;
+  right: 335px;
 }
 // The menu popup is rendered outside the header component
 // so we will restyle a couple things inside a global /deep/ selector
-.navbar{
+.navbar {
   padding: 0rem 4rem;
-  -webkit-box-shadow: 0px 6px 52px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 6px 52px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 3px 22px 2px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 6px 52px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 6px 52px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 22px 2px rgba(0, 0, 0, 0.75);
   overflow: hidden;
-    background-color: #333;
-    top: 0;
-    right: 0;
-    width: 100%;
-    z-index: 99999 !important;
-
+  background-color: #333;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99999 !important;
 }
 .app-navbar {
   width: 100%;
@@ -64,7 +82,7 @@
   display: none;
 }
 
- /deep/ {
+/deep/ {
   .app-header-accountMenu.mat-menu-panel {
     border-radius: 3px;
     max-width: initial;
@@ -88,10 +106,8 @@
   }
 }
 
-
-.fa-user{
-  color: #2098FF;
+.fa-user {
+  color: #2098ff;
   font-size: 27px;
   line-height: 40px;
 }
-
