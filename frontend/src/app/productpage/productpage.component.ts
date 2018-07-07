@@ -2,15 +2,13 @@
 import { Component, OnInit, Injectable, NgZone } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { } from '@types/googlemaps';
+import { Http, Response } from '@angular/http';
 import {
   TicketService,
   CartService
 } from '../service';
 import { Ticket } from '../tickets-crud/ticket';
-import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
-import { SELECT_PANEL_PADDING_X } from '@angular/material';
-import { delay } from 'rxjs/operator/delay';
 
 
 
@@ -59,6 +57,20 @@ export class ProductpageComponent implements OnInit {
 
 
   }
+
+  getWeather() {
+   const x = this.latitude;
+   const y = this.longitude;
+let url = 'api.openweathermap.org/data/2.5/forecast?lat=';
+url = url + x.toString();
+let plus = '&lon=';
+plus = plus + y.toString();
+const final = url + plus;
+plus = plus + '&appid=b6907d289e10d714a6e88b30761fae22';
+
+  }
+
+
 
 
   getlatlng(address) {
