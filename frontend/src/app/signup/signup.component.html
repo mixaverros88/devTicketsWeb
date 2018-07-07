@@ -1,40 +1,37 @@
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <br>
 <div style="padding-top: 30px;" class="login">
-  <h2 style="color:whitesmoke;" class="active">devTickets Sign Up</h2>
+  <h2 style="color:whitesmoke;" class="active">{{ 'SIGNUP' | translate }} devTickets</h2>
 
   <body style="background-color:#505050;" class="text-center">
     <p [class]="notification.msgType" style="color:red;" *ngIf="notification">{{notification.msgBody}}</p>
 
     <form class="form-signin" *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" style="padding-top:30px;">
 
-      <label style="color:whitesmoke;" for="inputEmail" class="">USERNAME</label>
-      <input style="color:whitesmoke;" formControlName="username" required placeholder="username" class="text">
+      <label style="color:whitesmoke;" for="inputEmail" class="">{{ 'USERNAME' | translate }}</label>
+      <input style="color:whitesmoke;" formControlName="username" required placeholder="username" class="text centralizeInputTag">
       <br />
 
-
-
-      <label style="color:whitesmoke;" for="inputEmail" class="">PASSWORD</label>
-      <input matInput formControlName="password" required type="password" placeholder="password" class="text">
+      <label style="color:whitesmoke;" for="inputEmail" class="">{{ 'PASSWORD' | translate }}</label>
+      <input formControlName="password" required type="password" placeholder="password" class="text centralizeInputTag">
       <br />
       <br>
-      <label style="color:whitesmoke;" for="firstname" class="">FIRSTNAME</label>
-      <input style="color:whitesmoke;" formControlName="firstname" required placeholder="firstname" class="text">
+      <label style="color:whitesmoke;" for="firstname" class="">{{ 'FIRSTNAME' | translate }}</label>
+      <input style="color:whitesmoke;" formControlName="firstname" required placeholder="firstname" class="text centralizeInputTag">
       <br />
 
-      <label style="color:whitesmoke;" for="lastname" class="">E-MAIL</label>
-      <input style="color:whitesmoke;" formControlName="lastname" required placeholder="lastname" class="text">
+      <label style="color:whitesmoke;" for="lastname" class="">{{ 'EMAIL' | translate }}</label>
+      <input style="color:whitesmoke;" formControlName="lastname" required placeholder="lastname" class="text centralizeInputTag">
       <br />
-
 
       <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
-      <label style="color:whitesmoke; size: 8px;" for="checkbox-1-1">By checking this box, you agree to our Terms.</label>
-
-      <button class="signin" type="submit" [disabled]="!loginForm.form.valid">Sign in</button>
-      <a class="" style="color:whitesmoke;" href="#">Forgot Password?</a>
-      
+      <label style="color:whitesmoke; size: 8px;" for="checkbox-1-1">{{ 'CHECKINGTHISBOX' | translate }}.</label>
+      <hr>
+      <button class="signin" type="submit" [disabled]="!loginForm.form.valid">{{ 'SIGNIN' | translate }}</button>
+      <a class="" style="color:whitesmoke; margin-top: 8px;" routerLink="/resetpassword">{{ 'FORGOTPASSWORD' | translate }}</a>
 
     </form>
-    <hr>
-<br>
-
+    <br>
+  </body>
+</div>
+<div class="row" style="height: 7px;"></div>
