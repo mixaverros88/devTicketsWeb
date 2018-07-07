@@ -8,7 +8,7 @@
     "SIGNUP": "Εγγραφή",
     "LOGIN": "Σύνδεση",
     "ADMINPAGE": "Σελίδα διαχειριστή",
-    "BUYTICKETS": "Αγόρασε Εισιτήριο",
+    "BUYTICKETS": "Αγοράστε Εισιτήριο",
     "NOTIFORDEVMEET": "Ειδοποιήσεις για προγραμματιστές Meetups",
     "GETNOTIFORDENMET": "Λάβετε ειδοποιήσεις για το Dev Meetups σε πραγματικό χρόνο",
     "LIVEDEV": "Ζωντανή προβολή events για  Developers",
@@ -132,5 +132,8 @@
     "STATEPLACEHOLDER": "Ο νομός σας",
     "ZIPPLACEHOLDER": "Τ.Κ",
     "NAMEPLACEHOLDER": "Γιάννης",
-    "SURNAMEPLACEHOLDER": "Παπαδόπουλος"
+    "SURNAMEPLACEHOLDER": "Παπαδόπουλος",
+
+    "CHECKINGTHISBOX": "Αποδοχή όρων της DevTickets",
+    "PROCCEEDTOCHECKOUT": "ΟΛΟΚΛΗΡΩΣΗ ΑΓΟΡΑΣ"
 }

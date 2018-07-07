@@ -14,6 +14,9 @@ export class CheckoutComponent implements OnInit {
 
   data: any[];
   CurrentUserId: number;
+
+  shippingCost = 5;
+
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private CartService: CartService,

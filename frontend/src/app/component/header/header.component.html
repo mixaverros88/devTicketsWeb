@@ -5,7 +5,7 @@
 
 
   <div class="float-right">
-    <img src="assets/image/en.jpg" name="widget" alt="" style="margin-right: -14px;">
+    <img src="assets/image/el.jpg" name="widget" alt="" style="margin-right: -14px;">
     <label>
       <select class="lan-sel" #langSelect (change)="translate.use(langSelect.value)" onchange="if(document.images) document.images['widget'].src='./assets/image/'+this.options[this.selectedIndex].value+'.jpg';">
         <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
@@ -22,6 +22,9 @@
     <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketcard">{{ 'CART' | translate }}
       <span class="fa fa-shopping-cart fa-fw"></span>
       <span class="badge badge-light">{{cartValue()}} €</span>
+    </button>  
+    <button  routerLink="/contact" class="my-button">
+      <span>{{ 'Contact' | translate }}</span>
     </button>
     <button class="greeting-button" *ngIf="hasSignedIn()" mat-button mat-ripple [matMenuTriggerFor]="accountMenu">
       <span>

@@ -11,6 +11,7 @@ export class ContactComponent implements OnInit {
   title = 'My first AGM project';
   lat = 38.049506;
   lng = 23.788381;
+  cooperative ="none";
 
   @ViewChild('email')
   email: ElementRef;

@@ -132,8 +132,8 @@
     "ZIPPLACEHOLDER": "Postal code here",
     "NAMEPLACEHOLDER": "John",
     "SURNAMEPLACEHOLDER": "Papadopoulos",
-    "": "",
-
-    "": ""
+    
+    "CHECKINGTHISBOX": "By checking this box, you agree to our Terms",
+    "PROCCEEDTOCHECKOUT": "PROCCEED TO CHECKOUT"
 
 }

@@ -100,7 +100,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-6 p10">
+                    <div class="col-6 p10" style="margin-top:40px;">
                         <div class="card border-0">
                             <h3 class='text-center'>New Ticket Preview</h3>
                             <!-- <div style="min-height: 150px;">
@@ -113,21 +113,29 @@
                                 <agm-marker *ngFor="let position of obj" [latitude]="position.latitude" [longitude]="position.longitude">
                                 </agm-marker>
                             </agm-map>
-                            <div class="card-body">{{ date }}
-                                <h2 class="card-title fa fa-code">{{ name }}</h2>
-                                <p class="card-text">{{ description }}</p>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <span class="fa fa-calendar">{{ date | date }}</span>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <span class="fa fa-pencil">{{ language }}</span>
+                                    </div>
+                                </div>
+                                <h2 class="card-title"></h2>
+                                <p class="card-text"></p>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <span class="fa fa-money"></span> {{ price }}
                                     </div>
                                     <div class="col-md-3">
-                                        <span class="fa fa-code"></span> {{ language }}
+                                        <span class="fa fa-code"></span> {{ name }}
                                     </div>
                                     <div class="col-md-3">
                                         <span class="fa fa-map-marker"></span> {{ location }}
                                     </div>
                                     <div class="col-md-3">
-                                        <span class="fa fa-ticket"></span> {{ available }}:!
+                                        <span class="fa fa-ticket"></span> {{ available }}
                                     </div>
                                 </div>
                            
@@ -207,7 +215,7 @@
                 <ng-template #content let-c="close" let-d="dismiss">
                 </ng-template>
     -->
-    <h3 class="text-center">{{'INSERTTICKET' |translate}}</h3>
+    <h3 class="text-center">{{'Edit Ticket' |translate}}</h3>
     <hr>
                 <div class="container">
                     <div *ngIf="message" class="alert alert-success">
@@ -217,7 +225,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>Total Tickets {{ totalElements }}</th>
                                 <th>{{'ΝΑΜΕ'| translate}}</th>
                                 <th>{{'LANGUAGE' | translate}}</th>
                                 <th>{{'AVAILABE' | translate}}</th>
@@ -226,7 +234,7 @@
                                 <th>Date</th>
                                 <th>{{'SETTINGS' | translate}}</th>
                                 <th>
-                                    <select (change)="onChange($event.target.value)">
+                                    <select class = "showRows" (change)="changeShowRows($event.target.value)">
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
@@ -238,9 +246,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let pr of data">
-                                <td>
+                                <td style="width:20%;">
                                     <img height="50" width="80" src='data:image/png;base64,{{pr.image}}'> </td>
-                                <td>{{ pr.name }}</td>
+                                <td >{{ pr.name }}</td>
                                 <td>{{ pr.language }}</td>
                                 <td>{{ pr.available }}</td>
                                 <td>{{ pr.location }}</td>
@@ -248,11 +256,19 @@
                                 <td>{{ pr.date | date }}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">{{ 'MODIFY' | translate }}</button>
+                                </td>
+                                <td>
                                     <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">{{ 'DELETE' | translate }}</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <ul class="pagination">
+                        <li  *ngFor='let in of counter(totalPages) ;let i = index' class="page-item" > 
+                            <span (click)="changePage(i+1)" class="page-link" [ngClass]="{activePage:i===number}">{{ i+1 }}</span>
+                        </li>
+                    </ul>
+                      
                 </div>
     
     
