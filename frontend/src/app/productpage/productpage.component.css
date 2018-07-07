@@ -135,11 +135,12 @@
   
   .cart-price{
     display: inline-block;
-    position:absolute;
+    
     bottom: 30px;
     left: 0;
     margin-left: 50px;
     margin-top: 50px;
+    padding-top: 12%;
     height: 80px;
     width: 720px;
   }
@@ -150,7 +151,7 @@
     float: left;
     height: 50px;
     width: 300px;
-    background-image: linear-gradient(40deg, #0ba360 0%, #3cba92 100%);
+    background-image: linear-gradient(40deg, #1573c5 0%, #3ba2fa 100%);
       border: none;
       color: white;
       padding: 15px 80px;

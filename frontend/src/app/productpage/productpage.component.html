@@ -13,15 +13,34 @@
   </div>
   <div class="right-rounded-column">
     <div class="product-info">
-    <h3>Developer Ticket</h3>
+    <h3>Event Details</h3>
 
     <h1>{{ticket?.name}}</h1>
-      
+    
      
                            Location : 
-        <p> {{ticket?.location}}</p> 
-
-
+        <p> {{ticket?.location}}</p> <BR>
+          <div>
+            Description :
+<P>{{ticket?.language}}</P><BR>
+  <table style='padding-bottom: 10%;'class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Estimated Weather Conditions(OpenWeather API)</th>
+        <th>Deegress</th>
+        <th>Weather </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src='{{weather?.image}}' class="" /> {{weather?.description}}</td>
+        <td>~{{weather?.temp}} ℃</td>
+        <td>{{weather?.main}}</td>
+      </tr>
+   
+    </tbody>
+  </table>
+</div>
     </div>
     <div class="cart-price">
       <button class="button1">Add to Cart</button>
