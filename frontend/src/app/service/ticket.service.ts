@@ -24,12 +24,8 @@ export class TicketService {
     return this.apiService.get(this.config.allticket_url);
   }
 
-  getTicket(id: number) {
-    return this.apiService.get(this.config.viewproduct_url(id));
-  }
-
-  getAlladminPage(page?: number, size?: number) {
-    const url = this.config.paginnationticket_url + 'get?page=' + page + '&size=' + size;
+  getAlladminPage(page?: number, size?: number, sort?: String, column?: String) {
+    const url = this.config.paginnationticket_url + 'get?page=' + page + '&size=' + size + '&sort=' + sort + '&column=' + column;
     return this.apiService.get(url);
   }
 
