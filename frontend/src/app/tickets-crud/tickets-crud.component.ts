@@ -7,6 +7,8 @@ import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } fro
 import { DatePicker } from './datePicker';
 import { ChartsModule } from 'ng2-charts';
 import { } from '@types/googlemaps';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { single } from './data';
 
 // In your App's module:
 
@@ -34,6 +36,24 @@ import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
+  single: any[];
+  multi: any[];
+
+  view: any[] = [700, 400];
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Country';
+  showYAxisLabel = true;
+  yAxisLabel = 'Population';
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
 
   model: NgbDateStruct;
 
@@ -110,7 +130,8 @@ export class TicketsCrudComponent implements OnInit {
     private ngZone: NgZone,
     private _mapsWrapper: GoogleMapsAPIWrapper
   ) {
-
+    Object.assign(this, { single });
+    
     this.userDetailsForm = fb.group({
       'name': [null, Validators.compose(
                                         [Validators.minLength(3), Validators.required]

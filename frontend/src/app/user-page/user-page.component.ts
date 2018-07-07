@@ -83,7 +83,7 @@ getOrder(id: number, content) {
 
   userid() {
     const user = this.UserService.currentUser;
-    return user.id;
+    return "Καλώς ήρθες" + user.lastname +  ' ' + user.firstname + '. Το id σου είναι: ' + user.id + '.DevTickets';
   }
 
   download() {
