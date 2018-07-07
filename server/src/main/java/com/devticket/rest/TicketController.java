@@ -32,7 +32,6 @@ public class TicketController {
 
     private TicketService ticketService;
 
-
     @RequestMapping(method = GET, value = "/ticket/{ticketId}")
     public Ticket loadById(@PathVariable Long ticketId) {
         return this.ticketService.findById(ticketId);

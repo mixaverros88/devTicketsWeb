@@ -24,6 +24,10 @@ export class TicketService {
     return this.apiService.get(this.config.allticket_url);
   }
 
+  getTicket(id: number) {
+    return this.apiService.get(this.config.viewproduct_url(id));
+  }
+
   deleteEmployee(id: number) {
     return this.apiService.delete(this.config.deleteticket_url(id)).map(res => res.json());
   }
@@ -39,7 +43,7 @@ export class TicketService {
     ticket.price = price;
     ticket.image = image;
     ticket.location = location.toString();
-
+ 
     return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), this.addProductHeaders).subscribe(
       response => console.log(response),
       err => console.log(err)

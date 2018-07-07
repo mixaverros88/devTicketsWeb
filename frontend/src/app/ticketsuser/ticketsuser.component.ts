@@ -9,6 +9,7 @@ import {
   ApiService,
   CartService
 } from '../service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticketsuser',
@@ -26,7 +27,8 @@ export class TicketsuserComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
   // tslint:disable-next-line:no-shadowed-variable
-  private CartService: CartService) { }
+  private CartService: CartService,
+private router: Router) { }
 
   ngOnInit() {
 
@@ -34,6 +36,9 @@ export class TicketsuserComponent implements OnInit {
 
   }
 
+  goToProductDetails(id) {
+    this.router.navigate(['/productpage', id]);
+  }
 
   addtoCart(id: number) {
     return this.CartService.addtoCart(id);
