@@ -58,17 +58,17 @@ export class ProductpageComponent implements OnInit {
 
   }
 
-  getWeather() {
-   const x = this.latitude;
-   const y = this.longitude;
-let url = 'api.openweathermap.org/data/2.5/forecast?lat=';
-url = url + x.toString();
-let plus = '&lon=';
-plus = plus + y.toString();
-const final = url + plus;
-plus = plus + '&appid=b6907d289e10d714a6e88b30761fae22';
+//   getWeather() {
+//    const x = this.latitude;
+//    const y = this.longitude;
+// let url = 'api.openweathermap.org/data/2.5/forecast?lat=';
+// url = url + x.toString();
+// let plus = '&lon=';
+// plus = plus + y.toString();
+// const final = url + plus;
+// plus = plus + '&appid=b6907d289e10d714a6e88b30761fae22';
 
-  }
+//   }
 
 
 
