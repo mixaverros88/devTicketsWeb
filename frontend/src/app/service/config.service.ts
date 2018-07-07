@@ -20,13 +20,10 @@ export class ConfigService {
 
   private _ticket_url = this._api_url + '/ticket';
 
-<<<<<<< HEAD
-=======
   private _ticket_urll = this._api_url + 'ticket/';
 
   private _pagginationticket_url = this._api_url + '/tickets/';
 
->>>>>>> 6d2b23a1a05cc2e7769fbc037c145faa21f7da12
  private _addticket_url = this._api_url + '/ticket/add';
 
   private _alltickets_url = this._ticket_url  + '/all';
