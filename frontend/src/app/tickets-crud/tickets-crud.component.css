@@ -1,3 +1,14 @@
 agm-map {
     height: 200px;
 }
+
+.activePage{
+    background-color: #c1c1c1;
+    border: 1px solid;
+    color: white;
+}
+
+.showRows {
+    background-color: #e2e2e2;
+    border: 2px solid #d4d4d4;
+}

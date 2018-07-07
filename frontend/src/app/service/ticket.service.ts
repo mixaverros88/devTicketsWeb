@@ -24,6 +24,11 @@ export class TicketService {
     return this.apiService.get(this.config.allticket_url);
   }
 
+  getAlladminPage(page?: number, size?: number) {
+    const url = this.config.paginnationticket_url + 'get?page=' + page + '&size=' + size;
+    return this.apiService.get(url);
+  }
+
   deleteEmployee(id: number) {
     return this.apiService.delete(this.config.deleteticket_url(id)).map(res => res.json());
   }

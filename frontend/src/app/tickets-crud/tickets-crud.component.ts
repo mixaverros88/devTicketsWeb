@@ -65,14 +65,19 @@ export class TicketsCrudComponent implements OnInit {
   ticket: Ticket;
   selectedProduct: Ticket;
   date: Date;
+
   // PAGINATION VALUES
-  howManyRows = 2;
-  totalProducts: number;
-  curentPage = 1;
-  paginationLength = 0;
+  totalPages;
+  last: boolean;
+  totalElements: number;
+  size = 2;
+  number = 0;
+  sort = 'desc';
+  first: boolean;
+  numberOfElements: number;
   orderByColumn = 'id';
-  orderBy = 'desc';
   // PAGINATION VALUES
+
 
   closeResult: string;
 
@@ -125,7 +130,7 @@ export class TicketsCrudComponent implements OnInit {
 
     this.getProducts();
     this.customOnInit();
-
+    // this.counter(this.totalPages);
     this.userDetailsForm = new FormGroup({
       date: new FormControl(''),
       name: new FormControl(''),
@@ -255,13 +260,25 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   getProducts() {
-    this.TicketService.getAll()
+    this.TicketService.getAlladminPage(this.number, this.size)
       .subscribe(
         (data: any[]) => {
-          if (data.length) {
-            this.data = data;
-            console.log(data);
+          // console.log(data['content'][0]);
+          // console.log(data['last']);
+          if (data['content']) {
+            this.data = data['content'];
+            console.log(data['content']);
           }
+
+          this.totalPages = data['totalPages'];
+          this.last = data['last'];
+          this.totalElements = data['totalElements'];
+          this.size = data['size'];
+          this.number = data['number'];
+          // this.sort = data['sort'];
+          this.first = data['first'];
+          this.numberOfElements = data['numberOfElements'];
+
         }
       );
   }
@@ -326,16 +343,25 @@ export class TicketsCrudComponent implements OnInit {
     this.selectedProduct = pr;
   }
 
-  onChange(deviceValue) {
-    this.howManyRows = deviceValue;
-    this.getPagination(this.totalProducts, this.howManyRows);
+  changePage(page) {
+    this.number = page - 1;
+    this.getProducts();
+  }
+
+  changeShowRows(howManyRows) {
+    this.size = howManyRows;
+    this.getPagination(this.totalElements, howManyRows);
     this.getProducts();
   }
 
   getPagination(totalProducts, howManyRows) {
-    this.paginationLength = Math.ceil(totalProducts / howManyRows);
+    this.totalPages = Math.ceil(totalProducts / howManyRows);
     console.log(totalProducts + ' / ' + howManyRows);
-    console.log(this.paginationLength);
+    console.log(this.totalPages);
+  }
+
+  counter(totalPages: number) {
+    return new Array(totalPages);
   }
 
   onFileSelected(evt) {

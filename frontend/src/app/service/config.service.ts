@@ -22,6 +22,8 @@ export class ConfigService {
 
   private _ticket_urll = this._api_url + 'ticket/';
 
+  private _pagginationticket_url = this._api_url + '/tickets/';
+
  private _addticket_url = this._api_url + '/ticket/add';
 
   private _alltickets_url = this._ticket_url  + '/all';
@@ -59,6 +61,10 @@ return this._addticket_url ;
   }
 
 
+  get paginnationticket_url(): string {
+
+    return this._pagginationticket_url ;
+      }
 
   get allticket_url(): string {
 
