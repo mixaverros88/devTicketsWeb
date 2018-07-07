@@ -36,6 +36,9 @@ export const routes: Routes = [
     component: ShoppingcartComponent,
     pathMatch: 'full'
   },
+
+  { path: 'productpage/:id', component: ProductpageComponent },
+
   {
     path: 'userpage',
     component: UserPageComponent,

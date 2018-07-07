@@ -1,34 +1,32 @@
-<div class="container">
-    <div class="row">
-      <div class="col">
-        <h1 class="text-center mt-4 mb-4">{{ 'TICKETUSERTITLE' | translate }}!</h1>
+<div class="rounded-background-box">
+  <div class="left-rounded-column">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [mapTypeId]="mapType">
+      <agm-marker *ngIf="tracked" [latitude]="userLatitude" [longitude]="userLongitude" [iconUrl]="userIcon">
+      </agm-marker>
+      <agm-marker *ngFor="let position of obj" [latitude]="position.latitude" [longitude]="position.longitude">
+      </agm-marker>
+  </agm-map>
+    <div class="product">
+       <img style="    height: auto!important;
+       padding-right: 170%;" class="tablet float"  src='data:image/png;base64,{{ticket?.image}}' alt="Card image cap" >
+    </div>
+  </div>
+  <div class="right-rounded-column">
+    <div class="product-info">
+    <h3>Developer Ticket</h3>
 
-      </div>
-      </div>
-  <div class="row">
-    <div *ngFor="let pr of data" class="col-md-4 card mb-5">
-        <div class="card border-0 hvr-float-shadow">
-            <img class="card-img-top img-fluid" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:150px!important">
-            <div class="card-body">
-              <h2 class="card-title">{{ pr.name }}</h2>
-              <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
-              <div class="row">
-                <div class="col-md-4">
-                 <span class="fa fa-money fa-color"></span> {{ pr.price | currency }}
-                </div>
-                <div class="col-md-4">
-                    <span class="fa fa-map-marker fa-color"></span> {{ pr.location }}
-                </div>
-                <div class="col-md-4">
-                    <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{ pr.available }} !
-                </div>
-              </div>
-              <!-- <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter> -->
-              <button *ngIf="pr.available > 0" type="button" class="btn btn-primary hvr-shutter-in-horizontal pull-right" (click)="addtoCart(pr.id)">Add to Cart <span class="fa fa-shopping-cart"></span></button>
-              <button *ngIf="pr.available == 0" disabled type="button" class="btn btn-light pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
-              <p *ngIf="pr.available == 0" style="color:red;">Not available tickets</p>
-            </div>
-          </div>
+    <h1>{{ticket?.name}}</h1>
+      
+     
+                           Location : 
+        <p> {{ticket?.location}}</p> 
+
+
+    </div>
+    <div class="cart-price">
+      <button class="button1">Add to Cart</button>
+      <h2>{{ticket?.price}}€</h2>
+    </div>
     </div>
 </div>
-</div>
+

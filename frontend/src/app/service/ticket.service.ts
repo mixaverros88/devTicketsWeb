@@ -24,8 +24,17 @@ export class TicketService {
     return this.apiService.get(this.config.allticket_url);
   }
 
+<<<<<<< HEAD
   getAlladminPage(page?: number, size?: number, sort?: String, column?: String) {
     const url = this.config.paginnationticket_url + 'get?page=' + page + '&size=' + size + '&sort=' + sort + '&column=' + column;
+=======
+  getTicket(id: number) {
+    return this.apiService.get(this.config.viewproduct_url(id));
+  }
+
+  getAlladminPage(page?: number, size?: number) {
+    const url = this.config.paginnationticket_url + 'get?page=' + page + '&size=' + size;
+>>>>>>> a9ec315d369f14fc22930b732df4e38b2d40887e
     return this.apiService.get(url);
   }
 
@@ -44,7 +53,7 @@ export class TicketService {
     ticket.price = price;
     ticket.image = image;
     ticket.location = location.toString();
-
+ 
     return this.apiService.post(this.config.addticket_url, JSON.stringify(ticket), this.addProductHeaders).subscribe(
       response => console.log(response),
       err => console.log(err)

@@ -58,7 +58,7 @@
   </div>
   <!-- this creates a google map on the page with the given lat/lng from -->
   <!-- the component as the initial center of the map: -->
-  <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng">
+  <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng" [gestureHandling]="cooperative">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
 </div>

@@ -41,7 +41,10 @@ export class ConfigService {
   private _signup_url = this._api_url + '/signup';
 
   private _addtocart_url = this._api_url + '/addcart/';
+
   private _delete_from_cart = this._api_url + '/deletecartitem/';
+
+  private _view_product_byid = this._api_url + '/ticket/';
 
   private _checkout_url = this._api_url + '/checkout/';
 
@@ -77,6 +80,7 @@ return this._addticket_url ;
       return this._ticket_url;
   }
 
+
   ticket_urll(id: number): string {
 
     return this.ticket_urll + id.toString();
@@ -104,18 +108,18 @@ return this._addticket_url ;
 
   }
 
-
  myOrders_url(id: number): string {
 
     return this._my_orders_ + id.toString();
 
   }
 
-
   getOrder(id: number): string {
 
     return this._view_order_ + id.toString();
   }
+
+  
 
   resetPassword(): string {
 
@@ -127,6 +131,12 @@ return this._addticket_url ;
   deleteticket_url(id: number): string {
 
     return this._deleteticket_url + id.toString();
+
+  }
+
+  viewproduct_url(id: number): string {
+
+    return this._view_product_byid + id.toString();
 
   }
 
