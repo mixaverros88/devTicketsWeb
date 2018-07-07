@@ -226,11 +226,11 @@
                         <thead>
                             <tr>
                                 <th>Total Tickets {{ totalElements }}</th>
-                                <th>{{'ΝΑΜΕ'| translate}}</th>
-                                <th>{{'LANGUAGE' | translate}}</th>
+                                <th (click)="orderByName('name')">{{'ΝΑΜΕ'| translate}}</th>
+                                <th (click)="orderByName('language')">{{'LANGUAGE' | translate}}</th>
                                 <th>{{'AVAILABE' | translate}}</th>
                                 <th>{{'LOCATION' | translate}}</th>
-                                <th>{{'PRICE' | translate}}</th>
+                                <th (click)="orderByName('price')">{{'PRICE' | translate}}</th>
                                 <th>Date</th>
                                 <th>{{'SETTINGS' | translate}}</th>
                                 <th>

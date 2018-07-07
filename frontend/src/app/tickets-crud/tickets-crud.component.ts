@@ -75,7 +75,7 @@ export class TicketsCrudComponent implements OnInit {
   sort = 'desc';
   first: boolean;
   numberOfElements: number;
-  orderByColumn = 'id';
+  orderByColumn: String = 'id';
   // PAGINATION VALUES
 
 
@@ -259,8 +259,13 @@ export class TicketsCrudComponent implements OnInit {
        ;
   }
 
+  orderByName(column: String) {
+    this.orderByColumn = column;
+    this.getProducts();
+  }
+
   getProducts() {
-    this.TicketService.getAlladminPage(this.number, this.size)
+    this.TicketService.getAlladminPage(this.number, this.size, this.sort, this.orderByColumn)
       .subscribe(
         (data: any[]) => {
           // console.log(data['content'][0]);
