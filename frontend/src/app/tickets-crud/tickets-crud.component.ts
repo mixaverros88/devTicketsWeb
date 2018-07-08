@@ -15,10 +15,11 @@ import { single } from './data';
 import {
 
   ConfigService,
-  UserService,
   CartService,
   ApiService,
 } from '../service';
+
+import { UserService } from './../service/user.service'
 import { identifierName } from '@angular/compiler';
 import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -87,7 +88,10 @@ export class TicketsCrudComponent implements OnInit {
   ticket: Ticket;
   selectedProduct: Ticket;
   date: Date;
-  chart: { "name" :string, "value" :number}[] = [];
+  chart: { "name": string, "value": number }[] = [];
+  chartUserNumber: number;
+  chartUserGoal: number;
+  chartUserObj: { "name": string, "value": number }[] = [];
 
 
   // PAGINATION VALUES
@@ -126,6 +130,7 @@ export class TicketsCrudComponent implements OnInit {
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
+    private UserService: UserService,
     // tslint:disable-next-line:no-shadowed-variable
     private modalService: NgbModal,
     private fb: FormBuilder,
@@ -152,7 +157,7 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+
 
     this.getProducts();
     this.customOnInit();
@@ -168,6 +173,7 @@ export class TicketsCrudComponent implements OnInit {
       language: new FormControl('')
     });
     this.getChartProducts();
+    this.getChartUsers();
   }
 
   customOnInit() {
@@ -444,25 +450,43 @@ export class TicketsCrudComponent implements OnInit {
     this.TicketService.getAlladminPage(this.number, this.size, this.sort, this.orderByColumn)
       .subscribe(
         (chart: any[]) => {
-          
+
           let item = 0;
 
           if (chart['content']) {
-            while(item < chart['content'].length){
+            while (item < chart['content'].length) {
 
               let chartItem = {
-                "name" : chart['content'][item].name,
+                "name": chart['content'][item].name,
                 "value": chart['content'][item].price
               };
 
               this.chart.push(chartItem);
-              item ++;
+              item++;
             }
 
-            console.log( this.chart);
+            console.log(this.chart);
           }
         });
 
   }
+
+
+  getChartUsers() {
+
+    this.UserService.getAll()
+      .subscribe(
+        (chartUser: any[]) => {
+          this.chartUserNumber = chartUser.length;
+          let chartItemUser = {
+            "name":"Number of Users",
+            "value": this.chartUserNumber
+          };
+          this.chartUserObj.push(chartItemUser);
+          console.log(this.chartUserNumber);
+        });
+  }
+
+
 
 }
