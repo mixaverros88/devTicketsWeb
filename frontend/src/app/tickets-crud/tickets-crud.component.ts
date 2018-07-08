@@ -25,6 +25,7 @@ import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { delay } from 'q';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -73,7 +74,6 @@ export class TicketsCrudComponent implements OnInit {
   submitted: boolean;
   authService: any;
   form: any;
-  router: any;
   http: any;
   id: number;
   name: string;
@@ -136,6 +136,7 @@ export class TicketsCrudComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     private modalService: NgbModal,
     private fb: FormBuilder,
+    private router: Router,
     // google maps
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
@@ -156,6 +157,10 @@ export class TicketsCrudComponent implements OnInit {
 
     })
 
+  }
+
+  goToProductDetails(id) {
+    this.router.navigate(['/productpage', id]);
   }
 
   ngOnInit() {
@@ -288,9 +293,12 @@ export class TicketsCrudComponent implements OnInit {
     ticket.price = price;
     this.TicketService.editTicket(ticket)
       .then(
-        this.modalRef.close());
+        this.modalRef.close()
+      )
     this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-    delay(3300);
+    delay(6300);
+    this.getProducts();
+
     ;
   }
 
@@ -338,24 +346,20 @@ export class TicketsCrudComponent implements OnInit {
 
 
   onChangeForm() {
-    // console.log(this.userDetailsForm.controls['date'].value);
-
     const date = this.userDetailsForm.controls['date'].value;
     let newDate = new Date();
     newDate = this.setDate(date.month, date.day, date.year);
     this.date = newDate;
-    console.log(this.date);
     this.name = this.userDetailsForm.controls['name'].value.toString();
     this.available = this.userDetailsForm.controls['available'].value;
     this.price = this.userDetailsForm.controls['price'].value;
-    console.log(this.price);
     this.language = this.userDetailsForm.controls['language'].value.toString();
     this.location = this.location;
   }
 
 
   onSubmitUserDetails() {
-    console.log(this.date);
+
     this.TicketService.addTicket(
       this.date,
       this.userDetailsForm.controls['name'].value.toString(),
@@ -364,9 +368,9 @@ export class TicketsCrudComponent implements OnInit {
       this.price,
       this.base64textString,
       this.location);
-    // this.modalRefInsert.close(); // close modal
     this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
-    this.ngOnInit();
+    delay(6000);
+    this.getProducts();
   }
 
 
