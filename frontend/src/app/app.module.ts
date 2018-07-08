@@ -155,7 +155,8 @@ export function initUserFactory(userService: UserService) {
     ConfigService,
     MatIconRegistry,
     CartService,
-    OrdersService,    {
+    OrdersService,
+     {
       'provide': APP_INITIALIZER,
       'useFactory': initUserFactory,
       'deps': [UserService],
