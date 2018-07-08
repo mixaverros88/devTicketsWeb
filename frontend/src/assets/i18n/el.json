@@ -135,5 +135,9 @@
     "SURNAMEPLACEHOLDER": "Παπαδόπουλος",
 
     "CHECKINGTHISBOX": "Αποδοχή όρων της DevTickets",
-    "PROCCEEDTOCHECKOUT": "ΟΛΟΚΛΗΡΩΣΗ ΑΓΟΡΑΣ"
+    "PROCCEEDTOCHECKOUT": "ΟΛΟΚΛΗΡΩΣΗ ΑΓΟΡΑΣ",
+
+    "SUBMIT": "Υποβολή",
+    "TYPEYOURMESSAGEHERE": "Το μήνυμά σας εδώ",
+    "CONTACT": "Επικοινωνία"
 }
