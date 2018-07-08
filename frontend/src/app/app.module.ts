@@ -12,6 +12,8 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { QRCodeModule } from 'angularx-qrcode';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CountoModule }  from 'angular2-counto';
+import { Chart } from 'chart.js';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -126,6 +128,7 @@ export function initUserFactory(userService: UserService) {
     MatProgressSpinnerModule,
     FlexLayoutModule,
     CountoModule,
+    NgxChartsModule,
     NgbModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
     QRCodeModule,

@@ -29,6 +29,7 @@
     "@ng-bootstrap/ng-bootstrap": "2.0.0",
     "@ngx-translate/core": "9.1.1",
     "@ngx-translate/http-loader": "2.0.1",
+    "@swimlane/ngx-charts": "7.4.0",
     "@types/googlemaps": "^3.30.10",
     "@types/html2canvas": "0.0.33",
     "@types/jspdf": "^1.1.31",

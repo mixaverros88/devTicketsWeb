@@ -26,7 +26,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <input class="width90percent height40px" placeholder="yyyy-mm-dd" name="date" formControlName="date" 
+                                    <input class="width90percent height40px" placeholder="yyyy-mm-dd" name="date" formControlName="date"
                                     ngbDatepicker #d="ngbDatepicker" matInput> <!-- changed class="form-control"-->
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                         <span class="fa fa-map-marker"></span>
                                     </span>
                                 </div>
-                                <input class="width90percent height40px" #locationInput matInput placeholder="Location" type="text" 
+                                <input class="width90percent height40px" #locationInput matInput placeholder="Location" type="text"
                                     formControlName="location" [formControl]="searchControl" required>
                             </div>
 
@@ -138,7 +138,7 @@
                                         <span class="fa fa-ticket"></span> {{ available }}
                                     </div>
                                 </div>
-                           
+
                             </div>
                         </div>
                     </div>
@@ -146,8 +146,8 @@
             </div>
 
             <!-- Google maps -->
-          
-        
+
+
 
             <ng-template #modify let-c="close" let-d="dismiss">
                 <div class="container-fluid pt10">
@@ -221,7 +221,7 @@
                     <div *ngIf="message" class="alert alert-success">
                         <strong>Success!</strong>{{message}}
                     </div>
-    
+
                     <table class="table" style="border: 9px solid #e9e9e9;">
                         <thead style="background-color: #e9e9e9;">
                             <tr>
@@ -241,11 +241,10 @@
                                 <th>{{'SETTINGS' | translate}}</th>
                                 <th>
                                     <select class = "showRows" (change)="changeShowRows($event.target.value)">
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
                                         <option>5</option>
-                                        <option>6</option>
+                                        <option>10</option>
+                                        <option>15</option>
+                                        <option>20</option>
                                     </select>
                                 </th>
                             </tr>
@@ -270,18 +269,18 @@
                         </tbody>
                     </table>
                     <ul class="pagination">
-                        <li  *ngFor='let in of counter(totalPages) ;let i = index' class="page-item" > 
+                        <li  *ngFor='let in of counter(totalPages) ;let i = index' class="page-item" >
                             <span (click)="changePage(i+1)" class="page-link" [ngClass]="{activePage:i===number}">{{ i+1 }}</span>
                         </li>
                     </ul>
-                      
+
                 </div>
-    
-    
+
+
                 <!-- Google maps -->
-              
-            
-    
+
+
+
                 <ng-template #modify let-c="close" let-d="dismiss">
                     <div class="container-fluid pt10">
                         <h3 class="text-center">Modify a Ticket</h3>
@@ -341,15 +340,44 @@
                 </ng-template>
             </ng-template>
     </ngb-tab>
-    <ngb-tab title="Change Passwords">
+    <ngb-tab title="Reports">
         <ng-template ngbTabContent>
-            <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-                Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et
-                odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed
-                diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus
-                nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
-                in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-center justified">Title</h5>
+                                <ngx-charts-bar-vertical
+                            [view]="view"
+                            [scheme]="colorScheme"
+                            [results]="chart"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabel"
+                            [yAxisLabel]="yAxisLabel"
+                            (select)="onSelect($event)"
+                            style="margin:auto">
+                          </ngx-charts-bar-vertical>
+                        </div>
+                        <div class="col-md-6">
+                                <h5 class="text-center justified">Title</h5>
+                                <ngx-charts-pie-chart
+                                [view]="view"
+                                [scheme]="colorScheme"
+                                [results]="chart"
+                                [legend]="showLegend"
+                                [explodeSlices]="explodeSlices"
+                                [labels]="showLabels"
+                                [doughnut]="doughnut"
+                                [gradient]="gradient"
+                                (select)="onSelect($event)">
+                              </ngx-charts-pie-chart>
+                        </div>  
+                    </div>
+            </div>
         </ng-template>
     </ngb-tab>
 </ngb-tabset>

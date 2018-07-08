@@ -1,10 +1,11 @@
 <div class="contact-page">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h3 class="contact-title">Contact Us</h3>
-      </div>
-    </div>
+      <div class="container myContainer">
+          <label class="active">
+            {{'CONTACTUS' | translate}}
+          </label>
+          <!-- <h2 style="color:whitesmoke;" class="active">{{'YOURSHOPPINGCART' | translate}}</h2> -->
+        </div>
     <div class="row contact-form">
       <div class="col-md-5">
         <p>
@@ -28,7 +29,7 @@
                   <span class="fa fa-user"></span>
                 </span>
               </div>
-              <input type="text" class="form-control" placeholder="name" aria-label="Name" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" placeholder="{{ 'USERNAME' | translate}}" aria-label="Name" aria-describedby="basic-addon1">
             </div>
 
             <!-- Email -->
@@ -46,10 +47,10 @@
                   <span class="fa fa-envelope"></span>
                 </span>
               </div>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Type your message here."></textarea>
+              <textarea class="form-control" aria-label="With textarea" placeholder="{{ 'TYPEYOURMESSAGEHERE' | translate}}."></textarea>
             </div>
             <div class="submit-area">
-              <button class="submit" (click)="onSubmitContact()">Submit</button>
+              <button class="submit" (click)="onSubmitContact()">{{ 'SUBMIT' | translate }}</button>
             </div>
           </form>
         </div>

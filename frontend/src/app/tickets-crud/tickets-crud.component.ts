@@ -7,6 +7,8 @@ import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } fro
 import { DatePicker } from './datePicker';
 import { ChartsModule } from 'ng2-charts';
 import { } from '@types/googlemaps';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { single } from './data';
 
 // In your App's module:
 
@@ -34,6 +36,26 @@ import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
+
+
+  single: any[];
+  multi: any[];
+
+  view: any[] = [700, 400];
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  showYAxisLabel = true;
+
+
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
 
   model: NgbDateStruct;
 
@@ -65,12 +87,14 @@ export class TicketsCrudComponent implements OnInit {
   ticket: Ticket;
   selectedProduct: Ticket;
   date: Date;
+  chart: { "name" :string, "value" :number}[] = [];
+
 
   // PAGINATION VALUES
   totalPages;
   last: boolean;
   totalElements: number;
-  size = 2;
+  size = 5;
   number = 0;
   sort = 'desc';
   first: boolean;
@@ -83,7 +107,7 @@ export class TicketsCrudComponent implements OnInit {
 
   // fields used for google maps and geolocation
   @Input() usePanning = false;
-  private obj: { 'latitude': number, 'longitude': number} [] = [];
+  private obj: { 'latitude': number, 'longitude': number }[] = [];
   public latitude: number;
   public longitude: number;
   public userLatitude: number;
@@ -110,23 +134,25 @@ export class TicketsCrudComponent implements OnInit {
     private ngZone: NgZone,
     private _mapsWrapper: GoogleMapsAPIWrapper
   ) {
+    Object.assign(this.chart)
 
     this.userDetailsForm = fb.group({
       'name': [null, Validators.compose(
-                                        [Validators.minLength(3), Validators.required]
-              )],
-      'description': [null, Validators.required] ,
-      'language': [null, Validators.required] ,
-      'image': [null, Validators.required] ,
-      'available': [null, Validators.required] ,
-      'location': [null] ,
-      'price': [null, Validators.required] ,
+        [Validators.minLength(3), Validators.required]
+      )],
+      'description': [null, Validators.required],
+      'language': [null, Validators.required],
+      'image': [null, Validators.required],
+      'available': [null, Validators.required],
+      'location': [null],
+      'price': [null, Validators.required],
 
     })
 
   }
 
   ngOnInit() {
+  
 
     this.getProducts();
     this.customOnInit();
@@ -141,6 +167,7 @@ export class TicketsCrudComponent implements OnInit {
       image: new FormControl(''),
       language: new FormControl('')
     });
+    this.getChartProducts();
   }
 
   customOnInit() {
@@ -229,7 +256,7 @@ export class TicketsCrudComponent implements OnInit {
     this.modalRefInsert.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
@@ -254,9 +281,9 @@ export class TicketsCrudComponent implements OnInit {
     this.TicketService.editTicket(ticket)
       .then(
         this.modalRef.close());
-        this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-       delay(3300);
-       ;
+    this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
+    delay(3300);
+    ;
   }
 
   orderByName(column: String) {
@@ -297,7 +324,7 @@ export class TicketsCrudComponent implements OnInit {
     const currentDate = new Date();
     currentDate.setDate(day);
     currentDate.setMonth(month);
-   currentDate.setFullYear(year)
+    currentDate.setFullYear(year)
     return currentDate;
   }
 
@@ -305,11 +332,11 @@ export class TicketsCrudComponent implements OnInit {
   onChangeForm() {
     // console.log(this.userDetailsForm.controls['date'].value);
 
-  const date = this.userDetailsForm.controls['date'].value;
-  let newDate = new Date();
-  newDate = this.setDate(date.month, date.day, date.year);
-   this.date = newDate;
-   console.log(this.date);
+    const date = this.userDetailsForm.controls['date'].value;
+    let newDate = new Date();
+    newDate = this.setDate(date.month, date.day, date.year);
+    this.date = newDate;
+    console.log(this.date);
     this.name = this.userDetailsForm.controls['name'].value.toString();
     this.available = this.userDetailsForm.controls['available'].value;
     this.price = this.userDetailsForm.controls['price'].value;
@@ -322,14 +349,14 @@ export class TicketsCrudComponent implements OnInit {
   onSubmitUserDetails() {
     console.log(this.date);
     this.TicketService.addTicket(
-    this.date,
-    this.userDetailsForm.controls['name'].value.toString(),
-    this.userDetailsForm.controls['available'].value,
-    this.userDetailsForm.controls['language'].value.toString(),
-    this.price,
-    this.base64textString,
-    this.location);
-   // this.modalRefInsert.close(); // close modal
+      this.date,
+      this.userDetailsForm.controls['name'].value.toString(),
+      this.userDetailsForm.controls['available'].value,
+      this.userDetailsForm.controls['language'].value.toString(),
+      this.price,
+      this.base64textString,
+      this.location);
+    // this.modalRefInsert.close(); // close modal
     this.message = 'Επιτυχής εισαγωγή εισιτηρίου';
     this.ngOnInit();
   }
@@ -370,8 +397,8 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   onFileSelected(evt) {
-      const files = evt.target.files;
-      const file = files[0];
+    const files = evt.target.files;
+    const file = files[0];
 
     if (files && file) {
       const reader = new FileReader();
@@ -383,9 +410,9 @@ export class TicketsCrudComponent implements OnInit {
 
   _handleReaderLoaded(readerEvt) {
     const binaryString = readerEvt.target.result;
-           this.base64textString = btoa(binaryString);
-           console.log(btoa(binaryString));
-   }
+    this.base64textString = btoa(binaryString);
+    console.log(btoa(binaryString));
+  }
 
   onDelete(id: number) {
     this.notification = undefined;
@@ -409,6 +436,32 @@ export class TicketsCrudComponent implements OnInit {
         this.data.splice(index, 1);
       });
     this.message = 'Ticket Deleted';
+
+  }
+
+  getChartProducts() {
+
+    this.TicketService.getAlladminPage(this.number, this.size, this.sort, this.orderByColumn)
+      .subscribe(
+        (chart: any[]) => {
+          
+          let item = 0;
+
+          if (chart['content']) {
+            while(item < chart['content'].length){
+
+              let chartItem = {
+                "name" : chart['content'][item].name,
+                "value": chart['content'][item].price
+              };
+
+              this.chart.push(chartItem);
+              item ++;
+            }
+
+            console.log( this.chart);
+          }
+        });
 
   }
 

@@ -134,6 +134,10 @@
     "SURNAMEPLACEHOLDER": "Papadopoulos",
     
     "CHECKINGTHISBOX": "By checking this box, you agree to our Terms",
-    "PROCCEEDTOCHECKOUT": "PROCCEED TO CHECKOUT"
+    "PROCCEEDTOCHECKOUT": "PROCCEED TO CHECKOUT",
+
+    "SUBMIT": "Submit",
+    "TYPEYOURMESSAGEHERE": "Type your message here",
+    "CONTACT": "Contact"
 
 }
