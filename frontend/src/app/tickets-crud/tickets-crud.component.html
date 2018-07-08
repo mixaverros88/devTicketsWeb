@@ -1,5 +1,5 @@
 <ngb-tabset class="nav-fill">
-    <ngb-tab title="ADD TICKET">
+    <ngb-tab title=" {{ 'ADDTICKET' | translate }}">
         <ng-template ngbTabContent>
             <!--
             <ng-template #content let-c="close" let-d="dismiss">
@@ -209,7 +209,7 @@
         </ng-template>
     </ngb-tab>
     <ngb-tab>
-        <ng-template ngbTabTitle>EDIT / DELETE TICKETS</ng-template>
+        <ng-template ngbTabTitle>{{ 'EDITDELETETICKETS' | translate }}</ng-template>
         <ng-template ngbTabContent>
             <!--
                 <ng-template #content let-c="close" let-d="dismiss">
@@ -283,7 +283,7 @@
 
             <ng-template #modify let-c="close" let-d="dismiss">
                 <div class="container-fluid pt10">
-                    <h3 class="text-center">Modify a Ticket</h3>
+                    <h3 class="text-center">{{ 'MODIFYATICKET' | translate }}Modify a Ticket</h3>
                     <hr>
                     <div *ngIf="selectedProduct" class="container">
                         <form class="form-inline">
@@ -340,14 +340,14 @@
             </ng-template>
         </ng-template>
     </ngb-tab>
-    <ngb-tab title="Reports">
+    <ngb-tab title="{{ 'REPORTS' | translate }}">
         <ng-template ngbTabContent>
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-md-6">
                         <h5 class="text-center justified">{{'TICKETS' | translate}}</h5>
                         <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="chart" [gradient]="gradient" [xAxis]="showXAxis"
-                            [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                            [yAxis]="showYAxis" [legend]="showLegend" [legendTitle]="legendTitleBar" [xAxisLabel]="xAxisLabelBar" [yAxisLabel]="yAxisLabelBar" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
                             [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" style="margin:auto">
                         </ngx-charts-bar-vertical>
                     </div>

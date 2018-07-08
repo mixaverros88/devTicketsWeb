@@ -92,7 +92,9 @@ export class TicketsCrudComponent implements OnInit {
   chartUserNumber: number;
   chartUserGoal: number;
   chartUserObj: { "name": string, "value": number }[] = [];
-
+  legendTitleBar = 'Events';
+  xAxisLabelBar = 'Event';
+  yAxisLabelBar = 'Price';
 
   // PAGINATION VALUES
   totalPages;

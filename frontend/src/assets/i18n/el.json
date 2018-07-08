@@ -139,5 +139,11 @@
 
     "SUBMIT": "Υποβολή",
     "TYPEYOURMESSAGEHERE": "Το μήνυμά σας εδώ",
-    "CONTACT": "Επικοινωνία"
+    "CONTACT": "Επικοινωνία",
+
+    "REPORTS": "ΑΝΑΦΟΡΕΣ",
+    "TICKETS": "Εισιτήρια",
+    "MODIFYATICKET" : "Τροποποίηση εισιτηρίου",
+    "EDITDELETETICKETS": "ΤΡΟΠΟΠΟΙΗΣΗ / ΔΙΑΓΡΑΦΗ ΕΙΣΙΤΗΡΙΩΝ",
+    "ADDTICKET": "ΠΡΟΣΘΗΚΗ ΕΙΣΙΤΗΡΙΟΥ"
 }

@@ -138,6 +138,12 @@
 
     "SUBMIT": "Submit",
     "TYPEYOURMESSAGEHERE": "Type your message here",
-    "CONTACT": "Contact"
+    "CONTACT": "Contact",
+
+    "REPORTS": "REPORTS",
+    "TICKETS": "Tickets",
+    "MODIFYATICKET" : "Modify a Ticket",
+    "EDITDELETETICKETS": "EDIT / DELETE TICKETS",
+    "ADDTICKET": "ADD TICKET"
 
 }
