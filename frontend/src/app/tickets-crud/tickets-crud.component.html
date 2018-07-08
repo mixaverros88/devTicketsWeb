@@ -241,11 +241,10 @@
                                 <th>{{'SETTINGS' | translate}}</th>
                                 <th>
                                     <select class = "showRows" (change)="changeShowRows($event.target.value)">
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
                                         <option>5</option>
-                                        <option>6</option>
+                                        <option>10</option>
+                                        <option>15</option>
+                                        <option>20</option>
                                     </select>
                                 </th>
                             </tr>
@@ -345,10 +344,12 @@
         <ng-template ngbTabContent>
             <div class="container-fluid">
                     <div class="row">
-                            <ngx-charts-bar-vertical
+                        <div class="col-md-6">
+                            <h5 class="text-center justified">Title</h5>
+                                <ngx-charts-bar-vertical
                             [view]="view"
                             [scheme]="colorScheme"
-                            [results]="single"
+                            [results]="chart"
                             [gradient]="gradient"
                             [xAxis]="showXAxis"
                             [yAxis]="showYAxis"
@@ -361,6 +362,21 @@
                             style="margin:auto">
                           </ngx-charts-bar-vertical>
                         </div>
+                        <div class="col-md-6">
+                                <h5 class="text-center justified">Title</h5>
+                                <ngx-charts-pie-chart
+                                [view]="view"
+                                [scheme]="colorScheme"
+                                [results]="chart"
+                                [legend]="showLegend"
+                                [explodeSlices]="explodeSlices"
+                                [labels]="showLabels"
+                                [doughnut]="doughnut"
+                                [gradient]="gradient"
+                                (select)="onSelect($event)">
+                              </ngx-charts-pie-chart>
+                        </div>  
+                    </div>
             </div>
         </ng-template>
     </ngb-tab>
