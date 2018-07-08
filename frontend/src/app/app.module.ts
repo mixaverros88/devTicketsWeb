@@ -14,7 +14,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CountoModule }  from 'angular2-counto';
 import { Chart } from 'chart.js';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 
 
@@ -110,6 +110,7 @@ export function initUserFactory(userService: UserService) {
     ProductpageComponent
   ],
   imports: [
+    ScrollEventModule,
     ChartsModule,
     BrowserAnimationsModule,
     BrowserModule,

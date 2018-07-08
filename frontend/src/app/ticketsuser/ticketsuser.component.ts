@@ -2,6 +2,7 @@ import { CustomCounterComponent } from './../custom-counter/custom-counter.compo
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
+import { ScrollEvent } from 'ngx-scroll-event';
 import {
   ConfigService,
   UserService,
@@ -20,6 +21,19 @@ import { Router } from '@angular/router';
 @Injectable()
 export class TicketsuserComponent implements OnInit {
 
+  // PAGINATION VALUES
+  totalPages;
+  last: boolean;
+  totalElements: number;
+  size = 3;
+  number = 0;
+  sort = 'desc';
+  first: boolean;
+  numberOfElements: number;
+  orderByColumn: String = 'id';
+  engTicket = false;
+  // PAGINATION VALUES
+
   counterValue = 0;
   data: any [];
 
@@ -31,6 +45,19 @@ export class TicketsuserComponent implements OnInit {
   private router: Router,
   config: NgbRatingConfig) {
     config.max = 5;
+  }
+
+  public handleScroll(event: ScrollEvent) {
+    if (event.isReachingBottom) {
+
+      if (!this.engTicket) {
+        this.size += 3;
+        console.log(this.size)
+        console.log(this.totalElements)
+        this.getProducts();
+        if (this.size >= this.totalElements) { this.engTicket = true; }
+      }
+    }
   }
 
   ngOnInit() {
@@ -48,16 +75,30 @@ export class TicketsuserComponent implements OnInit {
 
           }
 
+
+
   getProducts() {
-    this.TicketService.getAll()
+    // this.TicketService.getAll()
+    this.TicketService.getAlladminPage(this.number, this.size, this.sort, this.orderByColumn)
     .subscribe(
       (data: any []) => {
-       if ( data.length ) {
-          this.data = data;
-         console.log(data);
-       }
+        if (data['content']) {
+          this.data = data['content'];
+          console.log(data['content']);
+        }
+
+        this.totalPages = data['totalPages'];
+        this.last = data['last'];
+        this.totalElements = data['totalElements'];
+        this.size = data['size'];
+        this.number = data['number'];
+        // this.sort = data['sort'];
+        this.first = data['first'];
+        this.numberOfElements = data['numberOfElements'];
       }
     );
+
+
   }
 
 

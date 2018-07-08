@@ -5,8 +5,10 @@
 
       </div>
       </div>
+
+
   <div class="row">
-    <div *ngFor="let pr of data" class="col-md-4 card mb-5">
+    <div *ngFor="let pr of data" class="col-md-4 card mb-5" detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="200" [topOffset]="200">
         <div class="card border-0 hvr-float-shadow">
             <img class="card-img-top img-fluid"  (click)="goToProductDetails(pr.id)" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:150px!important">
             <div class="card-body">
@@ -31,5 +33,6 @@
             </div>
           </div>
     </div>
-</div>
+  </div>
+  <div *ngIf="engTicket">dsads</div>
 </div>
