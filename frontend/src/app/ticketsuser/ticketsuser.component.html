@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mt-4 mb-4">{{ 'TICKETUSERTITLE' | translate }}!</h1>
+        <h1 style="min-height: 120px;"class="text-center mt-4 mb-4">{{ 'TICKETUSERTITLE' | translate }}!</h1>
 
       </div>
       </div>
@@ -10,9 +10,11 @@
         <div class="card border-0 hvr-float-shadow">
             <img class="card-img-top img-fluid"  (click)="goToProductDetails(pr.id)" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:150px!important; width:150px;">
             <div class="card-body">
-              <h2 class="card-title">{{ pr.name }}</h2>
-              <p class="card-text">{{pr.language}}</p>
-              <div class="row">
+              <h2 style="min-height: 95px;"class="card-title">{{ pr.name }}</h2>
+              <p style="    min-height: 70px; max-height: 70px;" class="card-text">{{pr.language}}</p>
+              <div style="
+              min-height: 100px; 
+              max-height: 100px;"class="row">
                   <div class="col-md-12">
                       <span class="fa fa-map-marker fa-color"></span> {{ pr.location }}
                   </div>
