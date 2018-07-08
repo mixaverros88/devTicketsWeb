@@ -24,7 +24,7 @@
       <span class="fa fa-shopping-cart fa-fw"></span>
       <span class="badge badge-light">{{cartValue()}} €</span>
     </button>  
-    <button  routerLink="/contact" class="my-button">
+    <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" routerLink="/contact" class="my-button">
       <span>{{ 'CONTACT' | translate }}</span>
     </button>
     <button class="greeting-button" *ngIf="hasSignedIn()" mat-button mat-ripple [matMenuTriggerFor]="accountMenu">
