@@ -390,7 +390,7 @@ public class UserServiceImpl implements UserService {
 
         helper.setSubject("devTickets Reset Password");
         helper.setText(htmlMailBefore + "<b>Hello from DevTickets</b> .com  You Requested a Password Reset ----- YOUR NEW PASSWORD IS :" + generatedString+htmlMailAfter, true );
-        helper.setTo("mverros@kathimerini.gr");
+        helper.setTo(email);
         helper.setFrom("mixalisgiorgosverros@gmail.com");
 
 

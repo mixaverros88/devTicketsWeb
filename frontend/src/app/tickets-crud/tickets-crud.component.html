@@ -103,10 +103,6 @@
                     <div class="col-6 p10" style="margin-top:40px;">
                         <div class="card border-0">
                             <h3 class='text-center'>New Ticket Preview</h3>
-                            <!-- <div style="min-height: 150px;">
-                                <img *ngIf="base64textString;else show_image" class="card-img-top img-fluid" src='data:image/png;base64,{{base64textString}}'
-                                    alt="Card image cap" style="min-height: 150px;">
-                            </div> -->
                             <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [mapTypeId]="mapType">
                                 <agm-marker *ngIf="tracked" [latitude]="userLatitude" [longitude]="userLongitude" [iconUrl]="userIcon">
                                 </agm-marker>
@@ -252,7 +248,7 @@
                     <tbody>
                         <tr *ngFor="let pr of data">
                             <td style="width:20%;">
-                                <img height="50" width="80" src='data:image/png;base64,{{pr.image}}'> </td>
+                                <img height="80" (click)="goToProductDetails(pr.id)" width="80" src='data:image/png;base64,{{pr.image}}'> </td>
                             <td>{{ pr.name }}</td>
                             <td>{{ pr.language }}</td>
                             <td>{{ pr.available }}</td>

@@ -3,6 +3,11 @@
 @import '~bootstrap/dist/css/bootstrap.min.css'; 
 @import url('https://fonts.googleapis.com/css?family=Tinos');
 
+.zoom {
+  zoom: 85%;
+}
+
+
 body {
   margin: 0;
   padding: 0;

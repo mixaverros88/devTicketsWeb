@@ -15,6 +15,8 @@ import { CountoModule }  from 'angular2-counto';
 import { Chart } from 'chart.js';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ScrollEventModule } from 'ngx-scroll-event';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 
@@ -130,6 +132,7 @@ export function initUserFactory(userService: UserService) {
     FlexLayoutModule,
     CountoModule,
     NgxChartsModule,
+    Ng2SearchPipeModule,
     NgbModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
     QRCodeModule,
