@@ -48,6 +48,17 @@
     box-shadow: -1px 6px 80px 10px rgba(197, 197, 197, 0.6);
     z-index:2;
   }
+
+  .rounded {
+    margin: 100px auto;
+    width: 1200px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    -webkit-box-shadow: -1px 6px 80px 10px rgba(197, 197, 197, 0.8);
+    -moz-box-shadow: -1px 6px 80px 10px rgba(197, 197, 197, 0.8);
+    box-shadow: -1px 6px 80px 10px rgba(197, 197, 197, 0.6);
+    z-index:2;
+  }
   
   .left-rounded-column {
     position: relative;
