@@ -1,23 +1,59 @@
+<div class="content-profile-page">
+    <div class="profile-user-page card">
+       <div class="img-user-profile" style="background-color: #E2E2E2">
+         <img class="profile-bgHome" src="https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d39fe8df8ff9407562e2f89aec3c1318&auto=format&fit=crop&w=1050&q=80" />
+         <img class="avatar" src="http://gravatar.com/avatar/288ce55a011c709f4e17aef7e3c86c64?s=200" alt="jofpin"/>
+            </div>
+           <div class="user-profile-data" style="background-color: #E2E2E2">
+             <h1>{{userName()}}</h1>
+             <p>email</p>
+           </div>
+       </div>
+     </div>
 <div class="user-page">
-  <div class="container">
     <div class="row center-align">
-      <div class="col-md-3">
+        <div class="container">
+      <div class="col-md-12">
         <div class="user-data">
-        <img alt="DevTicketPlace" class="profile-img" src="assets/image/user.png">
-        <p class="username">{{userName()}} </p>
+        <p class="username"> </p>
       </div>
-      </div>
-      <ng4-loading-spinner> </ng4-loading-spinner>
-      <div class="col-md-9">
-        <h2 class="history-title">{{ 'TICKETHISTORY' | translate }}</h2>
-        <div *ngFor="let pr of data" class="col-md-12 ticket-area">
-          <p> {{ 'ORDERID' | translate }} : {{pr.id}}</p>
-          <p> {{ 'ORDERTOTALPRICE' | translate }} :{{pr.totalPrice}}</p>
-          <p> {{ 'ORDERDATE' | translate }} : {{pr.date | date}}</p>
-          <button (click)="getOrder(pr.id, content)" class="view-details">{{ 'VIEWORDERDETAILS' | translate}}</button>
-        </div>
       </div>
     </div>
+      <ng4-loading-spinner> </ng4-loading-spinner>
+      <div class="col-md-12">
+        <h2 class="history-title">{{ 'TICKETHISTORY' | translate }}</h2>
+        <input type="text" placeholder="Search" [(ngModel)]="id" style="background-color: #fff;">
+      </div>
+      <div class="row" style="margin:auto;">
+        <div *ngFor="let pr of data |filter:id" class="col-md-4 ticket-area">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                  <div class="mainflip">
+                      <div class="frontside">
+                          <div class="card">
+                              <div class="card-body text-center">
+                                  <h4 class="card-title">{{ 'ORDERID' | translate }} : {{pr.id}}</h4>
+                                  <p class="card-text">{{ 'ORDERTOTALPRICE' | translate }} :{{pr.totalPrice}}</p>
+                                  <p class="card-text">{{ 'ORDERDATE' | translate }} : {{pr.date | date}} </p>
+                                  <a href="#" class="btn btn-primary btn-sm">
+                                      <i class="fa fa-arrow-right"></i>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="backside col-md-12">
+                          <div class="card">
+                              <div class="card-body text-center mt-4">
+                                  <h4 class="card-title">DevTickets</h4>
+                                      <button (click)="getOrder(pr.id, content)" class="view-details card-text">{{ 'VIEWORDERDETAILS' | translate}}</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">{{ 'YOURTICKETS' | translate }}</h4>
@@ -48,7 +84,7 @@
               <div class="check">
                 <div class="big">
                   {{data.ticket.name}}
-                  <br> {{ 'TICKET' | translate }}
+                  <br> TICKET
                 </div>
                 <div class="qr">
                   <qrcode [qrdata]="myAngularxQrCode" [size]="80" [level]="'M'"></qrcode>

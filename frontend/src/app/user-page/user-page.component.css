@@ -1,18 +1,7 @@
 .user-page {
   padding: 5% 0;
 }
-.user-data {
-  position: fixed;
-  top: 150px;
-  left: 220px;
-  text-align: center;
-}
-.user-data img {
-  padding-bottom: 50px;
-}
-.user-data p {
-  display: block;
-}
+
 .history-title {
   text-align: center;
   padding-bottom: 70px;
@@ -23,9 +12,10 @@
   margin-bottom: 20px;
 }
 button.view-details {
-  position: absolute;
+  /* position: absolute;
   right: 0;
-  top: 35px;
+  top: 35px; */
+  margin-top:80px;
   border: none;
   height: 50px;
   width: 210px;
@@ -221,3 +211,162 @@ button.view-details:hover {
   background-color: #ccc;
   color: white;
 }
+section .section-title {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+#team .card {
+  border: none;
+  background: #ffffff;
+}
+
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  border-radius: .25rem;
+/* display: block; */
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+/* display: block; */
+}
+
+.mainflip {
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -moz-transform: perspective(1000px);
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.frontside {
+  position: relative;
+  -webkit-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.backside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+
+.frontside,
+.backside {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 1s;
+  -moz-transform-style: preserve-3d;
+  -o-transition: 1s;
+  -o-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+.frontside .card,
+.backside .card {
+  min-height: 312px;
+}
+
+.backside .card a {
+  font-size: 18px;
+  color: #0099CC !important;
+}
+
+.frontside .card .card-title,
+.backside .card .card-title {
+  color: #0099CC !important;
+}
+
+.frontside .card .card-body img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+#team {
+   background: #2098FF;
+  padding-top:100px;
+  padding-bottom:150px;
+   -webkit-clip-path: polygon(0 0, 100% 19%, 100% 100%, 0 86%);
+ clip-path: polygon(0 0, 100% 19%, 100% 100%, 0 86%);
+}
+.content-profile-page {
+  /* margin: 1em auto;
+  width: 44.23em; */
+}
+.profile-user-page .img-user-profile {
+	/* margin: 0 auto; */
+  text-align: center; 
+}
+.profile-user-page .img-user-profile .profile-bgHome {
+	border-bottom: .2em solid #f5f5f5;
+  width: 100%;
+  height: 350px;
+  }
+.profile-user-page .img-user-profile .avatar {
+	margin: 0 auto;
+  background: #2098FF;
+  width: 7em;
+  height: 7em;
+  padding: 0.25em;
+  border-radius: .4em;
+  margin-top: -50px;;
+  box-shadow: 0 0 .1em rgba(0, 0, 0, 0.35);
+}
+
+.profile-user-page .user-profile-data, .profile-user-page .description-profile {
+  text-align: center;
+  padding: 0 1.5em; 
+}
+.profile-user-page .user-profile-data h1 {
+  font-family: "Lato", sans-serif;
+  margin-top: 0.35em;
+  color: #292f33;
+  margin-bottom: 0; 
+}
+.profile-user-page .user-profile-data p {
+	font-family: "Lato", sans-serif;
+  color: #8899a6; 
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 0.5em; 
+}
+.profile-user-page .description-profile {
+  color: #75787b;
+  font-size: 0.98em; 
+}
+
+
