@@ -431,7 +431,6 @@ export class TicketsCrudComponent implements OnInit {
         this.data.splice(id);
 
       }, error => {
-        console.log('mpike');
         let index = 0;
         for (let i = 0; i < this.data.length; i++) {
 
