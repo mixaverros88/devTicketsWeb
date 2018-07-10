@@ -1,7 +1,7 @@
 import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable, ElementRef, ViewChild, Input, NgZone } from '@angular/core';
 import { Ticket } from './ticket';
-import { NgbModal, ModalDismissReasons, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './../service/user.service'
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { delay } from 'q';
@@ -16,11 +16,8 @@ import { } from '@types/googlemaps';
 
 })
 
-
-
 @Injectable()
 export class TicketsCrudComponent implements OnInit {
-
 
   single: any[];
   multi: any[];
@@ -34,11 +31,9 @@ export class TicketsCrudComponent implements OnInit {
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
-
   model: NgbDateStruct;
 
   @ViewChild('fileInput') fileInput: ElementRef;
-
   modalRef: any;
   modalRefInsert: any;
   base64textString;
@@ -83,7 +78,6 @@ export class TicketsCrudComponent implements OnInit {
   orderByColumn: String = 'id';
   closeResult: string;
 
-  // fields used for google maps and geolocation
   @Input() usePanning = false;
   private obj: { 'latitude': number, 'longitude': number }[] = [];
   public latitude: number;
@@ -138,7 +132,6 @@ export class TicketsCrudComponent implements OnInit {
 
     this.getProducts();
     this.customOnInit();
-    // this.counter(this.totalPages);
     this.userDetailsForm = new FormGroup({
       date: new FormControl(''),
       name: new FormControl(''),
@@ -154,8 +147,6 @@ export class TicketsCrudComponent implements OnInit {
   }
 
   customOnInit() {
-    // set google maps defaults
-    // this.myLocation();
     this.index = 0;
     this.zoom = 14;
     this.latitude = 37.97565120000001;
@@ -171,8 +162,6 @@ export class TicketsCrudComponent implements OnInit {
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          // verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
@@ -253,9 +242,9 @@ export class TicketsCrudComponent implements OnInit {
     ticket.location = location;
     ticket.price = price;
     this.TicketService.editTicket(ticket)
-      .then( this.modalRef.close())
-      .then ( () => this.getProducts() )
-      .then ( () => this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου' )
+      .then(this.modalRef.close())
+      .then(() => this.getProducts())
+      .then(() => this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου')
   }
 
   orderByName(column: String) {
@@ -269,7 +258,7 @@ export class TicketsCrudComponent implements OnInit {
         (data: any[]) => {
           if (data['content']) {
             this.data = data['content'];
-           ;
+            ;
           }
 
           this.totalPages = data['totalPages'];
@@ -354,8 +343,6 @@ export class TicketsCrudComponent implements OnInit {
 
   getPagination(totalProducts, howManyRows) {
     this.totalPages = Math.ceil(totalProducts / howManyRows);
-    console.log(totalProducts + ' / ' + howManyRows);
-    console.log(this.totalPages);
   }
 
   counter(totalPages: number) {
