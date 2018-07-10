@@ -4,12 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { } from '@types/googlemaps';
 import {
   TicketService,
-  CartService,
-  ApiService
+  CartService
 } from '../service';
 import { Ticket } from '../tickets-crud/ticket';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { delay } from 'q';
+import { HttpClient} from '@angular/common/http';
 
 
 
@@ -43,8 +41,7 @@ export class ProductpageComponent implements OnInit {
   private mapType: string;
   private index: number;
   private tracked = false;
-
-
+  private data: any;
 
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
@@ -52,13 +49,14 @@ export class ProductpageComponent implements OnInit {
     private cartService: CartService,
     private route: ActivatedRoute,
     private httpClient: HttpClient) { }
+
   ngOnInit() {
 
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
     this.TicketService.getTicket(this.id)
-      .subscribe(response => this.renderedTicket(response));
+      .then(response => this.renderedTicket(response));
 
 
   }
@@ -114,9 +112,9 @@ return this.coffeelist;
 
   setLocalLat(x: any) {
 
-    const data = x;
-    this.latitude = data.results[0].geometry.location.lat;
-    this.longitude = data.results[0].geometry.location.lng;
+    this.data = x;
+    this.latitude = this.data.results[0].geometry.location.lat;
+    this.longitude = this.data.results[0].geometry.location.lng;
     this.index = 0;
     this.zoom = 14;
     this.mapType = 'roadmap';

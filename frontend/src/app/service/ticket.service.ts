@@ -25,7 +25,7 @@ export class TicketService {
   }
 
   getTicket(id: number) {
-    return this.apiService.get(this.config.viewproduct_url(id));
+    return this.apiService.get(this.config.viewproduct_url(id)).toPromise();
   }
 
   getAlladminPage(page?: number, size?: number, sort?: String, column?: String) {
