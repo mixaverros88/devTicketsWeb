@@ -165,7 +165,6 @@ export class TicketsCrudComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.getProducts();
     this.customOnInit();
     // this.counter(this.totalPages);
@@ -341,6 +340,7 @@ export class TicketsCrudComponent implements OnInit {
 
 
   onChangeForm() {
+
     const date = this.userDetailsForm.controls['date'].value;
     let newDate = new Date();
     newDate = this.setDate(date.month, date.day, date.year);
