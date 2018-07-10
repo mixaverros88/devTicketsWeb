@@ -11,7 +11,7 @@ export class ContactComponent implements OnInit {
   title = 'My first AGM project';
   lat = 38.049506;
   lng = 23.788381;
-  cooperative ="none";
+  cooperative= 'none';
 
   @ViewChild('email')
   email: ElementRef;
@@ -31,14 +31,11 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmitContact() {
-
-    // console.log(this.email.nativeElement.value);
     if ( !this.email.nativeElement.value ) {
       alert('Please type your email');
       return;
     }
     const splitter = this.email.nativeElement.value.split('@');
-    // console.log(splitter);
     const emailProvider = splitter[1].split('.');
     if ( !this.emailTypes.includes('@' + emailProvider[0]) ) {
       alert('Please provide a valid email!');

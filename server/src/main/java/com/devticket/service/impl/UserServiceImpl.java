@@ -42,7 +42,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private AuthorityService authService;
 
-//    @Autowired MailSender mailSender;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -53,7 +52,6 @@ public class UserServiceImpl implements UserService {
         String randomUUIDString = uuid.toString();
         String generatedString= randomUUIDString.substring(0,5);
         user.setPassword(passwordEncoder.encode(generatedString));
-//        MimeMessage  message = new MimeMessage();
         MimeMessage mime = this.mailSender.createMimeMessage();
         MimeMessageHelper helper = null;
         try {
@@ -407,7 +405,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    // @PreAuthorize("hasRole('USER')")
     public User findByUsername(String username) throws UsernameNotFoundException {
         User u = userRepository.findByUsername(username);
         return u;
@@ -432,7 +429,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         user.setFirstname(userRequest.getFirstname());
         user.setLastname(userRequest.getLastname());
-        //List<Authority> auth = authService.findByname("ROLE_USER");
         List<Authority> auth = authService.findById(1l);
         user.setAuthorities(auth);
 

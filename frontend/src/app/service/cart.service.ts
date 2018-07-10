@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { ConfigService } from './config.service';
-import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cart } from '../shoppingcart/Cart';
 import { CartItem } from '../shoppingcart/CartItem';
-import { Observable } from 'rxjs/Observable';
-import { Response } from '@angular/http';
 
 @Injectable()
 export class CartService {
@@ -13,7 +11,6 @@ export class CartService {
     constructor(
         private apiService: ApiService,
         private config: ConfigService,
-        private httpClient: HttpClient,
 
     ) { }
 
@@ -21,7 +18,6 @@ export class CartService {
         let cart = {} as Cart;
 
         if (this.getCart() != null) {
-            console.log('den einai adeio');
             cart = this.getCart();
         }
 
@@ -42,7 +38,6 @@ export class CartService {
         let cart = {} as Cart;
 
         if (this.getCart() != null) {
-            console.log('den einai adeio');
             cart = this.getCart();
         }
 
@@ -50,26 +45,25 @@ export class CartService {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         });
-    this.apiService.post(this.config.deletefromCart_url(id), cart , addProductHeaders).subscribe(
-        res => this.makeCart(res));
+        this.apiService.post(this.config.deletefromCart_url(id), cart, addProductHeaders).subscribe(
+            res => this.makeCart(res));
     }
 
     makeCart(x: any): Cart {
         let carter: Cart;
         carter = x;
-        console.log(carter);
         localStorage.setItem('cart', JSON.stringify(carter));
         return carter;
     }
 
     getCart(): Cart {
         if (localStorage.getItem('cart') != null) {
-        return JSON.parse(localStorage.getItem('cart'));
+            return JSON.parse(localStorage.getItem('cart'));
         }
         // tslint:disable-next-line:one-line
         else {
 
-           const cart = {} as Cart;
+            const cart = {} as Cart;
             cart.totalPrice = 0;
             cart.cart = [];
             return cart;
@@ -79,7 +73,7 @@ export class CartService {
     getCartinString() {
 
         if (localStorage.getItem('cart') != null) {
-        return (localStorage.getItem('cart'));
+            return (localStorage.getItem('cart'));
         }
         // tslint:disable-next-line:one-line
         else {
@@ -93,10 +87,10 @@ export class CartService {
     cartValue() {
         const f: Cart = JSON.parse(this.getCartinString());
         if (this.getCartinString() != null) {
-        return f.totalPrice;
+            return f.totalPrice;
         }
         // tslint:disable-next-line:one-line
-        else {return 0; }
+        else { return 0; }
     }
     cartUniqueItems() {
         const f: Cart = JSON.parse(this.getCartinString());
@@ -107,14 +101,14 @@ export class CartService {
         return f.cart;
     }
     clearCart() {
-    localStorage.removeItem('cart');
-      }
-     getCartProducts() {
+        localStorage.removeItem('cart');
+    }
+    getCartProducts() {
         const g = JSON.stringify(this.getCart().cart);
         let carter: CartItem[];
-         carter  = JSON.parse(g);
-         return carter;
-     }
+        carter = JSON.parse(g);
+        return carter;
+    }
     checkout(id: number) {
 
         const cart = this.getCart();
@@ -125,7 +119,7 @@ export class CartService {
 
         this.apiService.post(this.config.checkout_url(id), cart, addProductHeaders)
             .subscribe(
-              );
+            );
     }
 
 

@@ -1,8 +1,7 @@
 import { Component, OnInit,  } from '@angular/core';
 import { CartService, ConfigService, UserService } from '../service';
-import { USE_DEFAULT_LANG } from '@ngx-translate/core';
 import { User } from '../login/user';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { delay } from 'rxjs/operators';
 
 @Component({
@@ -14,14 +13,11 @@ export class CheckoutComponent implements OnInit {
 
   data: any[];
   CurrentUserId: number;
-
   shippingCost = 5;
 
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private CartService: CartService,
-    // tslint:disable-next-line:no-shadowed-variable
-    private ConfigService: ConfigService,
     // tslint:disable-next-line:no-shadowed-variable
     private UserService: UserService,
     private modalService: NgbModal) {
@@ -54,16 +50,13 @@ export class CheckoutComponent implements OnInit {
 
   makeUser(res: any) {
     let user = {} as User;
-    console.log(res);
     user = JSON.parse(res);
-    console.log(user.id);
     this.CurrentUserId = user.id;
 
   }
 
   checkout(content) {
   this.makeUser(JSON.stringify(this.UserService.currentUser));
-    console.log(this.CurrentUserId);
     delay(3000);
     this.CartService.checkout(this.CurrentUserId);
     this.CartService.clearCart();

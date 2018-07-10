@@ -17,7 +17,6 @@ import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import {AdminPanelComponentComponent} from './admin-panel-component/admin-panel-component.component';
 import {ProductpageComponent } from './productpage/productpage.component';
 
 export const routes: Routes = [
@@ -82,19 +81,9 @@ export const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
-    path: 'admin',
-    component: AdminPanelComponentComponent,
-    canActivate: [AdminGuard]
-  },
-  {
     path: 'change-password',
     component: ChangePasswordComponent,
     canActivate: [LoginGuard]
-  },
-  {
-    path: 'adminpanel',
-    component: AdminPanelComponentComponent,
-    canActivate: [AdminGuard]
   },
   {
     path: '404',

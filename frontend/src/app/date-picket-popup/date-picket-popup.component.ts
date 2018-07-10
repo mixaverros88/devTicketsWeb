@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class DatePicketPopupComponent implements OnInit {
 
   model;
-
   constructor() { }
 
   ngOnInit() {

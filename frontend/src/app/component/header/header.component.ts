@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {
   UserService,
   AuthService,
-  TicketService,
   CartService
 } from '../../service';
 import { Router } from '@angular/router';
-import { Cart } from '../../shoppingcart/Cart';
-import { CartItem } from '../../shoppingcart/CartItem'
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

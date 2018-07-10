@@ -56,7 +56,6 @@ import {
   ApiService,
   AuthService,
   UserService,
-  FooService,
   ConfigService
 } from './service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -77,7 +76,6 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { OrdersService } from './service/orders.service';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChartsModule } from 'ng2-charts';
-import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
 import { ProductpageComponent } from './productpage/productpage.component';
 
 export function initUserFactory(userService: UserService) {
@@ -108,7 +106,6 @@ export function initUserFactory(userService: UserService) {
     CheckoutComponent,
     UserPageComponent,
     ResetPasswordComponent,
-    AdminPanelComponentComponent,
     ProductpageComponent
   ],
   imports: [
@@ -155,7 +152,6 @@ export function initUserFactory(userService: UserService) {
     LoginGuard,
     GuestGuard,
     AdminGuard,
-    FooService,
     AuthService,
     ApiService,
     UserService,

@@ -1,31 +1,13 @@
-import { DatePicketPopupComponent } from './../date-picket-popup/date-picket-popup.component';
 import { TicketService } from './../service/ticket.service';
 import { Component, OnInit, Injectable, ElementRef, ViewChild, Input, NgZone } from '@angular/core';
 import { Ticket } from './ticket';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { NgbModal, ModalDismissReasons, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
-import { DatePicker } from './datePicker';
-import { ChartsModule } from 'ng2-charts';
-import { } from '@types/googlemaps';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { single } from './data';
-
-// In your App's module:
-
-import {
-
-  ConfigService,
-  CartService,
-  ApiService,
-} from '../service';
-
+import { NgbModal, ModalDismissReasons, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './../service/user.service'
-import { identifierName } from '@angular/compiler';
-import { tick } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { delay } from 'q';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { Router } from '@angular/router';
+import { } from '@types/googlemaps';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -42,19 +24,13 @@ export class TicketsCrudComponent implements OnInit {
 
   single: any[];
   multi: any[];
-
   view: any[] = [700, 400];
-
-  // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
   showYAxisLabel = true;
-
-
-
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
@@ -65,7 +41,6 @@ export class TicketsCrudComponent implements OnInit {
 
   modalRef: any;
   modalRefInsert: any;
-
   base64textString;
   userDetailsForm: FormGroup;
   user_data: FormGroup;
@@ -88,10 +63,10 @@ export class TicketsCrudComponent implements OnInit {
   ticket: Ticket;
   selectedProduct: Ticket;
   date: Date;
-  chart: { "name": string, "value": number }[] = [];
+  chart: { 'name': string, 'value': number }[] = [];
   chartUserNumber: number;
   chartUserGoal: number;
-  chartUserObj: { "name": string, "value": number }[] = [];
+  chartUserObj: { 'name': string, 'value': number }[] = [];
   legendTitleBar = 'Events';
   xAxisLabelBar = 'Event';
   yAxisLabelBar = 'Price';
@@ -106,9 +81,6 @@ export class TicketsCrudComponent implements OnInit {
   first: boolean;
   numberOfElements: number;
   orderByColumn: String = 'id';
-  // PAGINATION VALUES
-
-
   closeResult: string;
 
   // fields used for google maps and geolocation
@@ -132,12 +104,11 @@ export class TicketsCrudComponent implements OnInit {
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
-    private UserService: UserService,
     // tslint:disable-next-line:no-shadowed-variable
+    private UserService: UserService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     private router: Router,
-    // google maps
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private _mapsWrapper: GoogleMapsAPIWrapper
@@ -191,29 +162,20 @@ export class TicketsCrudComponent implements OnInit {
     this.longitude = 23.73400079999999;
     this.mapType = 'roadmap';
     this.userIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-
-    // create search FormControl
     this.searchControl = new FormControl();
-
-    // set current position
     this.setCurrentPosition();
-
-    // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: [], // change: from ['address'] to [], in order to include all options (address, establishments & geocodes)
+        types: [],
       });
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
-          // get the place result
           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
           // verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
-          // set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.zoom = 14;
@@ -305,11 +267,9 @@ export class TicketsCrudComponent implements OnInit {
     this.TicketService.getAlladminPage(this.number, this.size, this.sort, this.orderByColumn)
       .subscribe(
         (data: any[]) => {
-          // console.log(data['content'][0]);
-          // console.log(data['last']);
           if (data['content']) {
             this.data = data['content'];
-            console.log(data['content']);
+           ;
           }
 
           this.totalPages = data['totalPages'];
@@ -317,7 +277,6 @@ export class TicketsCrudComponent implements OnInit {
           this.totalElements = data['totalElements'];
           this.size = data['size'];
           this.number = data['number'];
-          // this.sort = data['sort'];
           this.first = data['first'];
           this.numberOfElements = data['numberOfElements'];
 
@@ -418,7 +377,6 @@ export class TicketsCrudComponent implements OnInit {
   _handleReaderLoaded(readerEvt) {
     const binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
-    console.log(btoa(binaryString));
   }
 
   onDelete(id: number) {
@@ -426,7 +384,6 @@ export class TicketsCrudComponent implements OnInit {
     this.submitted = true;
 
     this.TicketService.deleteEmployee(id)
-      // show me the animation
       .subscribe(() => {
         this.data.splice(id);
 
@@ -456,16 +413,15 @@ export class TicketsCrudComponent implements OnInit {
           if (chart['content']) {
             while (item < chart['content'].length) {
 
-              let chartItem = {
-                "name": chart['content'][item].name,
-                "value": chart['content'][item].price
+              const chartItem = {
+                'name': chart['content'][item].name,
+                'value': chart['content'][item].price
               };
 
               this.chart.push(chartItem);
               item++;
             }
 
-            console.log(this.chart);
           }
         });
 
@@ -478,12 +434,11 @@ export class TicketsCrudComponent implements OnInit {
       .subscribe(
         (chartUser: any[]) => {
           this.chartUserNumber = chartUser.length;
-          let chartItemUser = {
-            "name":"Number of Users",
-            "value": this.chartUserNumber
+          const chartItemUser = {
+            'name': 'Number of Users',
+            'value': this.chartUserNumber
           };
           this.chartUserObj.push(chartItemUser);
-          console.log(this.chartUserNumber);
         });
   }
 
