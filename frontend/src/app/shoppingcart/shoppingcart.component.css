@@ -20,7 +20,7 @@ body {
 }
 
 .active {
-  border-bottom: 2px solid #1161ed;
+  border-bottom: 2px solid #cccccc;
   text-align: center;
   position: static;
   color: rgba(0, 0, 0, 0.54);
