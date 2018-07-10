@@ -23,7 +23,7 @@
       <div class="col-md-12">
         <h2 class="history-title">{{ 'TICKETHISTORY' | translate }}</h2>
         <input type="text" placeholder="Search" [(ngModel)]="id" style="background-color: #fff;">
-      </div>
+      
       <div class="row" style="margin:auto;">
         <div *ngFor="let pr of data |filter:id" class="col-md-4 ticket-area">
           <div class="col-xs-12 col-sm-12 col-md-12">
@@ -54,6 +54,7 @@
           </div>
         </div>
       </div>
+    </div>
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">{{ 'YOURTICKETS' | translate }}</h4>
