@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   cartValue() {
-    return this.cartService.cartValue();
+    return Math.round(this.cartService.cartValue() * 100) / 100;
   }
 
   cartUniqueItems() {
