@@ -7,8 +7,6 @@ import com.devticket.repository.UserRepository;
 import com.devticket.service.AuthorityService;
 import com.devticket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.access.AccessDeniedException;
@@ -19,9 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -50,7 +46,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByLastname(email);
         UUID uuid = UUID.randomUUID();
         String randomUUIDString = uuid.toString();
-        String generatedString= randomUUIDString.substring(0,5);
+        String generatedString = randomUUIDString.substring(0, 5);
         user.setPassword(passwordEncoder.encode(generatedString));
         MimeMessage mime = this.mailSender.createMimeMessage();
         MimeMessageHelper helper = null;
@@ -59,7 +55,7 @@ public class UserServiceImpl implements UserService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-        String htmlMailBefore="<!doctype html>\n" +
+        String htmlMailBefore = "<!doctype html>\n" +
                 "<html>\n" +
                 "  <head>\n" +
                 "    <meta name=\"viewport\" content=\"width=device-width\" />\n" +
@@ -355,7 +351,7 @@ public class UserServiceImpl implements UserService {
                 "                      <td>";
 
 
-        String htmlMailAfter="       </td>\n" +
+        String htmlMailAfter = "       </td>\n" +
                 "                    </tr>\n" +
                 "                  </table>\n" +
                 "                </td>\n" +
@@ -387,7 +383,7 @@ public class UserServiceImpl implements UserService {
                 "</html>";
 
         helper.setSubject("devTickets Reset Password");
-        helper.setText(htmlMailBefore + "<b>Hello from DevTickets</b> .com  You Requested a Password Reset ----- YOUR NEW PASSWORD IS :" + generatedString+htmlMailAfter, true );
+        helper.setText(htmlMailBefore + "<b>Hello from DevTickets</b> .com  You Requested a Password Reset ----- YOUR NEW PASSWORD IS :" + generatedString + htmlMailAfter, true);
         helper.setTo(email);
         helper.setFrom("mixalisgiorgosverros@gmail.com");
 
@@ -400,7 +396,7 @@ public class UserServiceImpl implements UserService {
 
 
         }
-            userRepository.save(user);
+        userRepository.save(user);
 
     }
 
@@ -437,8 +433,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByLastname(String lastname){
-    return this.userRepository.findByLastname(lastname);
+    public User findByLastname(String lastname) {
+        return this.userRepository.findByLastname(lastname);
     }
 
 }

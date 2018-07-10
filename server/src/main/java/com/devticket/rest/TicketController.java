@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +45,7 @@ public class TicketController {
 
     @RequestMapping(
             value = "/tickets/get",
-            params = { "page", "size" },
+            params = {"page", "size"},
             method = RequestMethod.GET
     )
     public Page<Ticket> findPaginated(
@@ -61,9 +60,9 @@ public class TicketController {
     }
 
     private Sort orderBy(String sort, String column) {
-        if (sort == "asc"){
+        if (sort == "asc") {
             return new Sort(Sort.Direction.ASC, column);
-        }else {
+        } else {
             return new Sort(Sort.Direction.DESC, column);
         }
     }

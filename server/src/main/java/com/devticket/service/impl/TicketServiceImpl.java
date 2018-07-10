@@ -12,8 +12,6 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,8 +38,8 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Page<Ticket> findPaginated(int page, int size, Sort sortBy) {
-       Page<Ticket>  tee = ticketRepository.findAll(new PageRequest(page, size, sortBy));
-       return  tee;
+        Page<Ticket> tee = ticketRepository.findAll(new PageRequest(page, size, sortBy));
+        return tee;
     }
 
 
