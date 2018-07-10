@@ -292,14 +292,9 @@ export class TicketsCrudComponent implements OnInit {
     ticket.location = location;
     ticket.price = price;
     this.TicketService.editTicket(ticket)
-      .then(
-        this.modalRef.close()
-      )
-    this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου';
-    delay(6300);
-    this.getProducts();
-
-    ;
+      .then( this.modalRef.close())
+      .then ( () => this.getProducts() )
+      .then ( () => this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου' )
   }
 
   orderByName(column: String) {
