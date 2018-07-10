@@ -16,7 +16,8 @@
                 <div class="row">
                     <div class="col-6 p10">
                         <h3 class='text-center'>{{'INSERTTICKET' |translate}}</h3>
-                        <form [formGroup]="userDetailsForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)" (input)="onChangeForm(userDetailsForm.value)">
+                        <form [formGroup]="userDetailsForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)"
+                            (input)="onChangeForm(userDetailsForm.value)">
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -83,7 +84,7 @@
                                     </span>
                                 </div>
                                 <input class="width90percent height40px" #locationInput matInput placeholder="Location" type="text" formControlName="location"
-                                    [formControl]="searchControl" required>
+                                    [formControl]="searchControl" >
                             </div>
 
                             <div class="input-group mb-3">
@@ -96,7 +97,7 @@
                             </div>
 
                             <div class="form-group">
-                                
+
                                 <button class="submit-btn" color="primary" mat-raised-button type="submit">Submit</button>
                             </div>
                         </form>
@@ -111,7 +112,7 @@
                                 </agm-marker>
                             </agm-map>
                             <div class="card-body">
-                              
+
                                 <div class="row">
                                     <!-- <div class="col-md-3" >
                                         <span class="fa fa-calendar" >{{ date | date }}</span>
@@ -346,7 +347,8 @@
                     <div class="col-md-6">
                         <h5 class="text-center justified">{{'TICKETS' | translate}}</h5>
                         <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="chart" [gradient]="gradient" [xAxis]="showXAxis"
-                            [yAxis]="showYAxis" [legend]="showLegend" [legendTitle]="legendTitleBar" [xAxisLabel]="xAxisLabelBar" [yAxisLabel]="yAxisLabelBar" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                            [yAxis]="showYAxis" [legend]="showLegend" [legendTitle]="legendTitleBar" [xAxisLabel]="xAxisLabelBar"
+                            [yAxisLabel]="yAxisLabelBar" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
                             [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" style="margin:auto">
                         </ngx-charts-bar-vertical>
                     </div>

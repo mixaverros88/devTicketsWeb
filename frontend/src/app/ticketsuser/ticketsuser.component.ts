@@ -1,6 +1,7 @@
+import { CustomCounterComponent } from './../custom-counter/custom-counter.component';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ScrollEvent } from 'ngx-scroll-event';
 import {
   TicketService,
@@ -31,15 +32,15 @@ export class TicketsuserComponent implements OnInit {
   // PAGINATION VALUES
 
   counterValue = 0;
-  data: any [];
+  data: any[];
 
   constructor(private httpClient: HttpClient,
-  // tslint:disable-next-line:no-shadowed-variable
-  private TicketService: TicketService,
-  // tslint:disable-next-line:no-shadowed-variable
-  private CartService: CartService ,
-  private router: Router,
-  config: NgbRatingConfig) {
+    // tslint:disable-next-line:no-shadowed-variable
+    private TicketService: TicketService,
+    // tslint:disable-next-line:no-shadowed-variable
+    private CartService: CartService,
+    private router: Router,
+    config: NgbRatingConfig) {
     config.max = 5;
   }
 
@@ -48,6 +49,8 @@ export class TicketsuserComponent implements OnInit {
 
       if (!this.engTicket) {
         this.size += 3;
+        console.log(this.size)
+        console.log(this.totalElements)
         this.getProducts();
         if (this.size >= this.totalElements) { this.engTicket = true; }
       }
@@ -67,27 +70,28 @@ export class TicketsuserComponent implements OnInit {
   addtoCart(id: number) {
     return this.CartService.addtoCart(id);
 
-          }
+  }
 
 
 
   getProducts() {
     this.TicketService.getAlladminPage(this.number, this.size, this.sort, this.orderByColumn)
-    .subscribe(
-      (data: any []) => {
-        if (data['content']) {
-          this.data = data['content'];
-        }
+      .subscribe(
+        (data: any[]) => {
+          if (data['content']) {
+            this.data = data['content'];
+            console.log(data['content']);
+          }
 
-        this.totalPages = data['totalPages'];
-        this.last = data['last'];
-        this.totalElements = data['totalElements'];
-        this.size = data['size'];
-        this.number = data['number'];
-        this.first = data['first'];
-        this.numberOfElements = data['numberOfElements'];
-      }
-    );
+          this.totalPages = data['totalPages'];
+          this.last = data['last'];
+          this.totalElements = data['totalElements'];
+          this.size = data['size'];
+          this.number = data['number'];
+          this.first = data['first'];
+          this.numberOfElements = data['numberOfElements'];
+        }
+      );
 
 
   }

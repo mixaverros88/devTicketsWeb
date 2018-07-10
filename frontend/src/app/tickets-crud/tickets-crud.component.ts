@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { delay } from 'q';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { Router } from '@angular/router';
-import { } from '@types/googlemaps';
+import {  } from '@types/googlemaps';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -117,7 +117,7 @@ export class TicketsCrudComponent implements OnInit {
       'language': [null, Validators.required],
       'image': [null, Validators.required],
       'available': [null, Validators.required],
-      'location': [null],
+      'location': [null , Validators.required],
       'price': [null, Validators.required],
 
     })
