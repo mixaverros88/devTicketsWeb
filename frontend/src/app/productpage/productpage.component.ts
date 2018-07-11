@@ -7,6 +7,7 @@ import {
 } from '../service';
 import { Ticket } from '../tickets-crud/ticket';
 import { HttpClient} from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
 
 
 
@@ -102,11 +103,16 @@ return this.coffeelist;
     }
 
 
-  getlatlng(address) {
-    return this.httpClient.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
-      address).subscribe(res => this.setLocalLat(res));
-
+  getGooglePromise(address): Promise<any> {
+   return this.httpClient.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
+      address).toPromise();
+      ;
   }
+  getlatlng(address) {
+    return this.getGooglePromise(address).then(res => this.setLocalLat(res));
+       ;
+   }
+
 
   setLocalLat(x: any) {
 
