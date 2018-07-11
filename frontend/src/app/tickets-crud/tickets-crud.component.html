@@ -1,5 +1,5 @@
 <ngb-tabset class="nav-fill">
-    <ngb-tab title="ADD TICKET">
+    <ngb-tab title=" {{ 'ADDTICKET' | translate }}">
         <ng-template ngbTabContent>
             <!--
             <ng-template #content let-c="close" let-d="dismiss">
@@ -15,8 +15,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-6 p10">
-                            <h3 class='text-center'>{{'INSERTTICKET' |translate}}</h3>
-                        <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)" (input)="onChangeForm(userDetailsForm.value)">
+                        <h3 class='text-center'>{{'INSERTTICKET' |translate}}</h3>
+                        <form [formGroup]="userDetailsForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)"
+                            (input)="onChangeForm(userDetailsForm.value)">
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -26,8 +27,9 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <input class="width90percent height40px" placeholder="yyyy-mm-dd" name="date" formControlName="date" 
-                                    ngbDatepicker #d="ngbDatepicker" matInput> <!-- changed class="form-control"-->
+                                    <input class="width90percent height40px" placeholder="yyyy-mm-dd" name="date" formControlName="date" ngbDatepicker #d="ngbDatepicker"
+                                        matInput>
+                                    <!-- changed class="form-control"-->
                                 </div>
                             </div>
 
@@ -37,8 +39,7 @@
                                         <span class="fa fa-code"></span>
                                     </span>
                                 </div>
-                                <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text"
-                                formControlName="name" required>
+                                <input class="width90percent height40px" #nameInput matInput placeholder="Name" type="text" formControlName="name" required>
                             </div>
 
 
@@ -82,8 +83,8 @@
                                         <span class="fa fa-map-marker"></span>
                                     </span>
                                 </div>
-                                <input class="width90percent height40px" #locationInput matInput placeholder="Location" type="text" 
-                                    formControlName="location" [formControl]="searchControl" required>
+                                <input class="width90percent height40px" #locationInput matInput placeholder="Location" type="text" formControlName="location"
+                                    [formControl]="searchControl" >
                             </div>
 
                             <div class="input-group mb-3">
@@ -96,17 +97,14 @@
                             </div>
 
                             <div class="form-group">
-                                <button class="submit-btn" color="primary" mat-raised-button type="submit" >Submit</button>
+
+                                <button class="submit-btn" color="primary" mat-raised-button type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-6 p10" style="margin-top:40px;">
                         <div class="card border-0">
                             <h3 class='text-center'>New Ticket Preview</h3>
-                            <!-- <div style="min-height: 150px;">
-                                <img *ngIf="base64textString;else show_image" class="card-img-top img-fluid" src='data:image/png;base64,{{base64textString}}'
-                                    alt="Card image cap" style="min-height: 150px;">
-                            </div> -->
                             <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [mapTypeId]="mapType">
                                 <agm-marker *ngIf="tracked" [latitude]="userLatitude" [longitude]="userLongitude" [iconUrl]="userIcon">
                                 </agm-marker>
@@ -114,10 +112,12 @@
                                 </agm-marker>
                             </agm-map>
                             <div class="card-body">
+
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <span class="fa fa-calendar">{{ date | date }}</span>
-                                    </div>
+                                    <!-- <div class="col-md-3" >
+                                        <span class="fa fa-calendar" >{{ date | date }}</span>
+                                        
+                                    </div> -->
                                     <div class="col-md-9">
                                         <span class="fa fa-pencil">{{ language }}</span>
                                     </div>
@@ -138,7 +138,7 @@
                                         <span class="fa fa-ticket"></span> {{ available }}
                                     </div>
                                 </div>
-                           
+
                             </div>
                         </div>
                     </div>
@@ -146,8 +146,8 @@
             </div>
 
             <!-- Google maps -->
-          
-        
+
+
 
             <ng-template #modify let-c="close" let-d="dismiss">
                 <div class="container-fluid pt10">
@@ -209,147 +209,156 @@
         </ng-template>
     </ngb-tab>
     <ngb-tab>
-        <ng-template ngbTabTitle>EDIT / DELETE TICKETS</ng-template>
+        <ng-template ngbTabTitle>{{ 'EDITDELETETICKETS' | translate }}</ng-template>
         <ng-template ngbTabContent>
-                <!--
+            <!--
                 <ng-template #content let-c="close" let-d="dismiss">
                 </ng-template>
     -->
-    <h3 class="text-center">{{'Edit Ticket' |translate}}</h3>
-    <hr>
-                <div class="container">
-                    <div *ngIf="message" class="alert alert-success">
-                        <strong>Success!</strong>{{message}}
-                    </div>
-    
-                    <table class="table" style="border: 9px solid #e9e9e9;">
-                        <thead style="background-color: #e9e9e9;">
-                            <tr>
-                                <th>Total Tickets {{ totalElements }}</th>
-                                <th (click)="orderByName('name')">
-                                    <span>{{'ΝΑΜΕ'| translate}}</span>
-                                    <div class="arrows">
-                                        <i class="fa fa-caret-up"></i>
-                                        <i class="fa fa-caret-down"></i>
-                                    </div>
-                                </th>
-                                <th (click)="orderByName('language')">{{'LANGUAGE' | translate}}</th>
-                                <th>{{'AVAILABE' | translate}}</th>
-                                <th>{{'LOCATION' | translate}}</th>
-                                <th (click)="orderByName('price')">{{'PRICE' | translate}}</th>
-                                <th>Date</th>
-                                <th>{{'SETTINGS' | translate}}</th>
-                                <th>
-                                    <select class = "showRows" (change)="changeShowRows($event.target.value)">
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                    </select>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let pr of data">
-                                <td style="width:20%;">
-                                    <img height="50" width="80" src='data:image/png;base64,{{pr.image}}'> </td>
-                                <td >{{ pr.name }}</td>
-                                <td>{{ pr.language }}</td>
-                                <td>{{ pr.available }}</td>
-                                <td>{{ pr.location }}</td>
-                                <td>{{ pr.price | currency }}</td>
-                                <td>{{ pr.date | date }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">{{ 'MODIFY' | translate }}</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">{{ 'DELETE' | translate }}</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <ul class="pagination">
-                        <li  *ngFor='let in of counter(totalPages) ;let i = index' class="page-item" > 
-                            <span (click)="changePage(i+1)" class="page-link" [ngClass]="{activePage:i===number}">{{ i+1 }}</span>
-                        </li>
-                    </ul>
-                      
+            <h3 class="text-center">{{'Edit Ticket' |translate}}</h3>
+            <hr>
+            <div class="container">
+                <div *ngIf="message" class="alert alert-success">
+                    <strong>Success!</strong>{{message}}
                 </div>
-    
-    
-                <!-- Google maps -->
-              
-            
-    
-                <ng-template #modify let-c="close" let-d="dismiss">
-                    <div class="container-fluid pt10">
-                        <h3 class="text-center">Modify a Ticket</h3>
-                        <hr>
-                        <div *ngIf="selectedProduct" class="container">
-                            <form class="form-inline">
-                                <div class="form-group" style="display: none">
-                                    <label for="usr">ID:</label>
-                                    <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
+
+                <table class="table" style="border: 9px solid #e9e9e9;">
+                    <thead style="background-color: #e9e9e9;">
+                        <tr>
+                            <th>Total Tickets {{ totalElements }}</th>
+                            <th (click)="orderByName('name')">
+                                <span>{{'ΝΑΜΕ'| translate}}</span>
+                                <div class="arrows">
+                                    <i class="fa fa-caret-up"></i>
+                                    <i class="fa fa-caret-down"></i>
                                 </div>
-                                <div class="input-group mb-3 width90percent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-globe"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #nameEditInput value="{{selectedProduct.name}}">
+                            </th>
+                            <th (click)="orderByName('language')">{{'LANGUAGE' | translate}}</th>
+                            <th>{{'AVAILABE' | translate}}</th>
+                            <th>{{'LOCATION' | translate}}</th>
+                            <th (click)="orderByName('price')">{{'PRICE' | translate}}</th>
+                            <th>Date</th>
+                            <th>{{'SETTINGS' | translate}}</th>
+                            <th>
+                                <select class="showRows" (change)="changeShowRows($event.target.value)">
+                                    <option>5</option>
+                                    <option>10</option>
+                                    <option>15</option>
+                                    <option>20</option>
+                                </select>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pr of data">
+                            <td style="width:20%;">
+                                <img height="80" (click)="goToProductDetails(pr.id)" width="80" src='data:image/png;base64,{{pr.image}}'> </td>
+                            <td>{{ pr.name }}</td>
+                            <td>{{ pr.language }}</td>
+                            <td>{{ pr.available }}</td>
+                            <td>{{ pr.location }}</td>
+                            <td>{{ pr.price | currency }}</td>
+                            <td>{{ pr.date | date }}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" (click)="onSelectedProduct(pr, open2(modify))">{{ 'MODIFY' | translate }}</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" (click)="onDelete(pr.id)">{{ 'DELETE' | translate }}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li *ngFor='let in of counter(totalPages) ;let i = index' class="page-item">
+                        <span (click)="changePage(i+1)" class="page-link" [ngClass]="{activePage:i===number}">{{ i+1 }}</span>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- Google maps -->
+
+
+
+            <ng-template #modify let-c="close" let-d="dismiss">
+                <div class="container-fluid pt10">
+                    <h3 class="text-center">{{ 'MODIFYATICKET' | translate }}Modify a Ticket</h3>
+                    <hr>
+                    <div *ngIf="selectedProduct" class="container">
+                        <form class="form-inline">
+                            <div class="form-group" style="display: none">
+                                <label for="usr">ID:</label>
+                                <input #idEditInput placeholder="" value="{{selectedProduct.id}}">
+                            </div>
+                            <div class="input-group mb-3 width90percent">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <span class="fa fa-globe"></span>
+                                    </span>
                                 </div>
-                                <div class="input-group mb-3 width90percent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-map-marker"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
+                                <input class="width90percent height40px" #nameEditInput value="{{selectedProduct.name}}">
+                            </div>
+                            <div class="input-group mb-3 width90percent">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <span class="fa fa-map-marker"></span>
+                                    </span>
                                 </div>
-                                <div class="input-group mb-3 width90percent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-map-marker"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
+                                <input class="width90percent height40px" #languageEditInput placeholder="Language" value="{{selectedProduct.language}}">
+                            </div>
+                            <div class="input-group mb-3 width90percent">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <span class="fa fa-map-marker"></span>
+                                    </span>
                                 </div>
-                                <div class="input-group mb-3 width90percent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-money"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
+                                <input class="width90percent height40px" #locationEditInput placeholder="Price" value="{{selectedProduct.location}}">
+                            </div>
+                            <div class="input-group mb-3 width90percent">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <span class="fa fa-money"></span>
+                                    </span>
                                 </div>
-                                <div class="input-group mb-3 width90percent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <span class="fa fa-ticket"></span>
-                                        </span>
-                                    </div>
-                                    <input class="width90percent height40px" #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
+                                <input class="width90percent height40px" #priceEditInput placeholder="Price" value="{{selectedProduct.price}}">
+                            </div>
+                            <div class="input-group mb-3 width90percent">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <span class="fa fa-ticket"></span>
+                                    </span>
                                 </div>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
-                                </div>
-                            </form>
-                        </div>
+                                <input class="width90percent height40px" #availableEditInput placeholder="available" value="{{selectedProduct.available}}">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" (click)="editProduct(idEditInput.value, nameEditInput.value, languageEditInput.value, availableEditInput.value, locationEditInput.value, priceEditInput.value); idEditInput.value=''; nameEditInput.value=''; languageEditInput.value=''; availableEditInput.value=''; locationEditInput.value=''; priceEditInput.value=''; ">Edit Product</button>
+                            </div>
+                        </form>
                     </div>
-                </ng-template>
+                </div>
             </ng-template>
+        </ng-template>
     </ngb-tab>
-    <ngb-tab title="Change Passwords">
+    <ngb-tab title="{{ 'REPORTS' | translate }}">
         <ng-template ngbTabContent>
-            <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-                Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et
-                odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed
-                diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus
-                nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
-                in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <h5 class="text-center justified">{{'TICKETS' | translate}}</h5>
+                        <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="chart" [gradient]="gradient" [xAxis]="showXAxis"
+                            [yAxis]="showYAxis" [legend]="showLegend" [legendTitle]="legendTitleBar" [xAxisLabel]="xAxisLabelBar"
+                            [yAxisLabel]="yAxisLabelBar" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" style="margin:auto">
+                        </ngx-charts-bar-vertical>
+                    </div>
+                    <div class="col-md-6">
+                        <ngx-charts-gauge [view]="view" [scheme]="colorScheme" [results]="chartUserObj" [min]="0" [max]="20" [angleSpan]="240" [startAngle]="-120"
+                            [units]="'Users'" [bigSegments]="10" [smallSegments]="5" (select)="onSelect($event)">
+                        </ngx-charts-gauge>
+                    </div>
+                </div>
+            </div>
         </ng-template>
     </ngb-tab>
 </ngb-tabset>

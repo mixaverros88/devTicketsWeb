@@ -9,9 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,9 +38,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private MailSender mailSender;
-
     @RequestMapping(method = GET, value = "/user/{userId}")
     public User loadById(@PathVariable Long userId) {
         return this.userService.findById(userId);
@@ -53,6 +48,8 @@ public class UserController {
         return this.userService.findAll();
     }
 
+
+    @Secured("permitAll")
     @RequestMapping(method = POST, value = "/resetpassword")
     public ResponseEntity<Map> resetCredentials(@RequestBody String email) throws MessagingException {
         this.userService.resetCredentials(email);

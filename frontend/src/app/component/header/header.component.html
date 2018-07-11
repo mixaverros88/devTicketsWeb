@@ -1,6 +1,7 @@
 <nav class="navbar navbar-dark bg-primary">
   <button style="background-color:#424954;" class="btn " routerLink="/">
-    <img alt="DevTicketPlace" class="app-angular-logo" src="assets/image/dev-logo.png">
+    
+    <img alt="DevTicketPlace" class="app-angular-logo kounietai" src="assets/image/dev-logo.png">
   </button>
 
 
@@ -23,8 +24,8 @@
       <span class="fa fa-shopping-cart fa-fw"></span>
       <span class="badge badge-light">{{cartValue()}} €</span>
     </button>  
-    <button  routerLink="/contact" class="my-button">
-      <span>{{ 'Contact' | translate }}</span>
+    <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" routerLink="/contact" class="my-button">
+      <span>{{ 'CONTACT' | translate }}</span>
     </button>
     <button class="greeting-button" *ngIf="hasSignedIn()" mat-button mat-ripple [matMenuTriggerFor]="accountMenu">
       <span>

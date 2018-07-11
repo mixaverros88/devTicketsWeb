@@ -33,7 +33,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><img src='{{weather?.image}}' class="" /> {{weather?.description}}</td>
+          <td><img src='{{weather?.image}}' class="" /> {{weather?.description}}</td>
         <td>~{{weather?.temp}} ℃</td>
         <td>{{weather?.main}}</td>
       </tr>
@@ -43,9 +43,67 @@
 </div>
     </div>
     <div class="cart-price">
-      <button class="button1">Add to Cart</button>
+      <button (click)='addtoCart(ticket.id)' class="button1">Add to Cart</button>
       <h2>{{ticket?.price}}€</h2>
     </div>
     </div>
 </div>
+<div>
 
+
+   
+     
+<div class="rounded" >
+  
+ <h3 style="padding-top: 60px;" class="text-center"><img src="http://cdn.onlinewebfonts.com/svg/img_486505.png" alt="Smiley face" width="50px">   We know you are a developer, we know you love coffee!</h3>
+ 
+ <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <button class="button2" id="singlebutton">Nearest Coffee Shops to This Event</button>
+        <br><br>
+        <table style='padding-bottom: 10%;'class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Coffe Shop Name</th>
+      <th>Location , Address</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{coffeelist?.name1}}</td>
+      <td>{{coffeelist?.address1}}</td>
+     
+    </tr>
+    <tr>
+        <td>{{coffeelist?.name2}}</td>
+      <td>{{coffeelist?.address2}}</td>
+       
+      </tr>   <tr>
+          <td>{{coffeelist?.name3}}</td>
+          <td>{{coffeelist?.address3}}</td>
+         
+        </tr>
+        <tr>
+            <td>{{coffeelist?.name4}}</td>
+      <td>{{coffeelist?.address4}}</td>
+           
+          </tr>
+          <tr>
+              <td>{{coffeelist?.name5}}</td>
+      <td>{{coffeelist?.address5}}</td>
+            </tr>
+ 
+  </tbody>
+</table>
+<img src="https://cdn-images-1.medium.com/max/800/0*qBwNQRFuzN98pdCh.png" alt="Smiley face" width="290px">
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+</div>

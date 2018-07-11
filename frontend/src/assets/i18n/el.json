@@ -135,5 +135,15 @@
     "SURNAMEPLACEHOLDER": "Παπαδόπουλος",
 
     "CHECKINGTHISBOX": "Αποδοχή όρων της DevTickets",
-    "PROCCEEDTOCHECKOUT": "ΟΛΟΚΛΗΡΩΣΗ ΑΓΟΡΑΣ"
+    "PROCCEEDTOCHECKOUT": "ΟΛΟΚΛΗΡΩΣΗ ΑΓΟΡΑΣ",
+
+    "SUBMIT": "Υποβολή",
+    "TYPEYOURMESSAGEHERE": "Το μήνυμά σας εδώ",
+    "CONTACT": "Επικοινωνία",
+
+    "REPORTS": "ΑΝΑΦΟΡΕΣ",
+    "TICKETS": "Εισιτήρια",
+    "MODIFYATICKET" : "Τροποποίηση εισιτηρίου",
+    "EDITDELETETICKETS": "ΤΡΟΠΟΠΟΙΗΣΗ / ΔΙΑΓΡΑΦΗ ΕΙΣΙΤΗΡΙΩΝ",
+    "ADDTICKET": "ΠΡΟΣΘΗΚΗ ΕΙΣΙΤΗΡΙΟΥ"
 }

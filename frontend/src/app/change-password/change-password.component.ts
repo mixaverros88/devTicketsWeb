@@ -11,18 +11,8 @@ import { DisplayMessage } from '../shared/models/display-message';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  form: FormGroup;
-  /**
-   * Boolean used in telling the UI
-   * that the form has been submitted
-   * and is awaiting a response
-   */
+  form: FormGroup
   submitted = false;
-
-  /**
-   * Diagnostic message from received
-   * form request error
-   */
   notification: DisplayMessage;
 
   constructor(
@@ -43,14 +33,9 @@ export class ChangePasswordComponent implements OnInit {
 
 
   onSubmit() {
-    /**
-     * Innocent until proven guilty
-     */
     this.notification = undefined;
     this.submitted = true;
-
     this.authService.changePassowrd(this.form.value)
-    // show me the animation
     .delay(1000)
     .mergeMap(() => this.authService.logout())
     .subscribe(() => {

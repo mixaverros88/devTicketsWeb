@@ -1,3 +1,40 @@
+.kounietai {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 10vw;
+  font-weight: 900;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  background-size: 120% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -ms-background-clip: text;
+  -ms-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-image: linear-gradient(45deg, 
+                    #7794ff, 
+                    #44107A,
+                    #FF1361,
+                    #FFF800);
+  animation: 2.2s shake infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: skewX(-15deg); }
+  5% { transform: skewX(15deg); }
+  10% { transform: skewX(-15deg); }
+  15% { transform: skewX(15deg); }
+  20% { transform: skewX(0deg); }
+  100% { transform: skewX(0deg); }  
+}
+
+
+
 :host {
   position: relative;
   z-index: 10;
@@ -43,13 +80,13 @@
   color: #84c6ff;
 }
 .app-angular-logo {
-  height: 45px;
+  height: 70px;
 }
 .badge-light {
   background: #0099cc;
   color: white;
   border-radius: 25px;
-  position: absolute;
+  position: static;
   top: 14px;
   right: 335px;
 }

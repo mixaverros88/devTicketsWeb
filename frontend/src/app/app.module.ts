@@ -11,7 +11,11 @@ import { CommonModule } from '@angular/common';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { QRCodeModule } from 'angularx-qrcode';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import { CountoModule }  from 'angular2-counto';
+import { CountoModule } from 'angular2-counto';
+import { Chart } from 'chart.js';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ScrollEventModule } from 'ngx-scroll-event';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -52,7 +56,6 @@ import {
   ApiService,
   AuthService,
   UserService,
-  FooService,
   ConfigService
 } from './service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -73,7 +76,6 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { OrdersService } from './service/orders.service';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChartsModule } from 'ng2-charts';
-import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
 import { ProductpageComponent } from './productpage/productpage.component';
 
 export function initUserFactory(userService: UserService) {
@@ -104,10 +106,10 @@ export function initUserFactory(userService: UserService) {
     CheckoutComponent,
     UserPageComponent,
     ResetPasswordComponent,
-    AdminPanelComponentComponent,
     ProductpageComponent
   ],
   imports: [
+    ScrollEventModule,
     ChartsModule,
     BrowserAnimationsModule,
     BrowserModule,
@@ -126,6 +128,8 @@ export function initUserFactory(userService: UserService) {
     MatProgressSpinnerModule,
     FlexLayoutModule,
     CountoModule,
+    NgxChartsModule,
+    Ng2SearchPipeModule,
     NgbModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
     QRCodeModule,
@@ -148,14 +152,14 @@ export function initUserFactory(userService: UserService) {
     LoginGuard,
     GuestGuard,
     AdminGuard,
-    FooService,
     AuthService,
     ApiService,
     UserService,
     ConfigService,
     MatIconRegistry,
     CartService,
-    OrdersService,    {
+    OrdersService,
+     {
       'provide': APP_INITIALIZER,
       'useFactory': initUserFactory,
       'deps': [UserService],

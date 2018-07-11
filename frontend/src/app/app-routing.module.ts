@@ -17,7 +17,6 @@ import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import {AdminPanelComponentComponent} from './admin-panel-component/admin-panel-component.component';
 import {ProductpageComponent } from './productpage/productpage.component';
 
 export const routes: Routes = [
@@ -29,15 +28,19 @@ export const routes: Routes = [
   {
     path: 'productpage',
     component: ProductpageComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
   {
     path: 'ticketcard',
     component: ShoppingcartComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
 
-  { path: 'productpage/:id', component: ProductpageComponent },
+  { path: 'productpage/:id',
+  component: ProductpageComponent ,
+  canActivate: [LoginGuard]},
 
   {
     path: 'userpage',
@@ -48,7 +51,8 @@ export const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
   {
     path: 'contact',
@@ -58,12 +62,14 @@ export const routes: Routes = [
   {
     path: 'ticketscrud',
     component: TicketsCrudComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AdminGuard]
   },
   {
     path: 'ticketsuser',
     component: TicketsuserComponent,
-    pathMatch: 'full'
+    pathMatch: 'full' ,
+    canActivate: [LoginGuard]
   },
   {
     path: 'resetpassword',
@@ -82,19 +88,9 @@ export const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
-    path: 'admin',
-    component: AdminPanelComponentComponent,
-    canActivate: [AdminGuard]
-  },
-  {
     path: 'change-password',
     component: ChangePasswordComponent,
     canActivate: [LoginGuard]
-  },
-  {
-    path: 'adminpanel',
-    component: AdminPanelComponentComponent,
-    canActivate: [AdminGuard]
   },
   {
     path: '404',

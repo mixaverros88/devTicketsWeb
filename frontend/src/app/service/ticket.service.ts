@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { ConfigService } from './config.service';
-import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ticket } from 'app/tickets-crud/ticket';
-import { Cart } from '../shoppingcart';
 
 @Injectable()
 export class TicketService {
@@ -16,7 +15,6 @@ export class TicketService {
   constructor(
     private apiService: ApiService,
     private config: ConfigService,
-    private httpClient: HttpClient
 
   ) { }
 
@@ -25,7 +23,7 @@ export class TicketService {
   }
 
   getTicket(id: number) {
-    return this.apiService.get(this.config.viewproduct_url(id));
+    return this.apiService.get(this.config.viewproduct_url(id)).toPromise();
   }
 
   getAlladminPage(page?: number, size?: number, sort?: String, column?: String) {
@@ -40,7 +38,7 @@ export class TicketService {
   addTicket(date: Date,
     name: string, available: number, language: string, price: number, image: string, location: string) {
 
-   const  ticket = {} as Ticket;
+    const ticket = {} as Ticket;
     ticket.date = date;
     ticket.name = name.toString();
     ticket.available = available;
@@ -56,12 +54,8 @@ export class TicketService {
   };
 
   editTicket(ticket: Ticket) {
-    return new Promise(resolve => {
-              this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).subscribe(
-      response => 'response',
-      err => console.log(err))
-        }
-    )};
+    return this.apiService.put(this.config.editteticket_url(ticket.id), JSON.stringify(ticket)).toPromise();
+  }
 
   getbyId(id: number) {
     return this.apiService.get(this.config.ticket_urll(id)).map(res => res.json());

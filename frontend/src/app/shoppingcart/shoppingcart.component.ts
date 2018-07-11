@@ -45,19 +45,19 @@ this.ngOnInit();
   }
 
   getRawValue() {
-    return this.CartService.cartValue();
+    return Math.ceil(this.CartService.cartValue());
   }
 
   getTax() {
     const final = (((this.CartService.cartValue()) * 5) / 100) ;
-return final;
+    return Math.round(final * 100) / 100;
   }
 
   getCartValue() {
-  let final = this.CartService.cartValue();
-  final = final + this.getTax();
-  final = final + 5;
-    return final;
+    let final = this.CartService.cartValue();
+    final = final + this.getTax();
+    final = final + 5;
+    return Math.ceil(final);
   }
 
   clearCart() {

@@ -1,16 +1,14 @@
 
 import { Component, OnInit, Injectable, NgZone } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { } from '@types/googlemaps';
 import {
   TicketService,
-  CartService,
-  ApiService
+  CartService
 } from '../service';
 import { Ticket } from '../tickets-crud/ticket';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-
+import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -28,6 +26,7 @@ export class ProductpageComponent implements OnInit {
   private sub: any;
   googlelink: string;
   weather: any;
+  coffeelist: any;
 
 
 
@@ -41,55 +40,89 @@ export class ProductpageComponent implements OnInit {
   private mapType: string;
   private index: number;
   private tracked = false;
-
+  private data: any;
 
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private TicketService: TicketService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private httpClient: HttpClient,
-  private apiService: ApiService) { }
+    private httpClient: HttpClient) { }
+
   ngOnInit() {
 
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
     this.TicketService.getTicket(this.id)
-      .subscribe(response => this.renderedTicket(response));
+      .then(response => this.renderedTicket(response)).catch();
 
 
   }
 
-  getWeather(){
+  getWeather() {
    const url2 = 'http://api.openweathermap.org/data/2.5/forecast?lat='
-    +this.latitude.toString()+ '&lon=' +this.longitude.toString() + '&appid=3997d67a9cec7864de6b77f35b0dc7c4';
+    + this.latitude.toString() + '&lon=' + this.longitude.toString() + '&appid=3997d67a9cec7864de6b77f35b0dc7c4';
 this.httpClient.get(url2).subscribe(res => this.saveWeather(res));  }
 
-saveWeather(x:any){
+saveWeather(x: any) {
 this.weather = x;
 this.weather.main = (x.list[39].weather[0].main);
-this.weather.temp =Math.round((x.list[39].main.temp) - (273.15));
+this.weather.temp = Math.round((x.list[39].main.temp) - (273.15));
 this.weather.description = x.list[39].weather[0].description;
-this.weather.image = 'http://openweathermap.org/img/w/'  + x.list[39].weather[0].icon +'.png'
-console.log(this.weather.image);
+this.weather.image = 'http://openweathermap.org/img/w/'  + x.list[39].weather[0].icon + '.png'
 
 }
 
 
 
 
-  getlatlng(address) {
-    return this.httpClient.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
-      address).subscribe(res => this.setLocalLat(res));
 
+getCoffees() {
+//   const urlfour =  'https://api.foursquare.com/v2/venues/search?ll=' + this.latitude.toString() +
+//   // tslint:disable-next-line:max-line-length
+//   ',' + this.longitude.toString() + '&client_id=5J4S55LBXRYE0VV1E5MZNC1NFBMVRCGU0HOIPMLCAWNJD1V4&client_secret=UM5ORT4M2E55S3QDF2SI1B2EFJFYLYZIPKOLAYNA0VSMC5BE&v=20180101&categoryId=4bf58dd8d48988d1e0931735';
+// this.httpClient.get(urlfour).subscribe(res => this.makeCoffeeList(res));
+
+console.log('EINAI OFF TO FOURSQUARE ΓΙΑ ΝΑ ΜΗΝ ΓΙΝΟΝΤΑΙ ΚΛΗΣΕΙΣ ΣΤΟ API - ΤΟ ΠΡΟΗΓΟΥΜΕΝΟ ΚΛΕΙΔΙ ΤΟ ΚΑΝΑΝΕ ΜΠΑΝ (TO ΑΝΟΙΓΟΥΜΕ ΠΡΙΝ ΤΗΝ ΠΑΡΟΥΣΙΑΣΗ)');
+
+}
+
+makeCoffeeList(x: any) {
+this.coffeelist = x;
+this.coffeelist.name1 = this.coffeelist.response.venues[0].name;
+this.coffeelist.address1 = this.coffeelist.response.venues[0].location.address;
+this.coffeelist.name2 = this.coffeelist.response.venues[1].name;
+this.coffeelist.address2 = this.coffeelist.response.venues[1].location.address;
+this.coffeelist.name3 = this.coffeelist.response.venues[2].name;
+this.coffeelist.address3 = this.coffeelist.response.venues[2].location.address;
+this.coffeelist.name4 = this.coffeelist.response.venues[3].name;
+this.coffeelist.address4 = this.coffeelist.response.venues[3].location.address;
+this.coffeelist.name5 = this.coffeelist.response.venues[4].name;
+this.coffeelist.address5 = this.coffeelist.response.venues[4].location.address;
+return this.coffeelist;
+    }
+
+
+  getPromise(address) {
+   return this.httpClient.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
+      address).toPromise();
   }
 
-  setLocalLat(x: any) {
+  getlatlng(address) {
+     this.getPromise(address).then((result) => {
+      this.data = result;
+      if (true) {
+this.setLocalLat(result)
+      }
+    })
+    .catch((error) => this.getlatlng(address)
+  ).then()};
 
-    const data = x;
-    this.latitude = data.results[0].geometry.location.lat;
-    this.longitude = data.results[0].geometry.location.lng;
+  setLocalLat(x: any) {
+    this.data = x;
+    this.latitude = this.data.results[0].geometry.location.lat;
+    this.longitude = this.data.results[0].geometry.location.lng;
     this.index = 0;
     this.zoom = 14;
     this.mapType = 'roadmap';
@@ -101,11 +134,14 @@ console.log(this.weather.image);
     };
     this.obj.push(helper);
 this.getWeather();
+this.getCoffees();
+
   }
 
   renderedTicket(responser: any) {
     this.ticketString = JSON.stringify(responser);
     this.ticket = JSON.parse(this.ticketString);
+    delay(4000);
     this.getlatlng(this.ticket.location);
   }
 
@@ -125,19 +161,10 @@ this.getWeather();
 
 
   customOnInit() {
-    // set google maps defaults
-    // this.myLocation();
     this.index = 0;
     this.zoom = 14;
-    // this.latitude = this.latitude;
-    // this.longitude = this.longitude;
-    console.log(this.latitude);
-    console.log(this.longitude);
     this.mapType = 'roadmap';
     this.userIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-    // create search FormControl
-
-    // set current position
     this.setCurrentPosition();
     const helper = {
       'latitude': this.latitude,

@@ -1,28 +1,35 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mt-4 mb-4">{{ 'TICKETUSERTITLE' | translate }}!</h1>
+        <h1 style="min-height: 80px;"class="text-center mt-4 mb-4">{{ 'TICKETUSERTITLE' | translate }}!</h1>
 
       </div>
       </div>
+
+
   <div class="row">
-    <div *ngFor="let pr of data" class="col-md-4 card mb-5">
+    <div *ngFor="let pr of data" class="col-md-4 card mb-5" detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="200" [topOffset]="200">
         <div class="card border-0 hvr-float-shadow">
-            <img class="card-img-top img-fluid"  (click)="goToProductDetails(pr.id)" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:150px!important">
+            <img class="card-img-top img-fluid"  (click)="goToProductDetails(pr.id)" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:110px!important; width:110px;">
+
             <div class="card-body">
-              <h2 class="card-title">{{ pr.name }}</h2>
-              <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi rem, minus omnis ullam dicta voluptas. Culpa quia eos quasi veritatis officiis excepturi saepe provident natus, illum, ea quae temporibus adipisci?</p>
-              <div class="row">
-                <div class="col-md-4">
-                 <span class="fa fa-money fa-color"></span> {{ pr.price | currency }}
-                </div>
-                <div class="col-md-4">
-                    <span class="fa fa-map-marker fa-color"></span> {{ pr.location }}
-                </div>
-                <div class="col-md-4">
-                    <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{ pr.available }} !
-                </div>
-              </div>
+              <h2 style="min-height: 95px;"class="card-title">{{ pr.name }}</h2>
+             <p style="    min-height: 70px; max-height: 70px;" class="card-text">{{pr.language}}</p>
+             <div style="
++              min-height: 100px; 
++              max-height: 100px;"class="row">
+                   <div class="col-md-12">
+                       <span class="fa fa-map-marker fa-color"></span> {{ pr.location }}
+                   </div>
+                 <div class="col-md-4">
+                  <span class="fa fa-money fa-color"></span> {{ pr.price }} €
+                 </div>
+                 
+                 <div class="col-md-4">
+                     <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{ pr.available }} !
+                 </div>
+               
+               </div>
               <ngb-rating [rate]="3" (click)="setStar()"></ngb-rating>
               <!-- <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter> -->
               <button *ngIf="pr.available > 0" type="button" class="btn btn-primary hvr-shutter-in-horizontal pull-right" (click)="addtoCart(pr.id)">Add to Cart <span class="fa fa-shopping-cart"></span></button>
@@ -31,5 +38,5 @@
             </div>
           </div>
     </div>
-</div>
+  </div>
 </div>

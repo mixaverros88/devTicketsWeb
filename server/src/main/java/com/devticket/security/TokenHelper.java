@@ -15,11 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Map;
 
-
 /**
- * Created by fan.jin on 2016-10-19.
+ * Created by CodingFive Team  2018
+ * (Dimou John - Mike Verros (Back-End))
  */
-
 @Component
 public class TokenHelper {
 
