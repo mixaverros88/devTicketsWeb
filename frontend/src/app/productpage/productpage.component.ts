@@ -7,9 +7,8 @@ import {
 } from '../service';
 import { Ticket } from '../tickets-crud/ticket';
 import { HttpClient} from '@angular/common/http';
-import { ReturnStatement } from '@angular/compiler';
-
-
+import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -56,7 +55,7 @@ export class ProductpageComponent implements OnInit {
       this.id = +params['id'];
     });
     this.TicketService.getTicket(this.id)
-      .then(response => this.renderedTicket(response));
+      .then(response => this.renderedTicket(response)).catch();
 
 
   }
@@ -80,10 +79,12 @@ this.weather.image = 'http://openweathermap.org/img/w/'  + x.list[39].weather[0]
 
 
 getCoffees() {
-  const urlfour =  'https://api.foursquare.com/v2/venues/search?ll=' + this.latitude.toString() +
-  // tslint:disable-next-line:max-line-length
-  ',' + this.longitude.toString() + '&client_id=V4GIRK5KBTNVS3VRE55I4AZAQMPSGEPDA2E0HPXSRVPBGWZB&client_secret=0TN33JNVI3DZL5CQCI12OQECM52WGFFI1K4SOUMMKNPLBB2L&v=20180101&categoryId=4bf58dd8d48988d1e0931735';
-this.httpClient.get(urlfour).subscribe(res => this.makeCoffeeList(res));
+//   const urlfour =  'https://api.foursquare.com/v2/venues/search?ll=' + this.latitude.toString() +
+//   // tslint:disable-next-line:max-line-length
+//   ',' + this.longitude.toString() + '&client_id=5J4S55LBXRYE0VV1E5MZNC1NFBMVRCGU0HOIPMLCAWNJD1V4&client_secret=UM5ORT4M2E55S3QDF2SI1B2EFJFYLYZIPKOLAYNA0VSMC5BE&v=20180101&categoryId=4bf58dd8d48988d1e0931735';
+// this.httpClient.get(urlfour).subscribe(res => this.makeCoffeeList(res));
+
+console.log('EINAI OFF TO FOURSQUARE ΓΙΑ ΝΑ ΜΗΝ ΓΙΝΟΝΤΑΙ ΚΛΗΣΕΙΣ ΣΤΟ API - ΤΟ ΠΡΟΗΓΟΥΜΕΝΟ ΚΛΕΙΔΙ ΤΟ ΚΑΝΑΝΕ ΜΠΑΝ (TO ΑΝΟΙΓΟΥΜΕ ΠΡΙΝ ΤΗΝ ΠΑΡΟΥΣΙΑΣΗ)');
 
 }
 
@@ -103,19 +104,22 @@ return this.coffeelist;
     }
 
 
-  getGooglePromise(address): Promise<any> {
+  getPromise(address) {
    return this.httpClient.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
       address).toPromise();
-      ;
   }
-  getlatlng(address) {
-    return this.getGooglePromise(address).then(res => this.setLocalLat(res));
-       ;
-   }
 
+  getlatlng(address) {
+     this.getPromise(address).then((result) => {
+      this.data = result;
+      if (true) {
+this.setLocalLat(result)
+      }
+    })
+    .catch((error) => this.getlatlng(address)
+  ).then()};
 
   setLocalLat(x: any) {
-
     this.data = x;
     this.latitude = this.data.results[0].geometry.location.lat;
     this.longitude = this.data.results[0].geometry.location.lng;
@@ -137,6 +141,7 @@ this.getCoffees();
   renderedTicket(responser: any) {
     this.ticketString = JSON.stringify(responser);
     this.ticket = JSON.parse(this.ticketString);
+    delay(4000);
     this.getlatlng(this.ticket.location);
   }
 
