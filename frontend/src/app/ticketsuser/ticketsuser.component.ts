@@ -49,8 +49,6 @@ export class TicketsuserComponent implements OnInit {
 
       if (!this.engTicket) {
         this.size += 3;
-        console.log(this.size)
-        console.log(this.totalElements)
         this.getProducts();
         if (this.size >= this.totalElements) { this.engTicket = true; }
       }
@@ -80,7 +78,6 @@ export class TicketsuserComponent implements OnInit {
         (data: any[]) => {
           if (data['content']) {
             this.data = data['content'];
-            console.log(data['content']);
           }
 
           this.totalPages = data['totalPages'];

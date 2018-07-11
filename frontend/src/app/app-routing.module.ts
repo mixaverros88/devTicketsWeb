@@ -28,15 +28,19 @@ export const routes: Routes = [
   {
     path: 'productpage',
     component: ProductpageComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
   {
     path: 'ticketcard',
     component: ShoppingcartComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
 
-  { path: 'productpage/:id', component: ProductpageComponent },
+  { path: 'productpage/:id',
+  component: ProductpageComponent ,
+  canActivate: [LoginGuard]},
 
   {
     path: 'userpage',
@@ -47,7 +51,8 @@ export const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
   {
     path: 'contact',
@@ -57,12 +62,14 @@ export const routes: Routes = [
   {
     path: 'ticketscrud',
     component: TicketsCrudComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AdminGuard]
   },
   {
     path: 'ticketsuser',
     component: TicketsuserComponent,
-    pathMatch: 'full'
+    pathMatch: 'full' ,
+    canActivate: [LoginGuard]
   },
   {
     path: 'resetpassword',
