@@ -337,8 +337,9 @@ section .section-title {
   height: 350px;
   }
 .profile-user-page .img-user-profile .avatar {
-	margin: 0 auto;
-  background: #2098FF;
+  margin: 0 auto;
+  border: 5px solid #fff;
+  background: #1B89DA;
   width: 7em;
   height: 7em;
   padding: 0.25em;
@@ -368,5 +369,6 @@ section .section-title {
   color: #75787b;
   font-size: 0.98em; 
 }
+
 
 
