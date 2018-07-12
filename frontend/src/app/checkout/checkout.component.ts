@@ -55,8 +55,8 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  checkout(content) {
-  this.makeUser(JSON.stringify(this.UserService.currentUser));
+  async checkout(content) {
+    await this.makeUser(JSON.stringify(this.UserService.currentUser));
     delay(3000);
     this.CartService.checkout(this.CurrentUserId);
     this.CartService.clearCart();
