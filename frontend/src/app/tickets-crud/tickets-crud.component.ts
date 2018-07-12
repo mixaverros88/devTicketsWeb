@@ -8,7 +8,6 @@ import { delay } from 'q';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { Router } from '@angular/router';
 import {  } from '@types/googlemaps';
-import { OrdersService } from '../service/orders.service';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -66,7 +65,6 @@ export class TicketsCrudComponent implements OnInit {
   legendTitleBar = 'Events';
   xAxisLabelBar = 'Event';
   yAxisLabelBar = 'Price';
- numberorders: any;
 
   // PAGINATION VALUES
   totalPages;
@@ -107,8 +105,7 @@ export class TicketsCrudComponent implements OnInit {
     private router: Router,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private _mapsWrapper: GoogleMapsAPIWrapper,
-    private orderservice: OrdersService,
+    private _mapsWrapper: GoogleMapsAPIWrapper
   ) {
     Object.assign(this.chart)
 
