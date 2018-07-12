@@ -122,6 +122,13 @@ export class CartService {
             );
     }
 
-
-
+    getNumberinCart(id: number): any {
+const mycart = this.getCart().cart;
+for (let i = 0; i < mycart.length; i++) {
+    if (mycart[i].ticket.id === id) {
+     return  mycart[i].itemQuantity;
+    }
+}
+return 0;
+    }
 };

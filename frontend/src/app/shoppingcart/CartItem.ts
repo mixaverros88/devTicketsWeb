@@ -3,6 +3,6 @@ import { Ticket } from '../tickets-crud/ticket';
 
 export interface CartItem {
     ticket: Ticket;
-    itemquantity: number;
+    itemQuantity: number;
 
 }

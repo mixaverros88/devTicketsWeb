@@ -56,12 +56,16 @@ export class TicketsuserComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.getProducts();
 
   }
 
-  goToProductDetails(id) {
+setQuantityofProduct(id: number) {
+  return this.CartService.getNumberinCart(id);
+}
+
+
+goToProductDetails(id) {
     this.router.navigate(['/productpage', id]);
   }
 

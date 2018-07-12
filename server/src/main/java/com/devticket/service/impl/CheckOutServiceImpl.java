@@ -31,6 +31,13 @@ public class CheckOutServiceImpl implements CheckOutService {
     }
 
     @Override
+    public int findAll() {
+        List<Orders> ordersnumber = this.ordersRepository.findAll();
+        return ordersnumber.size();
+    }
+
+
+    @Override
     public void save(Orders order) {
         this.ordersRepository.save(order);
     }

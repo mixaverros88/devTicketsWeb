@@ -52,7 +52,7 @@ export class ConfigService {
 
   private _view_order_ = this._my_orders_ + 'getorder/';
 
-
+  private _orders_number = this._api_url + '/numberoforders';
 
   get refresh_token_url(): string {
       return this._refresh_token_url;
@@ -119,7 +119,10 @@ return this._addticket_url ;
     return this._view_order_ + id.toString();
   }
 
-  
+  getNumberOforders() {
+
+    return this._orders_number;
+  }
 
   resetPassword(): string {
 
