@@ -56,14 +56,12 @@ export class TicketsuserComponent implements OnInit {
   }
 
   ngOnInit() {
-   
     this.getProducts();
 
   }
 
-setQuantityofProduct(id:number){
+setQuantityofProduct(id: number) {
   return this.CartService.getNumberinCart(id);
-  
 }
 
 
