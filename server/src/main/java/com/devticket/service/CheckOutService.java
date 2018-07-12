@@ -17,4 +17,6 @@ public interface CheckOutService {
 
     List<Orders> findByUserId(Long id);
 
+    int findAll();
+
 }

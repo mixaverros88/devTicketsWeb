@@ -41,6 +41,13 @@ public class OrderController {
 
     }
 
+    @RequestMapping(method = GET , value = "/numberoforders")
+            public int numberofOrders(){
+           return this.checkOutService.findAll();
+
+            }
+
+
     @RequestMapping(method = GET, value = "/myorders/{id}")
     public List<Orders> loadAll(@PathVariable("id") Long id) {
         return this.checkOutService.findByUserId(id);

@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { ConfigService } from './config.service';
 import { HttpClient } from '@angular/common/http';
 import { Cart } from '../shoppingcart/Cart';
+import { trigger } from '@angular/core/src/animation/dsl';
 
 @Injectable()
 export class OrdersService {
@@ -29,6 +30,10 @@ export class OrdersService {
     viewOrder(id: number) {
 
         return this.apiService.get(this.config.getOrder(id));
+    }
+
+    numberofAllOrders() {
+        return this.apiService.get(this.config.getNumberOforders());
     }
 
 
