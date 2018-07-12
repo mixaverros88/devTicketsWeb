@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-primary">
   <button style="background-color:#424954;" class="btn " routerLink="/">
-    
+
     <img alt="DevTicketPlace" class="app-angular-logo kounietai" src="assets/image/dev-logo.png">
   </button>
 
@@ -22,8 +22,8 @@
     <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
     <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" class="my-button" routerLink="/ticketcard">{{ 'CART' | translate }}
       <span class="fa fa-shopping-cart fa-fw"></span>
-      <span class="badge badge-light">{{cartValue()}} €</span>
-    </button>  
+      <span *ngIf="cartValue() > 0" class="badge badge-light">{{cartValue()}} €</span>
+    </button>
     <button *ngIf="hasSignedIn() && userRole()==='ROLE_USER'" routerLink="/contact" class="my-button">
       <span>{{ 'CONTACT' | translate }}</span>
     </button>
