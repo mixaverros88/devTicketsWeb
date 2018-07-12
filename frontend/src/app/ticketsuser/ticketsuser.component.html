@@ -26,15 +26,15 @@
                  </div>
                  
                  <div class="col-md-4">
-                     <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{ pr.available }} !
+                     <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{(pr.available -(setQuantityofProduct(pr.id)))}} !
                  </div>
                
                </div>
               <ngb-rating [rate]="3" (click)="setStar()"></ngb-rating>
               <!-- <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter> -->
-              <button *ngIf="pr.available > 0" type="button" class="btn btn-primary hvr-shutter-in-horizontal pull-right" (click)="addtoCart(pr.id)">Add to Cart <span class="fa fa-shopping-cart"></span></button>
-              <button *ngIf="pr.available == 0" disabled type="button" class="btn btn-light pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button>
-              <p *ngIf="pr.available == 0" style="color:red;">Not available tickets</p>
+              <button *ngIf="pr.available -(setQuantityofProduct(pr.id)) > 0" type="button" class="btn btn-primary hvr-shutter-in-horizontal pull-right" (click)="addtoCart(pr.id)">Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              <!-- <button *ngIf="pr.available -(setQuantityofProduct(pr.id)) == 0" disabled type="button" class="btn btn-light pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button> -->
+              <p *ngIf="pr.available -(setQuantityofProduct(pr.id)) == 0" style="color:red;">Not available tickets</p>
             </div>
           </div>
     </div>
