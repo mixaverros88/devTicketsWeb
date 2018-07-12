@@ -55,12 +55,19 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  async checkout(content) {
-    await this.makeUser(JSON.stringify(this.UserService.currentUser));
-    delay(3000);
-    this.CartService.checkout(this.CurrentUserId);
-    this.CartService.clearCart();
-    this.modalService.open(content, { size: 'lg' });
+  async commitOrder() {
+    this.makeUser(JSON.stringify(this.UserService.currentUser));
+  }
+
+  checkout(content) {
+    this.commitOrder()
+      .then( () => {
+      delay(3000);
+      this.CartService.checkout(this.CurrentUserId);
+      this.CartService.clearCart();
+      this.modalService.open(content, { size: 'lg' });
+    })
+    .catch(() => alert('We apologise something went wrong') );
   }
 
 
