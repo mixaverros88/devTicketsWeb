@@ -25,7 +25,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
 
-z
+
   ngOnInit() {
  this.data = this.CartService.getCartProducts();
   }
@@ -50,6 +50,11 @@ this.ngOnInit();
     final = final + this.getTax();
     final = final + 5;
     return Math.ceil(final);
+  }
+
+  roundNumber(x: number , y: number){
+  const p = Math.round((x * y) * 100 ) / 100;
+return p;
   }
 
   clearCart() {

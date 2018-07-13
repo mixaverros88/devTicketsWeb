@@ -27,8 +27,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   getRawValue() {
-    return this.CartService.cartValue();
+    return Math.round((this.CartService.cartValue() * 100)  / 100);
   }
+
+
+  roundNumber(x: number , y: number) {
+    const p = Math.round((x * y) * 100 ) / 100;
+  return p;
+    }
 
   getUniqueItems() {
     return this.CartService.cartUniqueItems();
@@ -37,14 +43,14 @@ export class CheckoutComponent implements OnInit {
 
   getTax() {
     const final = (((this.CartService.cartValue()) * 5) / 100);
-    return final;
+    return Math.round(final);
   }
 
   getCartValue() {
     let final = this.CartService.cartValue();
     final = final + this.getTax();
     final = final + 5;
-    return final;
+    return Math.round((final * 100) / 100);
   }
 
 

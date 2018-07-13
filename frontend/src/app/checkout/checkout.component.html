@@ -19,7 +19,7 @@
                 <h6 class="my-0">{{pr.ticket.name}}</h6>
                 <small class="text-muted text-muted-specified">{{ 'QUANTITY' | translate}}: {{pr.itemQuantity}}</small>
               </div>
-              <span class="text-muted text-muted-specified">{{ 'PRICE' | translate}}: {{pr.ticket.price * pr.itemQuantity }} €</span>
+              <span class="text-muted text-muted-specified">{{ 'PRICE' | translate}}: {{roundNumber(pr.itemQuantity,pr.ticket.price)}} €</span>
             </li>
           </div>
         </ul>
