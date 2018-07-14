@@ -19,7 +19,6 @@ public class QuoteClient extends WebServiceGatewaySupport {
     private static final Logger log = LoggerFactory.getLogger(QuoteClient.class);
 
     public CheckVatResponse getBeer(String id) {
-
         CheckVat request = new CheckVat();
         request.setCountryCode("EL");
         if(id.length() ==8){

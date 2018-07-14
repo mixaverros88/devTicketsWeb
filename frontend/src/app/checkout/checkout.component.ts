@@ -17,7 +17,7 @@ export class CheckoutComponent implements OnInit {
   data: any[];
   CurrentUserId: number;
   shippingCost = 5;
-
+content:any;
   afm: string;
 
   constructor(
@@ -41,14 +41,14 @@ private apiservice: ApiService) {
   onSubmit(contentAfm) {
     const p = this.formVar.value.afm;
     this.getAfm(p);
-    this.modalService.open(contentAfm, { size: 'lg' });
+    this.content = contentAfm;
 
   }
   setAfm(x) {
     this.afm = x.error.text;
     console.log(this.afm);
-    
-// EDO ANOIKSE TO PORTAL !!!!! KAI VALE MESA TO THIS.AFM KAI MERIKES PAPATZES
+    this.modalService.open(this.content, { size: 'lg' });
+
   }
 
     getAfm(id: string) {

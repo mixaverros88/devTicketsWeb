@@ -4,6 +4,7 @@ import com.devticket.client.QuoteClient;
 import com.devticket.model.cart.Cart;
 import com.devticket.model.cart.CartItem;
 import com.devticket.service.TicketService;
+import com.sun.org.apache.xpath.internal.operations.Quo;
 import hello.wsdl.CheckVatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +32,6 @@ public class afmcontroller {
     public String loadAl(@PathVariable String id){
         System.out.println(id);
         CheckVatResponse response = greetingClient.getBeer(id);
-        System.out.println("zitises auto " + response.getAddress().getValue());
         return response.getName().getValue();
     }
 }
