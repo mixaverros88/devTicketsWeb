@@ -1,5 +1,5 @@
 import { Component, OnInit,  } from '@angular/core';
-import { CartService, ConfigService, UserService } from '../service';
+import { CartService, ConfigService, UserService, ApiService } from '../service';
 import { User } from '../login/user';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { delay } from 'rxjs/operators';
@@ -18,26 +18,41 @@ export class CheckoutComponent implements OnInit {
   CurrentUserId: number;
   shippingCost = 5;
 
+  afm: string;
+
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
     private CartService: CartService,
     // tslint:disable-next-line:no-shadowed-variable
     private UserService: UserService,
     private modalService: NgbModal,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+  private config: ConfigService,
+private apiservice: ApiService) {
   }
   ngOnInit() {
     this.formVar = this.fb.group({
-      afm: '',
+      afm: 0,
     });
 
     this.data = this.CartService.getCartProducts();
-    
+
   }
   onSubmit() {
-    console.log(this.formVar.value);
+    const p = this.formVar.value.afm;
+    this.getAfm(p);
+
+  }
+  setAfm(x) {
+    this.afm = x.error.text;
+    console.log(this.afm);
+// EDO ANOIKSE TO PORTAL !!!!! KAI VALE MESA TO THIS.AFM KAI MERIKES PAPATZES
   }
 
+    getAfm(id: string) {
+  const p = this.apiservice.get(this.config.get_afm(id)).subscribe(res => this.setAfm(res), err => this.setAfm(err));
+
+  }
   getRawValue() {
     return Math.round((this.CartService.cartValue() * 100)  / 100);
   }
