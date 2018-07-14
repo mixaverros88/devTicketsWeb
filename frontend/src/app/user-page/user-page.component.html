@@ -45,7 +45,8 @@
                           <div class="card">
                               <div class="card-body text-center mt-4">
                                   <h4 class="card-title">DevTickets</h4>
-                                      <button (click)="getOrder(pr.id, content)" class="view-details card-text">{{ 'VIEWORDERDETAILS' | translate}}</button>
+                                      <button (click)="getOrder(pr.id, content)" class="view-details card-text">{{ 'VIEWORDERDETAILS' | translate}}</button> <br />
+                                      <button class="btn btn-primary" (click)="getOrder2(pr.id, content2)">INVOICE</button>
                               </div>
                           </div>
                       </div>
@@ -119,3 +120,85 @@
       </div>
 
     </ng-template>
+    <ng-template #content2 let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Απόδειξη</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="container">
+            <div class="invoice">
+              <div class="row">
+                <div class="col-7">
+                  <img src="assets/image/dev-logo.png">
+                </div>
+              </div>
+              <br>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>NO VAT</th>
+                    <th>VAT</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let data2 of cart.cart">
+                  <tr>
+                    <td>{{data2.ticket.name}}</td>
+                    <td>{{data2.itemQuantity}}</td>
+                    <td class="text-center">{{data2.ticket.price - ( data2.ticket.price * 0.05 ) }} &euro;</td>
+                    <td>{{data2.ticket.price * 0.05 | number : '1.2-2'}} &euro;</td>
+                    <td class="text-right">{{data2.ticket.price}} &euro;</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-4">
+                  <table class="table table-sm text-right">
+                    <tr>
+                      <td><strong>No VAT</strong></td>
+                      <td class="text-right">{{ carttotal - (carttotal  * 0.05) }} &euro;</td>
+                    </tr>
+                    <tr>
+                      <td>VAT 5%</td>
+                      <td class="text-right">{{ carttotal  * 0.05 | number : '1.2-2' }} &euro;</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Total</strong></td>
+                  <td class="text-right">{{ carttotal }} &euro;</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>          
+              <br>
+              <br>
+              <br>
+              <br>
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="pull-left">
+                        <img src="assets/image/barcode.png" alt="" class=""  style="max-height: 100px; width:200px;">
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <p class="bottom-page text-right">
+                        Pelika ke Spartis, Marousi 151 22 - www.devtickets.com<br>
+                        IBAN FR76 1470 7034 0031 4211 7882 825 - SWIFT CCBPFRPPMTZ
+                      </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="c('Close click')">{{ 'CLOSE' | translate }}</button>
+        </div>
+        <div class="row">
+         
+        </div>
+  
+      </ng-template>
