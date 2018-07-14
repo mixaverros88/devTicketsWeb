@@ -145,5 +145,7 @@
     "TICKETS": "Εισιτήρια",
     "MODIFYATICKET" : "Τροποποίηση εισιτηρίου",
     "EDITDELETETICKETS": "ΤΡΟΠΟΠΟΙΗΣΗ / ΔΙΑΓΡΑΦΗ ΕΙΣΙΤΗΡΙΩΝ",
-    "ADDTICKET": "ΠΡΟΣΘΗΚΗ ΕΙΣΙΤΗΡΙΟΥ"
+    "ADDTICKET": "ΠΡΟΣΘΗΚΗ ΕΙΣΙΤΗΡΙΟΥ",
+    "DOWNLOADTICKETS": "Εισιτήρια",
+    "DOWNLOADUSERS": "Χρήστες"
 }

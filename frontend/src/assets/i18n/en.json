@@ -144,6 +144,8 @@
     "TICKETS": "Tickets",
     "MODIFYATICKET" : "Modify a Ticket",
     "EDITDELETETICKETS": "EDIT / DELETE TICKETS",
-    "ADDTICKET": "ADD TICKET"
+    "ADDTICKET": "ADD TICKET",
+    "DOWNLOADTICKETS": "Tickets",
+    "DOWNLOADUSERS": "Users"
 
 }

@@ -431,8 +431,17 @@ export class TicketsCrudComponent implements OnInit {
         });
   }
 
-  download() {
-    html2canvas(document.getElementById('export')).then(function (canvas) {
+  downloadTickets() {
+    html2canvas(document.getElementById('exporttickets')).then(function (canvas) {
+      const img = canvas.toDataURL('assets/image/dev-logo.png');
+      const doc = new jsPDF('l', 'in', 'a4');
+      doc.addImage(img, 'JPEG', 0, 0);
+      doc.save('ticket.pdf');
+    });
+  }
+
+  downloadUsers() {
+    html2canvas(document.getElementById('exportusers')).then(function (canvas) {
       const img = canvas.toDataURL('assets/image/dev-logo.png');
       const doc = new jsPDF('l', 'in', 'a4');
       doc.addImage(img, 'JPEG', 0, 0);
