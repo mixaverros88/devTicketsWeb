@@ -74,7 +74,7 @@ export class TicketsCrudComponent implements OnInit {
   totalElements: number;
   size = 5;
   number = 0;
-  sort = 'desc';
+  sort = 'asc';
   first: boolean;
   numberOfElements: number;
   orderByColumn: String = 'id';
@@ -249,8 +249,9 @@ export class TicketsCrudComponent implements OnInit {
       .then(() => this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου')
   }
 
-  orderByName(column: String) {
+  orderByName(column: String, sort: string) {
     this.orderByColumn = column;
+    this.sort = sort;
     this.getProducts();
   }
 

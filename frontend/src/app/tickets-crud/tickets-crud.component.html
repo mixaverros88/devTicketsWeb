@@ -226,17 +226,29 @@
                     <thead style="background-color: #e9e9e9;">
                         <tr>
                             <th>Total Tickets {{ totalElements }}</th>
-                            <th (click)="orderByName('name')">
+                            <th>
                                 <span>{{'ΝΑΜΕ'| translate}}</span>
                                 <div class="arrows">
-                                    <i class="fa fa-caret-up"></i>
-                                    <i class="fa fa-caret-down"></i>
+                                    <i (click)="orderByName('name', 'desc')"  class="fa fa-caret-up"></i>
+                                    <i (click)="orderByName('name', 'asc')" class="fa fa-caret-down"></i>
                                 </div>
                             </th>
-                            <th (click)="orderByName('language')">{{'LANGUAGE' | translate}}</th>
+                            <th>
+                                <span>{{'LANGUAGE' | translate}}</span>
+                                <div class="arrows">
+                                    <i (click)="orderByName('language', 'desc')"  class="fa fa-caret-up"></i>
+                                    <i (click)="orderByName('language', 'asc')" class="fa fa-caret-down"></i>
+                                </div>
+                            </th>
                             <th>{{'AVAILABE' | translate}}</th>
                             <th>{{'LOCATION' | translate}}</th>
-                            <th (click)="orderByName('price')">{{'PRICE' | translate}}</th>
+                            <th>
+                                <span>{{'PRICE' | translate}}</span>
+                                <div class="arrows">
+                                    <i (click)="orderByName('price', 'desc')"  class="fa fa-caret-up"></i>
+                                    <i (click)="orderByName('price', 'asc')" class="fa fa-caret-down"></i>
+                                </div>
+                            </th>
                             <th>Date</th>
                             <th>{{'SETTINGS' | translate}}</th>
                             <th>
