@@ -10,7 +10,7 @@
   <div class="row">
     <div *ngFor="let pr of data" class="col-md-4 card mb-5" detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="200" [topOffset]="200">
         <div class="card border-0">
-          <div class="row">
+          <div class="row" style="margin-top:15px;">
             <div class="col-md-12 text-center">
                 <img class="card-img-top img-fluid text-center"  (click)="goToProductDetails(pr.id)" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:110px!important; width:110px;">
             </div>

@@ -88,3 +88,12 @@
     transform: translateY(5px);
     /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
   }
+
+  .card{
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-image: linear-gradient(to right top, #181d21, #1c3649, #1a5176, #156da7, #1b89da);
+    color: #fff;
+  }
+
+  

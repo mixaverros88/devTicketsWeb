@@ -5,10 +5,10 @@
 
     <header id="home" class="top-hero jumbotron-fluid p-b-3 bg-faded">
         <div class="container animated fadeInUp">
-            <h1 class="display-3">Dev Tickets</h1>
+            <h1 class="display-3 animate-left">Dev Tickets</h1>
             <p class="lead m-t-1 m-b-2">{{ 'EVERYTHINGSUBTITILE' | translate }}.</p>
-            <button type="button" class="btn btn-lg btn-primary m-t-1" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
-            <button type="button" class="js-scroll btn btn-lg btn-default m-t-1" routerLink="/contact">{{ 'CONTACTUS' | translate }}</button>
+            <button type="button" id="test" class="btn btn-lg btn-primary m-t-1" routerLink="/ticketsuser">{{ 'BUYTICKETS' | translate }}</button>
+            <button type="button" id="test" class="js-scroll btn btn-lg btn-default m-t-1" routerLink="/contact">{{ 'CONTACTUS' | translate }}</button>
         </div>
     </header>
 
@@ -20,25 +20,25 @@
                     <ul class="list-unstyled ui-steps">
                         <li class="media">
                             <div class="circle-icon mr-4">1</div>
-                            <div class="media-body">
-                                <h5>{{ 'CREATEANACCOUNT' | translate }}</h5>
-                                <p>{{ 'CREATEANACCOUNTDESCRIPTION' | translate }}
+                            <div class="media-body" id="test">
+                                <h5 class="secttwotitle">{{ 'CREATEANACCOUNT' | translate }}</h5>
+                                <p class="sectwop">{{ 'CREATEANACCOUNTDESCRIPTION' | translate }}
                                 </p>
                             </div>
                         </li>
                         <li class="media my-4">
                             <div class="circle-icon mr-4">2</div>
-                            <div class="media-body">
-                                <h5>{{ 'SEARCHFORADEVTICKET' | translate }}</h5>
-                                <p>{{ 'SEARCHFORADEVTICKETDESCRIPTION' | translate }}
+                            <div class="media-body" id="test">
+                                <h5 class="secttwotitle">{{ 'SEARCHFORADEVTICKET' | translate }}</h5>
+                                <p class="sectwop">{{ 'SEARCHFORADEVTICKETDESCRIPTION' | translate }}
                                 </p>
                             </div>
                         </li>
                         <li class="media">
                             <div class="circle-icon mr-4">3</div>
-                            <div class="media-body">
-                                <h5>{{ 'ENJOYYOUREVENT' | translate }}</h5>
-                                <p>{{ 'ENJOYYOUREVENTDESCRIPTION' | translate }}
+                            <div class="media-body" id="test">
+                                <h5 class="secttwotitle">{{ 'ENJOYYOUREVENT' | translate }}</h5>
+                                <p class="sectwop">{{ 'ENJOYYOUREVENTDESCRIPTION' | translate }}
 
                                 </p>
                             </div>
@@ -181,7 +181,7 @@
                                             <img class=" img-fluid" src="assets/image/tzimpoulasnikos.jpg" alt="card image">
                                         </p>
                                         <h4 class="card-title">{{ 'NIKOSTZIMPOULAS' | translate }}</h4>
-                                        <p class="card-text">Web Developer </p>
+                                        <p class="card-text">Full Stack Developer </p>
                                         <a href="#" class="btn btn-primary btn-sm">
                                             <i class="fa fa-ellipsis-h"></i>
                                         </a>
