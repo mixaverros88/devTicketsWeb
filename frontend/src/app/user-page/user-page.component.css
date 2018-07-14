@@ -106,7 +106,7 @@ button.view-details:hover {
   width: 0;
 }
 .qr {
-  position: absolute;
+  float:left;
   top: 80px;
   right: 50px;
 }
@@ -183,6 +183,9 @@ button.view-details:hover {
   font-weight: 900;
   line-height: 1em;
   margin-bottom: 20px;
+  max-width: 70%;
+    overflow: hidden;
+    float: left;
 }
 .check .info {
   display: flex;
@@ -370,6 +373,7 @@ section .section-title {
   color: #75787b;
   font-size: 0.98em; 
 }
-
-
+.image-ticket{
+  max-width: 100px;
+}
 

@@ -76,20 +76,22 @@
                 </div>
                 <div class="icon">
                   <span>
-                    <img height="80" width="120" src='data:image/png;base64,{{data.ticket.image}}'> </span>
+                    <img class="image-ticket" src='data:image/png;base64,{{data.ticket.image}}'> </span>
                 </div>
                 <div class="name">
                   {{userName()}}
                 </div>
               </div>
               <div class="check">
+              <div class="clearfix" style="margin-bottom: 20px;">
                 <div class="big">
                   {{data.ticket.name}}
                   <br> TICKET
                 </div>
                 <div class="qr">
-                  <qrcode [qrdata]="myAngularxQrCode" [size]="50" [level]="'M'"></qrcode>
+                  <qrcode [qrdata]="myAngularxQrCode" [size]="80" [level]="'M'"></qrcode>
                 </div>
+              </div>
                 <div class="info">
                   <section>
                     <div class="title">{{ 'DATE' | translate }}</div>

@@ -343,7 +343,7 @@
     <ngb-tab title="{{ 'REPORTS' | translate }}">
         <ng-template ngbTabContent>
             <div class="container-fluid">
-                <div class="row mt-5">
+                <div class="row mt-5" id="export">
                     <div class="col-md-6">
                         <h5 class="text-center justified">{{'TICKETS' | translate}}</h5>
                         <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="chart" [gradient]="gradient" [xAxis]="showXAxis"
@@ -358,6 +358,9 @@
                         </ngx-charts-gauge>
                     </div>
                 </div>
+                <button type="button" class="btn btn-danger" (click)="download()"> {{ 'DOWNLOAD' | translate }}
+                        <span class="fa fa-file-pdf-o fa-fw"></span>
+                </button>
             </div>
         </ng-template>
     </ngb-tab>
