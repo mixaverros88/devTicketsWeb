@@ -24,7 +24,7 @@
       <input style="color:whitesmoke;" formControlName="lastname" required placeholder="lastname" class="text centralizeInputTag">
       <br />
 
-      <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
+      <input type="checkbox" id="checkbox-1-1" formControlName="checked" class="custom-checkbox"/>
       <label style="color:whitesmoke; size: 8px;" for="checkbox-1-1">{{ 'CHECKINGTHISBOX' | translate }}.</label>
       <hr>
       <button class="signin" type="submit" [disabled]="!loginForm.form.valid">{{ 'SIGNIN' | translate }}</button>

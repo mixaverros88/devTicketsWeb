@@ -8,6 +8,8 @@ import { delay } from 'q';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { Router } from '@angular/router';
 import {  } from '@types/googlemaps';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-tickets-crud',
@@ -72,7 +74,7 @@ export class TicketsCrudComponent implements OnInit {
   totalElements: number;
   size = 5;
   number = 0;
-  sort = 'desc';
+  sort = 'asc';
   first: boolean;
   numberOfElements: number;
   orderByColumn: String = 'id';
@@ -247,8 +249,9 @@ export class TicketsCrudComponent implements OnInit {
       .then(() => this.message = 'Επιτυχής Επεξεργασία Εισιτηρίου')
   }
 
-  orderByName(column: String) {
+  orderByName(column: String, sort: string) {
     this.orderByColumn = column;
+    this.sort = sort;
     this.getProducts();
   }
 
@@ -429,6 +432,22 @@ export class TicketsCrudComponent implements OnInit {
         });
   }
 
+  downloadTickets() {
+    html2canvas(document.getElementById('exporttickets')).then(function (canvas) {
+      const img = canvas.toDataURL('assets/image/dev-logo.png');
+      const doc = new jsPDF('l', 'in', 'a4');
+      doc.addImage(img, 'JPEG', 0, 0);
+      doc.save('ticket.pdf');
+    });
+  }
 
+  downloadUsers() {
+    html2canvas(document.getElementById('exportusers')).then(function (canvas) {
+      const img = canvas.toDataURL('assets/image/dev-logo.png');
+      const doc = new jsPDF('l', 'in', 'a4');
+      doc.addImage(img, 'JPEG', 0, 0);
+      doc.save('ticket.pdf');
+    });
+  }
 
 }

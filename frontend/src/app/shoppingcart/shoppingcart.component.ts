@@ -1,18 +1,10 @@
-import {Cart} from './../shoppingcart/Cart';
-import {CartItem} from './../shoppingcart/CartItem';
-import { Component, OnInit, Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import {
   ConfigService,
-  UserService,
-  ApiService,
   CartService
 
 } from '../service';
-import { identifierName } from '@angular/compiler';
-import { tick } from '@angular/core/testing';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Ticket } from '../tickets-crud/ticket';
+
 
 
 @Component({
@@ -58,6 +50,11 @@ this.ngOnInit();
     final = final + this.getTax();
     final = final + 5;
     return Math.ceil(final);
+  }
+
+  roundNumber(x: number , y: number){
+  const p = Math.round((x * y) * 100 ) / 100;
+return p;
   }
 
   clearCart() {

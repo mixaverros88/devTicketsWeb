@@ -3,7 +3,8 @@ import { Component, OnInit, Injectable, NgZone } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   TicketService,
-  CartService
+  CartService,
+  UserService
 } from '../service';
 import { Ticket } from '../tickets-crud/ticket';
 import { HttpClient} from '@angular/common/http';
@@ -47,7 +48,8 @@ export class ProductpageComponent implements OnInit {
     private TicketService: TicketService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private httpClient: HttpClient) { }
+    private httpClient: HttpClient,
+  private userservice: UserService) { }
 
   ngOnInit() {
 
@@ -73,7 +75,14 @@ this.weather.description = x.list[39].weather[0].description;
 this.weather.image = 'http://openweathermap.org/img/w/'  + x.list[39].weather[0].icon + '.png'
 
 }
-
+userRole() {
+  const user = this.userservice.currentUser;
+  if (user.authorities[1]) {
+    return user.authorities[1].authority;
+  } else {
+    return user.authorities[0].authority;
+  }
+}
 
 
 

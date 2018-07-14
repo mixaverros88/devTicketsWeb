@@ -9,11 +9,19 @@
 
   <div class="row">
     <div *ngFor="let pr of data" class="col-md-4 card mb-5" detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="200" [topOffset]="200">
-        <div class="card border-0 hvr-float-shadow">
-            <img class="card-img-top img-fluid"  (click)="goToProductDetails(pr.id)" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:110px!important; width:110px;">
+        <div class="card border-0">
+          <div class="row" style="margin-top:15px;">
+            <div class="col-md-12 text-center">
+                <img class="card-img-top img-fluid text-center"  (click)="goToProductDetails(pr.id)" src='data:image/png;base64,{{pr.image}}' alt="Card image cap" style="height:110px!important; width:110px;">
+            </div>
+          </div>
 
             <div class="card-body">
-              <h2 style="min-height: 95px;"class="card-title">{{ pr.name }}</h2>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 style="min-height: 95px;"class="card-title">{{ pr.name }}</h2>
+                </div>
+              </div>
              <p style="    min-height: 70px; max-height: 70px;" class="card-text">{{pr.language}}</p>
              <div style="min-height: 100px;  max-height: 100px;"class="row">
                    <div class="col-md-12">
@@ -23,14 +31,13 @@
                   <span class="fa fa-money fa-color"></span> {{ pr.price }} €
                  </div>
                  
-                 <div class="col-md-4">
+                 <div class="col-md-8">
                      <span class="fa fa-ticket pull-left" [ngStyle]="{'color':pr.available > 100  ? 'green' : 'red' }"></span>Tickets left : {{(pr.available -(setQuantityofProduct(pr.id)))}} !
                  </div>
                
                </div>
-              <ngb-rating [rate]="3" (click)="setStar()"></ngb-rating>
               <!-- <custom-counter *ngIf="pr.available > 0" class="col-md-3" [(counter)]="counterValue"></custom-counter> -->
-              <button *ngIf="pr.available -(setQuantityofProduct(pr.id)) > 0" type="button" class="btn btn-primary hvr-shutter-in-horizontal pull-right" (click)="addtoCart(pr.id)">Add to Cart <span class="fa fa-shopping-cart"></span></button>
+              <button *ngIf="pr.available -(setQuantityofProduct(pr.id)) > 0 && userRole()==='ROLE_USER'" type="button" class="btn btn-primary hvr-shutter-in-horizontal pull-right" (click)="addtoCart(pr.id)">Add to Cart <span class="fa fa-shopping-cart"></span></button>
               <!-- <button *ngIf="pr.available -(setQuantityofProduct(pr.id)) == 0" disabled type="button" class="btn btn-light pull-right" (click)="addtoCart(pr.id)" >Add to Cart <span class="fa fa-shopping-cart"></span></button> -->
               <p *ngIf="pr.available -(setQuantityofProduct(pr.id)) == 0" style="color:red;">Not available tickets</p>
             </div>

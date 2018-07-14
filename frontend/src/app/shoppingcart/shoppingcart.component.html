@@ -7,8 +7,10 @@
       <!-- <h2 style="color:whitesmoke;" class="active">{{'YOURSHOPPINGCART' | translate}}</h2> -->
     </div>
   </header>
-
-  <div class="container containerBackground">
+  <div *ngIf="getRawValue() == 0" class="text-center">
+    <h3>Your Shopping cart is empty</h3>
+  </div>
+  <div *ngIf="getRawValue() > 0" class="container containerBackground">
 
     <section id="cart">
       <div *ngFor="let pr of data" class="">
@@ -26,16 +28,15 @@
               <span class="fa fa-times"></span>
             </div>
             <h1>{{pr.ticket.name}}</h1>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum
-            dolore in atque.
+           
           </div>
 
           <footer class="content">
             <h2 class="full-price">
-              {{pr.ticket.price * pr.itemQuantity }} €
+              {{roundNumber(pr.itemQuantity,pr.ticket.price)}} €
             </h2>
             <p class="quantityPrice">
-              <b>{{'QUANTITY' | translate}}:</b> {{pr.itemQuantity}} x {{pr.ticket.price}} €
+              <b>{{'QUANTITY' | translate}}:</b>  {{pr.itemQuantity | number:'1.2-2'}} x {{pr.ticket.price | number:'1.2-2'}} €
             </p>
           </footer>
 
@@ -43,13 +44,13 @@
       </div>
     </section>
   </div>
-  <div class="container containerBackground containerClearCartButton">
+  <div *ngIf="getRawValue() > 0" class="container containerBackground containerClearCartButton">
     <div class="btn btn-danger myBtnDanger" (click)="clearCart()">{{'CLEARCART' | translate}}
       <span class="fa fa-trash fa-fw"></span>
     </div>
   </div>
 
-  <footer id="site-footer">
+  <footer *ngIf="getRawValue() > 0" id="site-footer">
     <div class="container clearfix">
 
       <div class="left">

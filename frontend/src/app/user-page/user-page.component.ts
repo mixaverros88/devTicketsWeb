@@ -17,6 +17,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 })
 export class UserPageComponent implements OnInit {
   data: any[];
+  carttotal: number;
   CurrentUserId: number;
   cart: Cart;
   public myAngularxQrCode: any;
@@ -46,6 +47,7 @@ export class UserPageComponent implements OnInit {
           if (data.length) {
             this.data = data;
             this.spinnerService.hide();
+            console.log(this.data);
           }
         }
       );
@@ -63,6 +65,22 @@ export class UserPageComponent implements OnInit {
       );
     this.modalService.open(content, { windowClass: 'dark-modal' });
   }
+  getOrder2(id: number, content2) {
+    this.spinnerService.show();
+    this.cart = {} as Cart;
+    this.OrdersService.viewOrder(id)
+      .subscribe(
+        (data: Cart) => {
+          this.cart = data;
+          this.carttotal = data.totalPrice;
+          this.spinnerService.hide();
+        }
+      );    
+    
+    this.modalService.open(content2, { windowClass: 'dark-modal' });
+  }
+
+
 
 
   myOrders() {

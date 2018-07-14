@@ -20,7 +20,7 @@
     "INSERTTICKET": "Προσθήκη Εισιτηρίου",
     "ΝΑΜΕ": "Όνομα",
     "LANGUAGE": "Γλώσσα",
-    "AVAILABE": "Διαθέσημα",
+    "AVAILABE": "Διαθέσιμα",
     "LOCATION": "Τοποθεσία",
     "PRICE": "Τιμή",
     "SETTINGS": "Ρυθμίσεις",
@@ -145,5 +145,7 @@
     "TICKETS": "Εισιτήρια",
     "MODIFYATICKET" : "Τροποποίηση εισιτηρίου",
     "EDITDELETETICKETS": "ΤΡΟΠΟΠΟΙΗΣΗ / ΔΙΑΓΡΑΦΗ ΕΙΣΙΤΗΡΙΩΝ",
-    "ADDTICKET": "ΠΡΟΣΘΗΚΗ ΕΙΣΙΤΗΡΙΟΥ"
+    "ADDTICKET": "ΠΡΟΣΘΗΚΗ ΕΙΣΙΤΗΡΙΟΥ",
+    "DOWNLOADTICKETS": "Εισιτήρια",
+    "DOWNLOADUSERS": "Χρήστες"
 }

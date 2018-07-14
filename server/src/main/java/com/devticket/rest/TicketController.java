@@ -60,7 +60,7 @@ public class TicketController {
     }
 
     private Sort orderBy(String sort, String column) {
-        if (sort == "asc") {
+        if (sort.equals("asc")){
             return new Sort(Sort.Direction.ASC, column);
         } else {
             return new Sort(Sort.Direction.DESC, column);

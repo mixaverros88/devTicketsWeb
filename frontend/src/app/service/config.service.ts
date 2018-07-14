@@ -52,6 +52,8 @@ export class ConfigService {
 
   private _view_order_ = this._my_orders_ + 'getorder/';
 
+  private _get_afm_ = this._api_url + '/afm/';
+
   private _orders_number = this._api_url + '/numberoforders';
 
   get refresh_token_url(): string {
@@ -89,6 +91,11 @@ return this._addticket_url ;
  checkout_url(id: number): string {
 
     return this._checkout_url + id.toString();
+  }
+
+  get_afm(id: string): string {
+
+    return this._get_afm_ + id;
   }
 
   editteticket_url(id: number): string {

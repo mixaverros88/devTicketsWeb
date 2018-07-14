@@ -43,7 +43,7 @@
 </div>
     </div>
     <div class="cart-price">
-      <button (click)='addtoCart(ticket.id)' class="button1">Add to Cart</button>
+      <button *ngIf="userRole()==='ROLE_USER'" (click)='addtoCart(ticket.id)' class="button1">Add to Cart</button>
       <h2>{{ticket?.price}}€</h2>
     </div>
     </div>
