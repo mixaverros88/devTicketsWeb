@@ -3,6 +3,7 @@ import { CartService, ConfigService, UserService } from '../service';
 import { User } from '../login/user';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { delay } from 'rxjs/operators';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -10,6 +11,8 @@ import { delay } from 'rxjs/operators';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+
+  formVar: FormGroup;
 
   data: any[];
   CurrentUserId: number;
@@ -20,10 +23,19 @@ export class CheckoutComponent implements OnInit {
     private CartService: CartService,
     // tslint:disable-next-line:no-shadowed-variable
     private UserService: UserService,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private fb: FormBuilder) {
   }
   ngOnInit() {
+    this.formVar = this.fb.group({
+      afm: '',
+    });
+
     this.data = this.CartService.getCartProducts();
+    
+  }
+  onSubmit() {
+    console.log(this.formVar.value);
   }
 
   getRawValue() {

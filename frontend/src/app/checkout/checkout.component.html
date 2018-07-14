@@ -8,8 +8,12 @@
 
     <div class="row">
       <div class="col-md-4 order-md-2 mb-4">
-          <label for="afm">Αν θέλετε τιμολόγιο συπληρώστε ΑΦΜ</label>
-          <input type="text" class="form-control backgroundComponentsColor" id="" value="" required="" style="margin-bottom:15px;">
+          <form [formGroup]="formVar" (ngSubmit)="onSubmit()">
+              <label for="afm">Αν θέλετε τιμολόγιο συπληρώστε ΑΦΜ</label>
+          <input type="text" class="form-control backgroundComponentsColor" formControlName="afm" type="number">
+          <button class="btn-btn-warning" style="margin-bottom:15px;">AFM</button>
+          </form>
+          
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted">{{ 'YOURCART' | translate}}</span>
           <span class="badge badge-secondary badge-pill">{{ 'UNIQUEITEMS' | translate}}:{{getUniqueItems()}}</span>
