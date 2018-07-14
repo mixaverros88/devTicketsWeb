@@ -343,8 +343,8 @@
     <ngb-tab title="{{ 'REPORTS' | translate }}">
         <ng-template ngbTabContent>
             <div class="container-fluid">
-                <div class="row mt-5" id="export">
-                    <div class="col-md-6">
+                <div class="row mt-5">
+                    <div class="col-md-6" id="exporttickets">
                         <h5 class="text-center justified">{{'TICKETS' | translate}}</h5>
                         <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="chart" [gradient]="gradient" [xAxis]="showXAxis"
                             [yAxis]="showYAxis" [legend]="showLegend" [legendTitle]="legendTitleBar" [xAxisLabel]="xAxisLabelBar"
@@ -352,15 +352,21 @@
                             [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" style="margin:auto">
                         </ngx-charts-bar-vertical>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" id="exportusers">
                         <ngx-charts-gauge [view]="view" [scheme]="colorScheme" [results]="chartUserObj" [min]="0" [max]="20" [angleSpan]="240" [startAngle]="-120"
                             [units]="'Users'" [bigSegments]="10" [smallSegments]="5" (select)="onSelect($event)">
                         </ngx-charts-gauge>
                     </div>
                 </div>
-                <button type="button" class="btn btn-danger" (click)="download()"> {{ 'DOWNLOAD' | translate }}
-                        <span class="fa fa-file-pdf-o fa-fw"></span>
-                </button>
+                <div class="col text-right">
+                        <div ngbDropdown placement="top-right" class="d-inline-block">
+                          <button class="btn btn-danger" id="dropdownBasic2" ngbDropdownToggle>{{ 'DOWNLOAD' | translate }}</button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                            <button class="dropdown-item" (click)="downloadTickets()">{{ 'DOWNLOADTICKETS' | translate }}</button>
+                            <button class="dropdown-item" (click)="downloadUsers()">{{ 'DOWNLOADUSERS' | translate }}</button>
+                          </div>
+                        </div>
+                 </div>
             </div>
         </ng-template>
     </ngb-tab>
