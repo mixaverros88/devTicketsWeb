@@ -179,9 +179,10 @@ button.view-details:hover {
   width: 0;
 }
 .check .big {
-  font-size: 60px;
+  font-size: 30px;
   font-weight: 900;
   line-height: 1em;
+  margin-bottom: 20px;
 }
 .check .info {
   display: flex;
