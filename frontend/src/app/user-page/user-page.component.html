@@ -67,7 +67,12 @@
         <div class="modal-body mb-0">
           <div *ngFor="let data of cart.cart" class="col-md-12">
             <div class="ticket">
-              <div class="stub">
+              <div >
+              <div class="stub" [style.background]="color"
+              [cpPosition]="'bottom'"
+              [cpPositionOffset]="'50%'"
+              [cpPositionRelativeToArrow]="true"
+              [(colorPicker)]="color">
                 <div class="top">
                   <span class="admit">DEVTicket</span>
                   <span class="line"></span>
@@ -83,7 +88,13 @@
                   {{userName()}}
                 </div>
               </div>
-              <div class="check">
+            </div>
+              <div class="check"
+              [style.background]="color1"
+              [cpPosition]="'bottom'"
+              [cpPositionOffset]="'50%'"
+              [cpPositionRelativeToArrow]="true"
+              [(colorPicker)]="color1">
               <div class="clearfix" style="margin-bottom: 20px;">
                 <div class="big">
                   {{data.ticket.name}}

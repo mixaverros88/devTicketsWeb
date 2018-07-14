@@ -16,6 +16,7 @@ import { Chart } from 'chart.js';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ScrollEventModule } from 'ngx-scroll-event';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 
@@ -130,6 +131,7 @@ export function initUserFactory(userService: UserService) {
     CountoModule,
     NgxChartsModule,
     Ng2SearchPipeModule,
+    ColorPickerModule,
     NgbModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
     QRCodeModule,
