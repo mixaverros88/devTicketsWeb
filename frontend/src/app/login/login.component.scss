@@ -1,19 +1,25 @@
 body,
 .signin {
   background-color: #505050;
-  font-family: 'Montserrat', sans-serif;
-  color:#505050;
+  font-family: "Montserrat", sans-serif;
+  color: #505050;
   font-size: 14px;
   letter-spacing: 1px;
 }
-
+button.signin:disabled {
+  background: grey;
+}
+button.signin:disabled:hover {
+  cursor:default;
+  box-shadow:none;
+}
 .login {
   position: relative;
   height: 560px;
   width: 405px;
   margin: auto;
   padding: 60px 60px;
-  background: url() no-repeat   center center #505050;   
+  background: url() no-repeat center center #505050;
   background-size: cover;
   box-shadow: 0px 30px 60px -5px #000;
 }
@@ -48,7 +54,7 @@ h2:first-child {
 span {
   text-transform: uppercase;
   font-size: 12px;
-  opacity: 0.4; 
+  opacity: 0.4;
   display: inline-block;
   position: relative;
   top: -65px;
@@ -82,11 +88,9 @@ span {
 
 input[type="text"],
 input[type="password"] {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #fff;
 }
-
-
 
 input {
   display: inline-block;
@@ -115,7 +119,7 @@ span,
 }
 
 .custom-checkbox:checked:after {
-  content: '\2714';
+  content: "\2714";
   font-size: 10px;
   position: absolute;
   top: 1px;
@@ -135,7 +139,7 @@ label {
 
 .signin {
   background-color: #1161ed;
-  color: #FFF;
+  color: #fff;
   width: 100%;
   padding: 10px 10px;
   display: block;
