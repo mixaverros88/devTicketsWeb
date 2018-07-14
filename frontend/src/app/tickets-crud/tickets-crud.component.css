@@ -4,6 +4,9 @@
   }
 }
 
+agm-map {
+    height: 200px;
+}
 .activePage {
   background-color: #c1c1c1;
   border: 1px solid;
