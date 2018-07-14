@@ -17,6 +17,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ScrollEventModule } from 'ngx-scroll-event';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 
 
@@ -132,6 +133,7 @@ export function initUserFactory(userService: UserService) {
     NgxChartsModule,
     Ng2SearchPipeModule,
     ColorPickerModule,
+    NgxBarcodeModule,
     NgbModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
     QRCodeModule,
