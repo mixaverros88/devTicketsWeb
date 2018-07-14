@@ -66,12 +66,14 @@ export class UserPageComponent implements OnInit {
     this.modalService.open(content, { windowClass: 'dark-modal' });
   }
   getOrder2(id: number, content2) {
+    this.spinnerService.show();
     this.cart = {} as Cart;
     this.OrdersService.viewOrder(id)
       .subscribe(
         (data: Cart) => {
           this.cart = data;
           this.carttotal = data.totalPrice;
+          this.spinnerService.hide();
         }
       );    
     
