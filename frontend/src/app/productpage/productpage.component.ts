@@ -88,12 +88,10 @@ userRole() {
 
 
 getCoffees() {
-//   const urlfour =  'https://api.foursquare.com/v2/venues/search?ll=' + this.latitude.toString() +
-//   // tslint:disable-next-line:max-line-length
-//   ',' + this.longitude.toString() + '&client_id=5J4S55LBXRYE0VV1E5MZNC1NFBMVRCGU0HOIPMLCAWNJD1V4&client_secret=UM5ORT4M2E55S3QDF2SI1B2EFJFYLYZIPKOLAYNA0VSMC5BE&v=20180101&categoryId=4bf58dd8d48988d1e0931735';
-// this.httpClient.get(urlfour).subscribe(res => this.makeCoffeeList(res));
-
-console.log('EINAI OFF TO FOURSQUARE ΓΙΑ ΝΑ ΜΗΝ ΓΙΝΟΝΤΑΙ ΚΛΗΣΕΙΣ ΣΤΟ API - ΤΟ ΠΡΟΗΓΟΥΜΕΝΟ ΚΛΕΙΔΙ ΤΟ ΚΑΝΑΝΕ ΜΠΑΝ (TO ΑΝΟΙΓΟΥΜΕ ΠΡΙΝ ΤΗΝ ΠΑΡΟΥΣΙΑΣΗ)');
+  const urlfour =  'https://api.foursquare.com/v2/venues/search?ll=' + this.latitude.toString() +
+  // tslint:disable-next-line:max-line-length
+  ',' + this.longitude.toString() + '&client_id=5J4S55LBXRYE0VV1E5MZNC1NFBMVRCGU0HOIPMLCAWNJD1V4&client_secret=UM5ORT4M2E55S3QDF2SI1B2EFJFYLYZIPKOLAYNA0VSMC5BE&v=20180101&categoryId=4bf58dd8d48988d1e0931735';
+this.httpClient.get(urlfour).subscribe(res => this.makeCoffeeList(res));
 
 }
 
